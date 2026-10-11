@@ -88,7 +88,8 @@
     "products": "Ürünler",
     "stockMovements": "Stok Hareketleri",
     "stockCounts": "Stok Sayımı",
-    "inventorySettings": "Depo ve Kategoriler"
+    "inventorySettings": "Depo ve Kategoriler",
+    "assetCounts": "Demirbaş Sayımı"
   },
   "auth": {
     "login": "Giriş yap",
@@ -622,7 +623,65 @@
       "eSigned": "Elektronik olarak onaylandı · {{date}}",
       "print": "Yazdır / PDF"
     },
-    "pastAssignments": "Geçmiş zimmetler"
+    "pastAssignments": "Geçmiş zimmetler",
+    "counts": {
+      "title": "Demirbaş Sayımı",
+      "subtitle": "QR etiketlerini okutarak demirbaşların yerinde olduğunu doğrulayın",
+      "new": "Yeni sayım",
+      "newHint": "Kapsamdaki tüm aktif demirbaşlar, o anki sorumlularıyla sayım listesine alınır.",
+      "sheet": "Sayım",
+      "number": "Sayım no",
+      "date": "Sayım tarihi",
+      "scope": "Kapsam",
+      "allAssets": "Tüm demirbaşlar",
+      "location": "Konum (isteğe bağlı)",
+      "category": "Kategori (isteğe bağlı)",
+      "progress": "İlerleme",
+      "found": "Bulunan",
+      "missing": "Bulunamayan",
+      "unexpected": "Beklenmeyen",
+      "createdBy": "Sayımı başlatan",
+      "created": "{{number}} numaralı sayım başlatıldı",
+      "scanPlaceholder": "QR, demirbaş no veya seri no okutun",
+      "camera": "Kamera",
+      "scanFound": "{{tag}} bulundu",
+      "scanAlready": "{{tag}} zaten sayıldı",
+      "scanUnexpected": "{{tag}} bu sayımın kapsamında değil; beklenmeyen olarak eklendi",
+      "expectedHolder": "Beklenen yer / sorumlu",
+      "result": "Sonuç",
+      "observedCondition": "Gözlenen durum",
+      "sameCondition": "Değişiklik yok",
+      "foundBy": "Okutan",
+      "markFound": "Bulundu olarak işaretle",
+      "markMissing": "Bulunamadı olarak işaretle",
+      "remove": "Sayımdan çıkar",
+      "print": "Fark raporu",
+      "complete": "Sayımı tamamla",
+      "completeTitle": "Sayım tamamlansın mı?",
+      "completeDescription_one": "Bulunamayan {{count}} demirbaş fark raporunda kalacak. Gözlenen fiziksel durumlar demirbaş kartlarına işlenecek.",
+      "completeDescription_other": "Bulunamayan {{count}} demirbaş fark raporunda kalacak. Gözlenen fiziksel durumlar demirbaş kartlarına işlenecek.",
+      "completed": "Sayım tamamlandı",
+      "cancelCount": "Sayımı iptal et",
+      "cancelTitle": "Sayım iptal edilsin mi?",
+      "cancelDescription": "Okutulan kayıtlar saklanır, sayım kapatılır ve demirbaşlar değişmez.",
+      "filters": {
+        "all": "Tümü",
+        "found": "Bulunanlar",
+        "missing": "Bulunamayanlar",
+        "unexpected": "Beklenmeyenler"
+      },
+      "lineStatus": {
+        "FOUND": "Bulundu",
+        "MISSING": "Bulunamadı",
+        "UNEXPECTED": "Beklenmeyen"
+      },
+      "status": {
+        "DRAFT": "Açık",
+        "COMPLETED": "Tamamlandı",
+        "CANCELLED": "İptal edildi"
+      },
+      "scanNotFound": "\"{{code}}\" ile eşleşen demirbaş yok"
+    }
   },
   "inventory": {
     "title": "Stok Durumu",

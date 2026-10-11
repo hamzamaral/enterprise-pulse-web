@@ -39,6 +39,8 @@ import { Route as AppWorkflowDefinitionsRouteImport } from './routes/_app/workfl
 import { Route as AppWorkflowInboxRouteImport } from './routes/_app/workflow/inbox'
 import { Route as AppAssetsAssignmentsIndexRouteImport } from './routes/_app/assets/assignments/index'
 import { Route as AppAssetsAssignmentsIdRouteImport } from './routes/_app/assets/assignments/$id'
+import { Route as AppAssetsCountsIndexRouteImport } from './routes/_app/assets/counts/index'
+import { Route as AppAssetsCountsIdRouteImport } from './routes/_app/assets/counts/$id'
 import { Route as AppHrEmployeesIndexRouteImport } from './routes/_app/hr/employees/index'
 import { Route as AppHrEmployeesIdRouteImport } from './routes/_app/hr/employees/$id'
 import { Route as AppInventoryCountsIndexRouteImport } from './routes/_app/inventory/counts/index'
@@ -201,6 +203,16 @@ const AppAssetsAssignmentsIdRoute = AppAssetsAssignmentsIdRouteImport.update({
   path: '/assets/assignments/$id',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAssetsCountsIndexRoute = AppAssetsCountsIndexRouteImport.update({
+  id: '/assets/counts/',
+  path: '/assets/counts/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssetsCountsIdRoute = AppAssetsCountsIdRouteImport.update({
+  id: '/assets/counts/$id',
+  path: '/assets/counts/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppHrEmployeesIndexRoute = AppHrEmployeesIndexRouteImport.update({
   id: '/hr/employees/',
   path: '/hr/employees/',
@@ -290,6 +302,7 @@ export interface FileRoutesByFullPath {
   '/assets/': typeof AppAssetsIndexRoute
   '/inventory/': typeof AppInventoryIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
+  '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/inventory/counts/$id': typeof AppInventoryCountsIdRoute
   '/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
@@ -297,6 +310,7 @@ export interface FileRoutesByFullPath {
   '/inventory/products/$id': typeof AppInventoryProductsIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
+  '/assets/counts/': typeof AppAssetsCountsIndexRoute
   '/hr/employees/': typeof AppHrEmployeesIndexRoute
   '/inventory/counts/': typeof AppInventoryCountsIndexRoute
   '/inventory/movements/': typeof AppInventoryMovementsIndexRoute
@@ -332,6 +346,7 @@ export interface FileRoutesByTo {
   '/assets': typeof AppAssetsIndexRoute
   '/inventory': typeof AppInventoryIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
+  '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/inventory/counts/$id': typeof AppInventoryCountsIdRoute
   '/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
@@ -339,6 +354,7 @@ export interface FileRoutesByTo {
   '/inventory/products/$id': typeof AppInventoryProductsIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments': typeof AppAssetsAssignmentsIndexRoute
+  '/assets/counts': typeof AppAssetsCountsIndexRoute
   '/hr/employees': typeof AppHrEmployeesIndexRoute
   '/inventory/counts': typeof AppInventoryCountsIndexRoute
   '/inventory/movements': typeof AppInventoryMovementsIndexRoute
@@ -376,6 +392,7 @@ export interface FileRoutesById {
   '/_app/assets/': typeof AppAssetsIndexRoute
   '/_app/inventory/': typeof AppInventoryIndexRoute
   '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
+  '/_app/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/_app/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/_app/inventory/counts/$id': typeof AppInventoryCountsIdRoute
   '/_app/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
@@ -383,6 +400,7 @@ export interface FileRoutesById {
   '/_app/inventory/products/$id': typeof AppInventoryProductsIdRoute
   '/_app/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/_app/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
+  '/_app/assets/counts/': typeof AppAssetsCountsIndexRoute
   '/_app/hr/employees/': typeof AppHrEmployeesIndexRoute
   '/_app/inventory/counts/': typeof AppInventoryCountsIndexRoute
   '/_app/inventory/movements/': typeof AppInventoryMovementsIndexRoute
@@ -420,6 +438,7 @@ export interface FileRouteTypes {
     | '/assets/'
     | '/inventory/'
     | '/assets/assignments/$id'
+    | '/assets/counts/$id'
     | '/hr/employees/$id'
     | '/inventory/counts/$id'
     | '/inventory/movements/$id'
@@ -427,6 +446,7 @@ export interface FileRouteTypes {
     | '/inventory/products/$id'
     | '/workflow/instances/$id'
     | '/assets/assignments/'
+    | '/assets/counts/'
     | '/hr/employees/'
     | '/inventory/counts/'
     | '/inventory/movements/'
@@ -462,6 +482,7 @@ export interface FileRouteTypes {
     | '/assets'
     | '/inventory'
     | '/assets/assignments/$id'
+    | '/assets/counts/$id'
     | '/hr/employees/$id'
     | '/inventory/counts/$id'
     | '/inventory/movements/$id'
@@ -469,6 +490,7 @@ export interface FileRouteTypes {
     | '/inventory/products/$id'
     | '/workflow/instances/$id'
     | '/assets/assignments'
+    | '/assets/counts'
     | '/hr/employees'
     | '/inventory/counts'
     | '/inventory/movements'
@@ -505,6 +527,7 @@ export interface FileRouteTypes {
     | '/_app/assets/'
     | '/_app/inventory/'
     | '/_app/assets/assignments/$id'
+    | '/_app/assets/counts/$id'
     | '/_app/hr/employees/$id'
     | '/_app/inventory/counts/$id'
     | '/_app/inventory/movements/$id'
@@ -512,6 +535,7 @@ export interface FileRouteTypes {
     | '/_app/inventory/products/$id'
     | '/_app/workflow/instances/$id'
     | '/_app/assets/assignments/'
+    | '/_app/assets/counts/'
     | '/_app/hr/employees/'
     | '/_app/inventory/counts/'
     | '/_app/inventory/movements/'
@@ -738,6 +762,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAssetsAssignmentsIdRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/assets/counts/': {
+      id: '/_app/assets/counts/'
+      path: '/assets/counts'
+      fullPath: '/assets/counts/'
+      preLoaderRoute: typeof AppAssetsCountsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/assets/counts/$id': {
+      id: '/_app/assets/counts/$id'
+      path: '/assets/counts/$id'
+      fullPath: '/assets/counts/$id'
+      preLoaderRoute: typeof AppAssetsCountsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/hr/employees/': {
       id: '/_app/hr/employees/'
       path: '/hr/employees'
@@ -844,6 +882,7 @@ interface AppRouteChildren {
   AppAssetsIndexRoute: typeof AppAssetsIndexRoute
   AppInventoryIndexRoute: typeof AppInventoryIndexRoute
   AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
+  AppAssetsCountsIdRoute: typeof AppAssetsCountsIdRoute
   AppHrEmployeesIdRoute: typeof AppHrEmployeesIdRoute
   AppInventoryCountsIdRoute: typeof AppInventoryCountsIdRoute
   AppInventoryMovementsIdRoute: typeof AppInventoryMovementsIdRoute
@@ -851,6 +890,7 @@ interface AppRouteChildren {
   AppInventoryProductsIdRoute: typeof AppInventoryProductsIdRoute
   AppWorkflowInstancesIdRoute: typeof AppWorkflowInstancesIdRoute
   AppAssetsAssignmentsIndexRoute: typeof AppAssetsAssignmentsIndexRoute
+  AppAssetsCountsIndexRoute: typeof AppAssetsCountsIndexRoute
   AppHrEmployeesIndexRoute: typeof AppHrEmployeesIndexRoute
   AppInventoryCountsIndexRoute: typeof AppInventoryCountsIndexRoute
   AppInventoryMovementsIndexRoute: typeof AppInventoryMovementsIndexRoute
@@ -884,6 +924,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAssetsIndexRoute: AppAssetsIndexRoute,
   AppInventoryIndexRoute: AppInventoryIndexRoute,
   AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
+  AppAssetsCountsIdRoute: AppAssetsCountsIdRoute,
   AppHrEmployeesIdRoute: AppHrEmployeesIdRoute,
   AppInventoryCountsIdRoute: AppInventoryCountsIdRoute,
   AppInventoryMovementsIdRoute: AppInventoryMovementsIdRoute,
@@ -891,6 +932,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppInventoryProductsIdRoute: AppInventoryProductsIdRoute,
   AppWorkflowInstancesIdRoute: AppWorkflowInstancesIdRoute,
   AppAssetsAssignmentsIndexRoute: AppAssetsAssignmentsIndexRoute,
+  AppAssetsCountsIndexRoute: AppAssetsCountsIndexRoute,
   AppHrEmployeesIndexRoute: AppHrEmployeesIndexRoute,
   AppInventoryCountsIndexRoute: AppInventoryCountsIndexRoute,
   AppInventoryMovementsIndexRoute: AppInventoryMovementsIndexRoute,

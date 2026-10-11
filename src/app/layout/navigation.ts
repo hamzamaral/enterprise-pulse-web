@@ -20,6 +20,7 @@ import {
   Network,
   Package,
   PackageCheck,
+  ScanQrCode,
   Settings,
   ShieldCheck,
   ShoppingCart,
@@ -101,6 +102,12 @@ export const NAVIGATION: NavGroup[] = [
         to: '/assets/assignments',
         labelKey: 'nav.assignments',
         icon: ArrowLeftRight,
+        permission: 'assets:read',
+      },
+      {
+        to: '/assets/counts',
+        labelKey: 'nav.assetCounts',
+        icon: ScanQrCode,
         permission: 'assets:read',
       },
       {

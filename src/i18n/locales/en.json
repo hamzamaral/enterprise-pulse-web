@@ -88,7 +88,8 @@
     "products": "Products",
     "stockMovements": "Stock movements",
     "stockCounts": "Stock counts",
-    "inventorySettings": "Warehouses & categories"
+    "inventorySettings": "Warehouses & categories",
+    "assetCounts": "Asset Counts"
   },
   "auth": {
     "login": "Sign in",
@@ -622,7 +623,65 @@
       "eSigned": "Electronically acknowledged · {{date}}",
       "print": "Print / PDF"
     },
-    "pastAssignments": "Past assignments"
+    "pastAssignments": "Past assignments",
+    "counts": {
+      "title": "Asset Counts",
+      "subtitle": "Verify that assets are where they should be by scanning their QR labels",
+      "new": "New count",
+      "newHint": "Every in-service asset in scope is listed together with its current holder.",
+      "sheet": "Count",
+      "number": "Count no",
+      "date": "Count date",
+      "scope": "Scope",
+      "allAssets": "All assets",
+      "location": "Location (optional)",
+      "category": "Category (optional)",
+      "progress": "Progress",
+      "found": "Found",
+      "missing": "Missing",
+      "unexpected": "Unexpected",
+      "createdBy": "Started by",
+      "created": "Count {{number}} started",
+      "scanPlaceholder": "Scan QR, asset tag or serial number",
+      "camera": "Camera",
+      "scanFound": "{{tag}} found",
+      "scanAlready": "{{tag}} was already counted",
+      "scanUnexpected": "{{tag}} is outside this count; added as unexpected",
+      "expectedHolder": "Expected place / holder",
+      "result": "Result",
+      "observedCondition": "Observed condition",
+      "sameCondition": "No change",
+      "foundBy": "Scanned by",
+      "markFound": "Mark as found",
+      "markMissing": "Mark as missing",
+      "remove": "Remove from count",
+      "print": "Variance report",
+      "complete": "Complete count",
+      "completeTitle": "Complete the count?",
+      "completeDescription_one": "{{count}} missing asset stays on the variance report. Observed conditions are written to the asset cards.",
+      "completeDescription_other": "{{count}} missing assets stay on the variance report. Observed conditions are written to the asset cards.",
+      "completed": "Count completed",
+      "cancelCount": "Cancel count",
+      "cancelTitle": "Cancel the count?",
+      "cancelDescription": "Scans are kept, the count is closed and no asset is changed.",
+      "filters": {
+        "all": "All",
+        "found": "Found",
+        "missing": "Missing",
+        "unexpected": "Unexpected"
+      },
+      "lineStatus": {
+        "FOUND": "Found",
+        "MISSING": "Missing",
+        "UNEXPECTED": "Unexpected"
+      },
+      "status": {
+        "DRAFT": "Open",
+        "COMPLETED": "Completed",
+        "CANCELLED": "Cancelled"
+      },
+      "scanNotFound": "No asset matches \"{{code}}\""
+    }
   },
   "inventory": {
     "title": "Stock levels",
