@@ -66,13 +66,13 @@ function SummaryCard({
   );
 }
 
-export function StockLevelsPage() {
+export function StockLevelsPage({ initialLowStock = false }: { initialLowStock?: boolean }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const table = useTableState({ sort: [{ id: 'sku', desc: false }] });
   const [warehouseId, setWarehouseId] = useState(ALL);
   const [categoryId, setCategoryId] = useState(ALL);
-  const [lowStock, setLowStock] = useState(false);
+  const [lowStock, setLowStock] = useState(initialLowStock);
   const warehouseOptions = useWarehouseOptions(true, false);
   const categoryOptions = useProductCategoryOptions();
   const { data: summary } = useStockSummary();

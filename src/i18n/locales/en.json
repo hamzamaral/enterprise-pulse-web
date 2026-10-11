@@ -146,7 +146,21 @@
     "unread": "Unread notifications",
     "recentActivity": "Recent activity",
     "myRequests": "My requests",
-    "roadmap": "Module roadmap"
+    "roadmap": "Module roadmap",
+    "activeEmployees": "Active employees",
+    "pendingLeave": "Leave awaiting approval",
+    "assignedAssets": "Assigned assets",
+    "stockValue": "Stock value",
+    "stockHint": "{{items}} items · {{warehouses}} warehouses",
+    "lowStock": "Items below minimum stock",
+    "viewAll": "View all",
+    "minimum": "Min.",
+    "myLeaveBalance": "My remaining leave",
+    "days_one": "{{count}} day",
+    "days_other": "{{count}} days",
+    "myAssets": "Assets assigned to me",
+    "awaitingAcknowledgement_one": "{{count}} hand-over form awaiting your approval",
+    "awaitingAcknowledgement_other": "{{count}} hand-over forms awaiting your approval"
   },
   "users": {
     "title": "Users",

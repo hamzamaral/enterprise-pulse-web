@@ -146,7 +146,21 @@
     "unread": "Okunmamış bildirim",
     "recentActivity": "Son işlemler",
     "myRequests": "Taleplerim",
-    "roadmap": "Modül yol haritası"
+    "roadmap": "Modül yol haritası",
+    "activeEmployees": "Aktif personel",
+    "pendingLeave": "Onay bekleyen izin",
+    "assignedAssets": "Zimmetli demirbaş",
+    "stockValue": "Stok değeri",
+    "stockHint": "{{items}} kalem · {{warehouses}} depo",
+    "lowStock": "Kritik stoktaki ürünler",
+    "viewAll": "Tümünü gör",
+    "minimum": "Min.",
+    "myLeaveBalance": "Kalan izin hakkım",
+    "days_one": "{{count}} gün",
+    "days_other": "{{count}} gün",
+    "myAssets": "Zimmetimdeki demirbaş",
+    "awaitingAcknowledgement_one": "{{count}} tutanak onay bekliyor",
+    "awaitingAcknowledgement_other": "{{count}} tutanak onay bekliyor"
   },
   "users": {
     "title": "Kullanıcılar",

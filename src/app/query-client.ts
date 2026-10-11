@@ -2,6 +2,15 @@ import { MutationCache, QueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 import { getErrorMessage } from '@/api/http';
 
+declare module '@tanstack/react-query' {
+  interface Register {
+    mutationMeta: {
+      /** The caller shows its own error message instead of the global toast. */
+      handlesErrors?: boolean;
+    };
+  }
+}
+
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -16,6 +25,8 @@ export const queryClient = new QueryClient({
   },
   // Every failed mutation shows the API message; success toasts are handled per feature
   mutationCache: new MutationCache({
-    onError: (error) => toast.error(getErrorMessage(error)),
+    onError: (error, _variables, _context, mutation) => {
+      if (!mutation.meta?.handlesErrors) toast.error(getErrorMessage(error));
+    },
   }),
 });
