@@ -26,6 +26,10 @@ Every list page follows the same pattern (see `features/organization/branches-pa
   Quantities use `formatQuantity(value, unitCode)`.
 - Choosing a stock item (product variant) always goes through `ItemPicker` from
   `features/inventory/inventory-components.tsx` (server-side search, optional `warehouseId` / `inStock`).
+- Barcode / QR scanning: a text input with `autoFocus` (USB scanners type and press Enter) plus, when
+  `cameraScanSupported()`, the `CameraScanner` dialog from `shared/components/camera-scanner.tsx` (native `BarcodeDetector`).
+- Matrix screens (timesheet, shift roster) are plain `<table>`s inside a horizontally scrolling `Card` with a
+  `sticky left-0 bg-card` first column; compact day cells carry details in `title` / `aria-label`.
 - Printable documents (e.g. `features/assets/assignment-document-page.tsx`) are normal routes: toolbars get `print:hidden`,
   the paper uses `print:` overrides; the app shell hides itself in print media. "PDF" is the browser's print-to-PDF.
 

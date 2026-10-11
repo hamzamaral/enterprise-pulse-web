@@ -27,17 +27,26 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Stok kartı:** her hareketin bakiyesi ve birim maliyeti        | **Demirbaş kartı:** QR etiket, zimmet durumu, net defter değeri          |
 | ![Amortisman](docs/screenshots/asset-depreciation.png)          | ![Organizasyon şeması](docs/screenshots/org-chart.png)                   |
 | **Amortisman tablosu:** yıllık ve birikmiş amortisman           | **Organizasyon şeması:** yönetici hiyerarşisi                            |
+| ![Puantaj](docs/screenshots/timesheet.png)                      | ![Vardiya planı](docs/screenshots/shift-plan.png)                        |
+| **Puantaj:** geç kalma, devamsızlık, izin ve fazla mesai        | **Vardiya planı:** haftalık plan, gece vardiyası, önceki haftayı kopyala |
+| ![Demirbaş sayımı](docs/screenshots/asset-count.png)            | ![Gösterge paneli](docs/screenshots/dashboard.png)                       |
+| **Demirbaş sayımı:** QR / kamera ile okutma, fark raporu        | **Gösterge paneli:** yetkiye göre KPI'lar, kritik stok                   |
 
 ## Özellikler
 
 - **Platform:** giriş, iki adımlı doğrulama (TOTP), şirket ve şube değiştirme, kullanıcı / rol / izin yönetimi,
   denetim kaydı, Socket.IO ile anlık bildirimler, onay kutusu, ayarlar (para birimi, kur, KDV, birim, numaralandırma, onay akışları).
+- **Gösterge paneli:** kullanıcının yetkilerine göre İK, zimmet ve stok KPI'ları, kritik stok listesi; personel için
+  kalan izin hakkı ve onay bekleyen zimmetler.
 - **İnsan Kaynakları:** personel kartı, departman ve pozisyonlar, organizasyon şeması, izin talebi ve çok adımlı onay,
-  "İzinlerim" self-servis ekranı.
+  "İzinlerim" ve "Mesaim" (giriş-çıkış) self-servis ekranları, aylık puantaj çizelgesi (İK düzeltmesi, Excel'e aktarma),
+  vardiya tanımları ve haftalık vardiya planı.
 - **Zimmet ve Demirbaş:** demirbaş kartı, QR etiket, zimmet / iade / devir, yazdırılabilir zimmet tutanağı ve elektronik onay,
-  bakım kaydı, amortisman tablosu, "Zimmetlerim" self-servis ekranı.
+  bakım kaydı, amortisman tablosu, QR ile demirbaş sayımı ve yazdırılabilir fark raporu, "Zimmetlerim" self-servis ekranı.
 - **Stok ve Depo:** stok durumu ve kritik stok filtresi, ürün ve varyantlar, stok kartı, lot ve seri numaraları,
-  giriş / çıkış / transfer / düzeltme fişleri, yazdırılabilir fiş, stok sayımı, depo ve kategori ayarları.
+  giriş / çıkış / transfer / düzeltme fişleri, yazdırılabilir fiş, barkod okutarak stok sayımı, depo ve kategori ayarları.
+- **Barkod ve QR okutma:** USB okuyucu (klavye gibi yazar) veya tarayıcı destekliyorsa telefon / bilgisayar kamerası
+  (yerleşik `BarcodeDetector` API'si, ek kütüphane yok).
 - **Her listede:** sunucu taraflı sayfalama, arama ve sıralama; sütun gizleme; filtrelenmiş tüm kayıtları Excel'e aktarma.
 - **Yetkiye duyarlı arayüz:** menü, butonlar ve sayfalar kullanıcının izinlerine göre gösterilir; yetkisiz adreslere girişte
   `/forbidden` sayfasına yönlendirilir.

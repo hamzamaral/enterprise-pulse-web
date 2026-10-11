@@ -33,6 +33,7 @@ update.mutate({ id, data }, { onSuccess: async () => { toast.success(t('common.s
 - Variables are `{ data }` or `{ id, data }` exactly as generated.
 - After success invalidate the affected list/detail keys with `useInvalidate()`; invalidate `getAuthMeQueryKey()` when companies, branches or the current user change.
 - Errors are shown globally by the `MutationCache` toast (`app/query-client.ts`) using `getErrorMessage`; only handle errors locally when the UI needs to react (e.g. field errors).
+  A mutation that handles its own errors sets `{ mutation: { meta: { handlesErrors: true } } }` so the global toast is skipped.
 
 ## HTTP layer (`src/api/http.ts`)
 
