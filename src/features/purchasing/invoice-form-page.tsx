@@ -34,7 +34,7 @@ import { Card, CardContent } from '@/shared/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/shared/ui/form';
 import { Input } from '@/shared/ui/input';
 import { openToInvoice } from './order-detail-page';
-import { CurrencyFields, today, toRate, useBaseCurrency } from './purchasing-components';
+import { CurrencyFields, today, toRate, useBaseCurrency } from '@/features/trade/trade-components';
 
 const schema = z
   .object({

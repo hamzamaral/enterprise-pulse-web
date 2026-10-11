@@ -56,7 +56,8 @@
       "assets": "Assets",
       "inventory": "Inventory",
       "finance": "Accounts & Finance",
-      "purchasing": "Purchasing"
+      "purchasing": "Purchasing",
+      "sales": "Sales"
     },
     "users": "Users",
     "roles": "Roles & Permissions",
@@ -100,7 +101,12 @@
     "supplierQuotes": "Supplier Quotes",
     "purchaseOrders": "Purchase Orders",
     "goodsReceipts": "Goods Receipts",
-    "purchaseInvoices": "Purchase Invoices"
+    "purchaseInvoices": "Purchase Invoices",
+    "salesQuotes": "Sales Quotes",
+    "salesOrders": "Sales Orders",
+    "deliveries": "Delivery Notes",
+    "salesInvoices": "Sales Invoices",
+    "salesReturns": "Sales Returns"
   },
   "auth": {
     "login": "Sign in",
@@ -882,7 +888,8 @@
       "productCount": "Products",
       "itemCount": "Items",
       "deactivateHint": "A warehouse with stock cannot be deactivated; transfer its stock first."
-    }
+    },
+    "availableQty": "Available {{qty}}"
   },
   "scanner": {
     "title": "Scan with camera",
@@ -1213,6 +1220,156 @@
         "dueDate": "Due date cannot be before the invoice date"
       },
       "nothingToInvoice": "Nothing on this order is waiting to be invoiced: invoice goods after they are received."
+    }
+  },
+  "sales": {
+    "customer": "Customer",
+    "quoteStatus": {
+      "OPEN": "Open",
+      "ACCEPTED": "Ordered",
+      "REJECTED": "Rejected"
+    },
+    "orderStatus": {
+      "DRAFT": "Draft",
+      "APPROVED": "Approved",
+      "PARTIALLY_DELIVERED": "Partially delivered",
+      "DELIVERED": "Delivered",
+      "CANCELLED": "Cancelled"
+    },
+    "credit": {
+      "title": "Credit limit",
+      "limit": "Limit",
+      "unlimited": "Not set",
+      "balance": "Account balance",
+      "openOrders": "Open orders",
+      "exposure": "Total exposure",
+      "exceeded": "Customer exposure exceeds the credit limit; the order cannot be approved."
+    },
+    "quotes": {
+      "title": "Sales Quotes",
+      "single": "Quote",
+      "subtitle": "Price quotes given to customers and their validity",
+      "new": "New quote",
+      "newHint": "Send the quote to the customer; once accepted it becomes an order.",
+      "validUntil": "Valid until",
+      "expired": "Expired",
+      "created": "Quote {{number}} saved",
+      "converted": "Quote converted into draft order {{number}}",
+      "rejected": "Quote rejected",
+      "convert": "Convert to order",
+      "reject": "Reject",
+      "convertTitle": "Convert {{number}} to an order?",
+      "convertHint": "A draft sales order is opened for {{partner}}; stock is reserved on approval.",
+      "document": "Sales quote",
+      "validityNote": "This quote is valid until {{date}}.",
+      "errors": {
+        "validUntil": "Validity cannot be before the quote date"
+      }
+    },
+    "orders": {
+      "title": "Sales Orders",
+      "single": "Order",
+      "subtitle": "Customer orders with credit check, stock reservation, delivery and invoicing",
+      "new": "New order",
+      "newHint": "Saved as a draft; approval checks the credit limit and reserves stock.",
+      "edit": "Edit {{number}}",
+      "warehouse": "Shipping warehouse",
+      "deliveryDate": "Delivery date",
+      "customerRef": "Customer PO no",
+      "delivered": "Delivered",
+      "invoiced": "Invoiced",
+      "reservedQty": "Reserved",
+      "onlyOpen": "Open orders only",
+      "saved": "{{number}} saved",
+      "saveDraft": "Save draft",
+      "approve": "Approve",
+      "approved": "Order approved, stock reserved",
+      "reserve": "Top up reservation",
+      "reserved": "Reservation updated",
+      "cancel": "Cancel order",
+      "cancelled": "Order cancelled",
+      "cancelTitle": "Cancel {{number}}?",
+      "cancelHint": "Stock reservations are released.",
+      "document": "Sales order",
+      "createdBy": "Prepared by",
+      "approvedBy": "Approved by"
+    },
+    "deliveries": {
+      "title": "Delivery Notes",
+      "subtitle": "Shipments against orders; each posts a stock issue",
+      "new": "Delivery note",
+      "newHint": "Pick the approved order to ship.",
+      "forOrder": "{{number}} · {{partner}} · {{warehouse}}",
+      "date": "Delivery date",
+      "carrier": "Carrier",
+      "shippingAddress": "Shipping address",
+      "shippingAddressHint": "Leave empty to use the customer's address",
+      "movement": "Stock movement",
+      "lines": "Delivered items",
+      "selectOrder": "Select an approved order",
+      "noOpenOrders": "No approved orders waiting for delivery.",
+      "nothingLeft": "Nothing left to deliver on this order.",
+      "post": "Post delivery",
+      "created": "{{number}} posted, stock issued",
+      "document": "Delivery note",
+      "deliveredBy": "Delivered by",
+      "receivedBy": "Received by",
+      "errors": {
+        "noLines": "Select at least one line"
+      }
+    },
+    "invoices": {
+      "title": "Sales Invoices",
+      "single": "Invoice",
+      "subtitle": "Customer invoices; matched to delivered quantities and debited to the account",
+      "new": "Sales invoice",
+      "newHint": "Invoices without an order are for services only; invoice goods from the order.",
+      "forOrder": "Invoice for order {{number}} — delivered but not yet invoiced quantities",
+      "date": "Invoice date",
+      "dueDate": "Due date",
+      "dueDateHint": "Leave empty to apply the partner's payment terms",
+      "taxInfo": "Tax office / no",
+      "address": "Billing address",
+      "collection": "Collection",
+      "collected": "Collected",
+      "returned": "Returned",
+      "post": "Issue invoice",
+      "created": "{{number}} issued",
+      "cancel": "Cancel invoice",
+      "cancelled": "Invoice cancelled",
+      "cancelTitle": "Cancel {{number}}?",
+      "cancelHint": "The account entry is reversed and the order lines can be invoiced again.",
+      "cancelledAt": "Cancelled at",
+      "document": "Sales invoice",
+      "nothingToInvoice": "Nothing on this order is waiting to be invoiced; goods are invoiced after delivery.",
+      "errors": {
+        "dueDate": "Due date cannot be before the invoice date",
+        "goodsNeedOrder": "Goods are invoiced from an order after delivery"
+      }
+    },
+    "returns": {
+      "title": "Sales Returns",
+      "subtitle": "Returns of invoiced sales; stock receipt and a credit to the customer account",
+      "new": "Receive return",
+      "newHint": "Pick the invoice being returned.",
+      "forInvoice": "{{number}} · {{partner}}",
+      "date": "Return date",
+      "warehouse": "Receiving warehouse",
+      "orderWarehouse": "Order's warehouse",
+      "reason": "Reason",
+      "lines": "Returned items",
+      "returnable": "Returnable",
+      "noStock": "not stocked",
+      "selectInvoice": "Select an issued invoice",
+      "nothingLeft": "Nothing left to return on this invoice.",
+      "credit": "Credit to account",
+      "tracking": "Lot / serial",
+      "post": "Post return",
+      "created": "{{number}} posted",
+      "document": "Sales return",
+      "errors": {
+        "noLines": "Select at least one line"
+      }
     }
   }
 }

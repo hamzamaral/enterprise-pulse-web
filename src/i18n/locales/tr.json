@@ -56,7 +56,8 @@
       "assets": "Zimmet ve Demirbaş",
       "inventory": "Stok ve Depo",
       "finance": "Cari ve Finans",
-      "purchasing": "Satın Alma"
+      "purchasing": "Satın Alma",
+      "sales": "Satış"
     },
     "users": "Kullanıcılar",
     "roles": "Roller ve İzinler",
@@ -100,7 +101,12 @@
     "supplierQuotes": "Tedarikçi Teklifleri",
     "purchaseOrders": "Satın Alma Siparişleri",
     "goodsReceipts": "Mal Kabul",
-    "purchaseInvoices": "Alış Faturaları"
+    "purchaseInvoices": "Alış Faturaları",
+    "salesQuotes": "Satış Teklifleri",
+    "salesOrders": "Satış Siparişleri",
+    "deliveries": "Sevk İrsaliyeleri",
+    "salesInvoices": "Satış Faturaları",
+    "salesReturns": "Satış İadeleri"
   },
   "auth": {
     "login": "Giriş yap",
@@ -882,7 +888,8 @@
       "productCount": "Ürün sayısı",
       "itemCount": "Kalem",
       "deactivateHint": "Stoğu bulunan depo pasife alınamaz; önce stokları transfer edin."
-    }
+    },
+    "availableQty": "Kullanılabilir {{qty}}"
   },
   "scanner": {
     "title": "Kamerayla okut",
@@ -1213,6 +1220,156 @@
         "dueDate": "Vade fatura tarihinden önce olamaz"
       },
       "nothingToInvoice": "Bu siparişte faturalanmayı bekleyen miktar yok; mallar teslim alındıktan sonra faturalanabilir."
+    }
+  },
+  "sales": {
+    "customer": "Müşteri",
+    "quoteStatus": {
+      "OPEN": "Açık",
+      "ACCEPTED": "Siparişe döndü",
+      "REJECTED": "Reddedildi"
+    },
+    "orderStatus": {
+      "DRAFT": "Taslak",
+      "APPROVED": "Onaylı",
+      "PARTIALLY_DELIVERED": "Kısmi sevk",
+      "DELIVERED": "Sevk edildi",
+      "CANCELLED": "İptal"
+    },
+    "credit": {
+      "title": "Kredi limiti",
+      "limit": "Limit",
+      "unlimited": "Tanımsız",
+      "balance": "Cari bakiye",
+      "openOrders": "Açık siparişler",
+      "exposure": "Toplam risk",
+      "exceeded": "Müşteri riski kredi limitini aşıyor; sipariş onaylanamaz."
+    },
+    "quotes": {
+      "title": "Satış Teklifleri",
+      "single": "Teklif",
+      "subtitle": "Müşterilere verilen fiyat teklifleri ve geçerlilik süreleri",
+      "new": "Yeni teklif",
+      "newHint": "Teklif müşteriye gönderilir; kabul edilirse siparişe dönüştürülür.",
+      "validUntil": "Geçerlilik",
+      "expired": "Süresi doldu",
+      "created": "{{number}} numaralı teklif kaydedildi",
+      "converted": "Teklif {{number}} taslak siparişine dönüştürüldü",
+      "rejected": "Teklif reddedildi",
+      "convert": "Siparişe dönüştür",
+      "reject": "Reddet",
+      "convertTitle": "{{number}} siparişe dönüştürülsün mü?",
+      "convertHint": "{{partner}} için taslak satış siparişi açılır; onaylandığında stok rezerve edilir.",
+      "document": "Satış teklifi",
+      "validityNote": "Bu teklif {{date}} tarihine kadar geçerlidir.",
+      "errors": {
+        "validUntil": "Geçerlilik teklif tarihinden önce olamaz"
+      }
+    },
+    "orders": {
+      "title": "Satış Siparişleri",
+      "single": "Sipariş",
+      "subtitle": "Müşteri siparişleri; kredi kontrolü, stok rezervasyonu, sevk ve faturalama",
+      "new": "Yeni sipariş",
+      "newHint": "Taslak olarak kaydedilir; onayda kredi limiti kontrol edilir ve stok rezerve edilir.",
+      "edit": "{{number}} düzenle",
+      "warehouse": "Sevk deposu",
+      "deliveryDate": "Teslim tarihi",
+      "customerRef": "Müşteri sipariş no",
+      "delivered": "Sevk edilen",
+      "invoiced": "Faturalanan",
+      "reservedQty": "Rezerve",
+      "onlyOpen": "Yalnızca açık siparişler",
+      "saved": "{{number}} kaydedildi",
+      "saveDraft": "Taslak kaydet",
+      "approve": "Onayla",
+      "approved": "Sipariş onaylandı, stok rezerve edildi",
+      "reserve": "Rezervasyonu tamamla",
+      "reserved": "Rezervasyon güncellendi",
+      "cancel": "Siparişi iptal et",
+      "cancelled": "Sipariş iptal edildi",
+      "cancelTitle": "{{number}} iptal edilsin mi?",
+      "cancelHint": "Stok rezervasyonları kaldırılır.",
+      "document": "Satış siparişi",
+      "createdBy": "Hazırlayan",
+      "approvedBy": "Onaylayan"
+    },
+    "deliveries": {
+      "title": "Sevk İrsaliyeleri",
+      "subtitle": "Siparişlere karşı yapılan sevkiyatlar; stoktan çıkış hareketi oluşturur",
+      "new": "Sevk irsaliyesi",
+      "newHint": "Sevk edilecek onaylı siparişi seçin.",
+      "forOrder": "{{number}} · {{partner}} · {{warehouse}}",
+      "date": "Sevk tarihi",
+      "carrier": "Taşıyıcı",
+      "shippingAddress": "Sevk adresi",
+      "shippingAddressHint": "Boş bırakılırsa müşterinin adresi kullanılır",
+      "movement": "Stok hareketi",
+      "lines": "Sevk edilen kalemler",
+      "selectOrder": "Onaylı sipariş seçin",
+      "noOpenOrders": "Sevk bekleyen onaylı sipariş yok.",
+      "nothingLeft": "Bu siparişte sevk edilecek kalem kalmadı.",
+      "post": "Sevki kaydet",
+      "created": "{{number}} kaydedildi, stok düşüldü",
+      "document": "Sevk irsaliyesi",
+      "deliveredBy": "Teslim eden",
+      "receivedBy": "Teslim alan",
+      "errors": {
+        "noLines": "En az bir kalem seçin"
+      }
+    },
+    "invoices": {
+      "title": "Satış Faturaları",
+      "single": "Fatura",
+      "subtitle": "Müşteri faturaları; sevk edilen miktarlarla eşleşir ve cari hesaba borç yazar",
+      "new": "Satış faturası",
+      "newHint": "Siparişsiz fatura yalnızca hizmet kalemleri içindir; mallar sipariş ekranından faturalanır.",
+      "forOrder": "{{number}} siparişinin faturası — sevk edilmiş ama faturalanmamış miktarlar",
+      "date": "Fatura tarihi",
+      "dueDate": "Vade tarihi",
+      "dueDateHint": "Boş bırakılırsa cari vade süresi uygulanır",
+      "taxInfo": "Vergi dairesi / no",
+      "address": "Fatura adresi",
+      "collection": "Tahsilat",
+      "collected": "Tahsil edilen",
+      "returned": "İade edilen",
+      "post": "Faturayı kes",
+      "created": "{{number}} kesildi",
+      "cancel": "Faturayı iptal et",
+      "cancelled": "Fatura iptal edildi",
+      "cancelTitle": "{{number}} iptal edilsin mi?",
+      "cancelHint": "Cari hesaba ters kayıt atılır ve sipariş kalemleri yeniden faturalanabilir olur.",
+      "cancelledAt": "İptal tarihi",
+      "document": "Satış faturası",
+      "nothingToInvoice": "Bu siparişte faturalanmayı bekleyen miktar yok; mallar sevk edildikten sonra faturalanabilir.",
+      "errors": {
+        "dueDate": "Vade fatura tarihinden önce olamaz",
+        "goodsNeedOrder": "Mallar siparişten ve sevkten sonra faturalanır"
+      }
+    },
+    "returns": {
+      "title": "Satış İadeleri",
+      "subtitle": "Faturalı satışlardan gelen iadeler; stoka giriş ve cari hesaba alacak kaydı",
+      "new": "İade al",
+      "newHint": "İade alınacak faturayı seçin.",
+      "forInvoice": "{{number}} · {{partner}}",
+      "date": "İade tarihi",
+      "warehouse": "Giriş deposu",
+      "orderWarehouse": "Siparişin deposu",
+      "reason": "İade nedeni",
+      "lines": "İade edilen kalemler",
+      "returnable": "İade edilebilir",
+      "noStock": "stoka girmez",
+      "selectInvoice": "Kesilmiş fatura seçin",
+      "nothingLeft": "Bu faturada iade edilebilecek kalem kalmadı.",
+      "credit": "Cari hesaba alacak",
+      "tracking": "Lot / seri",
+      "post": "İadeyi kaydet",
+      "created": "{{number}} kaydedildi",
+      "document": "Satış iadesi",
+      "errors": {
+        "noLines": "En az bir kalem seçin"
+      }
     }
   }
 }

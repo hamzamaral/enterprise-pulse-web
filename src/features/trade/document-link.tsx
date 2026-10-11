@@ -21,5 +21,19 @@ export function DocumentLink({
       </Link>
     );
   }
+  if (id && type === 'SALES_INVOICE' && can(['sales:read', 'finance:read'])) {
+    return (
+      <Link to="/sales/invoices/$id" params={{ id }} className={className}>
+        {number}
+      </Link>
+    );
+  }
+  if (id && type === 'SALES_RETURN' && can(['sales:read', 'finance:read'])) {
+    return (
+      <Link to="/sales/returns/$id" params={{ id }} className={className}>
+        {number}
+      </Link>
+    );
+  }
   return <code className="text-xs">{number}</code>;
 }

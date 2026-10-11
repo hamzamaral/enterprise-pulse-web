@@ -24,12 +24,12 @@ import { Button } from '@/shared/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { ProgressCell } from './orders-page';
+import { OrderStatusBadge } from './purchasing-components';
 import {
   CancelDocumentDialog,
   InvoiceStatusBadge,
-  OrderStatusBadge,
   useBaseCurrency,
-} from './purchasing-components';
+} from '@/features/trade/trade-components';
 
 const RECEIVABLE = ['APPROVED', 'PARTIALLY_RECEIVED'];
 const INVOICEABLE = ['APPROVED', 'PARTIALLY_RECEIVED', 'RECEIVED'];

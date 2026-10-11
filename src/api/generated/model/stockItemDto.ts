@@ -20,6 +20,10 @@ export interface StockItemDto {
   unitCode: string;
   averageCost: string;
   onHand: string;
+  /** Reserved for approved sales orders (same scope as `onHand`). */
+  reserved: string;
+  /** On hand minus reserved. */
+  available: string;
   /** @nullable */
   purchasePrice: string | null;
   /** @nullable */

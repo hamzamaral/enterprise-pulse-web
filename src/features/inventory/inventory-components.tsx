@@ -197,10 +197,17 @@ export function ItemPicker({
                   <div className="truncate">{itemName(item.productName, item.variantName)}</div>
                   <code className="text-muted-foreground text-xs">{item.sku}</code>
                 </div>
-                <span className="text-muted-foreground text-xs tabular-nums">
+                <span className="text-muted-foreground text-right text-xs tabular-nums">
                   {item.productType === 'SERVICE'
                     ? t('inventory.types.SERVICE')
                     : formatQuantity(item.onHand, item.unitCode)}
+                  {Number(item.reserved) > 0 && (
+                    <span className="block">
+                      {t('inventory.availableQty', {
+                        qty: formatQuantity(item.available, item.unitCode),
+                      })}
+                    </span>
+                  )}
                 </span>
               </CommandItem>
             ))}

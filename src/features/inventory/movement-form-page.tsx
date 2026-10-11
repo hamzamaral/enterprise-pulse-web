@@ -168,7 +168,7 @@ function toLineInput(type: StockMovementType, line: LineValues): MovementLineInp
   };
 }
 
-function LotSelect({
+export function LotSelect({
   variantId,
   warehouseId,
   value,
@@ -205,7 +205,7 @@ function LotSelect({
   );
 }
 
-function SerialSelect({
+export function SerialSelect({
   variantId,
   warehouseId,
   value,

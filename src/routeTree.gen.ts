@@ -70,9 +70,25 @@ import { Route as AppPurchasingReceiptsNewRouteImport } from './routes/_app/purc
 import { Route as AppPurchasingRequestsIndexRouteImport } from './routes/_app/purchasing/requests/index'
 import { Route as AppPurchasingRequestsIdRouteImport } from './routes/_app/purchasing/requests/$id'
 import { Route as AppPurchasingRequestsNewRouteImport } from './routes/_app/purchasing/requests/new'
+import { Route as AppSalesDeliveriesIndexRouteImport } from './routes/_app/sales/deliveries/index'
+import { Route as AppSalesDeliveriesIdRouteImport } from './routes/_app/sales/deliveries/$id'
+import { Route as AppSalesDeliveriesNewRouteImport } from './routes/_app/sales/deliveries/new'
+import { Route as AppSalesInvoicesIndexRouteImport } from './routes/_app/sales/invoices/index'
+import { Route as AppSalesInvoicesIdRouteImport } from './routes/_app/sales/invoices/$id'
+import { Route as AppSalesInvoicesNewRouteImport } from './routes/_app/sales/invoices/new'
+import { Route as AppSalesOrdersIndexRouteImport } from './routes/_app/sales/orders/index'
+import { Route as AppSalesOrdersIdRouteImport } from './routes/_app/sales/orders/$id'
+import { Route as AppSalesOrdersNewRouteImport } from './routes/_app/sales/orders/new'
+import { Route as AppSalesQuotesIndexRouteImport } from './routes/_app/sales/quotes/index'
+import { Route as AppSalesQuotesIdRouteImport } from './routes/_app/sales/quotes/$id'
+import { Route as AppSalesQuotesNewRouteImport } from './routes/_app/sales/quotes/new'
+import { Route as AppSalesReturnsIndexRouteImport } from './routes/_app/sales/returns/index'
+import { Route as AppSalesReturnsIdRouteImport } from './routes/_app/sales/returns/$id'
+import { Route as AppSalesReturnsNewRouteImport } from './routes/_app/sales/returns/new'
 import { Route as AppWorkflowInstancesIndexRouteImport } from './routes/_app/workflow/instances/index'
 import { Route as AppWorkflowInstancesIdRouteImport } from './routes/_app/workflow/instances/$id'
 import { Route as AppPurchasingOrdersEditIdRouteImport } from './routes/_app/purchasing/orders/edit.$id'
+import { Route as AppSalesOrdersEditIdRouteImport } from './routes/_app/sales/orders/edit.$id'
 
 const AppRoute = AppRouteImport.update({
   id: '/_app',
@@ -390,6 +406,81 @@ const AppPurchasingRequestsNewRoute =
     path: '/purchasing/requests/new',
     getParentRoute: () => AppRoute,
   } as any)
+const AppSalesDeliveriesIndexRoute = AppSalesDeliveriesIndexRouteImport.update({
+  id: '/sales/deliveries/',
+  path: '/sales/deliveries/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesDeliveriesIdRoute = AppSalesDeliveriesIdRouteImport.update({
+  id: '/sales/deliveries/$id',
+  path: '/sales/deliveries/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesDeliveriesNewRoute = AppSalesDeliveriesNewRouteImport.update({
+  id: '/sales/deliveries/new',
+  path: '/sales/deliveries/new',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesInvoicesIndexRoute = AppSalesInvoicesIndexRouteImport.update({
+  id: '/sales/invoices/',
+  path: '/sales/invoices/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesInvoicesIdRoute = AppSalesInvoicesIdRouteImport.update({
+  id: '/sales/invoices/$id',
+  path: '/sales/invoices/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesInvoicesNewRoute = AppSalesInvoicesNewRouteImport.update({
+  id: '/sales/invoices/new',
+  path: '/sales/invoices/new',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesOrdersIndexRoute = AppSalesOrdersIndexRouteImport.update({
+  id: '/sales/orders/',
+  path: '/sales/orders/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesOrdersIdRoute = AppSalesOrdersIdRouteImport.update({
+  id: '/sales/orders/$id',
+  path: '/sales/orders/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesOrdersNewRoute = AppSalesOrdersNewRouteImport.update({
+  id: '/sales/orders/new',
+  path: '/sales/orders/new',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesQuotesIndexRoute = AppSalesQuotesIndexRouteImport.update({
+  id: '/sales/quotes/',
+  path: '/sales/quotes/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesQuotesIdRoute = AppSalesQuotesIdRouteImport.update({
+  id: '/sales/quotes/$id',
+  path: '/sales/quotes/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesQuotesNewRoute = AppSalesQuotesNewRouteImport.update({
+  id: '/sales/quotes/new',
+  path: '/sales/quotes/new',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesReturnsIndexRoute = AppSalesReturnsIndexRouteImport.update({
+  id: '/sales/returns/',
+  path: '/sales/returns/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesReturnsIdRoute = AppSalesReturnsIdRouteImport.update({
+  id: '/sales/returns/$id',
+  path: '/sales/returns/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSalesReturnsNewRoute = AppSalesReturnsNewRouteImport.update({
+  id: '/sales/returns/new',
+  path: '/sales/returns/new',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppWorkflowInstancesIndexRoute =
   AppWorkflowInstancesIndexRouteImport.update({
     id: '/workflow/instances/',
@@ -407,6 +498,11 @@ const AppPurchasingOrdersEditIdRoute =
     path: '/purchasing/orders/edit/$id',
     getParentRoute: () => AppRoute,
   } as any)
+const AppSalesOrdersEditIdRoute = AppSalesOrdersEditIdRouteImport.update({
+  id: '/sales/orders/edit/$id',
+  path: '/sales/orders/edit/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
@@ -458,6 +554,16 @@ export interface FileRoutesByFullPath {
   '/purchasing/receipts/new': typeof AppPurchasingReceiptsNewRoute
   '/purchasing/requests/$id': typeof AppPurchasingRequestsIdRoute
   '/purchasing/requests/new': typeof AppPurchasingRequestsNewRoute
+  '/sales/deliveries/$id': typeof AppSalesDeliveriesIdRoute
+  '/sales/deliveries/new': typeof AppSalesDeliveriesNewRoute
+  '/sales/invoices/$id': typeof AppSalesInvoicesIdRoute
+  '/sales/invoices/new': typeof AppSalesInvoicesNewRoute
+  '/sales/orders/$id': typeof AppSalesOrdersIdRoute
+  '/sales/orders/new': typeof AppSalesOrdersNewRoute
+  '/sales/quotes/$id': typeof AppSalesQuotesIdRoute
+  '/sales/quotes/new': typeof AppSalesQuotesNewRoute
+  '/sales/returns/$id': typeof AppSalesReturnsIdRoute
+  '/sales/returns/new': typeof AppSalesReturnsNewRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/assets/counts/': typeof AppAssetsCountsIndexRoute
@@ -470,8 +576,14 @@ export interface FileRoutesByFullPath {
   '/purchasing/quotes/': typeof AppPurchasingQuotesIndexRoute
   '/purchasing/receipts/': typeof AppPurchasingReceiptsIndexRoute
   '/purchasing/requests/': typeof AppPurchasingRequestsIndexRoute
+  '/sales/deliveries/': typeof AppSalesDeliveriesIndexRoute
+  '/sales/invoices/': typeof AppSalesInvoicesIndexRoute
+  '/sales/orders/': typeof AppSalesOrdersIndexRoute
+  '/sales/quotes/': typeof AppSalesQuotesIndexRoute
+  '/sales/returns/': typeof AppSalesReturnsIndexRoute
   '/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
   '/purchasing/orders/edit/$id': typeof AppPurchasingOrdersEditIdRoute
+  '/sales/orders/edit/$id': typeof AppSalesOrdersEditIdRoute
 }
 export interface FileRoutesByTo {
   '/forgot-password': typeof ForgotPasswordRoute
@@ -523,6 +635,16 @@ export interface FileRoutesByTo {
   '/purchasing/receipts/new': typeof AppPurchasingReceiptsNewRoute
   '/purchasing/requests/$id': typeof AppPurchasingRequestsIdRoute
   '/purchasing/requests/new': typeof AppPurchasingRequestsNewRoute
+  '/sales/deliveries/$id': typeof AppSalesDeliveriesIdRoute
+  '/sales/deliveries/new': typeof AppSalesDeliveriesNewRoute
+  '/sales/invoices/$id': typeof AppSalesInvoicesIdRoute
+  '/sales/invoices/new': typeof AppSalesInvoicesNewRoute
+  '/sales/orders/$id': typeof AppSalesOrdersIdRoute
+  '/sales/orders/new': typeof AppSalesOrdersNewRoute
+  '/sales/quotes/$id': typeof AppSalesQuotesIdRoute
+  '/sales/quotes/new': typeof AppSalesQuotesNewRoute
+  '/sales/returns/$id': typeof AppSalesReturnsIdRoute
+  '/sales/returns/new': typeof AppSalesReturnsNewRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments': typeof AppAssetsAssignmentsIndexRoute
   '/assets/counts': typeof AppAssetsCountsIndexRoute
@@ -535,8 +657,14 @@ export interface FileRoutesByTo {
   '/purchasing/quotes': typeof AppPurchasingQuotesIndexRoute
   '/purchasing/receipts': typeof AppPurchasingReceiptsIndexRoute
   '/purchasing/requests': typeof AppPurchasingRequestsIndexRoute
+  '/sales/deliveries': typeof AppSalesDeliveriesIndexRoute
+  '/sales/invoices': typeof AppSalesInvoicesIndexRoute
+  '/sales/orders': typeof AppSalesOrdersIndexRoute
+  '/sales/quotes': typeof AppSalesQuotesIndexRoute
+  '/sales/returns': typeof AppSalesReturnsIndexRoute
   '/workflow/instances': typeof AppWorkflowInstancesIndexRoute
   '/purchasing/orders/edit/$id': typeof AppPurchasingOrdersEditIdRoute
+  '/sales/orders/edit/$id': typeof AppSalesOrdersEditIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -590,6 +718,16 @@ export interface FileRoutesById {
   '/_app/purchasing/receipts/new': typeof AppPurchasingReceiptsNewRoute
   '/_app/purchasing/requests/$id': typeof AppPurchasingRequestsIdRoute
   '/_app/purchasing/requests/new': typeof AppPurchasingRequestsNewRoute
+  '/_app/sales/deliveries/$id': typeof AppSalesDeliveriesIdRoute
+  '/_app/sales/deliveries/new': typeof AppSalesDeliveriesNewRoute
+  '/_app/sales/invoices/$id': typeof AppSalesInvoicesIdRoute
+  '/_app/sales/invoices/new': typeof AppSalesInvoicesNewRoute
+  '/_app/sales/orders/$id': typeof AppSalesOrdersIdRoute
+  '/_app/sales/orders/new': typeof AppSalesOrdersNewRoute
+  '/_app/sales/quotes/$id': typeof AppSalesQuotesIdRoute
+  '/_app/sales/quotes/new': typeof AppSalesQuotesNewRoute
+  '/_app/sales/returns/$id': typeof AppSalesReturnsIdRoute
+  '/_app/sales/returns/new': typeof AppSalesReturnsNewRoute
   '/_app/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/_app/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/_app/assets/counts/': typeof AppAssetsCountsIndexRoute
@@ -602,8 +740,14 @@ export interface FileRoutesById {
   '/_app/purchasing/quotes/': typeof AppPurchasingQuotesIndexRoute
   '/_app/purchasing/receipts/': typeof AppPurchasingReceiptsIndexRoute
   '/_app/purchasing/requests/': typeof AppPurchasingRequestsIndexRoute
+  '/_app/sales/deliveries/': typeof AppSalesDeliveriesIndexRoute
+  '/_app/sales/invoices/': typeof AppSalesInvoicesIndexRoute
+  '/_app/sales/orders/': typeof AppSalesOrdersIndexRoute
+  '/_app/sales/quotes/': typeof AppSalesQuotesIndexRoute
+  '/_app/sales/returns/': typeof AppSalesReturnsIndexRoute
   '/_app/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
   '/_app/purchasing/orders/edit/$id': typeof AppPurchasingOrdersEditIdRoute
+  '/_app/sales/orders/edit/$id': typeof AppSalesOrdersEditIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -657,6 +801,16 @@ export interface FileRouteTypes {
     | '/purchasing/receipts/new'
     | '/purchasing/requests/$id'
     | '/purchasing/requests/new'
+    | '/sales/deliveries/$id'
+    | '/sales/deliveries/new'
+    | '/sales/invoices/$id'
+    | '/sales/invoices/new'
+    | '/sales/orders/$id'
+    | '/sales/orders/new'
+    | '/sales/quotes/$id'
+    | '/sales/quotes/new'
+    | '/sales/returns/$id'
+    | '/sales/returns/new'
     | '/workflow/instances/$id'
     | '/assets/assignments/'
     | '/assets/counts/'
@@ -669,8 +823,14 @@ export interface FileRouteTypes {
     | '/purchasing/quotes/'
     | '/purchasing/receipts/'
     | '/purchasing/requests/'
+    | '/sales/deliveries/'
+    | '/sales/invoices/'
+    | '/sales/orders/'
+    | '/sales/quotes/'
+    | '/sales/returns/'
     | '/workflow/instances/'
     | '/purchasing/orders/edit/$id'
+    | '/sales/orders/edit/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/forgot-password'
@@ -722,6 +882,16 @@ export interface FileRouteTypes {
     | '/purchasing/receipts/new'
     | '/purchasing/requests/$id'
     | '/purchasing/requests/new'
+    | '/sales/deliveries/$id'
+    | '/sales/deliveries/new'
+    | '/sales/invoices/$id'
+    | '/sales/invoices/new'
+    | '/sales/orders/$id'
+    | '/sales/orders/new'
+    | '/sales/quotes/$id'
+    | '/sales/quotes/new'
+    | '/sales/returns/$id'
+    | '/sales/returns/new'
     | '/workflow/instances/$id'
     | '/assets/assignments'
     | '/assets/counts'
@@ -734,8 +904,14 @@ export interface FileRouteTypes {
     | '/purchasing/quotes'
     | '/purchasing/receipts'
     | '/purchasing/requests'
+    | '/sales/deliveries'
+    | '/sales/invoices'
+    | '/sales/orders'
+    | '/sales/quotes'
+    | '/sales/returns'
     | '/workflow/instances'
     | '/purchasing/orders/edit/$id'
+    | '/sales/orders/edit/$id'
   id:
     | '__root__'
     | '/_app'
@@ -788,6 +964,16 @@ export interface FileRouteTypes {
     | '/_app/purchasing/receipts/new'
     | '/_app/purchasing/requests/$id'
     | '/_app/purchasing/requests/new'
+    | '/_app/sales/deliveries/$id'
+    | '/_app/sales/deliveries/new'
+    | '/_app/sales/invoices/$id'
+    | '/_app/sales/invoices/new'
+    | '/_app/sales/orders/$id'
+    | '/_app/sales/orders/new'
+    | '/_app/sales/quotes/$id'
+    | '/_app/sales/quotes/new'
+    | '/_app/sales/returns/$id'
+    | '/_app/sales/returns/new'
     | '/_app/workflow/instances/$id'
     | '/_app/assets/assignments/'
     | '/_app/assets/counts/'
@@ -800,8 +986,14 @@ export interface FileRouteTypes {
     | '/_app/purchasing/quotes/'
     | '/_app/purchasing/receipts/'
     | '/_app/purchasing/requests/'
+    | '/_app/sales/deliveries/'
+    | '/_app/sales/invoices/'
+    | '/_app/sales/orders/'
+    | '/_app/sales/quotes/'
+    | '/_app/sales/returns/'
     | '/_app/workflow/instances/'
     | '/_app/purchasing/orders/edit/$id'
+    | '/_app/sales/orders/edit/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1240,6 +1432,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPurchasingRequestsNewRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/sales/deliveries/': {
+      id: '/_app/sales/deliveries/'
+      path: '/sales/deliveries'
+      fullPath: '/sales/deliveries/'
+      preLoaderRoute: typeof AppSalesDeliveriesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/deliveries/$id': {
+      id: '/_app/sales/deliveries/$id'
+      path: '/sales/deliveries/$id'
+      fullPath: '/sales/deliveries/$id'
+      preLoaderRoute: typeof AppSalesDeliveriesIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/deliveries/new': {
+      id: '/_app/sales/deliveries/new'
+      path: '/sales/deliveries/new'
+      fullPath: '/sales/deliveries/new'
+      preLoaderRoute: typeof AppSalesDeliveriesNewRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/invoices/': {
+      id: '/_app/sales/invoices/'
+      path: '/sales/invoices'
+      fullPath: '/sales/invoices/'
+      preLoaderRoute: typeof AppSalesInvoicesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/invoices/$id': {
+      id: '/_app/sales/invoices/$id'
+      path: '/sales/invoices/$id'
+      fullPath: '/sales/invoices/$id'
+      preLoaderRoute: typeof AppSalesInvoicesIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/invoices/new': {
+      id: '/_app/sales/invoices/new'
+      path: '/sales/invoices/new'
+      fullPath: '/sales/invoices/new'
+      preLoaderRoute: typeof AppSalesInvoicesNewRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/orders/': {
+      id: '/_app/sales/orders/'
+      path: '/sales/orders'
+      fullPath: '/sales/orders/'
+      preLoaderRoute: typeof AppSalesOrdersIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/orders/$id': {
+      id: '/_app/sales/orders/$id'
+      path: '/sales/orders/$id'
+      fullPath: '/sales/orders/$id'
+      preLoaderRoute: typeof AppSalesOrdersIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/orders/new': {
+      id: '/_app/sales/orders/new'
+      path: '/sales/orders/new'
+      fullPath: '/sales/orders/new'
+      preLoaderRoute: typeof AppSalesOrdersNewRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/quotes/': {
+      id: '/_app/sales/quotes/'
+      path: '/sales/quotes'
+      fullPath: '/sales/quotes/'
+      preLoaderRoute: typeof AppSalesQuotesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/quotes/$id': {
+      id: '/_app/sales/quotes/$id'
+      path: '/sales/quotes/$id'
+      fullPath: '/sales/quotes/$id'
+      preLoaderRoute: typeof AppSalesQuotesIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/quotes/new': {
+      id: '/_app/sales/quotes/new'
+      path: '/sales/quotes/new'
+      fullPath: '/sales/quotes/new'
+      preLoaderRoute: typeof AppSalesQuotesNewRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/returns/': {
+      id: '/_app/sales/returns/'
+      path: '/sales/returns'
+      fullPath: '/sales/returns/'
+      preLoaderRoute: typeof AppSalesReturnsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/returns/$id': {
+      id: '/_app/sales/returns/$id'
+      path: '/sales/returns/$id'
+      fullPath: '/sales/returns/$id'
+      preLoaderRoute: typeof AppSalesReturnsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/returns/new': {
+      id: '/_app/sales/returns/new'
+      path: '/sales/returns/new'
+      fullPath: '/sales/returns/new'
+      preLoaderRoute: typeof AppSalesReturnsNewRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/workflow/instances/': {
       id: '/_app/workflow/instances/'
       path: '/workflow/instances'
@@ -1259,6 +1556,13 @@ declare module '@tanstack/react-router' {
       path: '/purchasing/orders/edit/$id'
       fullPath: '/purchasing/orders/edit/$id'
       preLoaderRoute: typeof AppPurchasingOrdersEditIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/sales/orders/edit/$id': {
+      id: '/_app/sales/orders/edit/$id'
+      path: '/sales/orders/edit/$id'
+      fullPath: '/sales/orders/edit/$id'
+      preLoaderRoute: typeof AppSalesOrdersEditIdRouteImport
       parentRoute: typeof AppRoute
     }
   }
@@ -1311,6 +1615,16 @@ interface AppRouteChildren {
   AppPurchasingReceiptsNewRoute: typeof AppPurchasingReceiptsNewRoute
   AppPurchasingRequestsIdRoute: typeof AppPurchasingRequestsIdRoute
   AppPurchasingRequestsNewRoute: typeof AppPurchasingRequestsNewRoute
+  AppSalesDeliveriesIdRoute: typeof AppSalesDeliveriesIdRoute
+  AppSalesDeliveriesNewRoute: typeof AppSalesDeliveriesNewRoute
+  AppSalesInvoicesIdRoute: typeof AppSalesInvoicesIdRoute
+  AppSalesInvoicesNewRoute: typeof AppSalesInvoicesNewRoute
+  AppSalesOrdersIdRoute: typeof AppSalesOrdersIdRoute
+  AppSalesOrdersNewRoute: typeof AppSalesOrdersNewRoute
+  AppSalesQuotesIdRoute: typeof AppSalesQuotesIdRoute
+  AppSalesQuotesNewRoute: typeof AppSalesQuotesNewRoute
+  AppSalesReturnsIdRoute: typeof AppSalesReturnsIdRoute
+  AppSalesReturnsNewRoute: typeof AppSalesReturnsNewRoute
   AppWorkflowInstancesIdRoute: typeof AppWorkflowInstancesIdRoute
   AppAssetsAssignmentsIndexRoute: typeof AppAssetsAssignmentsIndexRoute
   AppAssetsCountsIndexRoute: typeof AppAssetsCountsIndexRoute
@@ -1323,8 +1637,14 @@ interface AppRouteChildren {
   AppPurchasingQuotesIndexRoute: typeof AppPurchasingQuotesIndexRoute
   AppPurchasingReceiptsIndexRoute: typeof AppPurchasingReceiptsIndexRoute
   AppPurchasingRequestsIndexRoute: typeof AppPurchasingRequestsIndexRoute
+  AppSalesDeliveriesIndexRoute: typeof AppSalesDeliveriesIndexRoute
+  AppSalesInvoicesIndexRoute: typeof AppSalesInvoicesIndexRoute
+  AppSalesOrdersIndexRoute: typeof AppSalesOrdersIndexRoute
+  AppSalesQuotesIndexRoute: typeof AppSalesQuotesIndexRoute
+  AppSalesReturnsIndexRoute: typeof AppSalesReturnsIndexRoute
   AppWorkflowInstancesIndexRoute: typeof AppWorkflowInstancesIndexRoute
   AppPurchasingOrdersEditIdRoute: typeof AppPurchasingOrdersEditIdRoute
+  AppSalesOrdersEditIdRoute: typeof AppSalesOrdersEditIdRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -1374,6 +1694,16 @@ const AppRouteChildren: AppRouteChildren = {
   AppPurchasingReceiptsNewRoute: AppPurchasingReceiptsNewRoute,
   AppPurchasingRequestsIdRoute: AppPurchasingRequestsIdRoute,
   AppPurchasingRequestsNewRoute: AppPurchasingRequestsNewRoute,
+  AppSalesDeliveriesIdRoute: AppSalesDeliveriesIdRoute,
+  AppSalesDeliveriesNewRoute: AppSalesDeliveriesNewRoute,
+  AppSalesInvoicesIdRoute: AppSalesInvoicesIdRoute,
+  AppSalesInvoicesNewRoute: AppSalesInvoicesNewRoute,
+  AppSalesOrdersIdRoute: AppSalesOrdersIdRoute,
+  AppSalesOrdersNewRoute: AppSalesOrdersNewRoute,
+  AppSalesQuotesIdRoute: AppSalesQuotesIdRoute,
+  AppSalesQuotesNewRoute: AppSalesQuotesNewRoute,
+  AppSalesReturnsIdRoute: AppSalesReturnsIdRoute,
+  AppSalesReturnsNewRoute: AppSalesReturnsNewRoute,
   AppWorkflowInstancesIdRoute: AppWorkflowInstancesIdRoute,
   AppAssetsAssignmentsIndexRoute: AppAssetsAssignmentsIndexRoute,
   AppAssetsCountsIndexRoute: AppAssetsCountsIndexRoute,
@@ -1386,8 +1716,14 @@ const AppRouteChildren: AppRouteChildren = {
   AppPurchasingQuotesIndexRoute: AppPurchasingQuotesIndexRoute,
   AppPurchasingReceiptsIndexRoute: AppPurchasingReceiptsIndexRoute,
   AppPurchasingRequestsIndexRoute: AppPurchasingRequestsIndexRoute,
+  AppSalesDeliveriesIndexRoute: AppSalesDeliveriesIndexRoute,
+  AppSalesInvoicesIndexRoute: AppSalesInvoicesIndexRoute,
+  AppSalesOrdersIndexRoute: AppSalesOrdersIndexRoute,
+  AppSalesQuotesIndexRoute: AppSalesQuotesIndexRoute,
+  AppSalesReturnsIndexRoute: AppSalesReturnsIndexRoute,
   AppWorkflowInstancesIndexRoute: AppWorkflowInstancesIndexRoute,
   AppPurchasingOrdersEditIdRoute: AppPurchasingOrdersEditIdRoute,
+  AppSalesOrdersEditIdRoute: AppSalesOrdersEditIdRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)

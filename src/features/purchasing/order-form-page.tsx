@@ -35,7 +35,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/shared/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select';
 import { Skeleton } from '@/shared/ui/skeleton';
-import { CurrencyFields, today, toRate, useBaseCurrency } from './purchasing-components';
+import { CurrencyFields, today, toRate, useBaseCurrency } from '@/features/trade/trade-components';
 
 const schema = z
   .object({

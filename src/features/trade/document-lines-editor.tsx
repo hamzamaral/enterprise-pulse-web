@@ -57,6 +57,8 @@ export function itemFromLine(line: {
     trackingType: line.trackingType ?? 'NONE',
     averageCost: '0',
     onHand: '0',
+    reserved: '0',
+    available: '0',
     purchasePrice: null,
     salePrice: null,
     priceCurrency: '',

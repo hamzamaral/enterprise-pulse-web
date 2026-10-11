@@ -28,7 +28,7 @@ import {
   InvoiceStatusBadge,
   PaymentStatusBadge,
   useBaseCurrency,
-} from './purchasing-components';
+} from '@/features/trade/trade-components';
 
 export function InvoiceDetailPage({ id }: { id: string }) {
   const { t } = useTranslation();

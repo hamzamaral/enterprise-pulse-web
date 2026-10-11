@@ -28,12 +28,16 @@ import {
   Package,
   PackageCheck,
   PackageOpen,
+  Receipt,
   ScanQrCode,
   Settings,
   ShieldCheck,
+  ShoppingBag,
   ShoppingCart,
   SlidersHorizontal,
   TrendingUp,
+  Truck,
+  Undo2,
   Users,
   UsersRound,
   Wallet,
@@ -206,6 +210,41 @@ export const NAVIGATION: NavGroup[] = [
     ],
   },
   {
+    labelKey: 'nav.groups.sales',
+    items: [
+      {
+        to: '/sales/quotes',
+        labelKey: 'nav.salesQuotes',
+        icon: TrendingUp,
+        permission: 'sales:read',
+      },
+      {
+        to: '/sales/orders',
+        labelKey: 'nav.salesOrders',
+        icon: ShoppingBag,
+        permission: 'sales:read',
+      },
+      {
+        to: '/sales/deliveries',
+        labelKey: 'nav.deliveries',
+        icon: Truck,
+        permission: 'sales:read',
+      },
+      {
+        to: '/sales/invoices',
+        labelKey: 'nav.salesInvoices',
+        icon: Receipt,
+        permission: ['sales:read', 'finance:read'],
+      },
+      {
+        to: '/sales/returns',
+        labelKey: 'nav.salesReturns',
+        icon: Undo2,
+        permission: ['sales:read', 'finance:read'],
+      },
+    ],
+  },
+  {
     labelKey: 'nav.groups.finance',
     items: [
       { to: '/partners', labelKey: 'nav.partners', icon: Contact, permission: 'partners:read' },
@@ -213,10 +252,7 @@ export const NAVIGATION: NavGroup[] = [
   },
   {
     labelKey: 'nav.groups.modules',
-    items: [
-      { labelKey: 'nav.sales', icon: TrendingUp, comingSoon: true },
-      { labelKey: 'nav.finance', icon: Wallet, comingSoon: true },
-    ],
+    items: [{ labelKey: 'nav.finance', icon: Wallet, comingSoon: true }],
   },
   {
     labelKey: 'nav.groups.workflow',

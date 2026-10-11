@@ -35,7 +35,7 @@ import { Input } from '@/shared/ui/input';
 import { Label } from '@/shared/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select';
 import { Textarea } from '@/shared/ui/textarea';
-import { today } from './purchasing-components';
+import { today } from '@/features/trade/trade-components';
 
 const lineSchema = z.object({
   orderLineId: z.string(),

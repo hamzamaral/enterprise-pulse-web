@@ -18,7 +18,7 @@ import { fetchAllPages, tableQuery } from '@/shared/lib/query';
 import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select';
-import { InvoiceStatusBadge, PaymentStatusBadge } from './purchasing-components';
+import { InvoiceStatusBadge, PaymentStatusBadge } from '@/features/trade/trade-components';
 
 const ALL = 'ALL';
 

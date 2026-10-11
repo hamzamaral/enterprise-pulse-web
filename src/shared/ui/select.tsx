@@ -5,8 +5,16 @@ import { cn } from '@/shared/lib/utils';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 import { Select as SelectPrimitive } from 'radix-ui';
 
-function Select({ ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {
-  return <SelectPrimitive.Root data-slot="select" {...props} />;
+function Select({ onValueChange, ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {
+  // Radix reports '' when the value is set before its item renders (options still loading);
+  // items can never have an empty value, so that callback would only wipe a valid selection.
+  return (
+    <SelectPrimitive.Root
+      data-slot="select"
+      onValueChange={onValueChange && ((value) => value !== '' && onValueChange(value))}
+      {...props}
+    />
+  );
 }
 
 function SelectGroup({ ...props }: React.ComponentProps<typeof SelectPrimitive.Group>) {

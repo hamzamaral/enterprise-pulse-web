@@ -25,7 +25,7 @@ import { Card, CardContent } from '@/shared/ui/card';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/shared/ui/form';
 import { Input } from '@/shared/ui/input';
 import { Textarea } from '@/shared/ui/textarea';
-import { today, useBaseCurrency } from './purchasing-components';
+import { today, useBaseCurrency } from '@/features/trade/trade-components';
 
 const schema = z
   .object({

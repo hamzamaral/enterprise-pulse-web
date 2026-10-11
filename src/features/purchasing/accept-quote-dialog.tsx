@@ -26,7 +26,7 @@ import {
 import { Input } from '@/shared/ui/input';
 import { Label } from '@/shared/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select';
-import { today } from './purchasing-components';
+import { today } from '@/features/trade/trade-components';
 
 /** Turns a supplier quote into a draft purchase order and opens it. */
 export function AcceptQuoteDialog({

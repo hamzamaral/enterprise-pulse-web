@@ -21,7 +21,8 @@ import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { AcceptQuoteDialog } from './accept-quote-dialog';
-import { QuoteStatusBadge, useBaseCurrency } from './purchasing-components';
+import { QuoteStatusBadge } from './purchasing-components';
+import { useBaseCurrency } from '@/features/trade/trade-components';
 
 export function QuoteDetailPage({ id }: { id: string }) {
   const { t } = useTranslation();
