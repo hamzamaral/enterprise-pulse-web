@@ -17,7 +17,7 @@ export function DocumentHeader({
   title: string;
   number: string;
   status?: ReactNode;
-  partner?: { code: string; title: string; label?: string } | null;
+  partner?: { code?: string; title: string; label?: string } | null;
   /** `Field`s with dates, warehouse, currency and references. */
   children?: ReactNode;
 }) {
@@ -41,7 +41,9 @@ export function DocumentHeader({
           <div className="sm:col-span-2">
             <Field label={partner.label ?? t('trade.partner')}>
               <span className="font-medium">{partner.title}</span>
-              <code className="text-muted-foreground ml-2 text-xs">{partner.code}</code>
+              {partner.code && (
+                <code className="text-muted-foreground ml-2 text-xs">{partner.code}</code>
+              )}
             </Field>
           </div>
         )}

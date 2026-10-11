@@ -35,6 +35,35 @@ export const emptyDocumentLine = (): DocumentLineValues => ({
   vatRate: '20',
 });
 
+/** The picker value for a line copied from a stored document (null for free-text lines). */
+export function itemFromLine(line: {
+  variantId: string | null;
+  productId: string | null;
+  sku: string | null;
+  unitCode: string | null;
+  description: string;
+  productType?: StockItemDto['productType'] | null;
+  trackingType?: StockItemDto['trackingType'] | null;
+}): StockItemDto | null {
+  if (!line.variantId || !line.productId || !line.sku) return null;
+  return {
+    variantId: line.variantId,
+    productId: line.productId,
+    sku: line.sku,
+    productName: line.description,
+    variantName: null,
+    unitCode: line.unitCode ?? '',
+    productType: line.productType ?? 'GOODS',
+    trackingType: line.trackingType ?? 'NONE',
+    averageCost: '0',
+    onHand: '0',
+    purchasePrice: null,
+    salePrice: null,
+    priceCurrency: '',
+    vatRate: null,
+  };
+}
+
 /** Validates one line; pass it to `superRefine` of the document schema. */
 export function validateDocumentLines(
   lines: DocumentLineValues[],
@@ -44,9 +73,8 @@ export function validateDocumentLines(
   lines.forEach((line, index) => {
     const issue = (field: string, message: string) =>
       ctx.addIssue({ code: z.ZodIssueCode.custom, path: ['lines', index, field], message });
-    if (!line.item && (requireItem || !line.description.trim())) {
-      issue('item', 'validation.required');
-    }
+    if (!line.item && requireItem) issue('item', 'validation.required');
+    else if (!line.item && !line.description.trim()) issue('description', 'validation.required');
     const quantity = parseDecimal(line.quantity);
     if (!(quantity > 0)) issue('quantity', 'trade.errors.quantity');
     else if (line.maxQuantity !== undefined && quantity > line.maxQuantity + 1e-9) {
@@ -76,6 +104,15 @@ export function toLineInput(line: DocumentLineValues) {
   };
 }
 
+/** Request body of a priced line (quotes, orders, invoices). */
+export function toTradeLine(line: DocumentLineValues) {
+  return {
+    variantId: line.item?.variantId,
+    description: line.description.trim() || undefined,
+    ...toLineInput(line),
+  };
+}
+
 type LinesForm = UseFormReturn<{ lines: DocumentLineValues[] }>;
 
 interface DocumentLinesEditorProps {
@@ -90,6 +127,8 @@ interface DocumentLinesEditorProps {
   priced?: boolean;
   /** Lines come from a source document: items are fixed and no lines can be added. */
   fixedItems?: boolean;
+  /** Offer the item picker; without it lines are free text (users without catalog access). */
+  pickItems?: boolean;
   title?: string;
 }
 
@@ -100,6 +139,7 @@ export function DocumentLinesEditor({
   allowFreeText = false,
   priced = true,
   fixedItems = false,
+  pickItems = true,
   title,
 }: DocumentLinesEditorProps) {
   const { t } = useTranslation();
@@ -157,6 +197,7 @@ export function DocumentLinesEditor({
             allowFreeText={allowFreeText}
             priced={priced}
             fixedItems={fixedItems}
+            pickItems={pickItems}
             onRemove={lines.fields.length > 1 ? () => lines.remove(index) : undefined}
           />
         ))}
@@ -174,6 +215,7 @@ function LineRow({
   allowFreeText,
   priced,
   fixedItems,
+  pickItems,
   onRemove,
 }: {
   form: LinesForm;
@@ -184,6 +226,7 @@ function LineRow({
   allowFreeText: boolean;
   priced: boolean;
   fixedItems: boolean;
+  pickItems: boolean;
   onRemove?: () => void;
 }) {
   const { t } = useTranslation();
@@ -257,21 +300,23 @@ function LineRow({
           </div>
         ) : (
           <>
-            <FormField
-              control={control}
-              name={name('item')}
-              render={() => (
-                <FormItem>
-                  <ItemPicker
-                    value={line.item}
-                    onChange={pick}
-                    includeServices
-                    placeholder={allowFreeText ? t('trade.itemOptional') : undefined}
-                  />
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+            {pickItems && (
+              <FormField
+                control={control}
+                name={name('item')}
+                render={() => (
+                  <FormItem>
+                    <ItemPicker
+                      value={line.item}
+                      onChange={pick}
+                      includeServices
+                      placeholder={allowFreeText ? t('trade.itemOptional') : undefined}
+                    />
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            )}
             <FormField
               control={control}
               name={name('description')}

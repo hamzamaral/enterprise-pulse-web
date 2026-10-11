@@ -12,8 +12,11 @@ import {
   CalendarRange,
   ClipboardCheck,
   ClipboardList,
+  ClipboardPen,
   Clock,
   Contact,
+  FileSpreadsheet,
+  FileText,
   FileClock,
   GitBranch,
   Inbox,
@@ -24,6 +27,7 @@ import {
   Network,
   Package,
   PackageCheck,
+  PackageOpen,
   ScanQrCode,
   Settings,
   ShieldCheck,
@@ -42,7 +46,8 @@ export interface NavItem {
   to?: keyof FileRoutesByTo;
   labelKey: string;
   icon: LucideIcon;
-  permission?: string;
+  /** A list means any one of the permissions. */
+  permission?: string | readonly string[];
   /** Roadmap modules that are not implemented yet. */
   comingSoon?: boolean;
 }
@@ -166,6 +171,41 @@ export const NAVIGATION: NavGroup[] = [
     ],
   },
   {
+    labelKey: 'nav.groups.purchasing',
+    items: [
+      {
+        to: '/purchasing/requests',
+        labelKey: 'nav.purchaseRequests',
+        icon: ClipboardPen,
+        permission: ['workflow:start', 'purchasing:create', 'purchasing:read'],
+      },
+      {
+        to: '/purchasing/quotes',
+        labelKey: 'nav.supplierQuotes',
+        icon: FileSpreadsheet,
+        permission: 'purchasing:read',
+      },
+      {
+        to: '/purchasing/orders',
+        labelKey: 'nav.purchaseOrders',
+        icon: ShoppingCart,
+        permission: 'purchasing:read',
+      },
+      {
+        to: '/purchasing/receipts',
+        labelKey: 'nav.goodsReceipts',
+        icon: PackageOpen,
+        permission: 'purchasing:read',
+      },
+      {
+        to: '/purchasing/invoices',
+        labelKey: 'nav.purchaseInvoices',
+        icon: FileText,
+        permission: ['purchasing:read', 'finance:read'],
+      },
+    ],
+  },
+  {
     labelKey: 'nav.groups.finance',
     items: [
       { to: '/partners', labelKey: 'nav.partners', icon: Contact, permission: 'partners:read' },
@@ -174,7 +214,6 @@ export const NAVIGATION: NavGroup[] = [
   {
     labelKey: 'nav.groups.modules',
     items: [
-      { labelKey: 'nav.purchasing', icon: ShoppingCart, comingSoon: true },
       { labelKey: 'nav.sales', icon: TrendingUp, comingSoon: true },
       { labelKey: 'nav.finance', icon: Wallet, comingSoon: true },
     ],

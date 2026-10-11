@@ -19,18 +19,20 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 
 ## Ekranlar
 
-|                                                                 |                                                                          |
-| --------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| ![Giriş](docs/screenshots/login.png)                            | ![Stok hareket fişi](docs/screenshots/stock-movement-form.png)           |
-| **Giriş:** demo hesaplar, iki adımlı doğrulama, şifre sıfırlama | **Stok fişi:** lot ve son kullanma tarihi, seri numaraları, anlık toplam |
-| ![Stok kartı](docs/screenshots/stock-card.png)                  | ![Demirbaş](docs/screenshots/asset-detail.png)                           |
-| **Stok kartı:** her hareketin bakiyesi ve birim maliyeti        | **Demirbaş kartı:** QR etiket, zimmet durumu, net defter değeri          |
-| ![Amortisman](docs/screenshots/asset-depreciation.png)          | ![Organizasyon şeması](docs/screenshots/org-chart.png)                   |
-| **Amortisman tablosu:** yıllık ve birikmiş amortisman           | **Organizasyon şeması:** yönetici hiyerarşisi                            |
-| ![Puantaj](docs/screenshots/timesheet.png)                      | ![Vardiya planı](docs/screenshots/shift-plan.png)                        |
-| **Puantaj:** geç kalma, devamsızlık, izin ve fazla mesai        | **Vardiya planı:** haftalık plan, gece vardiyası, önceki haftayı kopyala |
-| ![Demirbaş sayımı](docs/screenshots/asset-count.png)            | ![Gösterge paneli](docs/screenshots/dashboard.png)                       |
-| **Demirbaş sayımı:** QR / kamera ile okutma, fark raporu        | **Gösterge paneli:** yetkiye göre KPI'lar, kritik stok                   |
+|                                                                                         |                                                                                |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| ![Giriş](docs/screenshots/login.png)                                                    | ![Stok hareket fişi](docs/screenshots/stock-movement-form.png)                 |
+| **Giriş:** demo hesaplar, iki adımlı doğrulama, şifre sıfırlama                         | **Stok fişi:** lot ve son kullanma tarihi, seri numaraları, anlık toplam       |
+| ![Stok kartı](docs/screenshots/stock-card.png)                                          | ![Demirbaş](docs/screenshots/asset-detail.png)                                 |
+| **Stok kartı:** her hareketin bakiyesi ve birim maliyeti                                | **Demirbaş kartı:** QR etiket, zimmet durumu, net defter değeri                |
+| ![Amortisman](docs/screenshots/asset-depreciation.png)                                  | ![Organizasyon şeması](docs/screenshots/org-chart.png)                         |
+| **Amortisman tablosu:** yıllık ve birikmiş amortisman                                   | **Organizasyon şeması:** yönetici hiyerarşisi                                  |
+| ![Puantaj](docs/screenshots/timesheet.png)                                              | ![Vardiya planı](docs/screenshots/shift-plan.png)                              |
+| **Puantaj:** geç kalma, devamsızlık, izin ve fazla mesai                                | **Vardiya planı:** haftalık plan, gece vardiyası, önceki haftayı kopyala       |
+| ![Demirbaş sayımı](docs/screenshots/asset-count.png)                                    | ![Gösterge paneli](docs/screenshots/dashboard.png)                             |
+| **Demirbaş sayımı:** QR / kamera ile okutma, fark raporu                                | **Gösterge paneli:** yetkiye göre KPI'lar, kritik stok                         |
+| ![Teklif karşılaştırma](docs/screenshots/purchase-quote-comparison.png)                 | ![Satın alma siparişi](docs/screenshots/purchase-order.png)                    |
+| **Teklif karşılaştırma:** kalem bazında en iyi net fiyat, tek tıkla siparişe dönüştürme | **Satın alma siparişi:** teslim alınan / faturalanan miktarlar, bağlı belgeler |
 
 ## Özellikler
 
@@ -45,6 +47,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   bakım kaydı, amortisman tablosu, QR ile demirbaş sayımı ve yazdırılabilir fark raporu, "Zimmetlerim" self-servis ekranı.
 - **Stok ve Depo:** stok durumu ve kritik stok filtresi, ürün ve varyantlar, stok kartı, lot ve seri numaraları,
   giriş / çıkış / transfer / düzeltme fişleri, yazdırılabilir fiş, barkod okutarak stok sayımı, depo ve kategori ayarları.
+- **Cari hesaplar:** müşteri / tedarikçi kartları, vade ve kredi limiti, döviz, cari hareketler ve bakiye.
+- **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
+  dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
+  (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.
 - **Barkod ve QR okutma:** USB okuyucu (klavye gibi yazar) veya tarayıcı destekliyorsa telefon / bilgisayar kamerası
   (yerleşik `BarcodeDetector` API'si, ek kütüphane yok).
 - **Her listede:** sunucu taraflı sayfalama, arama ve sıralama; sütun gizleme; filtrelenmiş tüm kayıtları Excel'e aktarma.

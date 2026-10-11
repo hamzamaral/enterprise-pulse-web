@@ -8,9 +8,14 @@ import { useAuthStore } from './auth.store';
 export const meQueryOptions = () =>
   getAuthMeQueryOptions({ query: { staleTime: 5 * 60_000, retry: false } });
 
-export function hasPermission(me: MeResponseDto | undefined, code: string): boolean {
+/** A list of codes means any one of them is enough. */
+export function hasPermission(
+  me: MeResponseDto | undefined,
+  code: string | readonly string[],
+): boolean {
   if (!me) return false;
-  return me.user.isSuperAdmin || me.permissions.includes(code);
+  const codes = typeof code === 'string' ? [code] : code;
+  return me.user.isSuperAdmin || codes.some((c) => me.permissions.includes(c));
 }
 
 /**
@@ -46,7 +51,7 @@ export async function ensureSession(queryClient: QueryClient, redirectTo: string
 }
 
 /** Route guard: `beforeLoad: requirePermission('users:read')`. */
-export function requirePermission(code: string) {
+export function requirePermission(code: string | readonly string[]) {
   return ({ context }: { context: { queryClient: QueryClient } }) => {
     const me = context.queryClient.getQueryData(meQueryOptions().queryKey);
     if (!hasPermission(me, code)) throw redirect({ to: '/forbidden' });

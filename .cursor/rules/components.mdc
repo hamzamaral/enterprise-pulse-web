@@ -26,6 +26,11 @@ Every list page follows the same pattern (see `features/organization/branches-pa
   Quantities use `formatQuantity(value, unitCode)`.
 - Choosing a stock item (product variant) always goes through `ItemPicker` from
   `features/inventory/inventory-components.tsx` (server-side search, optional `warehouseId` / `inStock`).
+- Choosing a business partner goes through `PartnerPicker` / `PartnerField` from `features/partners/partner-components.tsx`.
+- Trade documents (quotes, orders, invoices) share `features/trade/`: `DocumentLinesEditor` (editable priced lines,
+  `fixedItems` / `maxQuantity` when lines come from a source document), `DocumentLinesTable` (read-only lines with
+  extra columns), `DocumentTotals`, `document-math.ts` (client totals mirror the API) and `DocumentLink`.
+  Document permissions may be any-of: `Can`, `usePermission` and `requirePermission` accept a code array.
 - Barcode / QR scanning: a text input with `autoFocus` (USB scanners type and press Enter) plus, when
   `cameraScanSupported()`, the `CameraScanner` dialog from `shared/components/camera-scanner.tsx` (native `BarcodeDetector`).
 - Matrix screens (timesheet, shift roster) are plain `<table>`s inside a horizontally scrolling `Card` with a

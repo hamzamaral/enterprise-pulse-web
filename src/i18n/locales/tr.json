@@ -55,7 +55,8 @@
       "hr": "İnsan Kaynakları",
       "assets": "Zimmet ve Demirbaş",
       "inventory": "Stok ve Depo",
-      "finance": "Cari ve Finans"
+      "finance": "Cari ve Finans",
+      "purchasing": "Satın Alma"
     },
     "users": "Kullanıcılar",
     "roles": "Roller ve İzinler",
@@ -94,7 +95,12 @@
     "myAttendance": "Mesaim",
     "timesheet": "Puantaj",
     "shifts": "Vardiya Planlama",
-    "partners": "Cari Hesaplar"
+    "partners": "Cari Hesaplar",
+    "purchaseRequests": "Satın Alma Talepleri",
+    "supplierQuotes": "Tedarikçi Teklifleri",
+    "purchaseOrders": "Satın Alma Siparişleri",
+    "goodsReceipts": "Mal Kabul",
+    "purchaseInvoices": "Alış Faturaları"
   },
   "auth": {
     "login": "Giriş yap",
@@ -1043,6 +1049,170 @@
       "quantity": "Miktar sıfırdan büyük olmalı",
       "maxQuantity": "Kalan miktarı aşıyor",
       "percent": "0 ile 100 arasında olmalı"
+    },
+    "number": "Belge no",
+    "date": "Tarih",
+    "currency": "Para birimi",
+    "exchangeRate": "Kur (1 = ? {{base}})",
+    "exchangeRateAuto": "Boş bırakılırsa güncel kur",
+    "cancelReason": "İptal nedeni (isteğe bağlı)",
+    "cancelDocument": "Belgeyi iptal et",
+    "print": "Yazdır",
+    "allStatuses": "Tüm durumlar",
+    "allPayments": "Tüm ödeme durumları",
+    "grandTotalBase": "Genel toplam (yerel)",
+    "payment": "Ödeme",
+    "paidAmount": "Ödenen",
+    "overdue": "Vadesi geçti",
+    "invoiceStatus": {
+      "DRAFT": "Taslak",
+      "ISSUED": "Kesildi",
+      "CANCELLED": "İptal"
+    },
+    "paymentStatus": {
+      "UNPAID": "Ödenmedi",
+      "PARTIALLY_PAID": "Kısmen ödendi",
+      "PAID": "Ödendi"
+    }
+  },
+  "purchasing": {
+    "supplier": "Tedarikçi",
+    "requestStatus": {
+      "PENDING": "Onay bekliyor",
+      "APPROVED": "Onaylandı",
+      "REJECTED": "Reddedildi",
+      "CANCELLED": "İptal",
+      "ORDERED": "Siparişe döndü"
+    },
+    "quoteStatus": {
+      "OPEN": "Açık",
+      "ACCEPTED": "Kabul edildi",
+      "REJECTED": "Reddedildi"
+    },
+    "orderStatus": {
+      "DRAFT": "Taslak",
+      "APPROVED": "Onaylı",
+      "PARTIALLY_RECEIVED": "Kısmi teslim",
+      "RECEIVED": "Teslim alındı",
+      "CANCELLED": "İptal"
+    },
+    "requests": {
+      "title": "Satın Alma Talepleri",
+      "single": "Talep",
+      "subtitle": "Personelin ihtiyaç talepleri, onay durumları ve teklifleri",
+      "subtitleMine": "Açtığınız satın alma talepleri ve onay durumları",
+      "new": "Yeni talep",
+      "newHint": "Talep onay sürecine gönderilir; onaylanınca satın alma birimi teklif toplar.",
+      "date": "Talep tarihi",
+      "titleField": "Konu",
+      "titleHint": "Örn. Yeni ekip için dizüstü bilgisayar",
+      "requestedBy": "Talep eden",
+      "neededBy": "İhtiyaç tarihi",
+      "estimatedTotal": "Tahmini tutar",
+      "quotes": "Teklif",
+      "department": "Departman",
+      "onlyMine": "Yalnızca benimkiler",
+      "reason": "Gerekçe",
+      "submit": "Onaya gönder",
+      "created": "{{number}} numaralı talep oluşturuldu",
+      "cancelled": "Talep iptal edildi",
+      "cancel": "Talebi iptal et",
+      "cancelTitle": "{{number}} iptal edilsin mi?",
+      "approval": "Onay süreci",
+      "viewApproval": "Onay adımlarını gör",
+      "decidedAt": "Karar tarihi"
+    },
+    "comparison": {
+      "title": "Teklif karşılaştırma",
+      "net": "Net {{amount}}",
+      "hint": "Yeşil hücreler kalem bazında en düşük net birim fiyatı ({{currency}} karşılığı, KDV hariç) gösterir; kupa en düşük toplamlı tam teklifi işaretler."
+    },
+    "quotes": {
+      "title": "Tedarikçi Teklifleri",
+      "single": "Teklif",
+      "subtitle": "Tedarikçilerden alınan fiyat teklifleri",
+      "new": "Teklif gir",
+      "newHint": "Tedarikçinin verdiği fiyatları girin.",
+      "forRequest": "{{number}} — {{title}} talebi için teklif",
+      "validUntil": "Geçerlilik",
+      "deliveryDays": "Teslim süresi",
+      "created": "{{number}} numaralı teklif kaydedildi",
+      "accepted": "Teklif kabul edildi, {{number}} taslak siparişi açıldı",
+      "rejected": "Teklif reddedildi",
+      "accept": "Kabul et",
+      "reject": "Reddet",
+      "acceptTitle": "{{number}} kabul edilsin mi?",
+      "acceptHint": "{{partner}} teklifi taslak siparişe dönüşür; talebin diğer açık teklifleri reddedilir.",
+      "document": "Tedarikçi teklifi"
+    },
+    "orders": {
+      "title": "Satın Alma Siparişleri",
+      "single": "Sipariş",
+      "subtitle": "Tedarikçilere verilen siparişler, teslim ve faturalama durumu",
+      "new": "Yeni sipariş",
+      "newHint": "Taslak olarak kaydedilir; onaylandıktan sonra mal kabul yapılabilir.",
+      "edit": "{{number}} düzenle",
+      "warehouse": "Teslim deposu",
+      "expectedDate": "Beklenen teslim",
+      "received": "Teslim alınan",
+      "invoiced": "Faturalanan",
+      "onlyOpen": "Yalnızca açık siparişler",
+      "saved": "{{number}} kaydedildi",
+      "saveDraft": "Taslak kaydet",
+      "approve": "Onayla",
+      "approved": "Sipariş onaylandı",
+      "cancel": "Siparişi iptal et",
+      "cancelled": "Sipariş iptal edildi",
+      "cancelTitle": "{{number}} iptal edilsin mi?",
+      "document": "Satın alma siparişi",
+      "createdBy": "Hazırlayan",
+      "approvedBy": "Onaylayan"
+    },
+    "receipts": {
+      "title": "Mal Kabul",
+      "subtitle": "Siparişlere karşı teslim alınan mallar; stoka giriş hareketi oluşturur",
+      "new": "Mal kabul",
+      "newHint": "Teslim alınacak siparişi seçin.",
+      "forOrder": "{{number}} · {{partner}}",
+      "date": "Kabul tarihi",
+      "deliveryNoteNo": "İrsaliye no",
+      "movement": "Stok hareketi",
+      "lines": "Teslim alınan kalemler",
+      "selectOrder": "Onaylı sipariş seçin",
+      "noOpenOrders": "Teslim bekleyen onaylı sipariş yok.",
+      "serviceHint": "hizmet, stoka girmez",
+      "nothingLeft": "Bu siparişte teslim alınacak kalem kalmadı.",
+      "post": "Kabulü kaydet",
+      "created": "{{number}} kaydedildi, stok güncellendi",
+      "document": "Mal kabul fişi",
+      "deliveredBy": "Teslim eden",
+      "receivedBy": "Teslim alan",
+      "errors": {
+        "noLines": "En az bir kalem seçin"
+      }
+    },
+    "invoices": {
+      "title": "Alış Faturaları",
+      "subtitle": "Tedarikçi faturaları; teslim alınan miktarlarla eşleşir ve cari hesaba alacak yazar",
+      "new": "Alış faturası",
+      "newHint": "Siparişsiz (doğrudan) fatura girişi; siparişli faturayı sipariş ekranından açın.",
+      "forOrder": "{{number}} siparişinin faturası — teslim alınan ama faturalanmamış miktarlar",
+      "date": "Fatura tarihi",
+      "dueDate": "Vade tarihi",
+      "dueDateHint": "Boş bırakılırsa cari vade süresi uygulanır",
+      "supplierInvoiceNo": "Tedarikçi fatura no",
+      "post": "Faturayı kaydet",
+      "created": "{{number}} kaydedildi",
+      "cancel": "Faturayı iptal et",
+      "cancelled": "Fatura iptal edildi",
+      "cancelTitle": "{{number}} iptal edilsin mi?",
+      "cancelHint": "Cari hesaba ters kayıt atılır ve sipariş kalemleri yeniden faturalanabilir olur.",
+      "document": "Alış faturası",
+      "cancelledAt": "İptal tarihi",
+      "errors": {
+        "dueDate": "Vade fatura tarihinden önce olamaz"
+      },
+      "nothingToInvoice": "Bu siparişte faturalanmayı bekleyen miktar yok; mallar teslim alındıktan sonra faturalanabilir."
     }
   }
 }

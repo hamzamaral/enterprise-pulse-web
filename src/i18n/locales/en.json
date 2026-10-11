@@ -55,7 +55,8 @@
       "hr": "Human Resources",
       "assets": "Assets",
       "inventory": "Inventory",
-      "finance": "Accounts & Finance"
+      "finance": "Accounts & Finance",
+      "purchasing": "Purchasing"
     },
     "users": "Users",
     "roles": "Roles & Permissions",
@@ -94,7 +95,12 @@
     "myAttendance": "My Attendance",
     "timesheet": "Timesheet",
     "shifts": "Shift Planning",
-    "partners": "Partners"
+    "partners": "Partners",
+    "purchaseRequests": "Purchase Requests",
+    "supplierQuotes": "Supplier Quotes",
+    "purchaseOrders": "Purchase Orders",
+    "goodsReceipts": "Goods Receipts",
+    "purchaseInvoices": "Purchase Invoices"
   },
   "auth": {
     "login": "Sign in",
@@ -1043,6 +1049,170 @@
       "quantity": "Quantity must be greater than zero",
       "maxQuantity": "Exceeds the remaining quantity",
       "percent": "Must be between 0 and 100"
+    },
+    "number": "Number",
+    "date": "Date",
+    "currency": "Currency",
+    "exchangeRate": "Rate (1 = ? {{base}})",
+    "exchangeRateAuto": "Latest rate when empty",
+    "cancelReason": "Reason (optional)",
+    "cancelDocument": "Cancel document",
+    "print": "Print",
+    "allStatuses": "All statuses",
+    "allPayments": "All payment states",
+    "grandTotalBase": "Grand total (base)",
+    "payment": "Payment",
+    "paidAmount": "Paid",
+    "overdue": "Overdue",
+    "invoiceStatus": {
+      "DRAFT": "Draft",
+      "ISSUED": "Issued",
+      "CANCELLED": "Cancelled"
+    },
+    "paymentStatus": {
+      "UNPAID": "Unpaid",
+      "PARTIALLY_PAID": "Partially paid",
+      "PAID": "Paid"
+    }
+  },
+  "purchasing": {
+    "supplier": "Supplier",
+    "requestStatus": {
+      "PENDING": "Pending approval",
+      "APPROVED": "Approved",
+      "REJECTED": "Rejected",
+      "CANCELLED": "Cancelled",
+      "ORDERED": "Ordered"
+    },
+    "quoteStatus": {
+      "OPEN": "Open",
+      "ACCEPTED": "Accepted",
+      "REJECTED": "Rejected"
+    },
+    "orderStatus": {
+      "DRAFT": "Draft",
+      "APPROVED": "Approved",
+      "PARTIALLY_RECEIVED": "Partially received",
+      "RECEIVED": "Received",
+      "CANCELLED": "Cancelled"
+    },
+    "requests": {
+      "title": "Purchase Requests",
+      "single": "Request",
+      "subtitle": "Staff requests, their approval state and quotes",
+      "subtitleMine": "Purchase requests you raised and their approval state",
+      "new": "New request",
+      "newHint": "The request goes through approval; once approved, purchasing collects quotes.",
+      "date": "Request date",
+      "titleField": "Subject",
+      "titleHint": "e.g. Laptops for the new team",
+      "requestedBy": "Requested by",
+      "neededBy": "Needed by",
+      "estimatedTotal": "Estimated total",
+      "quotes": "Quotes",
+      "department": "Department",
+      "onlyMine": "Only mine",
+      "reason": "Justification",
+      "submit": "Submit for approval",
+      "created": "Request {{number}} created",
+      "cancelled": "Request cancelled",
+      "cancel": "Cancel request",
+      "cancelTitle": "Cancel {{number}}?",
+      "approval": "Approval",
+      "viewApproval": "View approval steps",
+      "decidedAt": "Decided on"
+    },
+    "comparison": {
+      "title": "Quote comparison",
+      "net": "Net {{amount}}",
+      "hint": "Green cells mark the lowest net unit price per line ({{currency}} equivalent, excl. VAT); the trophy marks the cheapest complete quote."
+    },
+    "quotes": {
+      "title": "Supplier Quotes",
+      "single": "Quote",
+      "subtitle": "Price offers received from suppliers",
+      "new": "Enter quote",
+      "newHint": "Enter the prices the supplier offered.",
+      "forRequest": "Quote for request {{number}} — {{title}}",
+      "validUntil": "Valid until",
+      "deliveryDays": "Lead time",
+      "created": "Quote {{number}} saved",
+      "accepted": "Quote accepted, draft order {{number}} opened",
+      "rejected": "Quote rejected",
+      "accept": "Accept",
+      "reject": "Reject",
+      "acceptTitle": "Accept {{number}}?",
+      "acceptHint": "The {{partner}} quote becomes a draft order; other open quotes of the request are rejected.",
+      "document": "Supplier quote"
+    },
+    "orders": {
+      "title": "Purchase Orders",
+      "single": "Order",
+      "subtitle": "Orders placed with suppliers, delivery and invoicing progress",
+      "new": "New order",
+      "newHint": "Saved as a draft; goods can be received once it is approved.",
+      "edit": "Edit {{number}}",
+      "warehouse": "Receiving warehouse",
+      "expectedDate": "Expected delivery",
+      "received": "Received",
+      "invoiced": "Invoiced",
+      "onlyOpen": "Open orders only",
+      "saved": "{{number}} saved",
+      "saveDraft": "Save draft",
+      "approve": "Approve",
+      "approved": "Order approved",
+      "cancel": "Cancel order",
+      "cancelled": "Order cancelled",
+      "cancelTitle": "Cancel {{number}}?",
+      "document": "Purchase order",
+      "createdBy": "Prepared by",
+      "approvedBy": "Approved by"
+    },
+    "receipts": {
+      "title": "Goods Receipts",
+      "subtitle": "Goods received against orders; each posts a stock receipt",
+      "new": "Receive goods",
+      "newHint": "Pick the order to receive.",
+      "forOrder": "{{number}} · {{partner}}",
+      "date": "Receipt date",
+      "deliveryNoteNo": "Delivery note no",
+      "movement": "Stock movement",
+      "lines": "Received lines",
+      "selectOrder": "Select an approved order",
+      "noOpenOrders": "No approved orders waiting for delivery.",
+      "serviceHint": "service, not stocked",
+      "nothingLeft": "Nothing left to receive on this order.",
+      "post": "Post receipt",
+      "created": "{{number}} posted, stock updated",
+      "document": "Goods receipt",
+      "deliveredBy": "Delivered by",
+      "receivedBy": "Received by",
+      "errors": {
+        "noLines": "Select at least one line"
+      }
+    },
+    "invoices": {
+      "title": "Purchase Invoices",
+      "subtitle": "Supplier invoices; matched to received quantities and credited to the supplier account",
+      "new": "Purchase invoice",
+      "newHint": "Direct invoice without an order; open order invoices from the order page.",
+      "forOrder": "Invoice for order {{number}} — received but not yet invoiced quantities",
+      "date": "Invoice date",
+      "dueDate": "Due date",
+      "dueDateHint": "Defaults to the supplier's payment term",
+      "supplierInvoiceNo": "Supplier invoice no",
+      "post": "Post invoice",
+      "created": "{{number}} posted",
+      "cancel": "Cancel invoice",
+      "cancelled": "Invoice cancelled",
+      "cancelTitle": "Cancel {{number}}?",
+      "cancelHint": "A reversing entry is posted to the supplier account and the order lines can be invoiced again.",
+      "document": "Purchase invoice",
+      "cancelledAt": "Cancelled on",
+      "errors": {
+        "dueDate": "Due date cannot be before the invoice date"
+      },
+      "nothingToInvoice": "Nothing on this order is waiting to be invoiced: invoice goods after they are received."
     }
   }
 }

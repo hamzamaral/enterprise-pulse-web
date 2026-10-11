@@ -2,7 +2,8 @@ import type { ReactNode } from 'react';
 import { usePermission } from './use-session';
 
 interface CanProps {
-  permission: string;
+  /** A list means any one of the permissions. */
+  permission: string | readonly string[];
   children: ReactNode;
   fallback?: ReactNode;
 }

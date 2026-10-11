@@ -68,3 +68,16 @@ export const parseDecimal = (value: string | number | null | undefined): number 
   const text = (value ?? '').trim();
   return text ? Number(text.replace(/\s/g, '').replace(',', '.')) : Number.NaN;
 };
+
+/** VAT breakdown of stored lines (amounts arrive as strings), for the totals block. */
+export const storedBreakdown = (
+  lines: { quantity: string; unitPrice: string; discountRate: string; vatRate: string }[],
+) =>
+  documentAmounts(
+    lines.map((l) => ({
+      quantity: Number(l.quantity),
+      unitPrice: Number(l.unitPrice),
+      discountRate: Number(l.discountRate),
+      vatRate: Number(l.vatRate),
+    })),
+  ).vatBreakdown;

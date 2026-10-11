@@ -35,6 +35,12 @@ describe('hasPermission', () => {
     expect(hasPermission(user, 'users:delete')).toBe(false);
   });
 
+  it('accepts any one of several permissions', () => {
+    const user = me({}, ['users:read']);
+    expect(hasPermission(user, ['roles:read', 'users:read'])).toBe(true);
+    expect(hasPermission(user, ['roles:read', 'users:delete'])).toBe(false);
+  });
+
   it('allows everything for super admins', () => {
     expect(hasPermission(me({ isSuperAdmin: true }), 'roles:delete')).toBe(true);
   });

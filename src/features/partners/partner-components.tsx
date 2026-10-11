@@ -1,5 +1,6 @@
 import { Check, ChevronsUpDown } from 'lucide-react';
 import { useState } from 'react';
+import type { Control, FieldValues, Path } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { usePartnersFindAll } from '@/api/generated/endpoints/partners/partners';
 import type { PartnerDto, PartnerType } from '@/api/generated/model';
@@ -9,6 +10,7 @@ import { formatMoney } from '@/shared/lib/format';
 import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import { Command, CommandEmpty, CommandInput, CommandItem, CommandList } from '@/shared/ui/command';
+import { FormField, FormItem, FormLabel, FormMessage } from '@/shared/ui/form';
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover';
 
 const TYPE_TONES: Record<PartnerType, Tone> = {
@@ -119,5 +121,44 @@ export function PartnerPicker({ value, onChange, type, disabled, className }: Pa
         </Command>
       </PopoverContent>
     </Popover>
+  );
+}
+
+/** `PartnerPicker` bound to a form field holding a `PartnerOption | null`. */
+export function PartnerField<T extends FieldValues>({
+  control,
+  name,
+  label,
+  type,
+  disabled,
+  onPicked,
+}: {
+  control: Control<T>;
+  name: Path<T>;
+  label: string;
+  type?: PartnerType;
+  disabled?: boolean;
+  onPicked?: (partner: PartnerDto) => void;
+}) {
+  return (
+    <FormField
+      control={control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel>{label}</FormLabel>
+          <PartnerPicker
+            value={field.value as PartnerOption | null}
+            type={type}
+            disabled={disabled}
+            onChange={(partner) => {
+              field.onChange(partner);
+              onPicked?.(partner);
+            }}
+          />
+          <FormMessage />
+        </FormItem>
+      )}
+    />
   );
 }

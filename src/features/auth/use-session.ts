@@ -11,7 +11,7 @@ export function useMe() {
 
 export function usePermission() {
   const { data: me } = useMe();
-  return useCallback((code: string) => hasPermission(me, code), [me]);
+  return useCallback((code: string | readonly string[]) => hasPermission(me, code), [me]);
 }
 
 /** Switching company / branch changes every query result, so the cache is reset. */
