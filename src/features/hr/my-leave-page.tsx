@@ -6,6 +6,7 @@ import {
   useLeaveBalancesFindAll,
   useLeaveRequestsFindAll,
 } from '@/api/generated/endpoints/leave/leave';
+import { useMe } from '@/features/auth/use-session';
 import { useTableState } from '@/shared/components/data-table/use-table-state';
 import { PageHeader } from '@/shared/components/page-header';
 import { tableQuery } from '@/shared/lib/query';
@@ -17,7 +18,9 @@ export function MyLeavePage() {
   const { t } = useTranslation();
   const [dialogOpen, setDialogOpen] = useState(false);
   const table = useTableState({ sort: [{ id: 'createdAt', desc: true }] });
-  const me = useEmployeesFindMine({ query: { retry: false } });
+  const { data: session } = useMe();
+  const noEmployee = !!session && !session.employeeId;
+  const me = useEmployeesFindMine({ query: { enabled: !!session?.employeeId } });
   const hasEmployee = me.isSuccess;
   const balances = useLeaveBalancesFindAll(
     { year: new Date().getFullYear() },
@@ -41,7 +44,7 @@ export function MyLeavePage() {
           )
         }
       />
-      {me.isError ? (
+      {noEmployee || me.isError ? (
         <Card>
           <CardContent className="text-muted-foreground flex items-center gap-3 text-sm">
             <UserX className="size-5" />

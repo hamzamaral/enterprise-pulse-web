@@ -10,6 +10,7 @@ import {
   useAttendanceMine,
 } from '@/api/generated/endpoints/attendance/attendance';
 import type { MyAttendanceDto } from '@/api/generated/model';
+import { useMe } from '@/features/auth/use-session';
 import { PageHeader } from '@/shared/components/page-header';
 import { formatDate } from '@/shared/lib/format';
 import { useInvalidate } from '@/shared/lib/query';
@@ -104,7 +105,12 @@ function Stat({ label, value, className }: { label: string; value: string; class
 export function MyAttendancePage() {
   const { t } = useTranslation();
   const [month, setMonth] = useState(currentMonth);
-  const { data, isLoading, isError } = useAttendanceMine({ month }, { query: { retry: false } });
+  const { data: session } = useMe();
+  const noEmployee = !!session && !session.employeeId;
+  const { data, isLoading, isError } = useAttendanceMine(
+    { month },
+    { query: { enabled: !!session?.employeeId, retry: false } },
+  );
   const totals = data?.row.totals;
   const days = (data?.row.days ?? []).filter(
     (day) =>
@@ -116,7 +122,7 @@ export function MyAttendancePage() {
   return (
     <>
       <PageHeader title={t('attendance.myTitle')} description={t('attendance.mySubtitle')} />
-      {isError ? (
+      {noEmployee || isError ? (
         <Card>
           <CardContent className="text-muted-foreground flex items-center gap-3 text-sm">
             <UserX className="size-5" />

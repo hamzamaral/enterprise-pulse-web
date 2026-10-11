@@ -15,4 +15,9 @@ export interface MeResponseDto {
   /** @nullable */
   activeBranchId: string | null;
   permissions: string[];
+  /**
+   * Employee record linked to the user in the active company; enables self-service screens.
+   * @nullable
+   */
+  employeeId: string | null;
 }

@@ -21,6 +21,7 @@ const me = (
   activeCompanyId: 'c1',
   activeBranchId: null,
   permissions,
+  employeeId: null,
 });
 
 describe('hasPermission', () => {

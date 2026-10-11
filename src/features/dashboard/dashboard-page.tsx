@@ -118,7 +118,7 @@ export function DashboardPage() {
     { query: { enabled: can('inventory:read') } },
   );
 
-  const myEmployee = useEmployeesFindMine({ query: { retry: false } });
+  const myEmployee = useEmployeesFindMine({ query: { enabled: !!me?.employeeId } });
   const myBalances = useLeaveBalancesFindAll(
     { employeeId: myEmployee.data?.id, year: new Date().getFullYear() },
     { query: { enabled: myEmployee.isSuccess } },
