@@ -24,23 +24,32 @@ import type {
 import type {
   AssetAssignmentsFindAllParams,
   AssetCategoryDto,
+  AssetCountDetailDto,
+  AssetCountLineDto,
+  AssetCountsFindAllParams,
   AssetDetailDto,
   AssetLocationDto,
+  AssetScanResultDto,
   AssetsFindAllParams,
   AssignAssetDto,
   AssignmentDocumentDto,
   AssignmentDto,
+  CompleteAssetCountDto,
   CompleteMaintenanceDto,
   CreateAssetCategoryDto,
+  CreateAssetCountDto,
   CreateAssetDto,
   CreateAssetLocationDto,
   CreateMaintenanceDto,
   MaintenanceDto,
+  PaginatedAssetCountDto,
   PaginatedAssetDto,
   PaginatedAssignmentDto,
   RetireAssetDto,
   ReturnAssetDto,
+  ScanAssetDto,
   UpdateAssetCategoryDto,
+  UpdateAssetCountLineDto,
   UpdateAssetDto,
   UpdateAssetLocationDto,
 } from '../../model';
@@ -2160,4 +2169,725 @@ export const useAssetAssignmentsAcknowledge = <TError = ErrorType<unknown>, TCon
   TContext
 > => {
   return useMutation(getAssetAssignmentsAcknowledgeMutationOptions(options), queryClient);
+};
+export const assetCountsFindAll = (
+  params: AssetCountsFindAllParams,
+  options?: SecondParameter<typeof apiClient>,
+  signal?: AbortSignal,
+) => {
+  return apiClient<PaginatedAssetCountDto>(
+    { url: `/api/v1/asset-counts`, method: 'GET', params, signal },
+    options,
+  );
+};
+
+export const getAssetCountsFindAllQueryKey = (params?: AssetCountsFindAllParams) => {
+  return [`/api/v1/asset-counts`, ...(params ? [params] : [])] as const;
+};
+
+export const getAssetCountsFindAllQueryOptions = <
+  TData = Awaited<ReturnType<typeof assetCountsFindAll>>,
+  TError = ErrorType<unknown>,
+>(
+  params: AssetCountsFindAllParams,
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindAll>>, TError, TData>>;
+    request?: SecondParameter<typeof apiClient>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getAssetCountsFindAllQueryKey(params);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof assetCountsFindAll>>> = ({ signal }) =>
+    assetCountsFindAll(params, requestOptions, signal);
+
+  return { queryKey, queryFn, ...queryOptions } as UseQueryOptions<
+    Awaited<ReturnType<typeof assetCountsFindAll>>,
+    TError,
+    TData
+  > & { queryKey: DataTag<QueryKey, TData, TError> };
+};
+
+export type AssetCountsFindAllQueryResult = NonNullable<
+  Awaited<ReturnType<typeof assetCountsFindAll>>
+>;
+export type AssetCountsFindAllQueryError = ErrorType<unknown>;
+
+export function useAssetCountsFindAll<
+  TData = Awaited<ReturnType<typeof assetCountsFindAll>>,
+  TError = ErrorType<unknown>,
+>(
+  params: AssetCountsFindAllParams,
+  options: {
+    query: Partial<UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindAll>>, TError, TData>> &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof assetCountsFindAll>>,
+          TError,
+          Awaited<ReturnType<typeof assetCountsFindAll>>
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+export function useAssetCountsFindAll<
+  TData = Awaited<ReturnType<typeof assetCountsFindAll>>,
+  TError = ErrorType<unknown>,
+>(
+  params: AssetCountsFindAllParams,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindAll>>, TError, TData>
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof assetCountsFindAll>>,
+          TError,
+          Awaited<ReturnType<typeof assetCountsFindAll>>
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+export function useAssetCountsFindAll<
+  TData = Awaited<ReturnType<typeof assetCountsFindAll>>,
+  TError = ErrorType<unknown>,
+>(
+  params: AssetCountsFindAllParams,
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindAll>>, TError, TData>>;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+export function useAssetCountsFindAll<
+  TData = Awaited<ReturnType<typeof assetCountsFindAll>>,
+  TError = ErrorType<unknown>,
+>(
+  params: AssetCountsFindAllParams,
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindAll>>, TError, TData>>;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+  const queryOptions = getAssetCountsFindAllQueryOptions(params, options);
+
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<TData, TError> & {
+    queryKey: DataTag<QueryKey, TData, TError>;
+  };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+export const assetCountsCreate = (
+  createAssetCountDto: BodyType<CreateAssetCountDto>,
+  options?: SecondParameter<typeof apiClient>,
+  signal?: AbortSignal,
+) => {
+  return apiClient<AssetCountDetailDto>(
+    {
+      url: `/api/v1/asset-counts`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: createAssetCountDto,
+      signal,
+    },
+    options,
+  );
+};
+
+export const getAssetCountsCreateMutationKey = () => ['assetCountsCreate'] as const;
+
+export const getAssetCountsCreateMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof assetCountsCreate>>,
+    TError,
+    AssetCountsCreateMutationVariables,
+    TContext
+  >;
+  request?: SecondParameter<typeof apiClient>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof assetCountsCreate>>,
+  TError,
+  AssetCountsCreateMutationVariables,
+  TContext
+> => {
+  const mutationKey = getAssetCountsCreateMutationKey();
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof assetCountsCreate>>,
+    AssetCountsCreateMutationVariables
+  > = (props) => {
+    const { data } = props ?? {};
+
+    return assetCountsCreate(data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type AssetCountsCreateMutationResult = NonNullable<
+  Awaited<ReturnType<typeof assetCountsCreate>>
+>;
+export type AssetCountsCreateMutationBody = BodyType<CreateAssetCountDto>;
+export type AssetCountsCreateMutationError = ErrorType<unknown>;
+export type AssetCountsCreateMutationVariables = { data: BodyType<CreateAssetCountDto> };
+
+export const useAssetCountsCreate = <TError = ErrorType<unknown>, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof assetCountsCreate>>,
+      TError,
+      AssetCountsCreateMutationVariables,
+      TContext
+    >;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseMutationResult<
+  Awaited<ReturnType<typeof assetCountsCreate>>,
+  TError,
+  AssetCountsCreateMutationVariables,
+  TContext
+> => {
+  return useMutation(getAssetCountsCreateMutationOptions(options), queryClient);
+};
+export const assetCountsFindOne = (
+  id: string,
+  options?: SecondParameter<typeof apiClient>,
+  signal?: AbortSignal,
+) => {
+  return apiClient<AssetCountDetailDto>(
+    { url: `/api/v1/asset-counts/${id}`, method: 'GET', signal },
+    options,
+  );
+};
+
+export const getAssetCountsFindOneQueryKey = (id: string) => {
+  return [`/api/v1/asset-counts/${id}`] as const;
+};
+
+export const getAssetCountsFindOneQueryOptions = <
+  TData = Awaited<ReturnType<typeof assetCountsFindOne>>,
+  TError = ErrorType<unknown>,
+>(
+  id: string,
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindOne>>, TError, TData>>;
+    request?: SecondParameter<typeof apiClient>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getAssetCountsFindOneQueryKey(id);
+
+  const queryFn: QueryFunction<Awaited<ReturnType<typeof assetCountsFindOne>>> = ({ signal }) =>
+    assetCountsFindOne(id, requestOptions, signal);
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: id !== null && id !== undefined,
+    ...queryOptions,
+  } as UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindOne>>, TError, TData> & {
+    queryKey: DataTag<QueryKey, TData, TError>;
+  };
+};
+
+export type AssetCountsFindOneQueryResult = NonNullable<
+  Awaited<ReturnType<typeof assetCountsFindOne>>
+>;
+export type AssetCountsFindOneQueryError = ErrorType<unknown>;
+
+export function useAssetCountsFindOne<
+  TData = Awaited<ReturnType<typeof assetCountsFindOne>>,
+  TError = ErrorType<unknown>,
+>(
+  id: string,
+  options: {
+    query: Partial<UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindOne>>, TError, TData>> &
+      Pick<
+        DefinedInitialDataOptions<
+          Awaited<ReturnType<typeof assetCountsFindOne>>,
+          TError,
+          Awaited<ReturnType<typeof assetCountsFindOne>>
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): DefinedUseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+export function useAssetCountsFindOne<
+  TData = Awaited<ReturnType<typeof assetCountsFindOne>>,
+  TError = ErrorType<unknown>,
+>(
+  id: string,
+  options?: {
+    query?: Partial<
+      UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindOne>>, TError, TData>
+    > &
+      Pick<
+        UndefinedInitialDataOptions<
+          Awaited<ReturnType<typeof assetCountsFindOne>>,
+          TError,
+          Awaited<ReturnType<typeof assetCountsFindOne>>
+        >,
+        'initialData'
+      >;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+export function useAssetCountsFindOne<
+  TData = Awaited<ReturnType<typeof assetCountsFindOne>>,
+  TError = ErrorType<unknown>,
+>(
+  id: string,
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindOne>>, TError, TData>>;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> };
+
+export function useAssetCountsFindOne<
+  TData = Awaited<ReturnType<typeof assetCountsFindOne>>,
+  TError = ErrorType<unknown>,
+>(
+  id: string,
+  options?: {
+    query?: Partial<UseQueryOptions<Awaited<ReturnType<typeof assetCountsFindOne>>, TError, TData>>;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> } {
+  const queryOptions = getAssetCountsFindOneQueryOptions(id, options);
+
+  const query = useQuery(queryOptions, queryClient) as UseQueryResult<TData, TError> & {
+    queryKey: DataTag<QueryKey, TData, TError>;
+  };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+export const assetCountsScan = (
+  id: string,
+  scanAssetDto: BodyType<ScanAssetDto>,
+  options?: SecondParameter<typeof apiClient>,
+  signal?: AbortSignal,
+) => {
+  return apiClient<AssetScanResultDto>(
+    {
+      url: `/api/v1/asset-counts/${id}/scan`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: scanAssetDto,
+      signal,
+    },
+    options,
+  );
+};
+
+export const getAssetCountsScanMutationKey = () => ['assetCountsScan'] as const;
+
+export const getAssetCountsScanMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof assetCountsScan>>,
+    TError,
+    AssetCountsScanMutationVariables,
+    TContext
+  >;
+  request?: SecondParameter<typeof apiClient>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof assetCountsScan>>,
+  TError,
+  AssetCountsScanMutationVariables,
+  TContext
+> => {
+  const mutationKey = getAssetCountsScanMutationKey();
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof assetCountsScan>>,
+    AssetCountsScanMutationVariables
+  > = (props) => {
+    const { id, data } = props ?? {};
+
+    return assetCountsScan(id, data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type AssetCountsScanMutationResult = NonNullable<
+  Awaited<ReturnType<typeof assetCountsScan>>
+>;
+export type AssetCountsScanMutationBody = BodyType<ScanAssetDto>;
+export type AssetCountsScanMutationError = ErrorType<unknown>;
+export type AssetCountsScanMutationVariables = { id: string; data: BodyType<ScanAssetDto> };
+
+export const useAssetCountsScan = <TError = ErrorType<unknown>, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof assetCountsScan>>,
+      TError,
+      AssetCountsScanMutationVariables,
+      TContext
+    >;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseMutationResult<
+  Awaited<ReturnType<typeof assetCountsScan>>,
+  TError,
+  AssetCountsScanMutationVariables,
+  TContext
+> => {
+  return useMutation(getAssetCountsScanMutationOptions(options), queryClient);
+};
+export const assetCountsUpdateLine = (
+  id: string,
+  lineId: string,
+  updateAssetCountLineDto: BodyType<UpdateAssetCountLineDto>,
+  options?: SecondParameter<typeof apiClient>,
+  signal?: AbortSignal,
+) => {
+  return apiClient<AssetCountLineDto>(
+    {
+      url: `/api/v1/asset-counts/${id}/lines/${lineId}`,
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      data: updateAssetCountLineDto,
+      signal,
+    },
+    options,
+  );
+};
+
+export const getAssetCountsUpdateLineMutationKey = () => ['assetCountsUpdateLine'] as const;
+
+export const getAssetCountsUpdateLineMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof assetCountsUpdateLine>>,
+    TError,
+    AssetCountsUpdateLineMutationVariables,
+    TContext
+  >;
+  request?: SecondParameter<typeof apiClient>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof assetCountsUpdateLine>>,
+  TError,
+  AssetCountsUpdateLineMutationVariables,
+  TContext
+> => {
+  const mutationKey = getAssetCountsUpdateLineMutationKey();
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof assetCountsUpdateLine>>,
+    AssetCountsUpdateLineMutationVariables
+  > = (props) => {
+    const { id, lineId, data } = props ?? {};
+
+    return assetCountsUpdateLine(id, lineId, data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type AssetCountsUpdateLineMutationResult = NonNullable<
+  Awaited<ReturnType<typeof assetCountsUpdateLine>>
+>;
+export type AssetCountsUpdateLineMutationBody = BodyType<UpdateAssetCountLineDto>;
+export type AssetCountsUpdateLineMutationError = ErrorType<unknown>;
+export type AssetCountsUpdateLineMutationVariables = {
+  id: string;
+  lineId: string;
+  data: BodyType<UpdateAssetCountLineDto>;
+};
+
+export const useAssetCountsUpdateLine = <TError = ErrorType<unknown>, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof assetCountsUpdateLine>>,
+      TError,
+      AssetCountsUpdateLineMutationVariables,
+      TContext
+    >;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseMutationResult<
+  Awaited<ReturnType<typeof assetCountsUpdateLine>>,
+  TError,
+  AssetCountsUpdateLineMutationVariables,
+  TContext
+> => {
+  return useMutation(getAssetCountsUpdateLineMutationOptions(options), queryClient);
+};
+export const assetCountsRemoveLine = (
+  id: string,
+  lineId: string,
+  options?: SecondParameter<typeof apiClient>,
+  signal?: AbortSignal,
+) => {
+  return apiClient<void>(
+    { url: `/api/v1/asset-counts/${id}/lines/${lineId}`, method: 'DELETE', signal },
+    options,
+  );
+};
+
+export const getAssetCountsRemoveLineMutationKey = () => ['assetCountsRemoveLine'] as const;
+
+export const getAssetCountsRemoveLineMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof assetCountsRemoveLine>>,
+    TError,
+    AssetCountsRemoveLineMutationVariables,
+    TContext
+  >;
+  request?: SecondParameter<typeof apiClient>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof assetCountsRemoveLine>>,
+  TError,
+  AssetCountsRemoveLineMutationVariables,
+  TContext
+> => {
+  const mutationKey = getAssetCountsRemoveLineMutationKey();
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof assetCountsRemoveLine>>,
+    AssetCountsRemoveLineMutationVariables
+  > = (props) => {
+    const { id, lineId } = props ?? {};
+
+    return assetCountsRemoveLine(id, lineId, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type AssetCountsRemoveLineMutationResult = NonNullable<
+  Awaited<ReturnType<typeof assetCountsRemoveLine>>
+>;
+
+export type AssetCountsRemoveLineMutationError = ErrorType<unknown>;
+export type AssetCountsRemoveLineMutationVariables = { id: string; lineId: string };
+
+export const useAssetCountsRemoveLine = <TError = ErrorType<unknown>, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof assetCountsRemoveLine>>,
+      TError,
+      AssetCountsRemoveLineMutationVariables,
+      TContext
+    >;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseMutationResult<
+  Awaited<ReturnType<typeof assetCountsRemoveLine>>,
+  TError,
+  AssetCountsRemoveLineMutationVariables,
+  TContext
+> => {
+  return useMutation(getAssetCountsRemoveLineMutationOptions(options), queryClient);
+};
+export const assetCountsComplete = (
+  id: string,
+  completeAssetCountDto: BodyType<CompleteAssetCountDto>,
+  options?: SecondParameter<typeof apiClient>,
+  signal?: AbortSignal,
+) => {
+  return apiClient<AssetCountDetailDto>(
+    {
+      url: `/api/v1/asset-counts/${id}/complete`,
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      data: completeAssetCountDto,
+      signal,
+    },
+    options,
+  );
+};
+
+export const getAssetCountsCompleteMutationKey = () => ['assetCountsComplete'] as const;
+
+export const getAssetCountsCompleteMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof assetCountsComplete>>,
+    TError,
+    AssetCountsCompleteMutationVariables,
+    TContext
+  >;
+  request?: SecondParameter<typeof apiClient>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof assetCountsComplete>>,
+  TError,
+  AssetCountsCompleteMutationVariables,
+  TContext
+> => {
+  const mutationKey = getAssetCountsCompleteMutationKey();
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof assetCountsComplete>>,
+    AssetCountsCompleteMutationVariables
+  > = (props) => {
+    const { id, data } = props ?? {};
+
+    return assetCountsComplete(id, data, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type AssetCountsCompleteMutationResult = NonNullable<
+  Awaited<ReturnType<typeof assetCountsComplete>>
+>;
+export type AssetCountsCompleteMutationBody = BodyType<CompleteAssetCountDto>;
+export type AssetCountsCompleteMutationError = ErrorType<unknown>;
+export type AssetCountsCompleteMutationVariables = {
+  id: string;
+  data: BodyType<CompleteAssetCountDto>;
+};
+
+export const useAssetCountsComplete = <TError = ErrorType<unknown>, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof assetCountsComplete>>,
+      TError,
+      AssetCountsCompleteMutationVariables,
+      TContext
+    >;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseMutationResult<
+  Awaited<ReturnType<typeof assetCountsComplete>>,
+  TError,
+  AssetCountsCompleteMutationVariables,
+  TContext
+> => {
+  return useMutation(getAssetCountsCompleteMutationOptions(options), queryClient);
+};
+export const assetCountsCancel = (
+  id: string,
+  options?: SecondParameter<typeof apiClient>,
+  signal?: AbortSignal,
+) => {
+  return apiClient<AssetCountDetailDto>(
+    { url: `/api/v1/asset-counts/${id}/cancel`, method: 'POST', signal },
+    options,
+  );
+};
+
+export const getAssetCountsCancelMutationKey = () => ['assetCountsCancel'] as const;
+
+export const getAssetCountsCancelMutationOptions = <
+  TError = ErrorType<unknown>,
+  TContext = unknown,
+>(options?: {
+  mutation?: UseMutationOptions<
+    Awaited<ReturnType<typeof assetCountsCancel>>,
+    TError,
+    AssetCountsCancelMutationVariables,
+    TContext
+  >;
+  request?: SecondParameter<typeof apiClient>;
+}): UseMutationOptions<
+  Awaited<ReturnType<typeof assetCountsCancel>>,
+  TError,
+  AssetCountsCancelMutationVariables,
+  TContext
+> => {
+  const mutationKey = getAssetCountsCancelMutationKey();
+  const { mutation: mutationOptions, request: requestOptions } = options
+    ? options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey
+      ? options
+      : { ...options, mutation: { ...options.mutation, mutationKey } }
+    : { mutation: { mutationKey }, request: undefined };
+
+  const mutationFn: MutationFunction<
+    Awaited<ReturnType<typeof assetCountsCancel>>,
+    AssetCountsCancelMutationVariables
+  > = (props) => {
+    const { id } = props ?? {};
+
+    return assetCountsCancel(id, requestOptions);
+  };
+
+  return { mutationFn, ...mutationOptions };
+};
+
+export type AssetCountsCancelMutationResult = NonNullable<
+  Awaited<ReturnType<typeof assetCountsCancel>>
+>;
+
+export type AssetCountsCancelMutationError = ErrorType<unknown>;
+export type AssetCountsCancelMutationVariables = { id: string };
+
+export const useAssetCountsCancel = <TError = ErrorType<unknown>, TContext = unknown>(
+  options?: {
+    mutation?: UseMutationOptions<
+      Awaited<ReturnType<typeof assetCountsCancel>>,
+      TError,
+      AssetCountsCancelMutationVariables,
+      TContext
+    >;
+    request?: SecondParameter<typeof apiClient>;
+  },
+  queryClient?: QueryClient,
+): UseMutationResult<
+  Awaited<ReturnType<typeof assetCountsCancel>>,
+  TError,
+  AssetCountsCancelMutationVariables,
+  TContext
+> => {
+  return useMutation(getAssetCountsCancelMutationOptions(options), queryClient);
 };

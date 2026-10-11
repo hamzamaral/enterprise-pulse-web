@@ -10,6 +10,8 @@ export interface StockCountLineDto {
   id: string;
   variantId: string;
   sku: string;
+  /** @nullable */
+  barcode: string | null;
   productName: string;
   /** @nullable */
   variantName: string | null;
