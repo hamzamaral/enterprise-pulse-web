@@ -779,7 +779,9 @@
       "completedNoDifference": "Count completed with no differences",
       "cancelCount": "Cancel count",
       "cancelTitle": "Cancel this count?",
-      "cancelDescription": "The counted quantities will not be posted to stock."
+      "cancelDescription": "The counted quantities will not be posted to stock.",
+      "scanPlaceholder": "Scan a barcode or SKU",
+      "scanNotFound": "{{code}} is not in this count; use \"Add line\" to include it"
     },
     "settings": {
       "title": "Warehouses & categories",
@@ -793,5 +795,10 @@
       "itemCount": "Items",
       "deactivateHint": "A warehouse with stock cannot be deactivated; transfer its stock first."
     }
+  },
+  "scanner": {
+    "title": "Scan with camera",
+    "hint": "Hold the label inside the frame; every code is processed immediately.",
+    "cameraError": "Could not access the camera. Check the browser permission."
   }
 }

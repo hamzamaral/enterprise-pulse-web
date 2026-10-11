@@ -779,7 +779,9 @@
       "completedNoDifference": "Sayım tamamlandı, fark bulunmadı",
       "cancelCount": "Sayımı iptal et",
       "cancelTitle": "Sayım iptal edilsin mi?",
-      "cancelDescription": "Girilen sayım miktarları stoğa işlenmez."
+      "cancelDescription": "Girilen sayım miktarları stoğa işlenmez.",
+      "scanPlaceholder": "Barkod veya stok kodu okutun",
+      "scanNotFound": "{{code}} bu sayımda yok; \"Kalem ekle\" ile ekleyebilirsiniz"
     },
     "settings": {
       "title": "Depo ve Kategoriler",
@@ -793,5 +795,10 @@
       "itemCount": "Kalem",
       "deactivateHint": "Stoğu bulunan depo pasife alınamaz; önce stokları transfer edin."
     }
+  },
+  "scanner": {
+    "title": "Kamerayla okut",
+    "hint": "Etiketi çerçevenin içine tutun; okunan her kod hemen işlenir.",
+    "cameraError": "Kameraya erişilemedi. Tarayıcı iznini kontrol edin."
   }
 }

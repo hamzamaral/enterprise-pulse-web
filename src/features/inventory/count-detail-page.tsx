@@ -1,5 +1,14 @@
 import { Link } from '@tanstack/react-router';
-import { ArrowLeft, Check, CheckCheck, Loader2, Plus, Save, XCircle } from 'lucide-react';
+import {
+  ArrowLeft,
+  Check,
+  CheckCheck,
+  Loader2,
+  Plus,
+  Save,
+  ScanBarcode,
+  XCircle,
+} from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -134,6 +143,8 @@ export function CountDetailPage({ id }: { id: string }) {
   const [edits, setEdits] = useState<Record<string, string>>({});
   const [onlyDifferences, setOnlyDifferences] = useState(false);
   const [addOpen, setAddOpen] = useState(false);
+  const [scanValue, setScanValue] = useState('');
+  const [lastScanned, setLastScanned] = useState<string | null>(null);
 
   const editable = count?.status === 'DRAFT' && can('inventory:count');
   const dirty = Object.keys(edits).length > 0;
@@ -211,6 +222,24 @@ export function CountDetailPage({ id }: { id: string }) {
 
   const setCounted = (lineId: string, value: string) =>
     setEdits((e) => ({ ...e, [lineId]: value }));
+
+  /** Each scan adds one unit; for lot items the first line of that variant is used. */
+  const scan = (code: string) => {
+    const needle = code.trim().toLocaleUpperCase('tr-TR');
+    if (!needle) return;
+    const line = count.lines.find(
+      (l) => l.barcode === code.trim() || l.sku.toLocaleUpperCase('tr-TR') === needle,
+    );
+    if (!line) {
+      toast.error(t('inventory.counts.scanNotFound', { code: code.trim() }));
+      return;
+    }
+    const current = edits[line.id] ?? line.countedQty ?? '';
+    const next = (isValidCount(current) && current !== '' ? toNumber(current) : 0) + 1;
+    setCounted(line.id, String(next));
+    setLastScanned(line.id);
+    setScanValue('');
+  };
 
   return (
     <>
@@ -297,11 +326,32 @@ export function CountDetailPage({ id }: { id: string }) {
         </CardContent>
       </Card>
 
-      <div className="mb-3 flex items-center gap-2">
-        <Switch id="only-diff" checked={onlyDifferences} onCheckedChange={setOnlyDifferences} />
-        <Label htmlFor="only-diff" className="text-sm font-normal">
-          {t('inventory.counts.onlyDifferences')}
-        </Label>
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex items-center gap-2">
+          <Switch id="only-diff" checked={onlyDifferences} onCheckedChange={setOnlyDifferences} />
+          <Label htmlFor="only-diff" className="text-sm font-normal">
+            {t('inventory.counts.onlyDifferences')}
+          </Label>
+        </div>
+        {editable && (
+          <form
+            className="relative w-full sm:w-80"
+            onSubmit={(e) => {
+              e.preventDefault();
+              scan(scanValue);
+            }}
+          >
+            <ScanBarcode className="text-muted-foreground absolute top-1/2 left-2.5 size-4 -translate-y-1/2" />
+            <Input
+              value={scanValue}
+              onChange={(e) => setScanValue(e.target.value)}
+              placeholder={t('inventory.counts.scanPlaceholder')}
+              aria-label={t('inventory.counts.scanPlaceholder')}
+              className="pl-8"
+              autoFocus
+            />
+          </form>
+        )}
       </div>
 
       <Card>
@@ -328,7 +378,10 @@ export function CountDetailPage({ id }: { id: string }) {
                       ? String(toNumber(value) - Number(line.expectedQty))
                       : null;
                   return (
-                    <TableRow key={line.id}>
+                    <TableRow
+                      key={line.id}
+                      className={cn(line.id === lastScanned && 'bg-primary/5')}
+                    >
                       <TableCell>
                         <code className="text-xs">{line.sku}</code>
                       </TableCell>
