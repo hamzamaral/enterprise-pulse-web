@@ -120,17 +120,33 @@ interface ItemPickerProps {
   warehouseId?: string;
   /** Only offer items that are in stock in `warehouseId` (issues, transfers). */
   inStock?: boolean;
+  /** Also offer services (trade documents). */
+  includeServices?: boolean;
+  placeholder?: string;
   className?: string;
 }
 
-/** Searchable stock item (variant) picker backed by `/stock/items`. */
-export function ItemPicker({ value, onChange, warehouseId, inStock, className }: ItemPickerProps) {
+/** Searchable item (variant) picker backed by `/stock/items`. */
+export function ItemPicker({
+  value,
+  onChange,
+  warehouseId,
+  inStock,
+  includeServices,
+  placeholder,
+  className,
+}: ItemPickerProps) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
   const debounced = useDebouncedValue(search, 250);
   const { data, isFetching } = useStockFindItems(
-    { search: debounced || undefined, warehouseId, inStock: inStock || undefined },
+    {
+      search: debounced || undefined,
+      warehouseId,
+      inStock: inStock || undefined,
+      includeServices: includeServices || undefined,
+    },
     { query: { enabled: open } },
   );
 
@@ -149,7 +165,9 @@ export function ItemPicker({ value, onChange, warehouseId, inStock, className }:
               {itemName(value.productName, value.variantName)}
             </span>
           ) : (
-            <span className="text-muted-foreground">{t('inventory.selectItem')}</span>
+            <span className="text-muted-foreground">
+              {placeholder ?? t('inventory.selectItem')}
+            </span>
           )}
           <ChevronsUpDown className="opacity-50" />
         </Button>
@@ -180,7 +198,9 @@ export function ItemPicker({ value, onChange, warehouseId, inStock, className }:
                   <code className="text-muted-foreground text-xs">{item.sku}</code>
                 </div>
                 <span className="text-muted-foreground text-xs tabular-nums">
-                  {formatQuantity(item.onHand, item.unitCode)}
+                  {item.productType === 'SERVICE'
+                    ? t('inventory.types.SERVICE')
+                    : formatQuantity(item.onHand, item.unitCode)}
                 </span>
               </CommandItem>
             ))}

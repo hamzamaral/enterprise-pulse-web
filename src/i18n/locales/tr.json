@@ -54,7 +54,8 @@
       "modules": "Modüller",
       "hr": "İnsan Kaynakları",
       "assets": "Zimmet ve Demirbaş",
-      "inventory": "Stok ve Depo"
+      "inventory": "Stok ve Depo",
+      "finance": "Cari ve Finans"
     },
     "users": "Kullanıcılar",
     "roles": "Roller ve İzinler",
@@ -92,7 +93,8 @@
     "assetCounts": "Demirbaş Sayımı",
     "myAttendance": "Mesaim",
     "timesheet": "Puantaj",
-    "shifts": "Vardiya Planlama"
+    "shifts": "Vardiya Planlama",
+    "partners": "Cari Hesaplar"
   },
   "auth": {
     "login": "Giriş yap",
@@ -213,7 +215,11 @@
       "leave": "İzin",
       "attendance": "Puantaj ve vardiya",
       "assets": "Demirbaş ve zimmet",
-      "inventory": "Stok ve depo"
+      "inventory": "Stok ve depo",
+      "partners": "Cari hesaplar",
+      "purchasing": "Satın alma",
+      "sales": "Satış",
+      "finance": "Finans"
     },
     "actions": {
       "read": "Görüntüle",
@@ -224,7 +230,11 @@
       "send": "Gönder",
       "assign": "Zimmetle",
       "count": "Sayım yap",
-      "move": "Stok hareketi"
+      "move": "Stok hareketi",
+      "approve": "Onaylama",
+      "receive": "Mal kabul",
+      "deliver": "Sevkiyat",
+      "invoice": "Faturalama"
     }
   },
   "organization": {
@@ -945,6 +955,94 @@
       "HOLIDAY": "RT",
       "OFF": "–",
       "UPCOMING": ""
+    }
+  },
+  "partners": {
+    "title": "Cari Hesaplar",
+    "subtitle": "Müşteri ve tedarikçi kartları, bakiyeler ve ekstreler",
+    "new": "Yeni cari",
+    "created": "{{code}} cari kartı oluşturuldu",
+    "titleField": "Unvan",
+    "type": "Cari tipi",
+    "types": {
+      "CUSTOMER": "Müşteri",
+      "SUPPLIER": "Tedarikçi",
+      "BOTH": "Müşteri ve tedarikçi"
+    },
+    "allTypes": "Tüm cariler",
+    "taxNumber": "VKN / TCKN",
+    "taxOffice": "Vergi dairesi",
+    "contactName": "Yetkili kişi",
+    "paymentTermDays": "Vade",
+    "days_one": "{{count}} gün",
+    "days_other": "{{count}} gün",
+    "currency": "Para birimi",
+    "creditLimit": "Kredi limiti",
+    "availableCredit": "Kullanılabilir limit",
+    "unlimited": "Limitsiz",
+    "balance": "Bakiye",
+    "balanceDebit": "(B)",
+    "balanceCredit": "(A)",
+    "account": "Hesap özeti",
+    "codeHint": "Boş bırakılırsa otomatik",
+    "select": "Cari seçin",
+    "search": "Kod, unvan veya VKN ara...",
+    "errors": {
+      "taxNumber": "VKN 10, TCKN 11 haneli olmalıdır"
+    }
+  },
+  "statement": {
+    "title": "Cari ekstre",
+    "dateFrom": "Başlangıç",
+    "dateTo": "Bitiş",
+    "date": "Tarih",
+    "document": "Belge",
+    "documentType": "Belge türü",
+    "dueDate": "Vade",
+    "currency": "Döviz",
+    "debit": "Borç",
+    "credit": "Alacak",
+    "balance": "Bakiye",
+    "opening": "Devreden bakiye",
+    "closing": "Toplam / kapanış bakiyesi",
+    "reversal": "iptal kaydı",
+    "empty": "Bu aralıkta hareket yok.",
+    "print": "Ekstre yazdır",
+    "documentTypes": {
+      "OPENING": "Açılış",
+      "PURCHASE_INVOICE": "Alış faturası",
+      "SALES_INVOICE": "Satış faturası",
+      "SALES_RETURN": "Satış iadesi",
+      "COLLECTION": "Tahsilat",
+      "PAYMENT": "Ödeme"
+    }
+  },
+  "trade": {
+    "partner": "Cari",
+    "lines": "Kalemler",
+    "addLine": "Kalem ekle",
+    "item": "Ürün / hizmet",
+    "itemOptional": "Ürün seçin (isteğe bağlı)",
+    "description": "Açıklama",
+    "quantity": "Miktar",
+    "unitPrice": "Birim fiyat",
+    "estimatedPrice": "Tahmini fiyat",
+    "discountRate": "İskonto %",
+    "vatRate": "KDV %",
+    "discountShort": "İsk. %",
+    "vatShort": "KDV %",
+    "lineTotal": "Tutar",
+    "remaining": "Kalan",
+    "subtotal": "Ara toplam",
+    "discountTotal": "İskonto",
+    "vatTotal": "KDV",
+    "vatAtRate": "KDV %{{rate}}",
+    "grandTotal": "Genel toplam",
+    "baseTotal": "Toplam ({{currency}})",
+    "errors": {
+      "quantity": "Miktar sıfırdan büyük olmalı",
+      "maxQuantity": "Kalan miktarı aşıyor",
+      "percent": "0 ile 100 arasında olmalı"
     }
   }
 }

@@ -13,6 +13,7 @@ import {
   ClipboardCheck,
   ClipboardList,
   Clock,
+  Contact,
   FileClock,
   GitBranch,
   Inbox,
@@ -162,6 +163,12 @@ export const NAVIGATION: NavGroup[] = [
         icon: Warehouse,
         permission: 'inventory:update',
       },
+    ],
+  },
+  {
+    labelKey: 'nav.groups.finance',
+    items: [
+      { to: '/partners', labelKey: 'nav.partners', icon: Contact, permission: 'partners:read' },
     ],
   },
   {

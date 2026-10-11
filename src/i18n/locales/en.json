@@ -54,7 +54,8 @@
       "modules": "Modules",
       "hr": "Human Resources",
       "assets": "Assets",
-      "inventory": "Inventory"
+      "inventory": "Inventory",
+      "finance": "Accounts & Finance"
     },
     "users": "Users",
     "roles": "Roles & Permissions",
@@ -92,7 +93,8 @@
     "assetCounts": "Asset Counts",
     "myAttendance": "My Attendance",
     "timesheet": "Timesheet",
-    "shifts": "Shift Planning"
+    "shifts": "Shift Planning",
+    "partners": "Partners"
   },
   "auth": {
     "login": "Sign in",
@@ -213,7 +215,11 @@
       "leave": "Leave",
       "attendance": "Attendance and shifts",
       "assets": "Assets",
-      "inventory": "Inventory"
+      "inventory": "Inventory",
+      "partners": "Partners",
+      "purchasing": "Purchasing",
+      "sales": "Sales",
+      "finance": "Finance"
     },
     "actions": {
       "read": "Read",
@@ -224,7 +230,11 @@
       "send": "Send",
       "assign": "Assign",
       "count": "Count",
-      "move": "Stock movement"
+      "move": "Stock movement",
+      "approve": "Approve",
+      "receive": "Receive goods",
+      "deliver": "Deliver",
+      "invoice": "Invoice"
     }
   },
   "organization": {
@@ -945,6 +955,94 @@
       "HOLIDAY": "PH",
       "OFF": "–",
       "UPCOMING": ""
+    }
+  },
+  "partners": {
+    "title": "Partners",
+    "subtitle": "Customer and supplier accounts, balances and statements",
+    "new": "New partner",
+    "created": "Partner {{code}} created",
+    "titleField": "Title",
+    "type": "Partner type",
+    "types": {
+      "CUSTOMER": "Customer",
+      "SUPPLIER": "Supplier",
+      "BOTH": "Customer & supplier"
+    },
+    "allTypes": "All partners",
+    "taxNumber": "Tax ID",
+    "taxOffice": "Tax office",
+    "contactName": "Contact person",
+    "paymentTermDays": "Payment term",
+    "days_one": "{{count}} day",
+    "days_other": "{{count}} days",
+    "currency": "Currency",
+    "creditLimit": "Credit limit",
+    "availableCredit": "Available credit",
+    "unlimited": "Unlimited",
+    "balance": "Balance",
+    "balanceDebit": "(Dr)",
+    "balanceCredit": "(Cr)",
+    "account": "Account summary",
+    "codeHint": "Generated when empty",
+    "select": "Select partner",
+    "search": "Search code, title or tax ID...",
+    "errors": {
+      "taxNumber": "Tax ID must have 10 or 11 digits"
+    }
+  },
+  "statement": {
+    "title": "Account statement",
+    "dateFrom": "From",
+    "dateTo": "To",
+    "date": "Date",
+    "document": "Document",
+    "documentType": "Document type",
+    "dueDate": "Due date",
+    "currency": "Currency",
+    "debit": "Debit",
+    "credit": "Credit",
+    "balance": "Balance",
+    "opening": "Opening balance",
+    "closing": "Totals / closing balance",
+    "reversal": "reversal",
+    "empty": "No entries in this period.",
+    "print": "Print statement",
+    "documentTypes": {
+      "OPENING": "Opening",
+      "PURCHASE_INVOICE": "Purchase invoice",
+      "SALES_INVOICE": "Sales invoice",
+      "SALES_RETURN": "Sales return",
+      "COLLECTION": "Collection",
+      "PAYMENT": "Payment"
+    }
+  },
+  "trade": {
+    "partner": "Partner",
+    "lines": "Lines",
+    "addLine": "Add line",
+    "item": "Product / service",
+    "itemOptional": "Select product (optional)",
+    "description": "Description",
+    "quantity": "Quantity",
+    "unitPrice": "Unit price",
+    "estimatedPrice": "Estimated price",
+    "discountRate": "Discount %",
+    "vatRate": "VAT %",
+    "discountShort": "Disc. %",
+    "vatShort": "VAT %",
+    "lineTotal": "Amount",
+    "remaining": "Remaining",
+    "subtotal": "Subtotal",
+    "discountTotal": "Discount",
+    "vatTotal": "VAT",
+    "vatAtRate": "VAT {{rate}}%",
+    "grandTotal": "Grand total",
+    "baseTotal": "Total ({{currency}})",
+    "errors": {
+      "quantity": "Quantity must be greater than zero",
+      "maxQuantity": "Exceeds the remaining quantity",
+      "percent": "Must be between 0 and 100"
     }
   }
 }

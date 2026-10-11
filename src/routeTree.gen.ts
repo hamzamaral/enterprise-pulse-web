@@ -38,6 +38,8 @@ import { Route as AppHrShiftsRouteImport } from './routes/_app/hr/shifts'
 import { Route as AppHrTimesheetRouteImport } from './routes/_app/hr/timesheet'
 import { Route as AppInventoryIndexRouteImport } from './routes/_app/inventory/index'
 import { Route as AppInventorySettingsRouteImport } from './routes/_app/inventory/settings'
+import { Route as AppPartnersIndexRouteImport } from './routes/_app/partners/index'
+import { Route as AppPartnersIdRouteImport } from './routes/_app/partners/$id'
 import { Route as AppWorkflowDefinitionsRouteImport } from './routes/_app/workflow/definitions'
 import { Route as AppWorkflowInboxRouteImport } from './routes/_app/workflow/inbox'
 import { Route as AppAssetsAssignmentsIndexRouteImport } from './routes/_app/assets/assignments/index'
@@ -200,6 +202,16 @@ const AppInventorySettingsRoute = AppInventorySettingsRouteImport.update({
   path: '/inventory/settings',
   getParentRoute: () => AppRoute,
 } as any)
+const AppPartnersIndexRoute = AppPartnersIndexRouteImport.update({
+  id: '/partners/',
+  path: '/partners/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPartnersIdRoute = AppPartnersIdRouteImport.update({
+  id: '/partners/$id',
+  path: '/partners/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppWorkflowDefinitionsRoute = AppWorkflowDefinitionsRouteImport.update({
   id: '/workflow/definitions',
   path: '/workflow/definitions',
@@ -318,10 +330,12 @@ export interface FileRoutesByFullPath {
   '/hr/shifts': typeof AppHrShiftsRoute
   '/hr/timesheet': typeof AppHrTimesheetRoute
   '/inventory/settings': typeof AppInventorySettingsRoute
+  '/partners/$id': typeof AppPartnersIdRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
   '/assets/': typeof AppAssetsIndexRoute
   '/inventory/': typeof AppInventoryIndexRoute
+  '/partners/': typeof AppPartnersIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/hr/employees/$id': typeof AppHrEmployeesIdRoute
@@ -365,10 +379,12 @@ export interface FileRoutesByTo {
   '/hr/shifts': typeof AppHrShiftsRoute
   '/hr/timesheet': typeof AppHrTimesheetRoute
   '/inventory/settings': typeof AppInventorySettingsRoute
+  '/partners/$id': typeof AppPartnersIdRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
   '/assets': typeof AppAssetsIndexRoute
   '/inventory': typeof AppInventoryIndexRoute
+  '/partners': typeof AppPartnersIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/hr/employees/$id': typeof AppHrEmployeesIdRoute
@@ -414,10 +430,12 @@ export interface FileRoutesById {
   '/_app/hr/shifts': typeof AppHrShiftsRoute
   '/_app/hr/timesheet': typeof AppHrTimesheetRoute
   '/_app/inventory/settings': typeof AppInventorySettingsRoute
+  '/_app/partners/$id': typeof AppPartnersIdRoute
   '/_app/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/_app/workflow/inbox': typeof AppWorkflowInboxRoute
   '/_app/assets/': typeof AppAssetsIndexRoute
   '/_app/inventory/': typeof AppInventoryIndexRoute
+  '/_app/partners/': typeof AppPartnersIndexRoute
   '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/_app/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/_app/hr/employees/$id': typeof AppHrEmployeesIdRoute
@@ -463,10 +481,12 @@ export interface FileRouteTypes {
     | '/hr/shifts'
     | '/hr/timesheet'
     | '/inventory/settings'
+    | '/partners/$id'
     | '/workflow/definitions'
     | '/workflow/inbox'
     | '/assets/'
     | '/inventory/'
+    | '/partners/'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
     | '/hr/employees/$id'
@@ -510,10 +530,12 @@ export interface FileRouteTypes {
     | '/hr/shifts'
     | '/hr/timesheet'
     | '/inventory/settings'
+    | '/partners/$id'
     | '/workflow/definitions'
     | '/workflow/inbox'
     | '/assets'
     | '/inventory'
+    | '/partners'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
     | '/hr/employees/$id'
@@ -558,10 +580,12 @@ export interface FileRouteTypes {
     | '/_app/hr/shifts'
     | '/_app/hr/timesheet'
     | '/_app/inventory/settings'
+    | '/_app/partners/$id'
     | '/_app/workflow/definitions'
     | '/_app/workflow/inbox'
     | '/_app/assets/'
     | '/_app/inventory/'
+    | '/_app/partners/'
     | '/_app/assets/assignments/$id'
     | '/_app/assets/counts/$id'
     | '/_app/hr/employees/$id'
@@ -791,6 +815,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppInventorySettingsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/partners/': {
+      id: '/_app/partners/'
+      path: '/partners'
+      fullPath: '/partners/'
+      preLoaderRoute: typeof AppPartnersIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/partners/$id': {
+      id: '/_app/partners/$id'
+      path: '/partners/$id'
+      fullPath: '/partners/$id'
+      preLoaderRoute: typeof AppPartnersIdRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/workflow/definitions': {
       id: '/_app/workflow/definitions'
       path: '/workflow/definitions'
@@ -937,10 +975,12 @@ interface AppRouteChildren {
   AppHrShiftsRoute: typeof AppHrShiftsRoute
   AppHrTimesheetRoute: typeof AppHrTimesheetRoute
   AppInventorySettingsRoute: typeof AppInventorySettingsRoute
+  AppPartnersIdRoute: typeof AppPartnersIdRoute
   AppWorkflowDefinitionsRoute: typeof AppWorkflowDefinitionsRoute
   AppWorkflowInboxRoute: typeof AppWorkflowInboxRoute
   AppAssetsIndexRoute: typeof AppAssetsIndexRoute
   AppInventoryIndexRoute: typeof AppInventoryIndexRoute
+  AppPartnersIndexRoute: typeof AppPartnersIndexRoute
   AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
   AppAssetsCountsIdRoute: typeof AppAssetsCountsIdRoute
   AppHrEmployeesIdRoute: typeof AppHrEmployeesIdRoute
@@ -982,10 +1022,12 @@ const AppRouteChildren: AppRouteChildren = {
   AppHrShiftsRoute: AppHrShiftsRoute,
   AppHrTimesheetRoute: AppHrTimesheetRoute,
   AppInventorySettingsRoute: AppInventorySettingsRoute,
+  AppPartnersIdRoute: AppPartnersIdRoute,
   AppWorkflowDefinitionsRoute: AppWorkflowDefinitionsRoute,
   AppWorkflowInboxRoute: AppWorkflowInboxRoute,
   AppAssetsIndexRoute: AppAssetsIndexRoute,
   AppInventoryIndexRoute: AppInventoryIndexRoute,
+  AppPartnersIndexRoute: AppPartnersIndexRoute,
   AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
   AppAssetsCountsIdRoute: AppAssetsCountsIdRoute,
   AppHrEmployeesIdRoute: AppHrEmployeesIdRoute,

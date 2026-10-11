@@ -19,4 +19,8 @@ export type StockFindItemsParams = {
    * Only items with stock in `warehouseId` (e.g. for issues and transfers).
    */
   inStock?: boolean;
+  /**
+   * Also offer services (purchase and sales documents).
+   */
+  includeServices?: boolean;
 };

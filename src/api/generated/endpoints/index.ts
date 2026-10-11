@@ -12,6 +12,7 @@ export * from './inventory/inventory';
 export * from './leave/leave';
 export * from './notifications/notifications';
 export * from './numbering/numbering';
+export * from './partners/partners';
 export * from './positions/positions';
 export * from './roles/roles';
 export * from './settings/settings';

@@ -5,9 +5,11 @@
  * Modular ERP backend. Send `Authorization: Bearer <accessToken>` and optionally `x-company-id` / `x-branch-id` to select the active company and branch.
  * OpenAPI spec version: 1.0
  */
+import type { ProductType } from './productType';
 import type { TrackingType } from './trackingType';
 
 export interface StockItemDto {
+  productType: ProductType;
   trackingType: TrackingType;
   variantId: string;
   productId: string;
@@ -18,4 +20,14 @@ export interface StockItemDto {
   unitCode: string;
   averageCost: string;
   onHand: string;
+  /** @nullable */
+  purchasePrice: string | null;
+  /** @nullable */
+  salePrice: string | null;
+  priceCurrency: string;
+  /**
+   * VAT percentage of the product's tax rate; null when none is set.
+   * @nullable
+   */
+  vatRate: string | null;
 }
