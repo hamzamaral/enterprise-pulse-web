@@ -1,0 +1,16 @@
+---
+description: Internationalisation rules (Turkish default, English) with typed i18next keys
+globs: src/**/*.tsx,src/i18n/**
+alwaysApply: false
+---
+
+# i18n
+
+- Languages: `tr` (default, fallback) and `en`. Files: `src/i18n/locales/tr.json`, `en.json`.
+- Keys are typed (`src/i18n/i18next.d.ts` uses `tr.json` as the resource type): a missing key is a type error.
+- **Every new key is added to both files in the same change**, grouped by module: `assets.title`, `assets.assign`, `assets.status.ASSIGNED`.
+- Reuse `common.*` (save, cancel, edit, delete, status, active…) and `validation.*` instead of duplicating.
+- Enum values from the API are translated with a nested object: `t(\`workflow.status.${status}\`)`.
+- Interpolation: `t('dashboard.welcome', { name })`; plurals via i18next `_one` / `_other` suffixes.
+- Dates via `formatDate` / `formatDateTime` / `formatRelative` (date-fns, locale follows the UI language). Numbers and money via `Intl.NumberFormat(i18n.language, …)`.
+- No string concatenation for sentences; put the whole sentence in the translation.

@@ -1,0 +1,40 @@
+---
+description: UI component, page layout and styling conventions (shadcn/ui, Tailwind 4, DataTable)
+globs: src/**/*.tsx
+alwaysApply: false
+---
+
+# Components and pages
+
+## Page anatomy
+
+Every list page follows the same pattern (see `features/organization/branches-page.tsx`):
+
+```tsx
+<PageHeader title={t('x.title')} description={t('x.subtitle')} actions={<Can permission="x:create">…</Can>} />
+<DataTable columns={columns} data={data?.data} meta={data?.meta} isLoading={isLoading} state={table} onExport={…} />
+<SimpleFormDialog … />   // or a dedicated form dialog for complex forms
+```
+
+- `useTableState()` holds page/size/sort/search and produces the query params; pass `{ query: tableQuery }` to keep the previous page visible while loading.
+- Columns are memoised with `useMemo<ColumnDef<Dto, unknown>[]>` and depend on `t`.
+- Excel export uses `exportToExcel(fileName, columns, rows)` with `fetchAllPages` so it exports all filtered rows, not just the visible page.
+- Destructive actions use `ConfirmDialog`; status values use `ToneBadge` / `ActiveBadge` / domain badges (`WorkflowStatusBadge`).
+- Detail pages: back link, `PageHeader` with a status badge, two-column grid (`lg:grid-cols-3`) of `Card`s.
+
+## shadcn/ui
+
+- Add primitives with `pnpm dlx shadcn@latest add <name>`; they land in `src/shared/ui`. After adding, make sure imports use `@/shared/lib/utils` for `cn`.
+- Do not fork primitives for one screen; compose them in `shared/components` or the feature folder.
+
+## Styling
+
+- Tailwind utility classes only; merge conditional classes with `cn()`.
+- Use theme tokens (`bg-muted`, `text-muted-foreground`, `bg-primary`) so light/dark mode keeps working; avoid raw hex colours.
+- Icons from `lucide-react`; buttons with an icon put the icon first (`<Plus /> {label}`).
+- Responsive by default: grids collapse to one column on mobile, tables scroll horizontally.
+
+## Accessibility
+
+- Icon-only buttons need `aria-label`.
+- Form controls are always wrapped in `FormItem` + `FormLabel` so labels are associated (E2E tests rely on `getByLabel`).

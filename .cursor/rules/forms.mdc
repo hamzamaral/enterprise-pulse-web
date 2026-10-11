@@ -1,0 +1,21 @@
+---
+description: Form conventions with React Hook Form, zod schemas and translated validation messages
+globs: src/features/**/*.tsx,src/shared/components/**/*.tsx,src/shared/lib/validation.ts
+alwaysApply: false
+---
+
+# Forms
+
+- React Hook Form + `zodResolver` + shadcn `Form` components (`FormField` → `FormItem` → `FormLabel` / `FormControl` / `FormMessage`).
+- Zod messages are **i18n keys** (`'validation.required'`); `FormMessage` translates them. Use the helpers in `shared/lib/validation.ts` (`v.requiredString()`, `v.email()`, `v.password()`, `v.code()`, `v.otp()`).
+- Numbers from inputs: `z.coerce.number({ invalid_type_error: 'validation.number' })`.
+- Optional text fields: keep them as strings in the form and convert `''` to `undefined` before sending.
+- Always `noValidate` on `<form>` so browser validation does not bypass zod.
+- Disable the submit button and show `<Loader2 className="animate-spin" />` while the mutation is pending.
+- Reset the form when a dialog opens with new defaults (`useEffect` on `open`).
+
+## Which form component
+
+- Flat reference data (code/name/active, a few inputs): `SimpleFormDialog` with a `fields` config.
+- Selects, arrays (`useFieldArray`), dependent fields or more than ~8 inputs: a dedicated dialog or page in the feature folder (see `user-form-dialog.tsx`, `workflow/definitions-page.tsx`).
+- Document forms (purchase order, invoice) with line items: a full page with a line table built on `useFieldArray`, totals computed with decimal-safe helpers, never floats for persisted values.

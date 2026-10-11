@@ -1,0 +1,45 @@
+---
+description: Data fetching with Orval-generated TanStack Query hooks, cache invalidation and realtime updates
+globs: src/features/**/*.tsx,src/features/**/*.ts,src/api/**,src/shared/lib/query.ts
+alwaysApply: false
+---
+
+# Data fetching
+
+## Generated client
+
+- Hooks are generated from the API's OpenAPI document by Orval (`orval.config.ts`, tags-split mode):
+  `src/api/generated/endpoints/<tag>/<tag>.ts` + `src/api/generated/model/*`.
+- Regenerate with `pnpm api:generate` whenever the API contract changes; never edit generated files.
+- Naming follows the API `operationId`: `usersFindAll` → `useUsersFindAll`, `getUsersFindAllQueryKey`.
+
+## Queries
+
+```ts
+const { data, isLoading } = useUsersFindAll(table.params, { query: tableQuery });
+const { data: roles } = useRolesFindAll({ pageSize: 100 }, { query: { enabled: open } });
+```
+
+- Use `enabled` to defer queries for closed dialogs or missing permissions.
+- Session data comes from `useMe()` (`features/auth/use-session.ts`); do not call `useAuthMe` directly in pages.
+
+## Mutations
+
+```ts
+const update = useUsersUpdate();
+update.mutate({ id, data }, { onSuccess: async () => { toast.success(t('common.saved')); await invalidate(getUsersFindAllQueryKey()); } });
+```
+
+- Variables are `{ data }` or `{ id, data }` exactly as generated.
+- After success invalidate the affected list/detail keys with `useInvalidate()`; invalidate `getAuthMeQueryKey()` when companies, branches or the current user change.
+- Errors are shown globally by the `MutationCache` toast (`app/query-client.ts`) using `getErrorMessage`; only handle errors locally when the UI needs to react (e.g. field errors).
+
+## HTTP layer (`src/api/http.ts`)
+
+- Adds `Authorization`, `x-company-id`, `x-branch-id`, `Accept-Language`.
+- On 401 performs a single-flight refresh (`/api/v1/auth/refresh`, httpOnly cookie) and retries once.
+- `VITE_API_URL` is the API **origin**; generated paths already start with `/api/v1`.
+
+## Realtime
+
+- `useNotificationSocket()` connects to the `/ws` namespace with the access token and invalidates notification queries on `notification` events. New realtime features add events there instead of polling.

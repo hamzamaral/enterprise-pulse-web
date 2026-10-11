@@ -1,0 +1,28 @@
+---
+description: Unit (Vitest + Testing Library) and E2E (Playwright) testing conventions
+globs: src/**/*.test.ts,src/**/*.test.tsx,e2e/**/*.ts
+alwaysApply: false
+---
+
+# Testing
+
+## Unit / component tests – Vitest (`pnpm test`)
+
+- File next to the code: `format.test.ts`, `status-badge.test.tsx`. Environment: jsdom, globals enabled, setup in `src/test/setup.ts` (jest-dom matchers, i18n).
+- Test pure helpers (validation, formatting, permission checks) and small components through what the user sees: `screen.getByRole`, `getByText`, `user-event`.
+- Mock the network at the HTTP level (MSW) rather than mocking generated hooks.
+
+## E2E – Playwright (`pnpm e2e`)
+
+- Specs in `e2e/*.spec.ts`; they run against the real API (docker compose + `pnpm start:dev` in the api repo) and the Vite dev server started by `playwright.config.ts`.
+- Use the seeded demo accounts via the login page's demo buttons (Admin / Müdür / Personel).
+- Locate by role and label in **Turkish** (default UI language): `getByRole('button', { name: 'Giriş yap' })`, `getByLabel('E-posta')`.
+- Do not rely on mutable seed state across tests; tests that create data use unique codes (`E2E-${Date.now()}`) and must not depend on each other.
+- Wrong-password tests use an unknown e-mail so demo accounts never reach the lockout threshold.
+
+## Definition of done for a new screen
+
+1. `pnpm typecheck`, `pnpm lint`, `pnpm test` green.
+2. Keys in `tr.json` and `en.json`.
+3. Permission-gated actions hidden for users without the permission.
+4. At least one Playwright scenario for the main flow of a new module.
