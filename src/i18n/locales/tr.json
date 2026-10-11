@@ -49,7 +49,8 @@
       "organization": "Organizasyon",
       "workflow": "Onay Süreçleri",
       "system": "Sistem",
-      "modules": "Modüller"
+      "modules": "Modüller",
+      "hr": "İnsan Kaynakları"
     },
     "users": "Kullanıcılar",
     "roles": "Roller ve İzinler",
@@ -68,7 +69,14 @@
     "inventory": "Stok ve Depo",
     "purchasing": "Satın Alma",
     "sales": "Satış",
-    "finance": "Finans"
+    "finance": "Finans",
+    "employees": "Personel",
+    "orgChart": "Organizasyon Şeması",
+    "departments": "Departmanlar",
+    "positions": "Pozisyonlar",
+    "myLeave": "İzinlerim",
+    "leaveRequests": "İzin Talepleri",
+    "leaveSettings": "İzin Ayarları"
   },
   "auth": {
     "login": "Giriş yap",
@@ -101,7 +109,9 @@
     "code": "Yalnızca büyük harf, rakam ve tire kullanın",
     "otp": "6 haneli kod girin",
     "min": "En az {{count}} karakter",
-    "number": "Geçerli bir sayı girin"
+    "number": "Geçerli bir sayı girin",
+    "nationalId": "11 haneli geçerli bir TC kimlik no girin",
+    "dateRange": "Bitiş tarihi başlangıçtan önce olamaz"
   },
   "layout": {
     "company": "Şirket",
@@ -309,5 +319,128 @@
     "forbidden": "Bu sayfayı görüntüleme yetkiniz yok",
     "generic": "Bir hata oluştu",
     "goHome": "Ana sayfaya dön"
+  },
+  "employees": {
+    "title": "Personel",
+    "subtitle": "Personel kayıtları, organizasyon bilgileri ve özlük bilgileri",
+    "new": "Yeni personel",
+    "edit": "Personeli düzenle",
+    "employeeNo": "Sicil no",
+    "fullName": "Ad soyad",
+    "firstName": "Ad",
+    "lastName": "Soyad",
+    "nationalId": "TC kimlik no",
+    "birthDate": "Doğum tarihi",
+    "gender": "Cinsiyet",
+    "hireDate": "İşe giriş",
+    "terminationDate": "Çıkış tarihi",
+    "terminationReason": "Çıkış nedeni",
+    "employmentType": "Çalışma şekli",
+    "department": "Departman",
+    "position": "Pozisyon",
+    "branch": "Şube",
+    "manager": "Yönetici",
+    "user": "Sistem kullanıcısı",
+    "userHint": "Personel, bağlı kullanıcı ile izin talebi gibi self-servis işlemleri yapar.",
+    "emergencyContactName": "Acil durum kişisi",
+    "emergencyContactPhone": "Acil durum telefonu",
+    "reports": "Ekibi",
+    "noReports": "Doğrudan bağlı personel yok.",
+    "terminate": "İşten çıkış",
+    "terminateTitle": "İşten çıkış kaydı",
+    "terminated": "Çıkış kaydedildi",
+    "personal": "Kişisel bilgiler",
+    "employment": "İstihdam bilgileri",
+    "contact": "İletişim",
+    "allDepartments": "Tüm departmanlar",
+    "overview": "Genel bakış",
+    "leave": "İzinler",
+    "status": {
+      "ACTIVE": "Aktif",
+      "TERMINATED": "Ayrıldı"
+    },
+    "employmentTypes": {
+      "FULL_TIME": "Tam zamanlı",
+      "PART_TIME": "Yarı zamanlı",
+      "CONTRACT": "Sözleşmeli",
+      "INTERN": "Stajyer"
+    },
+    "genders": {
+      "MALE": "Erkek",
+      "FEMALE": "Kadın",
+      "OTHER": "Diğer"
+    }
+  },
+  "departments": {
+    "title": "Departmanlar",
+    "subtitle": "Hiyerarşik departman yapısı ve departman yöneticileri",
+    "new": "Yeni departman",
+    "parent": "Üst departman",
+    "manager": "Yönetici",
+    "employeeCount": "Personel"
+  },
+  "positions": {
+    "title": "Pozisyonlar",
+    "subtitle": "Unvan ve kadro tanımları",
+    "new": "Yeni pozisyon",
+    "department": "Departman",
+    "employeeCount": "Personel"
+  },
+  "orgChart": {
+    "title": "Organizasyon Şeması",
+    "subtitle": "Yönetici ilişkilerine göre raporlama hiyerarşisi",
+    "empty": "Henüz personel kaydı yok.",
+    "reports": "{{count}} kişi"
+  },
+  "leave": {
+    "myTitle": "İzinlerim",
+    "mySubtitle": "İzin bakiyeleriniz ve talepleriniz",
+    "requestsTitle": "İzin Talepleri",
+    "requestsSubtitle": "Şirket genelindeki tüm izin talepleri",
+    "settingsTitle": "İzin Ayarları",
+    "settingsSubtitle": "İzin türleri, yıllık bakiyeler ve resmi tatiller",
+    "newRequest": "Yeni izin talebi",
+    "type": "İzin türü",
+    "startDate": "Başlangıç",
+    "endDate": "Bitiş",
+    "days": "Gün",
+    "daysValue": "{{count}} gün",
+    "reason": "Açıklama",
+    "employee": "Personel",
+    "number": "Talep no",
+    "workingDays": "{{count}} iş günü (hafta sonu ve resmi tatiller hariç)",
+    "cancel": "İptal et",
+    "cancelTitle": "İzin talebi iptal edilsin mi?",
+    "cancelDescription": "Onaylanmış izinlerde kullanılan gün bakiyeye iade edilir.",
+    "cancelled": "Talep iptal edildi",
+    "created": "İzin talebi oluşturuldu",
+    "viewApproval": "Onay sürecini gör",
+    "noEmployee": "Hesabınıza bağlı bir personel kaydı yok. İK biriminizle iletişime geçin.",
+    "balances": "Bakiyeler",
+    "entitled": "Hak edilen",
+    "used": "Kullanılan",
+    "pending": "Onay bekleyen",
+    "remaining": "Kalan",
+    "noBalances": "Bu yıl için tanımlı bakiye yok.",
+    "types": "İzin türleri",
+    "newType": "Yeni izin türü",
+    "defaultDays": "Yıllık gün",
+    "isPaid": "Ücretli",
+    "unpaid": "Ücretsiz",
+    "requiresBalance": "Bakiyeden düşer",
+    "color": "Renk",
+    "holidays": "Resmi tatiller",
+    "newHoliday": "Yeni tatil",
+    "date": "Tarih",
+    "year": "Yıl",
+    "accrue": "Eksik bakiyeleri oluştur",
+    "accrued": "{{count}} bakiye oluşturuldu",
+    "editBalance": "Bakiye düzenle",
+    "status": {
+      "PENDING": "Onay bekliyor",
+      "APPROVED": "Onaylandı",
+      "REJECTED": "Reddedildi",
+      "CANCELLED": "İptal edildi"
+    }
   }
 }

@@ -1,6 +1,11 @@
 import {
   Boxes,
+  BriefcaseBusiness,
+  Building,
   Building2,
+  CalendarCheck,
+  CalendarCog,
+  CalendarDays,
   ClipboardCheck,
   FileClock,
   GitBranch,
@@ -8,6 +13,7 @@ import {
   LayoutDashboard,
   type LucideIcon,
   MapPin,
+  Network,
   PackageCheck,
   Settings,
   ShieldCheck,
@@ -43,9 +49,45 @@ export const NAVIGATION: NavGroup[] = [
     ],
   },
   {
+    labelKey: 'nav.groups.hr',
+    items: [
+      { to: '/hr/my-leave', labelKey: 'nav.myLeave', icon: CalendarDays },
+      { to: '/hr/org-chart', labelKey: 'nav.orgChart', icon: Network },
+      {
+        to: '/hr/employees',
+        labelKey: 'nav.employees',
+        icon: UsersRound,
+        permission: 'employees:read',
+      },
+      {
+        to: '/hr/departments',
+        labelKey: 'nav.departments',
+        icon: Building,
+        permission: 'departments:read',
+      },
+      {
+        to: '/hr/positions',
+        labelKey: 'nav.positions',
+        icon: BriefcaseBusiness,
+        permission: 'positions:read',
+      },
+      {
+        to: '/hr/leave-requests',
+        labelKey: 'nav.leaveRequests',
+        icon: CalendarCheck,
+        permission: 'leave:read',
+      },
+      {
+        to: '/hr/leave-settings',
+        labelKey: 'nav.leaveSettings',
+        icon: CalendarCog,
+        permission: 'leave:update',
+      },
+    ],
+  },
+  {
     labelKey: 'nav.groups.modules',
     items: [
-      { labelKey: 'nav.hr', icon: UsersRound, comingSoon: true },
       { labelKey: 'nav.assets', icon: PackageCheck, comingSoon: true },
       { labelKey: 'nav.inventory', icon: Boxes, comingSoon: true },
       { labelKey: 'nav.purchasing', icon: ShoppingCart, comingSoon: true },

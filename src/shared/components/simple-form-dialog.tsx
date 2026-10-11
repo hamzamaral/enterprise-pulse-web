@@ -15,17 +15,30 @@ import { Button } from '@/shared/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/shared/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/shared/ui/form';
 import { Input } from '@/shared/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select';
 import { Switch } from '@/shared/ui/switch';
+import { Textarea } from '@/shared/ui/textarea';
+
+export interface SelectOption {
+  value: string;
+  label: string;
+}
 
 export interface FieldConfig<T extends FieldValues> {
   name: Path<T>;
   label: string;
-  type?: 'text' | 'email' | 'number' | 'date' | 'switch';
+  type?: 'text' | 'email' | 'number' | 'date' | 'color' | 'switch' | 'select' | 'textarea';
   placeholder?: string;
   /** Spans both columns of the two-column grid. */
   wide?: boolean;
   disabled?: boolean;
+  /** For `select`; an empty choice ("—") is offered unless `required` is set. */
+  options?: SelectOption[];
+  required?: boolean;
 }
+
+/** Radix Select cannot use "" as an item value, so the empty choice is mapped to this sentinel. */
+const EMPTY = '__empty__';
 
 interface SimpleFormDialogProps<T extends FieldValues> {
   open: boolean;
@@ -82,11 +95,52 @@ export function SimpleFormDialog<T extends FieldValues>({
                         </FormControl>
                         <FormLabel className="!mt-0">{config.label}</FormLabel>
                       </FormItem>
+                    ) : config.type === 'select' ? (
+                      <FormItem className={cn(config.wide && 'sm:col-span-2')}>
+                        <FormLabel>{config.label}</FormLabel>
+                        <Select
+                          value={(field.value as string | null | undefined) || EMPTY}
+                          onValueChange={(value) => field.onChange(value === EMPTY ? '' : value)}
+                          disabled={config.disabled}
+                        >
+                          <FormControl>
+                            <SelectTrigger className="w-full">
+                              <SelectValue placeholder={config.placeholder} />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            {!config.required && (
+                              <SelectItem value={EMPTY}>{t('common.none')}</SelectItem>
+                            )}
+                            {config.options?.map((option) => (
+                              <SelectItem key={option.value} value={option.value}>
+                                {option.label}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    ) : config.type === 'textarea' ? (
+                      <FormItem className={cn(config.wide && 'sm:col-span-2')}>
+                        <FormLabel>{config.label}</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            rows={3}
+                            placeholder={config.placeholder}
+                            disabled={config.disabled}
+                            {...field}
+                            value={(field.value as string | undefined) ?? ''}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
                     ) : (
                       <FormItem className={cn(config.wide && 'sm:col-span-2')}>
                         <FormLabel>{config.label}</FormLabel>
                         <FormControl>
                           <Input
+                            className={cn(config.type === 'color' && 'h-9 w-20 p-1')}
                             type={config.type ?? 'text'}
                             placeholder={config.placeholder}
                             disabled={config.disabled}

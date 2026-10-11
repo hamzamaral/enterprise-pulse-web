@@ -23,8 +23,16 @@ import { Route as AppProfileRouteImport } from './routes/_app/profile'
 import { Route as AppRolesRouteImport } from './routes/_app/roles'
 import { Route as AppSettingsRouteImport } from './routes/_app/settings'
 import { Route as AppUsersRouteImport } from './routes/_app/users'
+import { Route as AppHrDepartmentsRouteImport } from './routes/_app/hr/departments'
+import { Route as AppHrLeaveRequestsRouteImport } from './routes/_app/hr/leave-requests'
+import { Route as AppHrLeaveSettingsRouteImport } from './routes/_app/hr/leave-settings'
+import { Route as AppHrMyLeaveRouteImport } from './routes/_app/hr/my-leave'
+import { Route as AppHrOrgChartRouteImport } from './routes/_app/hr/org-chart'
+import { Route as AppHrPositionsRouteImport } from './routes/_app/hr/positions'
 import { Route as AppWorkflowDefinitionsRouteImport } from './routes/_app/workflow/definitions'
 import { Route as AppWorkflowInboxRouteImport } from './routes/_app/workflow/inbox'
+import { Route as AppHrEmployeesIndexRouteImport } from './routes/_app/hr/employees/index'
+import { Route as AppHrEmployeesIdRouteImport } from './routes/_app/hr/employees/$id'
 import { Route as AppWorkflowInstancesIndexRouteImport } from './routes/_app/workflow/instances/index'
 import { Route as AppWorkflowInstancesIdRouteImport } from './routes/_app/workflow/instances/$id'
 
@@ -97,6 +105,36 @@ const AppUsersRoute = AppUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AppRoute,
 } as any)
+const AppHrDepartmentsRoute = AppHrDepartmentsRouteImport.update({
+  id: '/hr/departments',
+  path: '/hr/departments',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHrLeaveRequestsRoute = AppHrLeaveRequestsRouteImport.update({
+  id: '/hr/leave-requests',
+  path: '/hr/leave-requests',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHrLeaveSettingsRoute = AppHrLeaveSettingsRouteImport.update({
+  id: '/hr/leave-settings',
+  path: '/hr/leave-settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHrMyLeaveRoute = AppHrMyLeaveRouteImport.update({
+  id: '/hr/my-leave',
+  path: '/hr/my-leave',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHrOrgChartRoute = AppHrOrgChartRouteImport.update({
+  id: '/hr/org-chart',
+  path: '/hr/org-chart',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHrPositionsRoute = AppHrPositionsRouteImport.update({
+  id: '/hr/positions',
+  path: '/hr/positions',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppWorkflowDefinitionsRoute = AppWorkflowDefinitionsRouteImport.update({
   id: '/workflow/definitions',
   path: '/workflow/definitions',
@@ -105,6 +143,16 @@ const AppWorkflowDefinitionsRoute = AppWorkflowDefinitionsRouteImport.update({
 const AppWorkflowInboxRoute = AppWorkflowInboxRouteImport.update({
   id: '/workflow/inbox',
   path: '/workflow/inbox',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHrEmployeesIndexRoute = AppHrEmployeesIndexRouteImport.update({
+  id: '/hr/employees/',
+  path: '/hr/employees/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHrEmployeesIdRoute = AppHrEmployeesIdRouteImport.update({
+  id: '/hr/employees/$id',
+  path: '/hr/employees/$id',
   getParentRoute: () => AppRoute,
 } as any)
 const AppWorkflowInstancesIndexRoute =
@@ -133,9 +181,17 @@ export interface FileRoutesByFullPath {
   '/roles': typeof AppRolesRoute
   '/settings': typeof AppSettingsRoute
   '/users': typeof AppUsersRoute
+  '/hr/departments': typeof AppHrDepartmentsRoute
+  '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
+  '/hr/leave-settings': typeof AppHrLeaveSettingsRoute
+  '/hr/my-leave': typeof AppHrMyLeaveRoute
+  '/hr/org-chart': typeof AppHrOrgChartRoute
+  '/hr/positions': typeof AppHrPositionsRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
+  '/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
+  '/hr/employees/': typeof AppHrEmployeesIndexRoute
   '/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -152,9 +208,17 @@ export interface FileRoutesByTo {
   '/settings': typeof AppSettingsRoute
   '/users': typeof AppUsersRoute
   '/': typeof AppIndexRoute
+  '/hr/departments': typeof AppHrDepartmentsRoute
+  '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
+  '/hr/leave-settings': typeof AppHrLeaveSettingsRoute
+  '/hr/my-leave': typeof AppHrMyLeaveRoute
+  '/hr/org-chart': typeof AppHrOrgChartRoute
+  '/hr/positions': typeof AppHrPositionsRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
+  '/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
+  '/hr/employees': typeof AppHrEmployeesIndexRoute
   '/workflow/instances': typeof AppWorkflowInstancesIndexRoute
 }
 export interface FileRoutesById {
@@ -173,9 +237,17 @@ export interface FileRoutesById {
   '/_app/settings': typeof AppSettingsRoute
   '/_app/users': typeof AppUsersRoute
   '/_app/': typeof AppIndexRoute
+  '/_app/hr/departments': typeof AppHrDepartmentsRoute
+  '/_app/hr/leave-requests': typeof AppHrLeaveRequestsRoute
+  '/_app/hr/leave-settings': typeof AppHrLeaveSettingsRoute
+  '/_app/hr/my-leave': typeof AppHrMyLeaveRoute
+  '/_app/hr/org-chart': typeof AppHrOrgChartRoute
+  '/_app/hr/positions': typeof AppHrPositionsRoute
   '/_app/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/_app/workflow/inbox': typeof AppWorkflowInboxRoute
+  '/_app/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/_app/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
+  '/_app/hr/employees/': typeof AppHrEmployeesIndexRoute
   '/_app/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
 }
 export interface FileRouteTypes {
@@ -194,9 +266,17 @@ export interface FileRouteTypes {
     | '/roles'
     | '/settings'
     | '/users'
+    | '/hr/departments'
+    | '/hr/leave-requests'
+    | '/hr/leave-settings'
+    | '/hr/my-leave'
+    | '/hr/org-chart'
+    | '/hr/positions'
     | '/workflow/definitions'
     | '/workflow/inbox'
+    | '/hr/employees/$id'
     | '/workflow/instances/$id'
+    | '/hr/employees/'
     | '/workflow/instances/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -213,9 +293,17 @@ export interface FileRouteTypes {
     | '/settings'
     | '/users'
     | '/'
+    | '/hr/departments'
+    | '/hr/leave-requests'
+    | '/hr/leave-settings'
+    | '/hr/my-leave'
+    | '/hr/org-chart'
+    | '/hr/positions'
     | '/workflow/definitions'
     | '/workflow/inbox'
+    | '/hr/employees/$id'
     | '/workflow/instances/$id'
+    | '/hr/employees'
     | '/workflow/instances'
   id:
     | '__root__'
@@ -233,9 +321,17 @@ export interface FileRouteTypes {
     | '/_app/settings'
     | '/_app/users'
     | '/_app/'
+    | '/_app/hr/departments'
+    | '/_app/hr/leave-requests'
+    | '/_app/hr/leave-settings'
+    | '/_app/hr/my-leave'
+    | '/_app/hr/org-chart'
+    | '/_app/hr/positions'
     | '/_app/workflow/definitions'
     | '/_app/workflow/inbox'
+    | '/_app/hr/employees/$id'
     | '/_app/workflow/instances/$id'
+    | '/_app/hr/employees/'
     | '/_app/workflow/instances/'
   fileRoutesById: FileRoutesById
 }
@@ -346,6 +442,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppUsersRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/hr/departments': {
+      id: '/_app/hr/departments'
+      path: '/hr/departments'
+      fullPath: '/hr/departments'
+      preLoaderRoute: typeof AppHrDepartmentsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hr/leave-requests': {
+      id: '/_app/hr/leave-requests'
+      path: '/hr/leave-requests'
+      fullPath: '/hr/leave-requests'
+      preLoaderRoute: typeof AppHrLeaveRequestsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hr/leave-settings': {
+      id: '/_app/hr/leave-settings'
+      path: '/hr/leave-settings'
+      fullPath: '/hr/leave-settings'
+      preLoaderRoute: typeof AppHrLeaveSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hr/my-leave': {
+      id: '/_app/hr/my-leave'
+      path: '/hr/my-leave'
+      fullPath: '/hr/my-leave'
+      preLoaderRoute: typeof AppHrMyLeaveRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hr/org-chart': {
+      id: '/_app/hr/org-chart'
+      path: '/hr/org-chart'
+      fullPath: '/hr/org-chart'
+      preLoaderRoute: typeof AppHrOrgChartRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hr/positions': {
+      id: '/_app/hr/positions'
+      path: '/hr/positions'
+      fullPath: '/hr/positions'
+      preLoaderRoute: typeof AppHrPositionsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/workflow/definitions': {
       id: '/_app/workflow/definitions'
       path: '/workflow/definitions'
@@ -358,6 +496,20 @@ declare module '@tanstack/react-router' {
       path: '/workflow/inbox'
       fullPath: '/workflow/inbox'
       preLoaderRoute: typeof AppWorkflowInboxRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hr/employees/': {
+      id: '/_app/hr/employees/'
+      path: '/hr/employees'
+      fullPath: '/hr/employees/'
+      preLoaderRoute: typeof AppHrEmployeesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hr/employees/$id': {
+      id: '/_app/hr/employees/$id'
+      path: '/hr/employees/$id'
+      fullPath: '/hr/employees/$id'
+      preLoaderRoute: typeof AppHrEmployeesIdRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/workflow/instances/': {
@@ -388,9 +540,17 @@ interface AppRouteChildren {
   AppSettingsRoute: typeof AppSettingsRoute
   AppUsersRoute: typeof AppUsersRoute
   AppIndexRoute: typeof AppIndexRoute
+  AppHrDepartmentsRoute: typeof AppHrDepartmentsRoute
+  AppHrLeaveRequestsRoute: typeof AppHrLeaveRequestsRoute
+  AppHrLeaveSettingsRoute: typeof AppHrLeaveSettingsRoute
+  AppHrMyLeaveRoute: typeof AppHrMyLeaveRoute
+  AppHrOrgChartRoute: typeof AppHrOrgChartRoute
+  AppHrPositionsRoute: typeof AppHrPositionsRoute
   AppWorkflowDefinitionsRoute: typeof AppWorkflowDefinitionsRoute
   AppWorkflowInboxRoute: typeof AppWorkflowInboxRoute
+  AppHrEmployeesIdRoute: typeof AppHrEmployeesIdRoute
   AppWorkflowInstancesIdRoute: typeof AppWorkflowInstancesIdRoute
+  AppHrEmployeesIndexRoute: typeof AppHrEmployeesIndexRoute
   AppWorkflowInstancesIndexRoute: typeof AppWorkflowInstancesIndexRoute
 }
 
@@ -405,9 +565,17 @@ const AppRouteChildren: AppRouteChildren = {
   AppSettingsRoute: AppSettingsRoute,
   AppUsersRoute: AppUsersRoute,
   AppIndexRoute: AppIndexRoute,
+  AppHrDepartmentsRoute: AppHrDepartmentsRoute,
+  AppHrLeaveRequestsRoute: AppHrLeaveRequestsRoute,
+  AppHrLeaveSettingsRoute: AppHrLeaveSettingsRoute,
+  AppHrMyLeaveRoute: AppHrMyLeaveRoute,
+  AppHrOrgChartRoute: AppHrOrgChartRoute,
+  AppHrPositionsRoute: AppHrPositionsRoute,
   AppWorkflowDefinitionsRoute: AppWorkflowDefinitionsRoute,
   AppWorkflowInboxRoute: AppWorkflowInboxRoute,
+  AppHrEmployeesIdRoute: AppHrEmployeesIdRoute,
   AppWorkflowInstancesIdRoute: AppWorkflowInstancesIdRoute,
+  AppHrEmployeesIndexRoute: AppHrEmployeesIndexRoute,
   AppWorkflowInstancesIndexRoute: AppWorkflowInstancesIndexRoute,
 }
 
