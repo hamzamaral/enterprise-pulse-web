@@ -89,7 +89,10 @@
     "stockMovements": "Stock movements",
     "stockCounts": "Stock counts",
     "inventorySettings": "Warehouses & categories",
-    "assetCounts": "Asset Counts"
+    "assetCounts": "Asset Counts",
+    "myAttendance": "My Attendance",
+    "timesheet": "Timesheet",
+    "shifts": "Shift Planning"
   },
   "auth": {
     "login": "Sign in",
@@ -203,7 +206,14 @@
       "numbering": "Numbering",
       "settings": "Settings",
       "workflow": "Workflows",
-      "notifications": "Notifications"
+      "notifications": "Notifications",
+      "departments": "Departments",
+      "positions": "Positions",
+      "employees": "Employees",
+      "leave": "Leave",
+      "attendance": "Attendance and shifts",
+      "assets": "Assets",
+      "inventory": "Inventory"
     },
     "actions": {
       "read": "Read",
@@ -211,7 +221,10 @@
       "update": "Update",
       "delete": "Delete",
       "start": "Start",
-      "send": "Send"
+      "send": "Send",
+      "assign": "Assign",
+      "count": "Count",
+      "move": "Stock movement"
     }
   },
   "organization": {
@@ -828,6 +841,8 @@
       "categoryFilter": "Category (optional)",
       "onlyDifferences": "Differences only",
       "matchExpected": "Use system quantity",
+      "scanPlaceholder": "Scan a barcode or SKU",
+      "scanNotFound": "{{code}} is not in this count; use \"Add line\" to include it",
       "addLine": "Add line",
       "addLineHint": "Add items found on the shelf that are not on the sheet.",
       "serialNotCounted": "Serial-tracked items are not counted by quantity.",
@@ -838,9 +853,7 @@
       "completedNoDifference": "Count completed with no differences",
       "cancelCount": "Cancel count",
       "cancelTitle": "Cancel this count?",
-      "cancelDescription": "The counted quantities will not be posted to stock.",
-      "scanPlaceholder": "Scan a barcode or SKU",
-      "scanNotFound": "{{code}} is not in this count; use \"Add line\" to include it"
+      "cancelDescription": "The counted quantities will not be posted to stock."
     },
     "settings": {
       "title": "Warehouses & categories",
@@ -859,5 +872,79 @@
     "title": "Scan with camera",
     "hint": "Hold the label inside the frame; every code is processed immediately.",
     "cameraError": "Could not access the camera. Check the browser permission."
+  },
+  "attendance": {
+    "myTitle": "My Attendance",
+    "mySubtitle": "Your check-ins and monthly working summary",
+    "timesheetTitle": "Timesheet",
+    "timesheetSubtitle": "Monthly attendance calculated from shift plans, check-ins, leave and public holidays",
+    "timesheetFile": "timesheet",
+    "shiftsTitle": "Shift Planning",
+    "shiftsSubtitle": "Shift definitions and the weekly roster of employees",
+    "weeklyPlan": "Weekly roster",
+    "shiftDefinitions": "Shift definitions",
+    "newShift": "New shift",
+    "shiftHint": "An end time before the start means the shift ends the next day (night shift).",
+    "startTime": "Start",
+    "endTime": "End",
+    "breakMinutes": "Break",
+    "netWork": "Net working time",
+    "hours": "Hours",
+    "nextDay": "next day",
+    "standard": "Standard (09:00–18:00)",
+    "weekendOff": "Weekend",
+    "dayOff": "Day off",
+    "planHint": "Days without a plan follow the standard schedule: weekdays 09:00–18:00, weekends off.",
+    "thisWeek": "This week",
+    "previousWeek": "Previous week",
+    "nextWeek": "Next week",
+    "copyPreviousWeek": "Copy previous week",
+    "weekCopied": "Previous week's roster copied",
+    "month": "Month",
+    "monthSummary": "Monthly summary",
+    "employees": "Employees",
+    "planned": "Planned",
+    "actual": "Actual",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "doCheckIn": "Check in",
+    "doCheckOut": "Check out",
+    "checkedIn": "Check-in recorded",
+    "checkedOut": "Check-out recorded",
+    "worked": "Worked",
+    "overtime": "Overtime",
+    "late": "Late",
+    "lateShort": "Late",
+    "absentShort": "Abs.",
+    "min": "min",
+    "plannedDays": "Planned days",
+    "presentDays": "Days present",
+    "lateDays": "Late days",
+    "absentDays": "Absent days",
+    "leaveDays": "Leave days",
+    "plannedHours": "Planned hours",
+    "workedHours": "Worked hours",
+    "overtimeHours": "Overtime",
+    "editHint": "Clearing both times removes the record.",
+    "status": {
+      "PRESENT": "Present",
+      "LATE": "Late",
+      "ABSENT": "Absent",
+      "INCOMPLETE": "No check-out",
+      "LEAVE": "On leave",
+      "HOLIDAY": "Public holiday",
+      "OFF": "Day off",
+      "UPCOMING": "Upcoming"
+    },
+    "short": {
+      "PRESENT": "✓",
+      "LATE": "L",
+      "ABSENT": "A",
+      "INCOMPLETE": "•",
+      "LEAVE": "V",
+      "HOLIDAY": "PH",
+      "OFF": "–",
+      "UPCOMING": ""
+    }
   }
 }

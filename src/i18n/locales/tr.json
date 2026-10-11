@@ -89,7 +89,10 @@
     "stockMovements": "Stok Hareketleri",
     "stockCounts": "Stok Sayımı",
     "inventorySettings": "Depo ve Kategoriler",
-    "assetCounts": "Demirbaş Sayımı"
+    "assetCounts": "Demirbaş Sayımı",
+    "myAttendance": "Mesaim",
+    "timesheet": "Puantaj",
+    "shifts": "Vardiya Planlama"
   },
   "auth": {
     "login": "Giriş yap",
@@ -203,7 +206,14 @@
       "numbering": "Numaralandırma",
       "settings": "Ayarlar",
       "workflow": "Onay akışları",
-      "notifications": "Bildirimler"
+      "notifications": "Bildirimler",
+      "departments": "Departmanlar",
+      "positions": "Pozisyonlar",
+      "employees": "Personel",
+      "leave": "İzin",
+      "attendance": "Puantaj ve vardiya",
+      "assets": "Demirbaş ve zimmet",
+      "inventory": "Stok ve depo"
     },
     "actions": {
       "read": "Görüntüle",
@@ -211,7 +221,10 @@
       "update": "Güncelle",
       "delete": "Sil",
       "start": "Başlat",
-      "send": "Gönder"
+      "send": "Gönder",
+      "assign": "Zimmetle",
+      "count": "Sayım yap",
+      "move": "Stok hareketi"
     }
   },
   "organization": {
@@ -828,6 +841,8 @@
       "categoryFilter": "Kategori (opsiyonel)",
       "onlyDifferences": "Yalnızca farklı olanlar",
       "matchExpected": "Sistem miktarını yaz",
+      "scanPlaceholder": "Barkod veya stok kodu okutun",
+      "scanNotFound": "{{code}} bu sayımda yok; \"Kalem ekle\" ile ekleyebilirsiniz",
       "addLine": "Kalem ekle",
       "addLineHint": "Listede olmayan ancak rafta bulunan ürünleri ekleyin.",
       "serialNotCounted": "Seri takipli ürünler miktar ile sayılmaz.",
@@ -838,9 +853,7 @@
       "completedNoDifference": "Sayım tamamlandı, fark bulunmadı",
       "cancelCount": "Sayımı iptal et",
       "cancelTitle": "Sayım iptal edilsin mi?",
-      "cancelDescription": "Girilen sayım miktarları stoğa işlenmez.",
-      "scanPlaceholder": "Barkod veya stok kodu okutun",
-      "scanNotFound": "{{code}} bu sayımda yok; \"Kalem ekle\" ile ekleyebilirsiniz"
+      "cancelDescription": "Girilen sayım miktarları stoğa işlenmez."
     },
     "settings": {
       "title": "Depo ve Kategoriler",
@@ -859,5 +872,79 @@
     "title": "Kamerayla okut",
     "hint": "Etiketi çerçevenin içine tutun; okunan her kod hemen işlenir.",
     "cameraError": "Kameraya erişilemedi. Tarayıcı iznini kontrol edin."
+  },
+  "attendance": {
+    "myTitle": "Mesaim",
+    "mySubtitle": "Giriş-çıkış kaydınız ve aylık çalışma özetiniz",
+    "timesheetTitle": "Puantaj",
+    "timesheetSubtitle": "Vardiya planı, giriş-çıkışlar, izinler ve resmi tatillerden hesaplanan aylık devam çizelgesi",
+    "timesheetFile": "puantaj",
+    "shiftsTitle": "Vardiya Planlama",
+    "shiftsSubtitle": "Vardiya tanımları ve personelin haftalık çalışma planı",
+    "weeklyPlan": "Haftalık plan",
+    "shiftDefinitions": "Vardiya tanımları",
+    "newShift": "Yeni vardiya",
+    "shiftHint": "Bitiş saati başlangıçtan önceyse vardiya ertesi gün biter (gece vardiyası).",
+    "startTime": "Başlangıç",
+    "endTime": "Bitiş",
+    "breakMinutes": "Mola",
+    "netWork": "Net çalışma",
+    "hours": "Saatler",
+    "nextDay": "ertesi gün",
+    "standard": "Standart (09:00–18:00)",
+    "weekendOff": "Hafta tatili",
+    "dayOff": "İzinli / tatil",
+    "planHint": "Plan girilmeyen günlerde hafta içi 09:00–18:00 standart mesai uygulanır, hafta sonu tatildir.",
+    "thisWeek": "Bu hafta",
+    "previousWeek": "Önceki hafta",
+    "nextWeek": "Sonraki hafta",
+    "copyPreviousWeek": "Önceki haftayı kopyala",
+    "weekCopied": "Önceki haftanın planı kopyalandı",
+    "month": "Ay",
+    "monthSummary": "Aylık özet",
+    "employees": "Personel",
+    "planned": "Plan",
+    "actual": "Gerçekleşen",
+    "checkIn": "Giriş",
+    "checkOut": "Çıkış",
+    "doCheckIn": "Giriş yap",
+    "doCheckOut": "Çıkış yap",
+    "checkedIn": "Giriş kaydedildi",
+    "checkedOut": "Çıkış kaydedildi",
+    "worked": "Çalışılan",
+    "overtime": "Fazla mesai",
+    "late": "Geç kalma",
+    "lateShort": "Geç",
+    "absentShort": "Dev.",
+    "min": "dk",
+    "plannedDays": "Planlı gün",
+    "presentDays": "Gelinen gün",
+    "lateDays": "Geç kalınan gün",
+    "absentDays": "Devamsız gün",
+    "leaveDays": "İzinli gün",
+    "plannedHours": "Planlı saat",
+    "workedHours": "Çalışılan saat",
+    "overtimeHours": "Fazla mesai",
+    "editHint": "Saatleri boş bırakmak kaydı siler.",
+    "status": {
+      "PRESENT": "Geldi",
+      "LATE": "Geç geldi",
+      "ABSENT": "Devamsız",
+      "INCOMPLETE": "Çıkış yok",
+      "LEAVE": "İzinli",
+      "HOLIDAY": "Resmi tatil",
+      "OFF": "Tatil",
+      "UPCOMING": "Bekleniyor"
+    },
+    "short": {
+      "PRESENT": "✓",
+      "LATE": "G",
+      "ABSENT": "D",
+      "INCOMPLETE": "•",
+      "LEAVE": "İ",
+      "HOLIDAY": "RT",
+      "OFF": "–",
+      "UPCOMING": ""
+    }
   }
 }

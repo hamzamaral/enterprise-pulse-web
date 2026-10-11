@@ -30,9 +30,12 @@ import { Route as AppAssetsSettingsRouteImport } from './routes/_app/assets/sett
 import { Route as AppHrDepartmentsRouteImport } from './routes/_app/hr/departments'
 import { Route as AppHrLeaveRequestsRouteImport } from './routes/_app/hr/leave-requests'
 import { Route as AppHrLeaveSettingsRouteImport } from './routes/_app/hr/leave-settings'
+import { Route as AppHrMyAttendanceRouteImport } from './routes/_app/hr/my-attendance'
 import { Route as AppHrMyLeaveRouteImport } from './routes/_app/hr/my-leave'
 import { Route as AppHrOrgChartRouteImport } from './routes/_app/hr/org-chart'
 import { Route as AppHrPositionsRouteImport } from './routes/_app/hr/positions'
+import { Route as AppHrShiftsRouteImport } from './routes/_app/hr/shifts'
+import { Route as AppHrTimesheetRouteImport } from './routes/_app/hr/timesheet'
 import { Route as AppInventoryIndexRouteImport } from './routes/_app/inventory/index'
 import { Route as AppInventorySettingsRouteImport } from './routes/_app/inventory/settings'
 import { Route as AppWorkflowDefinitionsRouteImport } from './routes/_app/workflow/definitions'
@@ -157,6 +160,11 @@ const AppHrLeaveSettingsRoute = AppHrLeaveSettingsRouteImport.update({
   path: '/hr/leave-settings',
   getParentRoute: () => AppRoute,
 } as any)
+const AppHrMyAttendanceRoute = AppHrMyAttendanceRouteImport.update({
+  id: '/hr/my-attendance',
+  path: '/hr/my-attendance',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppHrMyLeaveRoute = AppHrMyLeaveRouteImport.update({
   id: '/hr/my-leave',
   path: '/hr/my-leave',
@@ -170,6 +178,16 @@ const AppHrOrgChartRoute = AppHrOrgChartRouteImport.update({
 const AppHrPositionsRoute = AppHrPositionsRouteImport.update({
   id: '/hr/positions',
   path: '/hr/positions',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHrShiftsRoute = AppHrShiftsRouteImport.update({
+  id: '/hr/shifts',
+  path: '/hr/shifts',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHrTimesheetRoute = AppHrTimesheetRouteImport.update({
+  id: '/hr/timesheet',
+  path: '/hr/timesheet',
   getParentRoute: () => AppRoute,
 } as any)
 const AppInventoryIndexRoute = AppInventoryIndexRouteImport.update({
@@ -293,9 +311,12 @@ export interface FileRoutesByFullPath {
   '/hr/departments': typeof AppHrDepartmentsRoute
   '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/hr/leave-settings': typeof AppHrLeaveSettingsRoute
+  '/hr/my-attendance': typeof AppHrMyAttendanceRoute
   '/hr/my-leave': typeof AppHrMyLeaveRoute
   '/hr/org-chart': typeof AppHrOrgChartRoute
   '/hr/positions': typeof AppHrPositionsRoute
+  '/hr/shifts': typeof AppHrShiftsRoute
+  '/hr/timesheet': typeof AppHrTimesheetRoute
   '/inventory/settings': typeof AppInventorySettingsRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
@@ -337,9 +358,12 @@ export interface FileRoutesByTo {
   '/hr/departments': typeof AppHrDepartmentsRoute
   '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/hr/leave-settings': typeof AppHrLeaveSettingsRoute
+  '/hr/my-attendance': typeof AppHrMyAttendanceRoute
   '/hr/my-leave': typeof AppHrMyLeaveRoute
   '/hr/org-chart': typeof AppHrOrgChartRoute
   '/hr/positions': typeof AppHrPositionsRoute
+  '/hr/shifts': typeof AppHrShiftsRoute
+  '/hr/timesheet': typeof AppHrTimesheetRoute
   '/inventory/settings': typeof AppInventorySettingsRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
@@ -383,9 +407,12 @@ export interface FileRoutesById {
   '/_app/hr/departments': typeof AppHrDepartmentsRoute
   '/_app/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/_app/hr/leave-settings': typeof AppHrLeaveSettingsRoute
+  '/_app/hr/my-attendance': typeof AppHrMyAttendanceRoute
   '/_app/hr/my-leave': typeof AppHrMyLeaveRoute
   '/_app/hr/org-chart': typeof AppHrOrgChartRoute
   '/_app/hr/positions': typeof AppHrPositionsRoute
+  '/_app/hr/shifts': typeof AppHrShiftsRoute
+  '/_app/hr/timesheet': typeof AppHrTimesheetRoute
   '/_app/inventory/settings': typeof AppInventorySettingsRoute
   '/_app/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/_app/workflow/inbox': typeof AppWorkflowInboxRoute
@@ -429,9 +456,12 @@ export interface FileRouteTypes {
     | '/hr/departments'
     | '/hr/leave-requests'
     | '/hr/leave-settings'
+    | '/hr/my-attendance'
     | '/hr/my-leave'
     | '/hr/org-chart'
     | '/hr/positions'
+    | '/hr/shifts'
+    | '/hr/timesheet'
     | '/inventory/settings'
     | '/workflow/definitions'
     | '/workflow/inbox'
@@ -473,9 +503,12 @@ export interface FileRouteTypes {
     | '/hr/departments'
     | '/hr/leave-requests'
     | '/hr/leave-settings'
+    | '/hr/my-attendance'
     | '/hr/my-leave'
     | '/hr/org-chart'
     | '/hr/positions'
+    | '/hr/shifts'
+    | '/hr/timesheet'
     | '/inventory/settings'
     | '/workflow/definitions'
     | '/workflow/inbox'
@@ -518,9 +551,12 @@ export interface FileRouteTypes {
     | '/_app/hr/departments'
     | '/_app/hr/leave-requests'
     | '/_app/hr/leave-settings'
+    | '/_app/hr/my-attendance'
     | '/_app/hr/my-leave'
     | '/_app/hr/org-chart'
     | '/_app/hr/positions'
+    | '/_app/hr/shifts'
+    | '/_app/hr/timesheet'
     | '/_app/inventory/settings'
     | '/_app/workflow/definitions'
     | '/_app/workflow/inbox'
@@ -699,6 +735,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppHrLeaveSettingsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/hr/my-attendance': {
+      id: '/_app/hr/my-attendance'
+      path: '/hr/my-attendance'
+      fullPath: '/hr/my-attendance'
+      preLoaderRoute: typeof AppHrMyAttendanceRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/hr/my-leave': {
       id: '/_app/hr/my-leave'
       path: '/hr/my-leave'
@@ -718,6 +761,20 @@ declare module '@tanstack/react-router' {
       path: '/hr/positions'
       fullPath: '/hr/positions'
       preLoaderRoute: typeof AppHrPositionsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hr/shifts': {
+      id: '/_app/hr/shifts'
+      path: '/hr/shifts'
+      fullPath: '/hr/shifts'
+      preLoaderRoute: typeof AppHrShiftsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/hr/timesheet': {
+      id: '/_app/hr/timesheet'
+      path: '/hr/timesheet'
+      fullPath: '/hr/timesheet'
+      preLoaderRoute: typeof AppHrTimesheetRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/inventory/': {
@@ -873,9 +930,12 @@ interface AppRouteChildren {
   AppHrDepartmentsRoute: typeof AppHrDepartmentsRoute
   AppHrLeaveRequestsRoute: typeof AppHrLeaveRequestsRoute
   AppHrLeaveSettingsRoute: typeof AppHrLeaveSettingsRoute
+  AppHrMyAttendanceRoute: typeof AppHrMyAttendanceRoute
   AppHrMyLeaveRoute: typeof AppHrMyLeaveRoute
   AppHrOrgChartRoute: typeof AppHrOrgChartRoute
   AppHrPositionsRoute: typeof AppHrPositionsRoute
+  AppHrShiftsRoute: typeof AppHrShiftsRoute
+  AppHrTimesheetRoute: typeof AppHrTimesheetRoute
   AppInventorySettingsRoute: typeof AppInventorySettingsRoute
   AppWorkflowDefinitionsRoute: typeof AppWorkflowDefinitionsRoute
   AppWorkflowInboxRoute: typeof AppWorkflowInboxRoute
@@ -915,9 +975,12 @@ const AppRouteChildren: AppRouteChildren = {
   AppHrDepartmentsRoute: AppHrDepartmentsRoute,
   AppHrLeaveRequestsRoute: AppHrLeaveRequestsRoute,
   AppHrLeaveSettingsRoute: AppHrLeaveSettingsRoute,
+  AppHrMyAttendanceRoute: AppHrMyAttendanceRoute,
   AppHrMyLeaveRoute: AppHrMyLeaveRoute,
   AppHrOrgChartRoute: AppHrOrgChartRoute,
   AppHrPositionsRoute: AppHrPositionsRoute,
+  AppHrShiftsRoute: AppHrShiftsRoute,
+  AppHrTimesheetRoute: AppHrTimesheetRoute,
   AppInventorySettingsRoute: AppInventorySettingsRoute,
   AppWorkflowDefinitionsRoute: AppWorkflowDefinitionsRoute,
   AppWorkflowInboxRoute: AppWorkflowInboxRoute,

@@ -27,7 +27,7 @@ export interface SelectOption {
 export interface FieldConfig<T extends FieldValues> {
   name: Path<T>;
   label: string;
-  type?: 'text' | 'email' | 'number' | 'date' | 'color' | 'switch' | 'select' | 'textarea';
+  type?: 'text' | 'email' | 'number' | 'date' | 'time' | 'color' | 'switch' | 'select' | 'textarea';
   placeholder?: string;
   /** Spans both columns of the two-column grid. */
   wide?: boolean;
