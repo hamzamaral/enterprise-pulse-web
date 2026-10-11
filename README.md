@@ -33,6 +33,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Demirbaş sayımı:** QR / kamera ile okutma, fark raporu                                | **Gösterge paneli:** yetkiye göre KPI'lar, kritik stok                         |
 | ![Teklif karşılaştırma](docs/screenshots/purchase-quote-comparison.png)                 | ![Satın alma siparişi](docs/screenshots/purchase-order.png)                    |
 | **Teklif karşılaştırma:** kalem bazında en iyi net fiyat, tek tıkla siparişe dönüştürme | **Satın alma siparişi:** teslim alınan / faturalanan miktarlar, bağlı belgeler |
+| ![Satış siparişi](docs/screenshots/sales-order.png)                                     | ![Satış faturası](docs/screenshots/sales-invoice.png)                          |
+| **Satış siparişi:** rezerve / sevk / faturalanan miktarlar, kredi limiti kartı          | **Satış faturası:** tahsilat durumu, iade edilen miktarlar, bağlı iadeler      |
 
 ## Özellikler
 
@@ -51,6 +53,9 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.
+- **Satış:** müşteri teklifi ve siparişe dönüştürme, onayda kredi limiti kontrolü ve stok rezervasyonu, depodan lot /
+  seri numarası seçerek kısmi sevk irsaliyesi, sevk edilen miktar kadar satış faturası, faturaya bağlı satış iadesi;
+  ürün seçicide rezerve stok düşülmüş kullanılabilir miktar.
 - **Barkod ve QR okutma:** USB okuyucu (klavye gibi yazar) veya tarayıcı destekliyorsa telefon / bilgisayar kamerası
   (yerleşik `BarcodeDetector` API'si, ek kütüphane yok).
 - **Her listede:** sunucu taraflı sayfalama, arama ve sıralama; sütun gizleme; filtrelenmiş tüm kayıtları Excel'e aktarma.
