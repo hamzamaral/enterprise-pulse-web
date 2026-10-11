@@ -32,6 +32,15 @@ export function formatMoney(value: string | number | null | undefined, currency 
   }).format(Number(value));
 }
 
+/** Stock quantities arrive as decimal strings with up to 3 decimals ("12", "1.5"). */
+export function formatQuantity(value: string | number | null | undefined, unit?: string): string {
+  if (value === null || value === undefined || value === '') return '—';
+  const number = new Intl.NumberFormat(i18n.resolvedLanguage === 'en' ? 'en-US' : 'tr-TR', {
+    maximumFractionDigits: 3,
+  }).format(Number(value));
+  return unit ? `${number} ${unit}` : number;
+}
+
 export function initials(firstName?: string, lastName?: string): string {
   return `${firstName?.[0] ?? ''}${lastName?.[0] ?? ''}`.toLocaleUpperCase('tr');
 }

@@ -1,4 +1,5 @@
 import {
+  ArrowDownUp,
   ArrowLeftRight,
   Boxes,
   BriefcaseBusiness,
@@ -8,6 +9,7 @@ import {
   CalendarCog,
   CalendarDays,
   ClipboardCheck,
+  ClipboardList,
   FileClock,
   GitBranch,
   Inbox,
@@ -16,6 +18,7 @@ import {
   type LucideIcon,
   MapPin,
   Network,
+  Package,
   PackageCheck,
   Settings,
   ShieldCheck,
@@ -25,6 +28,7 @@ import {
   Users,
   UsersRound,
   Wallet,
+  Warehouse,
   Workflow,
 } from 'lucide-react';
 import type { FileRoutesByTo } from '@/routeTree.gen';
@@ -108,9 +112,38 @@ export const NAVIGATION: NavGroup[] = [
     ],
   },
   {
+    labelKey: 'nav.groups.inventory',
+    items: [
+      { to: '/inventory', labelKey: 'nav.stockLevels', icon: Boxes, permission: 'inventory:read' },
+      {
+        to: '/inventory/products',
+        labelKey: 'nav.products',
+        icon: Package,
+        permission: 'inventory:read',
+      },
+      {
+        to: '/inventory/movements',
+        labelKey: 'nav.stockMovements',
+        icon: ArrowDownUp,
+        permission: 'inventory:read',
+      },
+      {
+        to: '/inventory/counts',
+        labelKey: 'nav.stockCounts',
+        icon: ClipboardList,
+        permission: 'inventory:read',
+      },
+      {
+        to: '/inventory/settings',
+        labelKey: 'nav.inventorySettings',
+        icon: Warehouse,
+        permission: 'inventory:update',
+      },
+    ],
+  },
+  {
     labelKey: 'nav.groups.modules',
     items: [
-      { labelKey: 'nav.inventory', icon: Boxes, comingSoon: true },
       { labelKey: 'nav.purchasing', icon: ShoppingCart, comingSoon: true },
       { labelKey: 'nav.sales', icon: TrendingUp, comingSoon: true },
       { labelKey: 'nav.finance', icon: Wallet, comingSoon: true },

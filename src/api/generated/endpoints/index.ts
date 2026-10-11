@@ -7,6 +7,7 @@ export * from './departments/departments';
 export * from './employees/employees';
 export * from './files/files';
 export * from './health/health';
+export * from './inventory/inventory';
 export * from './leave/leave';
 export * from './notifications/notifications';
 export * from './numbering/numbering';

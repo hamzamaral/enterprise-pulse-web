@@ -33,12 +33,21 @@ import { Route as AppHrLeaveSettingsRouteImport } from './routes/_app/hr/leave-s
 import { Route as AppHrMyLeaveRouteImport } from './routes/_app/hr/my-leave'
 import { Route as AppHrOrgChartRouteImport } from './routes/_app/hr/org-chart'
 import { Route as AppHrPositionsRouteImport } from './routes/_app/hr/positions'
+import { Route as AppInventoryIndexRouteImport } from './routes/_app/inventory/index'
+import { Route as AppInventorySettingsRouteImport } from './routes/_app/inventory/settings'
 import { Route as AppWorkflowDefinitionsRouteImport } from './routes/_app/workflow/definitions'
 import { Route as AppWorkflowInboxRouteImport } from './routes/_app/workflow/inbox'
 import { Route as AppAssetsAssignmentsIndexRouteImport } from './routes/_app/assets/assignments/index'
 import { Route as AppAssetsAssignmentsIdRouteImport } from './routes/_app/assets/assignments/$id'
 import { Route as AppHrEmployeesIndexRouteImport } from './routes/_app/hr/employees/index'
 import { Route as AppHrEmployeesIdRouteImport } from './routes/_app/hr/employees/$id'
+import { Route as AppInventoryCountsIndexRouteImport } from './routes/_app/inventory/counts/index'
+import { Route as AppInventoryCountsIdRouteImport } from './routes/_app/inventory/counts/$id'
+import { Route as AppInventoryMovementsIndexRouteImport } from './routes/_app/inventory/movements/index'
+import { Route as AppInventoryMovementsIdRouteImport } from './routes/_app/inventory/movements/$id'
+import { Route as AppInventoryMovementsNewRouteImport } from './routes/_app/inventory/movements/new'
+import { Route as AppInventoryProductsIndexRouteImport } from './routes/_app/inventory/products/index'
+import { Route as AppInventoryProductsIdRouteImport } from './routes/_app/inventory/products/$id'
 import { Route as AppWorkflowInstancesIndexRouteImport } from './routes/_app/workflow/instances/index'
 import { Route as AppWorkflowInstancesIdRouteImport } from './routes/_app/workflow/instances/$id'
 
@@ -161,6 +170,16 @@ const AppHrPositionsRoute = AppHrPositionsRouteImport.update({
   path: '/hr/positions',
   getParentRoute: () => AppRoute,
 } as any)
+const AppInventoryIndexRoute = AppInventoryIndexRouteImport.update({
+  id: '/inventory/',
+  path: '/inventory/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInventorySettingsRoute = AppInventorySettingsRouteImport.update({
+  id: '/inventory/settings',
+  path: '/inventory/settings',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppWorkflowDefinitionsRoute = AppWorkflowDefinitionsRouteImport.update({
   id: '/workflow/definitions',
   path: '/workflow/definitions',
@@ -190,6 +209,44 @@ const AppHrEmployeesIndexRoute = AppHrEmployeesIndexRouteImport.update({
 const AppHrEmployeesIdRoute = AppHrEmployeesIdRouteImport.update({
   id: '/hr/employees/$id',
   path: '/hr/employees/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInventoryCountsIndexRoute = AppInventoryCountsIndexRouteImport.update({
+  id: '/inventory/counts/',
+  path: '/inventory/counts/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInventoryCountsIdRoute = AppInventoryCountsIdRouteImport.update({
+  id: '/inventory/counts/$id',
+  path: '/inventory/counts/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInventoryMovementsIndexRoute =
+  AppInventoryMovementsIndexRouteImport.update({
+    id: '/inventory/movements/',
+    path: '/inventory/movements/',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppInventoryMovementsIdRoute = AppInventoryMovementsIdRouteImport.update({
+  id: '/inventory/movements/$id',
+  path: '/inventory/movements/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInventoryMovementsNewRoute =
+  AppInventoryMovementsNewRouteImport.update({
+    id: '/inventory/movements/new',
+    path: '/inventory/movements/new',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppInventoryProductsIndexRoute =
+  AppInventoryProductsIndexRouteImport.update({
+    id: '/inventory/products/',
+    path: '/inventory/products/',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppInventoryProductsIdRoute = AppInventoryProductsIdRouteImport.update({
+  id: '/inventory/products/$id',
+  path: '/inventory/products/$id',
   getParentRoute: () => AppRoute,
 } as any)
 const AppWorkflowInstancesIndexRoute =
@@ -227,14 +284,23 @@ export interface FileRoutesByFullPath {
   '/hr/my-leave': typeof AppHrMyLeaveRoute
   '/hr/org-chart': typeof AppHrOrgChartRoute
   '/hr/positions': typeof AppHrPositionsRoute
+  '/inventory/settings': typeof AppInventorySettingsRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
   '/assets/': typeof AppAssetsIndexRoute
+  '/inventory/': typeof AppInventoryIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/hr/employees/$id': typeof AppHrEmployeesIdRoute
+  '/inventory/counts/$id': typeof AppInventoryCountsIdRoute
+  '/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
+  '/inventory/movements/new': typeof AppInventoryMovementsNewRoute
+  '/inventory/products/$id': typeof AppInventoryProductsIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/hr/employees/': typeof AppHrEmployeesIndexRoute
+  '/inventory/counts/': typeof AppInventoryCountsIndexRoute
+  '/inventory/movements/': typeof AppInventoryMovementsIndexRoute
+  '/inventory/products/': typeof AppInventoryProductsIndexRoute
   '/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -260,14 +326,23 @@ export interface FileRoutesByTo {
   '/hr/my-leave': typeof AppHrMyLeaveRoute
   '/hr/org-chart': typeof AppHrOrgChartRoute
   '/hr/positions': typeof AppHrPositionsRoute
+  '/inventory/settings': typeof AppInventorySettingsRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
   '/assets': typeof AppAssetsIndexRoute
+  '/inventory': typeof AppInventoryIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/hr/employees/$id': typeof AppHrEmployeesIdRoute
+  '/inventory/counts/$id': typeof AppInventoryCountsIdRoute
+  '/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
+  '/inventory/movements/new': typeof AppInventoryMovementsNewRoute
+  '/inventory/products/$id': typeof AppInventoryProductsIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments': typeof AppAssetsAssignmentsIndexRoute
   '/hr/employees': typeof AppHrEmployeesIndexRoute
+  '/inventory/counts': typeof AppInventoryCountsIndexRoute
+  '/inventory/movements': typeof AppInventoryMovementsIndexRoute
+  '/inventory/products': typeof AppInventoryProductsIndexRoute
   '/workflow/instances': typeof AppWorkflowInstancesIndexRoute
 }
 export interface FileRoutesById {
@@ -295,14 +370,23 @@ export interface FileRoutesById {
   '/_app/hr/my-leave': typeof AppHrMyLeaveRoute
   '/_app/hr/org-chart': typeof AppHrOrgChartRoute
   '/_app/hr/positions': typeof AppHrPositionsRoute
+  '/_app/inventory/settings': typeof AppInventorySettingsRoute
   '/_app/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/_app/workflow/inbox': typeof AppWorkflowInboxRoute
   '/_app/assets/': typeof AppAssetsIndexRoute
+  '/_app/inventory/': typeof AppInventoryIndexRoute
   '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/_app/hr/employees/$id': typeof AppHrEmployeesIdRoute
+  '/_app/inventory/counts/$id': typeof AppInventoryCountsIdRoute
+  '/_app/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
+  '/_app/inventory/movements/new': typeof AppInventoryMovementsNewRoute
+  '/_app/inventory/products/$id': typeof AppInventoryProductsIdRoute
   '/_app/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/_app/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/_app/hr/employees/': typeof AppHrEmployeesIndexRoute
+  '/_app/inventory/counts/': typeof AppInventoryCountsIndexRoute
+  '/_app/inventory/movements/': typeof AppInventoryMovementsIndexRoute
+  '/_app/inventory/products/': typeof AppInventoryProductsIndexRoute
   '/_app/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
 }
 export interface FileRouteTypes {
@@ -330,14 +414,23 @@ export interface FileRouteTypes {
     | '/hr/my-leave'
     | '/hr/org-chart'
     | '/hr/positions'
+    | '/inventory/settings'
     | '/workflow/definitions'
     | '/workflow/inbox'
     | '/assets/'
+    | '/inventory/'
     | '/assets/assignments/$id'
     | '/hr/employees/$id'
+    | '/inventory/counts/$id'
+    | '/inventory/movements/$id'
+    | '/inventory/movements/new'
+    | '/inventory/products/$id'
     | '/workflow/instances/$id'
     | '/assets/assignments/'
     | '/hr/employees/'
+    | '/inventory/counts/'
+    | '/inventory/movements/'
+    | '/inventory/products/'
     | '/workflow/instances/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -363,14 +456,23 @@ export interface FileRouteTypes {
     | '/hr/my-leave'
     | '/hr/org-chart'
     | '/hr/positions'
+    | '/inventory/settings'
     | '/workflow/definitions'
     | '/workflow/inbox'
     | '/assets'
+    | '/inventory'
     | '/assets/assignments/$id'
     | '/hr/employees/$id'
+    | '/inventory/counts/$id'
+    | '/inventory/movements/$id'
+    | '/inventory/movements/new'
+    | '/inventory/products/$id'
     | '/workflow/instances/$id'
     | '/assets/assignments'
     | '/hr/employees'
+    | '/inventory/counts'
+    | '/inventory/movements'
+    | '/inventory/products'
     | '/workflow/instances'
   id:
     | '__root__'
@@ -397,14 +499,23 @@ export interface FileRouteTypes {
     | '/_app/hr/my-leave'
     | '/_app/hr/org-chart'
     | '/_app/hr/positions'
+    | '/_app/inventory/settings'
     | '/_app/workflow/definitions'
     | '/_app/workflow/inbox'
     | '/_app/assets/'
+    | '/_app/inventory/'
     | '/_app/assets/assignments/$id'
     | '/_app/hr/employees/$id'
+    | '/_app/inventory/counts/$id'
+    | '/_app/inventory/movements/$id'
+    | '/_app/inventory/movements/new'
+    | '/_app/inventory/products/$id'
     | '/_app/workflow/instances/$id'
     | '/_app/assets/assignments/'
     | '/_app/hr/employees/'
+    | '/_app/inventory/counts/'
+    | '/_app/inventory/movements/'
+    | '/_app/inventory/products/'
     | '/_app/workflow/instances/'
   fileRoutesById: FileRoutesById
 }
@@ -585,6 +696,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppHrPositionsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/inventory/': {
+      id: '/_app/inventory/'
+      path: '/inventory'
+      fullPath: '/inventory/'
+      preLoaderRoute: typeof AppInventoryIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/inventory/settings': {
+      id: '/_app/inventory/settings'
+      path: '/inventory/settings'
+      fullPath: '/inventory/settings'
+      preLoaderRoute: typeof AppInventorySettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/workflow/definitions': {
       id: '/_app/workflow/definitions'
       path: '/workflow/definitions'
@@ -627,6 +752,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppHrEmployeesIdRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/inventory/counts/': {
+      id: '/_app/inventory/counts/'
+      path: '/inventory/counts'
+      fullPath: '/inventory/counts/'
+      preLoaderRoute: typeof AppInventoryCountsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/inventory/counts/$id': {
+      id: '/_app/inventory/counts/$id'
+      path: '/inventory/counts/$id'
+      fullPath: '/inventory/counts/$id'
+      preLoaderRoute: typeof AppInventoryCountsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/inventory/movements/': {
+      id: '/_app/inventory/movements/'
+      path: '/inventory/movements'
+      fullPath: '/inventory/movements/'
+      preLoaderRoute: typeof AppInventoryMovementsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/inventory/movements/$id': {
+      id: '/_app/inventory/movements/$id'
+      path: '/inventory/movements/$id'
+      fullPath: '/inventory/movements/$id'
+      preLoaderRoute: typeof AppInventoryMovementsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/inventory/movements/new': {
+      id: '/_app/inventory/movements/new'
+      path: '/inventory/movements/new'
+      fullPath: '/inventory/movements/new'
+      preLoaderRoute: typeof AppInventoryMovementsNewRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/inventory/products/': {
+      id: '/_app/inventory/products/'
+      path: '/inventory/products'
+      fullPath: '/inventory/products/'
+      preLoaderRoute: typeof AppInventoryProductsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/inventory/products/$id': {
+      id: '/_app/inventory/products/$id'
+      path: '/inventory/products/$id'
+      fullPath: '/inventory/products/$id'
+      preLoaderRoute: typeof AppInventoryProductsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/workflow/instances/': {
       id: '/_app/workflow/instances/'
       path: '/workflow/instances'
@@ -664,14 +838,23 @@ interface AppRouteChildren {
   AppHrMyLeaveRoute: typeof AppHrMyLeaveRoute
   AppHrOrgChartRoute: typeof AppHrOrgChartRoute
   AppHrPositionsRoute: typeof AppHrPositionsRoute
+  AppInventorySettingsRoute: typeof AppInventorySettingsRoute
   AppWorkflowDefinitionsRoute: typeof AppWorkflowDefinitionsRoute
   AppWorkflowInboxRoute: typeof AppWorkflowInboxRoute
   AppAssetsIndexRoute: typeof AppAssetsIndexRoute
+  AppInventoryIndexRoute: typeof AppInventoryIndexRoute
   AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
   AppHrEmployeesIdRoute: typeof AppHrEmployeesIdRoute
+  AppInventoryCountsIdRoute: typeof AppInventoryCountsIdRoute
+  AppInventoryMovementsIdRoute: typeof AppInventoryMovementsIdRoute
+  AppInventoryMovementsNewRoute: typeof AppInventoryMovementsNewRoute
+  AppInventoryProductsIdRoute: typeof AppInventoryProductsIdRoute
   AppWorkflowInstancesIdRoute: typeof AppWorkflowInstancesIdRoute
   AppAssetsAssignmentsIndexRoute: typeof AppAssetsAssignmentsIndexRoute
   AppHrEmployeesIndexRoute: typeof AppHrEmployeesIndexRoute
+  AppInventoryCountsIndexRoute: typeof AppInventoryCountsIndexRoute
+  AppInventoryMovementsIndexRoute: typeof AppInventoryMovementsIndexRoute
+  AppInventoryProductsIndexRoute: typeof AppInventoryProductsIndexRoute
   AppWorkflowInstancesIndexRoute: typeof AppWorkflowInstancesIndexRoute
 }
 
@@ -695,14 +878,23 @@ const AppRouteChildren: AppRouteChildren = {
   AppHrMyLeaveRoute: AppHrMyLeaveRoute,
   AppHrOrgChartRoute: AppHrOrgChartRoute,
   AppHrPositionsRoute: AppHrPositionsRoute,
+  AppInventorySettingsRoute: AppInventorySettingsRoute,
   AppWorkflowDefinitionsRoute: AppWorkflowDefinitionsRoute,
   AppWorkflowInboxRoute: AppWorkflowInboxRoute,
   AppAssetsIndexRoute: AppAssetsIndexRoute,
+  AppInventoryIndexRoute: AppInventoryIndexRoute,
   AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
   AppHrEmployeesIdRoute: AppHrEmployeesIdRoute,
+  AppInventoryCountsIdRoute: AppInventoryCountsIdRoute,
+  AppInventoryMovementsIdRoute: AppInventoryMovementsIdRoute,
+  AppInventoryMovementsNewRoute: AppInventoryMovementsNewRoute,
+  AppInventoryProductsIdRoute: AppInventoryProductsIdRoute,
   AppWorkflowInstancesIdRoute: AppWorkflowInstancesIdRoute,
   AppAssetsAssignmentsIndexRoute: AppAssetsAssignmentsIndexRoute,
   AppHrEmployeesIndexRoute: AppHrEmployeesIndexRoute,
+  AppInventoryCountsIndexRoute: AppInventoryCountsIndexRoute,
+  AppInventoryMovementsIndexRoute: AppInventoryMovementsIndexRoute,
+  AppInventoryProductsIndexRoute: AppInventoryProductsIndexRoute,
   AppWorkflowInstancesIndexRoute: AppWorkflowInstancesIndexRoute,
 }
 

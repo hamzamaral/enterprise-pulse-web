@@ -10,7 +10,7 @@ import {
   UserPlus,
 } from 'lucide-react';
 import { QRCodeCanvas } from 'qrcode.react';
-import { useRef, useState, type ReactNode } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -27,6 +27,7 @@ import { Can } from '@/features/auth/can';
 import { usePermission } from '@/features/auth/use-session';
 import { ConfirmDialog } from '@/shared/components/confirm-dialog';
 import { useTableState } from '@/shared/components/data-table/use-table-state';
+import { Field, InfoCard } from '@/shared/components/info-card';
 import { PageHeader } from '@/shared/components/page-header';
 import { SimpleFormDialog } from '@/shared/components/simple-form-dialog';
 import { formatDate, formatMoney } from '@/shared/lib/format';
@@ -46,28 +47,6 @@ const retireSchema = z.object({
   status: z.nativeEnum(RetireAssetDtoStatus),
   reason: z.string().trim().min(2, 'validation.required'),
 });
-
-function Field({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="space-y-0.5">
-      <dt className="text-muted-foreground text-xs">{label}</dt>
-      <dd className="text-sm">{children || '—'}</dd>
-    </div>
-  );
-}
-
-function InfoCard({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-base">{title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <dl className="grid gap-4 sm:grid-cols-2">{children}</dl>
-      </CardContent>
-    </Card>
-  );
-}
 
 function warrantyState(endDate: string | null) {
   if (!endDate) return null;

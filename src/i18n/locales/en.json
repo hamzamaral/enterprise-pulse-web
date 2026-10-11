@@ -53,7 +53,8 @@
       "system": "System",
       "modules": "Modules",
       "hr": "Human Resources",
-      "assets": "Assets"
+      "assets": "Assets",
+      "inventory": "Inventory"
     },
     "users": "Users",
     "roles": "Roles & Permissions",
@@ -69,7 +70,6 @@
     "comingSoon": "Soon",
     "hr": "Human Resources",
     "assets": "Assets & Assignments",
-    "inventory": "Inventory",
     "purchasing": "Purchasing",
     "sales": "Sales",
     "finance": "Finance",
@@ -83,7 +83,12 @@
     "myAssets": "My Assets",
     "assetList": "Assets",
     "assignments": "Assignments",
-    "assetSettings": "Asset Settings"
+    "assetSettings": "Asset Settings",
+    "stockLevels": "Stock levels",
+    "products": "Products",
+    "stockMovements": "Stock movements",
+    "stockCounts": "Stock counts",
+    "inventorySettings": "Warehouses & categories"
   },
   "auth": {
     "login": "Sign in",
@@ -118,7 +123,8 @@
     "min": "At least {{count}} characters",
     "number": "Enter a valid number",
     "nationalId": "Enter a valid 11-digit national ID",
-    "dateRange": "End date cannot be before the start date"
+    "dateRange": "End date cannot be before the start date",
+    "sku": "2-40 characters; letters, digits, dot, dash or underscore"
   },
   "layout": {
     "company": "Company",
@@ -603,5 +609,175 @@
       "print": "Print / PDF"
     },
     "pastAssignments": "Past assignments"
+  },
+  "inventory": {
+    "title": "Stock levels",
+    "subtitle": "Current quantities, values and reorder points across warehouses",
+    "summary": {
+      "items": "Items in stock",
+      "lowStock": "Below minimum",
+      "stockValue": "Total stock value",
+      "warehouses": "Active warehouses"
+    },
+    "allWarehouses": "All warehouses",
+    "allCategories": "All categories",
+    "allTypes": "All types",
+    "lowStockOnly": "Low stock only",
+    "sku": "SKU",
+    "product": "Product",
+    "variant": "Variant",
+    "standardVariant": "Standard",
+    "category": "Category",
+    "unit": "Unit",
+    "quantity": "Quantity",
+    "onHand": "On hand",
+    "minStock": "Minimum stock",
+    "averageCost": "Avg. cost",
+    "stockValue": "Stock value",
+    "lowStock": "Low stock",
+    "warehouse": "Warehouse",
+    "barcode": "Barcode",
+    "selectItem": "Select an item...",
+    "searchItem": "Search SKU, name or barcode...",
+    "types": {
+      "GOODS": "Stocked goods",
+      "SERVICE": "Service"
+    },
+    "trackingTypes": {
+      "NONE": "Not tracked",
+      "LOT": "Lot tracked",
+      "SERIAL": "Serial tracked"
+    },
+    "movementTypes": {
+      "RECEIPT": "Receipt",
+      "ISSUE": "Issue",
+      "TRANSFER": "Transfer",
+      "ADJUSTMENT": "Adjustment"
+    },
+    "countStatus": {
+      "DRAFT": "Open",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    },
+    "serialStatus": {
+      "IN_STOCK": "In stock",
+      "ISSUED": "Issued"
+    },
+    "products": {
+      "title": "Products",
+      "subtitle": "Product cards, variants, prices and tracking methods",
+      "new": "New product",
+      "namePlaceholder": "e.g. Wireless Mouse",
+      "type": "Product type",
+      "tracking": "Tracking",
+      "purchasePrice": "Purchase price",
+      "salePrice": "Sale price",
+      "currency": "Currency",
+      "vatRate": "VAT rate",
+      "variantCount": "Variants",
+      "identity": "Product details",
+      "overview": "Overview",
+      "variants": "Variants",
+      "stockCard": "Stock card",
+      "lots": "Lots",
+      "serials": "Serial numbers",
+      "stockByWarehouse": "Stock by warehouse",
+      "noStock": "No stock yet.",
+      "newVariant": "New variant",
+      "default": "Default",
+      "attributes": "Attributes",
+      "attributesHint": "Color=Black, Size=M",
+      "lockedHint": "This product has stock movements, so its type and tracking method cannot change."
+    },
+    "movements": {
+      "title": "Stock movements",
+      "subtitle": "Receipts, issues, transfers between warehouses and adjustments",
+      "new": "New movement",
+      "document": "Stock movement",
+      "number": "Number",
+      "date": "Date",
+      "type": "Movement type",
+      "source": "From warehouse",
+      "target": "To warehouse",
+      "reference": "Reference",
+      "referenceHint": "Delivery note / invoice no",
+      "lines": "Lines",
+      "lineCount": "Lines",
+      "addLine": "Add line",
+      "totalValue": "Total value",
+      "createdBy": "Created by",
+      "unitCost": "Unit cost",
+      "lineValue": "Value",
+      "balanceAfter": "Balance",
+      "lot": "Lot no",
+      "selectLot": "Select a lot",
+      "expiryDate": "Expiry date",
+      "expiryShort": "Exp.",
+      "serials": "Serial numbers",
+      "serialNo": "Serial no",
+      "serialsHint": "One serial number per line",
+      "selectSerials": "Select serial numbers",
+      "serialsSelected_one": "{{count}} serial selected",
+      "serialsSelected_other": "{{count}} serials selected",
+      "surplus": "Surplus (+)",
+      "shortage": "Shortage (−)",
+      "post": "Save and post",
+      "posted": "Movement {{number}} posted",
+      "print": "Print",
+      "fromCount": "Stock count",
+      "typeHints": {
+        "RECEIPT": "Receive goods from suppliers or production; the unit cost updates the average cost.",
+        "ISSUE": "Take goods out of a warehouse for use, sale or scrap.",
+        "TRANSFER": "Move goods from one warehouse to another; total stock is unchanged.",
+        "ADJUSTMENT": "Correct stock for count differences, damage or loss."
+      },
+      "errors": {
+        "sameWarehouse": "Source and target warehouses must differ",
+        "quantity": "Quantity must be greater than zero",
+        "serialsRequired": "Enter serial numbers"
+      }
+    },
+    "counts": {
+      "title": "Stock counts",
+      "subtitle": "Count physical stock; differences are posted as an adjustment",
+      "new": "New count",
+      "newHint": "The warehouse's current quantities are copied to the count sheet. Serial-tracked items are verified by serial number and are not listed.",
+      "created": "Count {{number}} started",
+      "sheet": "Count",
+      "number": "Count no",
+      "date": "Count date",
+      "progress": "Progress",
+      "differences": "Differences",
+      "adjustment": "Adjustment",
+      "expected": "System",
+      "countedQty": "Counted",
+      "difference": "Difference",
+      "categoryFilter": "Category (optional)",
+      "onlyDifferences": "Differences only",
+      "matchExpected": "Use system quantity",
+      "addLine": "Add line",
+      "addLineHint": "Add items found on the shelf that are not on the sheet.",
+      "serialNotCounted": "Serial-tracked items are not counted by quantity.",
+      "complete": "Complete count",
+      "completeTitle": "Complete this count?",
+      "completeDescription": "Differences on counted lines are posted to stock as one adjustment. Uncounted lines are left unchanged. This cannot be undone.",
+      "completedWithAdjustment": "Count completed, adjustment {{number}} created",
+      "completedNoDifference": "Count completed with no differences",
+      "cancelCount": "Cancel count",
+      "cancelTitle": "Cancel this count?",
+      "cancelDescription": "The counted quantities will not be posted to stock."
+    },
+    "settings": {
+      "title": "Warehouses & categories",
+      "subtitle": "Warehouses and product categories",
+      "warehouses": "Warehouses",
+      "categories": "Product categories",
+      "newWarehouse": "New warehouse",
+      "newCategory": "New category",
+      "parentCategory": "Parent category",
+      "productCount": "Products",
+      "itemCount": "Items",
+      "deactivateHint": "A warehouse with stock cannot be deactivated; transfer its stock first."
+    }
   }
 }

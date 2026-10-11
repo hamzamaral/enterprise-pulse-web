@@ -53,7 +53,8 @@
       "system": "Sistem",
       "modules": "Modüller",
       "hr": "İnsan Kaynakları",
-      "assets": "Zimmet ve Demirbaş"
+      "assets": "Zimmet ve Demirbaş",
+      "inventory": "Stok ve Depo"
     },
     "users": "Kullanıcılar",
     "roles": "Roller ve İzinler",
@@ -69,7 +70,6 @@
     "comingSoon": "Yakında",
     "hr": "İnsan Kaynakları",
     "assets": "Zimmet ve Demirbaş",
-    "inventory": "Stok ve Depo",
     "purchasing": "Satın Alma",
     "sales": "Satış",
     "finance": "Finans",
@@ -83,7 +83,12 @@
     "myAssets": "Zimmetlerim",
     "assetList": "Demirbaşlar",
     "assignments": "Zimmetler",
-    "assetSettings": "Demirbaş Ayarları"
+    "assetSettings": "Demirbaş Ayarları",
+    "stockLevels": "Stok Durumu",
+    "products": "Ürünler",
+    "stockMovements": "Stok Hareketleri",
+    "stockCounts": "Stok Sayımı",
+    "inventorySettings": "Depo ve Kategoriler"
   },
   "auth": {
     "login": "Giriş yap",
@@ -118,7 +123,8 @@
     "min": "En az {{count}} karakter",
     "number": "Geçerli bir sayı girin",
     "nationalId": "11 haneli geçerli bir TC kimlik no girin",
-    "dateRange": "Bitiş tarihi başlangıçtan önce olamaz"
+    "dateRange": "Bitiş tarihi başlangıçtan önce olamaz",
+    "sku": "2-40 karakter; harf, rakam, nokta, tire veya alt çizgi"
   },
   "layout": {
     "company": "Şirket",
@@ -603,5 +609,175 @@
       "print": "Yazdır / PDF"
     },
     "pastAssignments": "Geçmiş zimmetler"
+  },
+  "inventory": {
+    "title": "Stok Durumu",
+    "subtitle": "Depolardaki güncel stok miktarları, değerleri ve kritik seviyeler",
+    "summary": {
+      "items": "Stoktaki kalem",
+      "lowStock": "Kritik stokta",
+      "stockValue": "Toplam stok değeri",
+      "warehouses": "Aktif depo"
+    },
+    "allWarehouses": "Tüm depolar",
+    "allCategories": "Tüm kategoriler",
+    "allTypes": "Tüm tipler",
+    "lowStockOnly": "Yalnızca kritik stok",
+    "sku": "Stok kodu",
+    "product": "Ürün",
+    "variant": "Varyant",
+    "standardVariant": "Standart",
+    "category": "Kategori",
+    "unit": "Birim",
+    "quantity": "Miktar",
+    "onHand": "Eldeki miktar",
+    "minStock": "Minimum stok",
+    "averageCost": "Ort. maliyet",
+    "stockValue": "Stok değeri",
+    "lowStock": "Kritik stok",
+    "warehouse": "Depo",
+    "barcode": "Barkod",
+    "selectItem": "Ürün seçin...",
+    "searchItem": "Stok kodu, ad veya barkod ara...",
+    "types": {
+      "GOODS": "Stoklu ürün",
+      "SERVICE": "Hizmet"
+    },
+    "trackingTypes": {
+      "NONE": "Takip yok",
+      "LOT": "Lot takipli",
+      "SERIAL": "Seri no takipli"
+    },
+    "movementTypes": {
+      "RECEIPT": "Giriş",
+      "ISSUE": "Çıkış",
+      "TRANSFER": "Transfer",
+      "ADJUSTMENT": "Düzeltme"
+    },
+    "countStatus": {
+      "DRAFT": "Açık",
+      "COMPLETED": "Tamamlandı",
+      "CANCELLED": "İptal"
+    },
+    "serialStatus": {
+      "IN_STOCK": "Stokta",
+      "ISSUED": "Çıkış yapıldı"
+    },
+    "products": {
+      "title": "Ürünler",
+      "subtitle": "Ürün kartları, varyantlar, fiyatlar ve takip yöntemleri",
+      "new": "Yeni ürün",
+      "namePlaceholder": "Örn. Kablosuz Mouse",
+      "type": "Ürün tipi",
+      "tracking": "Takip yöntemi",
+      "purchasePrice": "Alış fiyatı",
+      "salePrice": "Satış fiyatı",
+      "currency": "Para birimi",
+      "vatRate": "KDV oranı",
+      "variantCount": "Varyant",
+      "identity": "Ürün bilgileri",
+      "overview": "Genel bakış",
+      "variants": "Varyantlar",
+      "stockCard": "Stok kartı",
+      "lots": "Lotlar",
+      "serials": "Seri numaraları",
+      "stockByWarehouse": "Depo bazında stok",
+      "noStock": "Henüz stok yok.",
+      "newVariant": "Yeni varyant",
+      "default": "Varsayılan",
+      "attributes": "Özellikler",
+      "attributesHint": "Renk=Siyah, Beden=M",
+      "lockedHint": "Bu ürünün stok hareketi olduğu için tipi ve takip yöntemi değiştirilemez."
+    },
+    "movements": {
+      "title": "Stok Hareketleri",
+      "subtitle": "Giriş, çıkış, depolar arası transfer ve düzeltme fişleri",
+      "new": "Yeni hareket",
+      "document": "Stok hareket fişi",
+      "number": "Fiş no",
+      "date": "Tarih",
+      "type": "Hareket tipi",
+      "source": "Çıkış deposu",
+      "target": "Giriş deposu",
+      "reference": "Belge no",
+      "referenceHint": "İrsaliye / fatura no",
+      "lines": "Kalemler",
+      "lineCount": "Kalem",
+      "addLine": "Kalem ekle",
+      "totalValue": "Toplam tutar",
+      "createdBy": "Oluşturan",
+      "unitCost": "Birim maliyet",
+      "lineValue": "Tutar",
+      "balanceAfter": "Bakiye",
+      "lot": "Lot no",
+      "selectLot": "Lot seçin",
+      "expiryDate": "Son kullanma tarihi",
+      "expiryShort": "SKT",
+      "serials": "Seri numaraları",
+      "serialNo": "Seri no",
+      "serialsHint": "Her satıra bir seri numarası",
+      "selectSerials": "Seri no seçin",
+      "serialsSelected_one": "{{count}} seri no seçildi",
+      "serialsSelected_other": "{{count}} seri no seçildi",
+      "surplus": "Fazla (+)",
+      "shortage": "Eksik (−)",
+      "post": "Kaydet ve işle",
+      "posted": "{{number}} numaralı fiş işlendi",
+      "print": "Yazdır",
+      "fromCount": "Sayım",
+      "typeHints": {
+        "RECEIPT": "Tedarikçiden veya üretimden gelen malları depoya alın; birim maliyet ortalama maliyeti günceller.",
+        "ISSUE": "Kullanım, satış veya fire için depodan mal çıkışı yapın.",
+        "TRANSFER": "Malları bir depodan diğerine taşıyın; toplam stok değişmez.",
+        "ADJUSTMENT": "Sayım farkı, hasar veya kayıp gibi nedenlerle stoğu düzeltin."
+      },
+      "errors": {
+        "sameWarehouse": "Çıkış ve giriş deposu farklı olmalı",
+        "quantity": "Miktar sıfırdan büyük olmalı",
+        "serialsRequired": "Seri numarası girin"
+      }
+    },
+    "counts": {
+      "title": "Stok Sayımı",
+      "subtitle": "Fiziksel sayım yapın; farklar otomatik düzeltme fişi olarak işlenir",
+      "new": "Yeni sayım",
+      "newHint": "Deponun mevcut stok miktarları sayım listesine alınır. Seri takipli ürünler seri no ile kontrol edildiği için listeye girmez.",
+      "created": "{{number}} numaralı sayım başlatıldı",
+      "sheet": "Sayım",
+      "number": "Sayım no",
+      "date": "Sayım tarihi",
+      "progress": "İlerleme",
+      "differences": "Fark",
+      "adjustment": "Düzeltme fişi",
+      "expected": "Sistem",
+      "countedQty": "Sayılan",
+      "difference": "Fark",
+      "categoryFilter": "Kategori (opsiyonel)",
+      "onlyDifferences": "Yalnızca farklı olanlar",
+      "matchExpected": "Sistem miktarını yaz",
+      "addLine": "Kalem ekle",
+      "addLineHint": "Listede olmayan ancak rafta bulunan ürünleri ekleyin.",
+      "serialNotCounted": "Seri takipli ürünler miktar ile sayılmaz.",
+      "complete": "Sayımı tamamla",
+      "completeTitle": "Sayım tamamlansın mı?",
+      "completeDescription": "Sayılan kalemlerdeki farklar tek bir düzeltme fişi olarak stoğa işlenir. Sayılmayan kalemler değişmez. Bu işlem geri alınamaz.",
+      "completedWithAdjustment": "Sayım tamamlandı, {{number}} düzeltme fişi oluşturuldu",
+      "completedNoDifference": "Sayım tamamlandı, fark bulunmadı",
+      "cancelCount": "Sayımı iptal et",
+      "cancelTitle": "Sayım iptal edilsin mi?",
+      "cancelDescription": "Girilen sayım miktarları stoğa işlenmez."
+    },
+    "settings": {
+      "title": "Depo ve Kategoriler",
+      "subtitle": "Depolar ve ürün kategorileri",
+      "warehouses": "Depolar",
+      "categories": "Ürün kategorileri",
+      "newWarehouse": "Yeni depo",
+      "newCategory": "Yeni kategori",
+      "parentCategory": "Üst kategori",
+      "productCount": "Ürün sayısı",
+      "itemCount": "Kalem",
+      "deactivateHint": "Stoğu bulunan depo pasife alınamaz; önce stokları transfer edin."
+    }
   }
 }

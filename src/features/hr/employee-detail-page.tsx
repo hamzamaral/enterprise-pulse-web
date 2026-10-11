@@ -1,6 +1,6 @@
 import { Link, useNavigate } from '@tanstack/react-router';
 import { AlertTriangle, ArrowLeft, Pencil, Trash2, UserMinus } from 'lucide-react';
-import { useState, type ReactNode } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { z } from 'zod';
@@ -22,6 +22,7 @@ import { Can } from '@/features/auth/can';
 import { usePermission } from '@/features/auth/use-session';
 import { ConfirmDialog } from '@/shared/components/confirm-dialog';
 import { useTableState } from '@/shared/components/data-table/use-table-state';
+import { Field, InfoCard } from '@/shared/components/info-card';
 import { PageHeader } from '@/shared/components/page-header';
 import { SimpleFormDialog } from '@/shared/components/simple-form-dialog';
 import { formatDate, initials } from '@/shared/lib/format';
@@ -40,28 +41,6 @@ const terminateSchema = z.object({
   terminationDate: v.requiredString(),
   reason: z.string().trim().min(2, 'validation.required'),
 });
-
-function Field({ label, children }: { label: string; children: ReactNode }) {
-  return (
-    <div className="space-y-0.5">
-      <dt className="text-muted-foreground text-xs">{label}</dt>
-      <dd className="text-sm">{children || '—'}</dd>
-    </div>
-  );
-}
-
-function InfoCard({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-base">{title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <dl className="grid gap-4 sm:grid-cols-2">{children}</dl>
-      </CardContent>
-    </Card>
-  );
-}
 
 function Overview({ employee }: { employee: EmployeeDetailDto }) {
   const { t } = useTranslation();
