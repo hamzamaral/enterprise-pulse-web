@@ -1,3 +1,4 @@
+export * from './assets/assets';
 export * from './audit/audit';
 export * from './auth/auth';
 export * from './branches/branches';

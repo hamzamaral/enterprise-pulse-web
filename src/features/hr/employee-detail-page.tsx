@@ -1,9 +1,10 @@
 import { Link, useNavigate } from '@tanstack/react-router';
-import { ArrowLeft, Pencil, Trash2, UserMinus } from 'lucide-react';
+import { AlertTriangle, ArrowLeft, Pencil, Trash2, UserMinus } from 'lucide-react';
 import { useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { z } from 'zod';
+import { useAssetAssignmentsFindAll } from '@/api/generated/endpoints/assets/assets';
 import {
   getEmployeesFindAllQueryKey,
   getEmployeesFindOneQueryKey,
@@ -16,6 +17,7 @@ import {
   useLeaveRequestsFindAll,
 } from '@/api/generated/endpoints/leave/leave';
 import type { EmployeeDetailDto } from '@/api/generated/model';
+import { AssignmentsTable } from '@/features/assets/assignments-table';
 import { Can } from '@/features/auth/can';
 import { usePermission } from '@/features/auth/use-session';
 import { ConfirmDialog } from '@/shared/components/confirm-dialog';
@@ -182,6 +184,23 @@ function EmployeeLeave({ employeeId }: { employeeId: string }) {
   );
 }
 
+function EmployeeAssets({ employeeId }: { employeeId: string }) {
+  const table = useTableState({ pageSize: 10, sort: [{ id: 'assignedAt', desc: true }] });
+  const { data, isLoading } = useAssetAssignmentsFindAll(
+    { ...table.params, employeeId },
+    { query: tableQuery },
+  );
+  return (
+    <AssignmentsTable
+      data={data?.data}
+      meta={data?.meta}
+      isLoading={isLoading}
+      state={table}
+      hideAssignee
+    />
+  );
+}
+
 export function EmployeeDetailPage({ id }: { id: string }) {
   const { t } = useTranslation();
   const can = usePermission();
@@ -192,6 +211,11 @@ export function EmployeeDetailPage({ id }: { id: string }) {
   const [terminateOpen, setTerminateOpen] = useState(false);
   const terminate = useEmployeesTerminate();
   const remove = useEmployeesRemove();
+  const { data: heldAssets } = useAssetAssignmentsFindAll(
+    { employeeId: id, status: 'ACTIVE', pageSize: 1 },
+    { query: { enabled: terminateOpen && can('assets:read') } },
+  );
+  const heldCount = heldAssets?.meta.total ?? 0;
 
   if (isLoading || !employee) {
     return (
@@ -254,6 +278,7 @@ export function EmployeeDetailPage({ id }: { id: string }) {
         <TabsList className="mb-4">
           <TabsTrigger value="overview">{t('employees.overview')}</TabsTrigger>
           {can('leave:read') && <TabsTrigger value="leave">{t('employees.leave')}</TabsTrigger>}
+          {can('assets:read') && <TabsTrigger value="assets">{t('employees.assets')}</TabsTrigger>}
         </TabsList>
         <TabsContent value="overview">
           <Overview employee={employee} />
@@ -263,6 +288,11 @@ export function EmployeeDetailPage({ id }: { id: string }) {
             <EmployeeLeave employeeId={employee.id} />
           </TabsContent>
         )}
+        {can('assets:read') && (
+          <TabsContent value="assets">
+            <EmployeeAssets employeeId={employee.id} />
+          </TabsContent>
+        )}
       </Tabs>
 
       <EmployeeFormDialog open={editOpen} onOpenChange={setEditOpen} employee={employee} />
@@ -270,6 +300,14 @@ export function EmployeeDetailPage({ id }: { id: string }) {
         open={terminateOpen}
         onOpenChange={setTerminateOpen}
         title={t('employees.terminateTitle')}
+        description={
+          heldCount > 0 && (
+            <div className="flex gap-2 rounded-md border border-amber-500/30 bg-amber-500/10 p-3 text-sm text-amber-800 dark:text-amber-300">
+              <AlertTriangle className="mt-0.5 size-4 shrink-0" />
+              {t('employees.activeAssetsWarning', { count: heldCount })}
+            </div>
+          )
+        }
         schema={terminateSchema}
         pending={terminate.isPending}
         defaultValues={{ terminationDate: new Date().toISOString().slice(0, 10), reason: '' }}

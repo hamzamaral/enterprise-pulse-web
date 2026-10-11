@@ -110,6 +110,17 @@
   --sidebar-ring: oklch(0.585 0.233 277.117);
 }
 
+@media print {
+  [data-slot='sidebar'],
+  [data-slot='sidebar-gap'] {
+    display: none !important;
+  }
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

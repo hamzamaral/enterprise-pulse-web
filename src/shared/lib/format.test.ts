@@ -1,4 +1,5 @@
-import { formatDate, formatDateTime, initials } from './format';
+import i18n from '@/i18n';
+import { formatDate, formatDateTime, formatMoney, initials } from './format';
 
 describe('format helpers', () => {
   it('formats dates in Turkish order', () => {
@@ -9,6 +10,14 @@ describe('format helpers', () => {
   it('renders a dash for empty values', () => {
     expect(formatDate(null)).toBe('—');
     expect(formatDateTime(undefined)).toBe('—');
+    expect(formatMoney(null)).toBe('—');
+  });
+
+  it('formats decimal strings as currency in the active language', async () => {
+    await i18n.changeLanguage('tr');
+    expect(formatMoney('48500.00')).toBe('₺48.500,00');
+    await i18n.changeLanguage('en');
+    expect(formatMoney('48500.5')).toBe('₺48,500.50');
   });
 
   it('builds initials with Turkish casing', () => {

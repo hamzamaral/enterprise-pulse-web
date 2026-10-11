@@ -1,6 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Loader2 } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, type ReactNode } from 'react';
 import {
   useForm,
   type DefaultValues,
@@ -44,6 +44,8 @@ interface SimpleFormDialogProps<T extends FieldValues> {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   title: string;
+  /** Rendered between the title and the fields, e.g. a warning. */
+  description?: ReactNode;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   schema: ZodType<T, ZodTypeDef, any>;
   fields: FieldConfig<T>[];
@@ -57,6 +59,7 @@ export function SimpleFormDialog<T extends FieldValues>({
   open,
   onOpenChange,
   title,
+  description,
   schema,
   fields,
   defaultValues,
@@ -77,6 +80,7 @@ export function SimpleFormDialog<T extends FieldValues>({
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
+        {description}
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" noValidate>
             <div className="grid gap-4 sm:grid-cols-2">

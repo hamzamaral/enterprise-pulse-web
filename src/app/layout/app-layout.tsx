@@ -14,7 +14,7 @@ export function AppLayout() {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="bg-background/80 sticky top-0 z-10 flex h-14 shrink-0 items-center gap-2 border-b px-4 backdrop-blur">
+        <header className="bg-background/80 sticky top-0 z-10 flex h-14 shrink-0 items-center gap-2 border-b px-4 backdrop-blur print:hidden">
           <SidebarTrigger className="-ml-1" />
           <Separator orientation="vertical" className="mr-2 data-[orientation=vertical]:h-4" />
           <div className="ml-auto flex items-center gap-1">
@@ -25,7 +25,7 @@ export function AppLayout() {
             <UserMenu />
           </div>
         </header>
-        <main className="flex-1 p-4 md:p-6 lg:p-8">
+        <main className="flex-1 p-4 md:p-6 lg:p-8 print:p-0">
           <Outlet />
         </main>
       </SidebarInset>

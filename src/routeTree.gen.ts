@@ -23,6 +23,10 @@ import { Route as AppProfileRouteImport } from './routes/_app/profile'
 import { Route as AppRolesRouteImport } from './routes/_app/roles'
 import { Route as AppSettingsRouteImport } from './routes/_app/settings'
 import { Route as AppUsersRouteImport } from './routes/_app/users'
+import { Route as AppAssetsIndexRouteImport } from './routes/_app/assets/index'
+import { Route as AppAssetsIdRouteImport } from './routes/_app/assets/$id'
+import { Route as AppAssetsMyRouteImport } from './routes/_app/assets/my'
+import { Route as AppAssetsSettingsRouteImport } from './routes/_app/assets/settings'
 import { Route as AppHrDepartmentsRouteImport } from './routes/_app/hr/departments'
 import { Route as AppHrLeaveRequestsRouteImport } from './routes/_app/hr/leave-requests'
 import { Route as AppHrLeaveSettingsRouteImport } from './routes/_app/hr/leave-settings'
@@ -31,6 +35,8 @@ import { Route as AppHrOrgChartRouteImport } from './routes/_app/hr/org-chart'
 import { Route as AppHrPositionsRouteImport } from './routes/_app/hr/positions'
 import { Route as AppWorkflowDefinitionsRouteImport } from './routes/_app/workflow/definitions'
 import { Route as AppWorkflowInboxRouteImport } from './routes/_app/workflow/inbox'
+import { Route as AppAssetsAssignmentsIndexRouteImport } from './routes/_app/assets/assignments/index'
+import { Route as AppAssetsAssignmentsIdRouteImport } from './routes/_app/assets/assignments/$id'
 import { Route as AppHrEmployeesIndexRouteImport } from './routes/_app/hr/employees/index'
 import { Route as AppHrEmployeesIdRouteImport } from './routes/_app/hr/employees/$id'
 import { Route as AppWorkflowInstancesIndexRouteImport } from './routes/_app/workflow/instances/index'
@@ -105,6 +111,26 @@ const AppUsersRoute = AppUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAssetsIndexRoute = AppAssetsIndexRouteImport.update({
+  id: '/assets/',
+  path: '/assets/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssetsIdRoute = AppAssetsIdRouteImport.update({
+  id: '/assets/$id',
+  path: '/assets/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssetsMyRoute = AppAssetsMyRouteImport.update({
+  id: '/assets/my',
+  path: '/assets/my',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAssetsSettingsRoute = AppAssetsSettingsRouteImport.update({
+  id: '/assets/settings',
+  path: '/assets/settings',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppHrDepartmentsRoute = AppHrDepartmentsRouteImport.update({
   id: '/hr/departments',
   path: '/hr/departments',
@@ -145,6 +171,17 @@ const AppWorkflowInboxRoute = AppWorkflowInboxRouteImport.update({
   path: '/workflow/inbox',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAssetsAssignmentsIndexRoute =
+  AppAssetsAssignmentsIndexRouteImport.update({
+    id: '/assets/assignments/',
+    path: '/assets/assignments/',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppAssetsAssignmentsIdRoute = AppAssetsAssignmentsIdRouteImport.update({
+  id: '/assets/assignments/$id',
+  path: '/assets/assignments/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppHrEmployeesIndexRoute = AppHrEmployeesIndexRouteImport.update({
   id: '/hr/employees/',
   path: '/hr/employees/',
@@ -181,6 +218,9 @@ export interface FileRoutesByFullPath {
   '/roles': typeof AppRolesRoute
   '/settings': typeof AppSettingsRoute
   '/users': typeof AppUsersRoute
+  '/assets/$id': typeof AppAssetsIdRoute
+  '/assets/my': typeof AppAssetsMyRoute
+  '/assets/settings': typeof AppAssetsSettingsRoute
   '/hr/departments': typeof AppHrDepartmentsRoute
   '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/hr/leave-settings': typeof AppHrLeaveSettingsRoute
@@ -189,8 +229,11 @@ export interface FileRoutesByFullPath {
   '/hr/positions': typeof AppHrPositionsRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
+  '/assets/': typeof AppAssetsIndexRoute
+  '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
+  '/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/hr/employees/': typeof AppHrEmployeesIndexRoute
   '/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
 }
@@ -208,6 +251,9 @@ export interface FileRoutesByTo {
   '/settings': typeof AppSettingsRoute
   '/users': typeof AppUsersRoute
   '/': typeof AppIndexRoute
+  '/assets/$id': typeof AppAssetsIdRoute
+  '/assets/my': typeof AppAssetsMyRoute
+  '/assets/settings': typeof AppAssetsSettingsRoute
   '/hr/departments': typeof AppHrDepartmentsRoute
   '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/hr/leave-settings': typeof AppHrLeaveSettingsRoute
@@ -216,8 +262,11 @@ export interface FileRoutesByTo {
   '/hr/positions': typeof AppHrPositionsRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
+  '/assets': typeof AppAssetsIndexRoute
+  '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
+  '/assets/assignments': typeof AppAssetsAssignmentsIndexRoute
   '/hr/employees': typeof AppHrEmployeesIndexRoute
   '/workflow/instances': typeof AppWorkflowInstancesIndexRoute
 }
@@ -237,6 +286,9 @@ export interface FileRoutesById {
   '/_app/settings': typeof AppSettingsRoute
   '/_app/users': typeof AppUsersRoute
   '/_app/': typeof AppIndexRoute
+  '/_app/assets/$id': typeof AppAssetsIdRoute
+  '/_app/assets/my': typeof AppAssetsMyRoute
+  '/_app/assets/settings': typeof AppAssetsSettingsRoute
   '/_app/hr/departments': typeof AppHrDepartmentsRoute
   '/_app/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/_app/hr/leave-settings': typeof AppHrLeaveSettingsRoute
@@ -245,8 +297,11 @@ export interface FileRoutesById {
   '/_app/hr/positions': typeof AppHrPositionsRoute
   '/_app/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/_app/workflow/inbox': typeof AppWorkflowInboxRoute
+  '/_app/assets/': typeof AppAssetsIndexRoute
+  '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/_app/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/_app/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
+  '/_app/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/_app/hr/employees/': typeof AppHrEmployeesIndexRoute
   '/_app/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
 }
@@ -266,6 +321,9 @@ export interface FileRouteTypes {
     | '/roles'
     | '/settings'
     | '/users'
+    | '/assets/$id'
+    | '/assets/my'
+    | '/assets/settings'
     | '/hr/departments'
     | '/hr/leave-requests'
     | '/hr/leave-settings'
@@ -274,8 +332,11 @@ export interface FileRouteTypes {
     | '/hr/positions'
     | '/workflow/definitions'
     | '/workflow/inbox'
+    | '/assets/'
+    | '/assets/assignments/$id'
     | '/hr/employees/$id'
     | '/workflow/instances/$id'
+    | '/assets/assignments/'
     | '/hr/employees/'
     | '/workflow/instances/'
   fileRoutesByTo: FileRoutesByTo
@@ -293,6 +354,9 @@ export interface FileRouteTypes {
     | '/settings'
     | '/users'
     | '/'
+    | '/assets/$id'
+    | '/assets/my'
+    | '/assets/settings'
     | '/hr/departments'
     | '/hr/leave-requests'
     | '/hr/leave-settings'
@@ -301,8 +365,11 @@ export interface FileRouteTypes {
     | '/hr/positions'
     | '/workflow/definitions'
     | '/workflow/inbox'
+    | '/assets'
+    | '/assets/assignments/$id'
     | '/hr/employees/$id'
     | '/workflow/instances/$id'
+    | '/assets/assignments'
     | '/hr/employees'
     | '/workflow/instances'
   id:
@@ -321,6 +388,9 @@ export interface FileRouteTypes {
     | '/_app/settings'
     | '/_app/users'
     | '/_app/'
+    | '/_app/assets/$id'
+    | '/_app/assets/my'
+    | '/_app/assets/settings'
     | '/_app/hr/departments'
     | '/_app/hr/leave-requests'
     | '/_app/hr/leave-settings'
@@ -329,8 +399,11 @@ export interface FileRouteTypes {
     | '/_app/hr/positions'
     | '/_app/workflow/definitions'
     | '/_app/workflow/inbox'
+    | '/_app/assets/'
+    | '/_app/assets/assignments/$id'
     | '/_app/hr/employees/$id'
     | '/_app/workflow/instances/$id'
+    | '/_app/assets/assignments/'
     | '/_app/hr/employees/'
     | '/_app/workflow/instances/'
   fileRoutesById: FileRoutesById
@@ -442,6 +515,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppUsersRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/assets/': {
+      id: '/_app/assets/'
+      path: '/assets'
+      fullPath: '/assets/'
+      preLoaderRoute: typeof AppAssetsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/assets/$id': {
+      id: '/_app/assets/$id'
+      path: '/assets/$id'
+      fullPath: '/assets/$id'
+      preLoaderRoute: typeof AppAssetsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/assets/my': {
+      id: '/_app/assets/my'
+      path: '/assets/my'
+      fullPath: '/assets/my'
+      preLoaderRoute: typeof AppAssetsMyRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/assets/settings': {
+      id: '/_app/assets/settings'
+      path: '/assets/settings'
+      fullPath: '/assets/settings'
+      preLoaderRoute: typeof AppAssetsSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/hr/departments': {
       id: '/_app/hr/departments'
       path: '/hr/departments'
@@ -498,6 +599,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppWorkflowInboxRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/assets/assignments/': {
+      id: '/_app/assets/assignments/'
+      path: '/assets/assignments'
+      fullPath: '/assets/assignments/'
+      preLoaderRoute: typeof AppAssetsAssignmentsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/assets/assignments/$id': {
+      id: '/_app/assets/assignments/$id'
+      path: '/assets/assignments/$id'
+      fullPath: '/assets/assignments/$id'
+      preLoaderRoute: typeof AppAssetsAssignmentsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/hr/employees/': {
       id: '/_app/hr/employees/'
       path: '/hr/employees'
@@ -540,6 +655,9 @@ interface AppRouteChildren {
   AppSettingsRoute: typeof AppSettingsRoute
   AppUsersRoute: typeof AppUsersRoute
   AppIndexRoute: typeof AppIndexRoute
+  AppAssetsIdRoute: typeof AppAssetsIdRoute
+  AppAssetsMyRoute: typeof AppAssetsMyRoute
+  AppAssetsSettingsRoute: typeof AppAssetsSettingsRoute
   AppHrDepartmentsRoute: typeof AppHrDepartmentsRoute
   AppHrLeaveRequestsRoute: typeof AppHrLeaveRequestsRoute
   AppHrLeaveSettingsRoute: typeof AppHrLeaveSettingsRoute
@@ -548,8 +666,11 @@ interface AppRouteChildren {
   AppHrPositionsRoute: typeof AppHrPositionsRoute
   AppWorkflowDefinitionsRoute: typeof AppWorkflowDefinitionsRoute
   AppWorkflowInboxRoute: typeof AppWorkflowInboxRoute
+  AppAssetsIndexRoute: typeof AppAssetsIndexRoute
+  AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
   AppHrEmployeesIdRoute: typeof AppHrEmployeesIdRoute
   AppWorkflowInstancesIdRoute: typeof AppWorkflowInstancesIdRoute
+  AppAssetsAssignmentsIndexRoute: typeof AppAssetsAssignmentsIndexRoute
   AppHrEmployeesIndexRoute: typeof AppHrEmployeesIndexRoute
   AppWorkflowInstancesIndexRoute: typeof AppWorkflowInstancesIndexRoute
 }
@@ -565,6 +686,9 @@ const AppRouteChildren: AppRouteChildren = {
   AppSettingsRoute: AppSettingsRoute,
   AppUsersRoute: AppUsersRoute,
   AppIndexRoute: AppIndexRoute,
+  AppAssetsIdRoute: AppAssetsIdRoute,
+  AppAssetsMyRoute: AppAssetsMyRoute,
+  AppAssetsSettingsRoute: AppAssetsSettingsRoute,
   AppHrDepartmentsRoute: AppHrDepartmentsRoute,
   AppHrLeaveRequestsRoute: AppHrLeaveRequestsRoute,
   AppHrLeaveSettingsRoute: AppHrLeaveSettingsRoute,
@@ -573,8 +697,11 @@ const AppRouteChildren: AppRouteChildren = {
   AppHrPositionsRoute: AppHrPositionsRoute,
   AppWorkflowDefinitionsRoute: AppWorkflowDefinitionsRoute,
   AppWorkflowInboxRoute: AppWorkflowInboxRoute,
+  AppAssetsIndexRoute: AppAssetsIndexRoute,
+  AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
   AppHrEmployeesIdRoute: AppHrEmployeesIdRoute,
   AppWorkflowInstancesIdRoute: AppWorkflowInstancesIdRoute,
+  AppAssetsAssignmentsIndexRoute: AppAssetsAssignmentsIndexRoute,
   AppHrEmployeesIndexRoute: AppHrEmployeesIndexRoute,
   AppWorkflowInstancesIndexRoute: AppWorkflowInstancesIndexRoute,
 }

@@ -22,6 +22,16 @@ export function formatRelative(value: string | Date | null | undefined): string 
   return formatDistanceToNow(new Date(value), { addSuffix: true, locale: currentLocale() });
 }
 
+/** API money values arrive as decimal strings ("1234.50"). */
+export function formatMoney(value: string | number | null | undefined, currency = 'TRY'): string {
+  if (value === null || value === undefined || value === '') return '—';
+  return new Intl.NumberFormat(i18n.resolvedLanguage === 'en' ? 'en-US' : 'tr-TR', {
+    style: 'currency',
+    currency,
+    currencyDisplay: 'narrowSymbol',
+  }).format(Number(value));
+}
+
 export function initials(firstName?: string, lastName?: string): string {
   return `${firstName?.[0] ?? ''}${lastName?.[0] ?? ''}`.toLocaleUpperCase('tr');
 }

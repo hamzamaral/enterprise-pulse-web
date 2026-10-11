@@ -1,4 +1,5 @@
 import {
+  ArrowLeftRight,
   Boxes,
   BriefcaseBusiness,
   Building,
@@ -10,6 +11,7 @@ import {
   FileClock,
   GitBranch,
   Inbox,
+  Laptop,
   LayoutDashboard,
   type LucideIcon,
   MapPin,
@@ -18,6 +20,7 @@ import {
   Settings,
   ShieldCheck,
   ShoppingCart,
+  SlidersHorizontal,
   TrendingUp,
   Users,
   UsersRound,
@@ -86,9 +89,27 @@ export const NAVIGATION: NavGroup[] = [
     ],
   },
   {
+    labelKey: 'nav.groups.assets',
+    items: [
+      { to: '/assets/my', labelKey: 'nav.myAssets', icon: Laptop },
+      { to: '/assets', labelKey: 'nav.assetList', icon: PackageCheck, permission: 'assets:read' },
+      {
+        to: '/assets/assignments',
+        labelKey: 'nav.assignments',
+        icon: ArrowLeftRight,
+        permission: 'assets:read',
+      },
+      {
+        to: '/assets/settings',
+        labelKey: 'nav.assetSettings',
+        icon: SlidersHorizontal,
+        permission: 'assets:update',
+      },
+    ],
+  },
+  {
     labelKey: 'nav.groups.modules',
     items: [
-      { labelKey: 'nav.assets', icon: PackageCheck, comingSoon: true },
       { labelKey: 'nav.inventory', icon: Boxes, comingSoon: true },
       { labelKey: 'nav.purchasing', icon: ShoppingCart, comingSoon: true },
       { labelKey: 'nav.sales', icon: TrendingUp, comingSoon: true },
@@ -136,3 +157,16 @@ export const NAVIGATION: NavGroup[] = [
 ];
 
 export const APP_ICON = GitBranch;
+
+/** The most specific nav target containing `pathname`, so `/assets/my` doesn't also light `/assets`. */
+export function findActiveNavTarget(pathname: string): string | undefined {
+  let best: string | undefined;
+  for (const item of NAVIGATION.flatMap((group) => group.items)) {
+    const to = item.to;
+    if (!to) continue;
+    const matches =
+      to === '/' ? pathname === '/' : pathname === to || pathname.startsWith(`${to}/`);
+    if (matches && (!best || to.length > best.length)) best = to;
+  }
+  return best;
+}

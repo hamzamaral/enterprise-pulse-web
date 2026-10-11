@@ -16,14 +16,15 @@ import {
   SidebarRail,
 } from '@/shared/ui/sidebar';
 import { CompanySwitcher } from './company-switcher';
-import { NAVIGATION } from './navigation';
+import { findActiveNavTarget, NAVIGATION } from './navigation';
 
 export function AppSidebar() {
   const { t } = useTranslation();
   const can = usePermission();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
-  const isActive = (to: string) => (to === '/' ? pathname === '/' : pathname.startsWith(to));
+  const activeTo = findActiveNavTarget(pathname);
+  const isActive = (to: string) => to === activeTo;
 
   return (
     <Sidebar collapsible="icon">

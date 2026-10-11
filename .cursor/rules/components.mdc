@@ -21,6 +21,9 @@ Every list page follows the same pattern (see `features/organization/branches-pa
 - Excel export uses `exportToExcel(fileName, columns, rows)` with `fetchAllPages` so it exports all filtered rows, not just the visible page.
 - Destructive actions use `ConfirmDialog`; status values use `ToneBadge` / `ActiveBadge` / domain badges (`WorkflowStatusBadge`).
 - Detail pages: back link, `PageHeader` with a status badge, two-column grid (`lg:grid-cols-3`) of `Card`s.
+- Money: API decimals are strings; render them with `formatMoney(value, currency)`, never `Number(...).toFixed`.
+- Printable documents (e.g. `features/assets/assignment-document-page.tsx`) are normal routes: toolbars get `print:hidden`,
+  the paper uses `print:` overrides; the app shell hides itself in print media. "PDF" is the browser's print-to-PDF.
 
 ## shadcn/ui
 
