@@ -47,6 +47,10 @@ import { Route as AppInventoryIndexRouteImport } from './routes/_app/inventory/i
 import { Route as AppInventorySettingsRouteImport } from './routes/_app/inventory/settings'
 import { Route as AppPartnersIndexRouteImport } from './routes/_app/partners/index'
 import { Route as AppPartnersIdRouteImport } from './routes/_app/partners/$id'
+import { Route as AppProjectsIndexRouteImport } from './routes/_app/projects/index'
+import { Route as AppProjectsIdRouteImport } from './routes/_app/projects/$id'
+import { Route as AppProjectsMyTasksRouteImport } from './routes/_app/projects/my-tasks'
+import { Route as AppProjectsTimesheetRouteImport } from './routes/_app/projects/timesheet'
 import { Route as AppReportsCashFlowRouteImport } from './routes/_app/reports/cash-flow'
 import { Route as AppReportsPurchasesRouteImport } from './routes/_app/reports/purchases'
 import { Route as AppReportsSalesRouteImport } from './routes/_app/reports/sales'
@@ -302,6 +306,26 @@ const AppPartnersIndexRoute = AppPartnersIndexRouteImport.update({
 const AppPartnersIdRoute = AppPartnersIdRouteImport.update({
   id: '/partners/$id',
   path: '/partners/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProjectsIndexRoute = AppProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProjectsIdRoute = AppProjectsIdRouteImport.update({
+  id: '/projects/$id',
+  path: '/projects/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProjectsMyTasksRoute = AppProjectsMyTasksRouteImport.update({
+  id: '/projects/my-tasks',
+  path: '/projects/my-tasks',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProjectsTimesheetRoute = AppProjectsTimesheetRouteImport.update({
+  id: '/projects/timesheet',
+  path: '/projects/timesheet',
   getParentRoute: () => AppRoute,
 } as any)
 const AppReportsCashFlowRoute = AppReportsCashFlowRouteImport.update({
@@ -691,6 +715,9 @@ export interface FileRoutesByFullPath {
   '/hr/timesheet': typeof AppHrTimesheetRoute
   '/inventory/settings': typeof AppInventorySettingsRoute
   '/partners/$id': typeof AppPartnersIdRoute
+  '/projects/$id': typeof AppProjectsIdRoute
+  '/projects/my-tasks': typeof AppProjectsMyTasksRoute
+  '/projects/timesheet': typeof AppProjectsTimesheetRoute
   '/reports/cash-flow': typeof AppReportsCashFlowRoute
   '/reports/purchases': typeof AppReportsPurchasesRoute
   '/reports/sales': typeof AppReportsSalesRoute
@@ -700,6 +727,7 @@ export interface FileRoutesByFullPath {
   '/expenses/': typeof AppExpensesIndexRoute
   '/inventory/': typeof AppInventoryIndexRoute
   '/partners/': typeof AppPartnersIndexRoute
+  '/projects/': typeof AppProjectsIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -797,6 +825,9 @@ export interface FileRoutesByTo {
   '/hr/timesheet': typeof AppHrTimesheetRoute
   '/inventory/settings': typeof AppInventorySettingsRoute
   '/partners/$id': typeof AppPartnersIdRoute
+  '/projects/$id': typeof AppProjectsIdRoute
+  '/projects/my-tasks': typeof AppProjectsMyTasksRoute
+  '/projects/timesheet': typeof AppProjectsTimesheetRoute
   '/reports/cash-flow': typeof AppReportsCashFlowRoute
   '/reports/purchases': typeof AppReportsPurchasesRoute
   '/reports/sales': typeof AppReportsSalesRoute
@@ -806,6 +837,7 @@ export interface FileRoutesByTo {
   '/expenses': typeof AppExpensesIndexRoute
   '/inventory': typeof AppInventoryIndexRoute
   '/partners': typeof AppPartnersIndexRoute
+  '/projects': typeof AppProjectsIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -905,6 +937,9 @@ export interface FileRoutesById {
   '/_app/hr/timesheet': typeof AppHrTimesheetRoute
   '/_app/inventory/settings': typeof AppInventorySettingsRoute
   '/_app/partners/$id': typeof AppPartnersIdRoute
+  '/_app/projects/$id': typeof AppProjectsIdRoute
+  '/_app/projects/my-tasks': typeof AppProjectsMyTasksRoute
+  '/_app/projects/timesheet': typeof AppProjectsTimesheetRoute
   '/_app/reports/cash-flow': typeof AppReportsCashFlowRoute
   '/_app/reports/purchases': typeof AppReportsPurchasesRoute
   '/_app/reports/sales': typeof AppReportsSalesRoute
@@ -914,6 +949,7 @@ export interface FileRoutesById {
   '/_app/expenses/': typeof AppExpensesIndexRoute
   '/_app/inventory/': typeof AppInventoryIndexRoute
   '/_app/partners/': typeof AppPartnersIndexRoute
+  '/_app/projects/': typeof AppProjectsIndexRoute
   '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/_app/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/_app/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -1013,6 +1049,9 @@ export interface FileRouteTypes {
     | '/hr/timesheet'
     | '/inventory/settings'
     | '/partners/$id'
+    | '/projects/$id'
+    | '/projects/my-tasks'
+    | '/projects/timesheet'
     | '/reports/cash-flow'
     | '/reports/purchases'
     | '/reports/sales'
@@ -1022,6 +1061,7 @@ export interface FileRouteTypes {
     | '/expenses/'
     | '/inventory/'
     | '/partners/'
+    | '/projects/'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
     | '/crm/leads/$id'
@@ -1119,6 +1159,9 @@ export interface FileRouteTypes {
     | '/hr/timesheet'
     | '/inventory/settings'
     | '/partners/$id'
+    | '/projects/$id'
+    | '/projects/my-tasks'
+    | '/projects/timesheet'
     | '/reports/cash-flow'
     | '/reports/purchases'
     | '/reports/sales'
@@ -1128,6 +1171,7 @@ export interface FileRouteTypes {
     | '/expenses'
     | '/inventory'
     | '/partners'
+    | '/projects'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
     | '/crm/leads/$id'
@@ -1226,6 +1270,9 @@ export interface FileRouteTypes {
     | '/_app/hr/timesheet'
     | '/_app/inventory/settings'
     | '/_app/partners/$id'
+    | '/_app/projects/$id'
+    | '/_app/projects/my-tasks'
+    | '/_app/projects/timesheet'
     | '/_app/reports/cash-flow'
     | '/_app/reports/purchases'
     | '/_app/reports/sales'
@@ -1235,6 +1282,7 @@ export interface FileRouteTypes {
     | '/_app/expenses/'
     | '/_app/inventory/'
     | '/_app/partners/'
+    | '/_app/projects/'
     | '/_app/assets/assignments/$id'
     | '/_app/assets/counts/$id'
     | '/_app/crm/leads/$id'
@@ -1572,6 +1620,34 @@ declare module '@tanstack/react-router' {
       path: '/partners/$id'
       fullPath: '/partners/$id'
       preLoaderRoute: typeof AppPartnersIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/projects/': {
+      id: '/_app/projects/'
+      path: '/projects'
+      fullPath: '/projects/'
+      preLoaderRoute: typeof AppProjectsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/projects/$id': {
+      id: '/_app/projects/$id'
+      path: '/projects/$id'
+      fullPath: '/projects/$id'
+      preLoaderRoute: typeof AppProjectsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/projects/my-tasks': {
+      id: '/_app/projects/my-tasks'
+      path: '/projects/my-tasks'
+      fullPath: '/projects/my-tasks'
+      preLoaderRoute: typeof AppProjectsMyTasksRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/projects/timesheet': {
+      id: '/_app/projects/timesheet'
+      path: '/projects/timesheet'
+      fullPath: '/projects/timesheet'
+      preLoaderRoute: typeof AppProjectsTimesheetRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/reports/cash-flow': {
@@ -2077,6 +2153,9 @@ interface AppRouteChildren {
   AppHrTimesheetRoute: typeof AppHrTimesheetRoute
   AppInventorySettingsRoute: typeof AppInventorySettingsRoute
   AppPartnersIdRoute: typeof AppPartnersIdRoute
+  AppProjectsIdRoute: typeof AppProjectsIdRoute
+  AppProjectsMyTasksRoute: typeof AppProjectsMyTasksRoute
+  AppProjectsTimesheetRoute: typeof AppProjectsTimesheetRoute
   AppReportsCashFlowRoute: typeof AppReportsCashFlowRoute
   AppReportsPurchasesRoute: typeof AppReportsPurchasesRoute
   AppReportsSalesRoute: typeof AppReportsSalesRoute
@@ -2086,6 +2165,7 @@ interface AppRouteChildren {
   AppExpensesIndexRoute: typeof AppExpensesIndexRoute
   AppInventoryIndexRoute: typeof AppInventoryIndexRoute
   AppPartnersIndexRoute: typeof AppPartnersIndexRoute
+  AppProjectsIndexRoute: typeof AppProjectsIndexRoute
   AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
   AppAssetsCountsIdRoute: typeof AppAssetsCountsIdRoute
   AppCrmLeadsIdRoute: typeof AppCrmLeadsIdRoute
@@ -2181,6 +2261,9 @@ const AppRouteChildren: AppRouteChildren = {
   AppHrTimesheetRoute: AppHrTimesheetRoute,
   AppInventorySettingsRoute: AppInventorySettingsRoute,
   AppPartnersIdRoute: AppPartnersIdRoute,
+  AppProjectsIdRoute: AppProjectsIdRoute,
+  AppProjectsMyTasksRoute: AppProjectsMyTasksRoute,
+  AppProjectsTimesheetRoute: AppProjectsTimesheetRoute,
   AppReportsCashFlowRoute: AppReportsCashFlowRoute,
   AppReportsPurchasesRoute: AppReportsPurchasesRoute,
   AppReportsSalesRoute: AppReportsSalesRoute,
@@ -2190,6 +2273,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppExpensesIndexRoute: AppExpensesIndexRoute,
   AppInventoryIndexRoute: AppInventoryIndexRoute,
   AppPartnersIndexRoute: AppPartnersIndexRoute,
+  AppProjectsIndexRoute: AppProjectsIndexRoute,
   AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
   AppAssetsCountsIdRoute: AppAssetsCountsIdRoute,
   AppCrmLeadsIdRoute: AppCrmLeadsIdRoute,

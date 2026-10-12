@@ -6,9 +6,11 @@ import {
   CalendarClock,
   CalendarDays,
   ClipboardCheck,
+  FolderKanban,
   HandCoins,
   Landmark,
   Laptop,
+  ListChecks,
   ListTodo,
   MapPin,
   Percent,
@@ -36,6 +38,7 @@ import {
 } from '@/api/generated/endpoints/employees/employees';
 import { useCrmSummary } from '@/api/generated/endpoints/crm/crm';
 import { useExpenseReportsSummary } from '@/api/generated/endpoints/expenses/expenses';
+import { useProjectsSummary } from '@/api/generated/endpoints/projects/projects';
 import { useFinanceReportsSummary } from '@/api/generated/endpoints/finance/finance';
 import { useStockFindLevels, useStockSummary } from '@/api/generated/endpoints/inventory/inventory';
 import {
@@ -53,6 +56,7 @@ import { NAVIGATION } from '@/app/layout/navigation';
 import { useMe, usePermission } from '@/features/auth/use-session';
 import { itemName } from '@/features/inventory/inventory-components';
 import { CashFlowTrendCard, TradeTrendCard } from '@/features/reports/dashboard-charts';
+import { useFormatHours } from '@/features/projects/project-components';
 import { WorkflowStatusBadge } from '@/features/workflow/workflow-components';
 import { formatMoney, formatQuantity, formatRelative } from '@/shared/lib/format';
 import { Badge } from '@/shared/ui/badge';
@@ -137,6 +141,10 @@ export function DashboardPage() {
   const expenses = useExpenseReportsSummary({
     query: { enabled: !!me?.employeeId || can('expenses:read') },
   });
+  const projects = useProjectsSummary({
+    query: { enabled: !!me?.employeeId || can('projects:read') },
+  });
+  const hours = useFormatHours();
 
   const myEmployee = useEmployeesFindMine({ query: { enabled: !!me?.employeeId } });
   const myBalances = useLeaveBalancesFindAll(
@@ -196,7 +204,7 @@ export function DashboardPage() {
         />
       </div>
 
-      {(myEmployee.isSuccess || can('expenses:read')) && (
+      {(myEmployee.isSuccess || can('expenses:read') || can('projects:read')) && (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {myEmployee.isSuccess && (
             <>
@@ -240,6 +248,20 @@ export function DashboardPage() {
                 icon={ReceiptText}
                 to="/expenses/my"
               />
+              <StatCard
+                label={t('dashboard.myTasks')}
+                value={projects.data?.myOpenTaskCount}
+                hint={
+                  projects.data
+                    ? t('dashboard.myTasksHint', {
+                        overdue: projects.data.myOverdueTaskCount,
+                        hours: hours(projects.data.myHoursThisWeek),
+                      })
+                    : undefined
+                }
+                icon={ListChecks}
+                to="/projects/my-tasks"
+              />
             </>
           )}
           {can('expenses:read') && (
@@ -257,6 +279,22 @@ export function DashboardPage() {
               }
               icon={Banknote}
               to="/expenses"
+            />
+          )}
+          {can('projects:read') && (
+            <StatCard
+              label={t('dashboard.activeProjects')}
+              value={projects.data?.activeCount}
+              hint={
+                projects.data
+                  ? t('dashboard.activeProjectsHint', {
+                      overdue: projects.data.overdueCount,
+                      overBudget: projects.data.overBudgetCount,
+                    })
+                  : undefined
+              }
+              icon={FolderKanban}
+              to="/projects"
             />
           )}
         </div>

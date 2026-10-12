@@ -64,7 +64,8 @@
       "purchasing": "Satın Alma",
       "sales": "Satış",
       "reports": "Raporlar",
-      "crm": "CRM"
+      "crm": "CRM",
+      "projects": "Proje Yönetimi"
     },
     "users": "Kullanıcılar",
     "roles": "Roller ve İzinler",
@@ -126,7 +127,10 @@
     "crmActivities": "Aktiviteler",
     "myExpenses": "Masraflarım",
     "expenseReports": "Masraf Formları",
-    "expenseSettings": "Masraf Türleri"
+    "expenseSettings": "Masraf Türleri",
+    "myTasks": "Görevlerim",
+    "projectTimesheet": "Zaman Çizelgesi",
+    "projects": "Projeler"
   },
   "auth": {
     "login": "Giriş yap",
@@ -217,7 +221,11 @@
     "expensesToPay": "Ödenecek masraflar",
     "expensesToPayHint": "Onaylı form: {{count}}",
     "myExpenses": "Masraflarım",
-    "myExpensesHint": "Onayda: {{pending}} · Taslak: {{draft}}"
+    "myExpensesHint": "Onayda: {{pending}} · Taslak: {{draft}}",
+    "myTasks": "Açık görevlerim",
+    "myTasksHint": "{{overdue}} gecikmiş · bu hafta {{hours}}",
+    "activeProjects": "Devam eden proje",
+    "activeProjectsHint": "{{overdue}} gecikmiş · {{overBudget}} bütçe aşımı"
   },
   "users": {
     "title": "Kullanıcılar",
@@ -272,7 +280,8 @@
       "sales": "Satış",
       "finance": "Finans",
       "crm": "CRM",
-      "expenses": "Masraf ve harcırah"
+      "expenses": "Masraf ve harcırah",
+      "projects": "Proje yönetimi"
     },
     "actions": {
       "read": "Görüntüle",
@@ -1539,6 +1548,145 @@
       "requiresReceipt": "Fiş zorunlu",
       "noLimit": "Limitsiz",
       "rateRequired": "Harcırah ve km türleri için birim ücret zorunludur"
+    },
+    "project": "Proje",
+    "projectNone": "Projeye bağlı değil",
+    "projectHint": "Onaylanan tutar projenin maliyetine eklenir."
+  },
+  "projects": {
+    "title": "Projeler",
+    "subtitle": "Müşteri ve iç projeler: görevler, zaman kayıtları ve bütçe",
+    "new": "Yeni proje",
+    "created": "{{number}} oluşturuldu",
+    "deleted": "Proje silindi",
+    "project": "Proje",
+    "name": "Proje adı",
+    "customer": "Müşteri",
+    "customerOptional": "Müşteri (isteğe bağlı)",
+    "internal": "İç proje",
+    "manager": "Proje yöneticisi",
+    "status": {
+      "PLANNED": "Planlandı",
+      "ACTIVE": "Devam ediyor",
+      "ON_HOLD": "Beklemede",
+      "COMPLETED": "Tamamlandı",
+      "CANCELLED": "İptal"
+    },
+    "taskStatus": {
+      "TODO": "Yapılacak",
+      "IN_PROGRESS": "Devam ediyor",
+      "REVIEW": "Kontrolde",
+      "DONE": "Tamamlandı"
+    },
+    "priority": {
+      "LOW": "Düşük",
+      "MEDIUM": "Orta",
+      "HIGH": "Yüksek",
+      "URGENT": "Acil"
+    },
+    "hours": "{{value}} sa",
+    "startDate": "Başlangıç",
+    "dueDate": "Bitiş",
+    "completedAt": "Tamamlanma",
+    "acceptsTime": "Zaman kaydına açık",
+    "budget": "Bütçe",
+    "budgetHint": "İşçilik ve masraf toplamı için şirket para biriminde maliyet bütçesi.",
+    "budgetTitle": "Bütçe ve maliyet",
+    "budgetUsage": "Bütçe kullanımı",
+    "remaining": "Kalan",
+    "laborCost": "İşçilik maliyeti",
+    "expenseCost": "Masraflar",
+    "totalCost": "Toplam maliyet",
+    "progress": "İlerleme",
+    "tasksDone": "{{done}} / {{total}} görev",
+    "loggedHours": "Kayıtlı süre",
+    "estimatedHours": "Tahmini süre",
+    "overdue": "Gecikmiş",
+    "overdueTasks_one": "{{count}} görevin bitiş tarihi geçti",
+    "overdueTasks_other": "{{count}} görevin bitiş tarihi geçti",
+    "workload": "Görev durumu",
+    "logTime": "Zaman gir",
+    "openOnly": "Açık projeler",
+    "onlyMine": "Sadece benimkiler",
+    "validation": {
+      "dueBeforeStart": "Bitiş tarihi başlangıçtan önce olamaz"
+    },
+    "summary": {
+      "active": "Devam eden proje",
+      "overdue_one": "{{count}} gecikmiş",
+      "overdue_other": "{{count}} gecikmiş",
+      "overBudget": "Bütçesi aşılan",
+      "myTasks": "Açık görevlerim",
+      "myHours": "Bu hafta girdiğim süre"
+    },
+    "tabs": {
+      "overview": "Genel bakış",
+      "tasks": "Görev panosu",
+      "time": "Zaman kayıtları",
+      "expenses": "Masraflar"
+    },
+    "tasks": {
+      "new": "Yeni görev",
+      "created": "#{{no}} görevi oluşturuldu",
+      "logged": "Kayıtlı {{logged}} · tahmini {{estimate}}",
+      "completedAt": "{{date}} tarihinde tamamlandı",
+      "title": "Görev",
+      "priority": "Öncelik",
+      "assignee": "Sorumlu",
+      "unassigned": "Atanmadı",
+      "estimate": "Tahmini süre (saat)",
+      "empty": "Görev yok"
+    },
+    "members": {
+      "title": "Ekip",
+      "add": "Üye ekle",
+      "employee": "Personel",
+      "hourlyCost": "Saatlik maliyet",
+      "roleLabel": "Rol",
+      "role": {
+        "LEAD": "Ekip lideri",
+        "MEMBER": "Üye"
+      },
+      "removeTitle": "{{name}} projeden çıkarılsın mı?",
+      "removeHint": "Üzerindeki açık görevler atanmamış olarak kalır; girilmiş süreler korunur."
+    },
+    "time": {
+      "date": "Tarih",
+      "task": "Görev",
+      "general": "Genel (görevsiz)",
+      "hours": "Süre",
+      "cost": "Maliyet",
+      "allHint": "Projeye girilen tüm süreler",
+      "ownHint": "Bu projede girdiğiniz süreler",
+      "total": "Toplam {{hours}}"
+    },
+    "expenses": {
+      "hint": "Projeye bağlanan masraf formları; onaylanan ve ödenenler maliyete eklenir.",
+      "empty": "Projeye bağlı masraf formu yok."
+    },
+    "myTasks": {
+      "title": "Görevlerim",
+      "subtitle": "Açık projelerde size atanan görevler",
+      "empty": "Size atanmış açık görev yok."
+    },
+    "timesheet": {
+      "title": "Zaman çizelgesi",
+      "subtitle": "Projelerde çalıştığınız süreleri haftalık girin",
+      "previous": "Önceki hafta",
+      "next": "Sonraki hafta",
+      "thisWeek": "Bu hafta",
+      "weekTotal": "Hafta toplamı: {{hours}}",
+      "total": "Toplam",
+      "dayTotal": "Gün toplamı",
+      "locked": "Proje zaman kaydına kapalı",
+      "empty": "Bu hafta için kayıt yok. Aşağıdan proje ekleyin.",
+      "addRow": "Proje satırı ekle",
+      "noProjects": "Zaman girebileceğiniz açık proje yok",
+      "overDay": "Bir günde en fazla {{max}} saat girilebilir",
+      "duplicate": "Aynı proje ve görev için tek satır olmalı",
+      "discard": "Değişiklikleri geri al",
+      "saved": "Zaman çizelgesi kaydedildi",
+      "noEmployee": "Hesabınız bir personel kaydına bağlı değil; zaman girişi yapılamaz."
     }
   },
   "sales": {

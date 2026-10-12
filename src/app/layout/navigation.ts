@@ -21,6 +21,7 @@ import {
   Contact,
   FileSpreadsheet,
   FileText,
+  FolderKanban,
   FileClock,
   GitBranch,
   HandCoins,
@@ -29,6 +30,7 @@ import {
   Landmark,
   Laptop,
   LayoutDashboard,
+  ListChecks,
   ListTodo,
   type LucideIcon,
   MapPin,
@@ -39,6 +41,7 @@ import {
   Receipt,
   ScanQrCode,
   ReceiptText,
+  Timer,
   ScrollText,
   Settings,
   ShieldCheck,
@@ -148,6 +151,14 @@ export const NAVIGATION: NavGroup[] = [
         icon: Tags,
         permission: 'expenses:update',
       },
+    ],
+  },
+  {
+    labelKey: 'nav.groups.projects',
+    items: [
+      { to: '/projects/my-tasks', labelKey: 'nav.myTasks', icon: ListChecks },
+      { to: '/projects/timesheet', labelKey: 'nav.projectTimesheet', icon: Timer },
+      { to: '/projects', labelKey: 'nav.projects', icon: FolderKanban },
     ],
   },
   {

@@ -16,6 +16,12 @@ export interface ExpenseReportDto {
   employeeName: string;
   /** @nullable */
   departmentName: string | null;
+  /** @nullable */
+  projectId: string | null;
+  /** @nullable */
+  projectNumber: string | null;
+  /** @nullable */
+  projectName: string | null;
   /** Company currency. */
   totalAmount: string;
   currencyCode: string;

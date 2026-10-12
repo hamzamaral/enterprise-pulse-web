@@ -12,6 +12,7 @@ import type { ExpenseReportStatus } from './expenseReportStatus';
 export type ExpenseReportsFindAllParams = {
   status?: ExpenseReportStatus;
   employeeId?: string;
+  projectId?: string;
   /**
    * Only the current user's reports, even with `expenses:read`.
    */

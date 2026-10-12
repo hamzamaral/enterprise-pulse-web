@@ -21,6 +21,11 @@ export interface CreateExpenseReportDto {
    */
   description?: string | null;
   /**
+   * Working project the employee is a member of; approved totals count towards its cost.
+   * @nullable
+   */
+  projectId?: string | null;
+  /**
    * @minItems 1
    * @maxItems 100
    */

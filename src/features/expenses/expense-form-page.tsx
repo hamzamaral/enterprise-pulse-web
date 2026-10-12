@@ -14,6 +14,7 @@ import {
   useExpenseReportsUpdate,
   useExpenseReportsUploadReceipt,
 } from '@/api/generated/endpoints/expenses/expenses';
+import { useProjectsFindAll } from '@/api/generated/endpoints/projects/projects';
 import type {
   ExpenseCategoryDto,
   ExpenseLineInputDto,
@@ -21,6 +22,7 @@ import type {
 } from '@/api/generated/model';
 import { useMe, usePermission } from '@/features/auth/use-session';
 import { useEmployeeOptions } from '@/features/hr/hr-components';
+import { WORKING_STATUSES } from '@/features/projects/project-components';
 import { parseDecimal } from '@/features/trade/document-math';
 import { today, useBaseCurrency } from '@/features/trade/trade-components';
 import { useCurrencyOptions } from '@/features/crm/crm-components';
@@ -37,6 +39,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Textarea } from '@/shared/ui/textarea';
 import { isRated, useInvalidateExpenses } from './expense-components';
+
+const NO_PROJECT = '__none__';
 
 const lineSchema = z.object({
   categoryId: z.string().min(1, 'validation.required'),
@@ -58,6 +62,7 @@ function buildSchema(categories: Map<string, ExpenseCategoryDto>) {
   return z
     .object({
       employeeId: z.string(),
+      projectId: z.string(),
       title: v.requiredString().pipe(z.string().min(2, 'validation.required')),
       description: z.string(),
       lines: z.array(lineSchema).min(1),
@@ -148,6 +153,22 @@ function ExpenseForm({
   const can = usePermission();
   const forOthers = !report && can('expenses:create') && can('employees:read');
   const employees = useEmployeeOptions(forOthers);
+  const { data: openProjects } = useProjectsFindAll({
+    open: 'true',
+    mine: forOthers ? undefined : 'true',
+    pageSize: 100,
+    sortBy: 'number',
+    sortOrder: 'asc',
+  });
+  const projects = (openProjects?.data ?? [])
+    .filter((p) => WORKING_STATUSES.includes(p.status))
+    .map((p) => ({ value: p.id, label: `${p.number} · ${p.name}` }));
+  if (report?.projectId && !projects.some((p) => p.value === report.projectId)) {
+    projects.unshift({
+      value: report.projectId,
+      label: `${report.projectNumber} · ${report.projectName}`,
+    });
+  }
   const invalidate = useInvalidateExpenses();
   const create = useExpenseReportsCreate();
   const update = useExpenseReportsUpdate();
@@ -162,6 +183,7 @@ function ExpenseForm({
     resolver: zodResolver(schema),
     defaultValues: {
       employeeId: '',
+      projectId: report?.projectId ?? NO_PROJECT,
       title: report?.title ?? '',
       description: report?.description ?? '',
       lines: report
@@ -192,6 +214,7 @@ function ExpenseForm({
     const data = {
       title: values.title.trim(),
       description: values.description.trim() || null,
+      projectId: values.projectId === NO_PROJECT ? null : values.projectId,
       lines: values.lines.map((line): ExpenseLineInputDto => {
         const rated = isRated(byId.get(line.categoryId)?.kind ?? 'RECEIPT');
         return {
@@ -262,7 +285,7 @@ function ExpenseForm({
                 control={form.control}
                 name="title"
                 render={({ field }) => (
-                  <FormItem className={forOthers ? 'sm:col-span-2' : 'sm:col-span-3'}>
+                  <FormItem className="sm:col-span-2">
                     <FormLabel>{t('expenses.titleField')}</FormLabel>
                     <FormControl>
                       <Input placeholder={t('expenses.titlePlaceholder')} {...field} />
@@ -296,6 +319,33 @@ function ExpenseForm({
                   )}
                 />
               )}
+              <FormField
+                control={form.control}
+                name="projectId"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>{t('expenses.project')}</FormLabel>
+                    <Select value={field.value} onValueChange={field.onChange}>
+                      <FormControl>
+                        <SelectTrigger className="w-full">
+                          <SelectValue />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        <SelectItem value={NO_PROJECT}>{t('expenses.projectNone')}</SelectItem>
+                        {projects.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {field.value !== NO_PROJECT && (
+                      <p className="text-muted-foreground text-xs">{t('expenses.projectHint')}</p>
+                    )}
+                  </FormItem>
+                )}
+              />
               <FormField
                 control={form.control}
                 name="description"

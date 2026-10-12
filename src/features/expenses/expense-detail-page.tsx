@@ -244,6 +244,17 @@ export function ExpenseDetailPage({ id }: { id: string }) {
             <dl className="grid grid-cols-2 gap-4">
               <Field label={t('expenses.employee')}>{report.employeeName}</Field>
               <Field label={t('expenses.department')}>{report.departmentName}</Field>
+              {report.projectId && (
+                <Field label={t('expenses.project')}>
+                  <Link
+                    to="/projects/$id"
+                    params={{ id: report.projectId }}
+                    className="text-primary hover:underline"
+                  >
+                    {report.projectNumber} · {report.projectName}
+                  </Link>
+                </Field>
+              )}
               <Field label={t('expenses.createdAt')}>{formatDate(report.createdAt)}</Field>
               <Field label={t('expenses.createdBy')}>{report.createdByName}</Field>
               <Field label={t('expenses.submittedAt')}>{formatDateTime(report.submittedAt)}</Field>

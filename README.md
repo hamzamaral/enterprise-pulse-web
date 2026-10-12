@@ -43,6 +43,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Satış fırsatları:** sürükle-bırak pano, ağırlıklı hat, kazanma oranı                  | **Satış fırsatı:** aşama çubuğu, bağlı teklifler, aktivite zaman çizelgesi          |
 | ![Masraf formları](docs/screenshots/expense-reports.png)                                | ![Masraf formu](docs/screenshots/expense-report.png)                                |
 | **Masraf formları:** onay ve ödeme bekleyenler, aylık ve türe göre masraf               | **Masraf formu:** dövizli fişler, limit uyarıları, fiş ekleri, ödeme                |
+| ![Projeler](docs/screenshots/projects.png)                                              | ![Görev panosu](docs/screenshots/project-board.png)                                 |
+| **Projeler:** ilerleme, kayıtlı süre, bütçe kullanımı, geciken projeler                 | **Görev panosu:** sürükle-bırak, öncelik, sorumlu, harcanan / tahmini süre          |
 
 ## Özellikler
 
@@ -50,7 +52,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   denetim kaydı, Socket.IO ile anlık bildirimler, onay kutusu, ayarlar (para birimi, kur, KDV, birim, numaralandırma, onay akışları).
 - **Gösterge paneli:** kullanıcının yetkilerine göre İK, zimmet, stok ve finans (alacak, borç, nakit pozisyonu,
   açık siparişler) KPI'ları, son 6 ayın satış / alış ve nakit akışı grafikleri, kritik stok listesi; personel için
-  kalan izin hakkı, onay bekleyen zimmetler ve masraflarım; finans için ödenecek masraflar.
+  kalan izin hakkı, onay bekleyen zimmetler, masraflarım ve görevlerim; finans için ödenecek masraflar;
+  proje yetkisi olanlar için aktif projeler.
 - **İnsan Kaynakları:** personel kartı, departman ve pozisyonlar, organizasyon şeması, izin talebi ve çok adımlı onay,
   "İzinlerim" ve "Mesaim" (giriş-çıkış) self-servis ekranları, aylık puantaj çizelgesi (İK düzeltmesi, Excel'e aktarma),
   vardiya tanımları ve haftalık vardiya planı.
@@ -67,6 +70,9 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   ücretli araç kalemleriyle masraf formu, fiş görseli / PDF yükleme, limit üstü ve eksik fiş uyarıları; onaycının
   formu açıp onaylaması veya reddetmesi, finansın kasa / bankadan ödemesi ve geri alması; masraf türleri
   (limit, fiş zorunluluğu, harcırah ve km ücreti), aylık ve türe göre masraf grafikleri.
+- **Proje Yönetimi:** proje listesi (ilerleme, kayıtlı süre, bütçe kullanımı, geciken ve bütçesi aşan projeler),
+  proje ekibi ve saatlik maliyetler, sürükle-bırak görev panosu, "Görevlerim" ve haftalık "Zaman Çizelgesi"
+  self-servis ekranları, proje detayında zaman kayıtları ve projeye bağlı masraflar; masraf formunda proje seçimi.
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.

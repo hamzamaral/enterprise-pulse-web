@@ -17,6 +17,7 @@ export * from './notifications/notifications';
 export * from './numbering/numbering';
 export * from './partners/partners';
 export * from './positions/positions';
+export * from './projects/projects';
 export * from './purchasing/purchasing';
 export * from './reports/reports';
 export * from './roles/roles';

@@ -64,7 +64,8 @@
       "purchasing": "Purchasing",
       "sales": "Sales",
       "reports": "Reports",
-      "crm": "CRM"
+      "crm": "CRM",
+      "projects": "Projects"
     },
     "users": "Users",
     "roles": "Roles & Permissions",
@@ -126,7 +127,10 @@
     "crmActivities": "Activities",
     "myExpenses": "My Expenses",
     "expenseReports": "Expense Reports",
-    "expenseSettings": "Expense Types"
+    "expenseSettings": "Expense Types",
+    "myTasks": "My Tasks",
+    "projectTimesheet": "Timesheet",
+    "projects": "Projects"
   },
   "auth": {
     "login": "Sign in",
@@ -217,7 +221,11 @@
     "expensesToPay": "Expenses to pay",
     "expensesToPayHint": "Approved reports: {{count}}",
     "myExpenses": "My expenses",
-    "myExpensesHint": "Pending: {{pending}} · Draft: {{draft}}"
+    "myExpensesHint": "Pending: {{pending}} · Draft: {{draft}}",
+    "myTasks": "My open tasks",
+    "myTasksHint": "{{overdue}} overdue · {{hours}} this week",
+    "activeProjects": "Active projects",
+    "activeProjectsHint": "{{overdue}} overdue · {{overBudget}} over budget"
   },
   "users": {
     "title": "Users",
@@ -272,7 +280,8 @@
       "sales": "Sales",
       "finance": "Finance",
       "crm": "CRM",
-      "expenses": "Expenses and allowances"
+      "expenses": "Expenses and allowances",
+      "projects": "Projects"
     },
     "actions": {
       "read": "Read",
@@ -1539,6 +1548,145 @@
       "requiresReceipt": "Receipt required",
       "noLimit": "No limit",
       "rateRequired": "Per diem and mileage types need a unit rate"
+    },
+    "project": "Project",
+    "projectNone": "Not charged to a project",
+    "projectHint": "The approved amount adds to the project's cost."
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Customer and internal projects: tasks, time tracking and budget",
+    "new": "New project",
+    "created": "{{number}} created",
+    "deleted": "Project deleted",
+    "project": "Project",
+    "name": "Project name",
+    "customer": "Customer",
+    "customerOptional": "Customer (optional)",
+    "internal": "Internal project",
+    "manager": "Project manager",
+    "status": {
+      "PLANNED": "Planned",
+      "ACTIVE": "Active",
+      "ON_HOLD": "On hold",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    },
+    "taskStatus": {
+      "TODO": "To do",
+      "IN_PROGRESS": "In progress",
+      "REVIEW": "In review",
+      "DONE": "Done"
+    },
+    "priority": {
+      "LOW": "Low",
+      "MEDIUM": "Medium",
+      "HIGH": "High",
+      "URGENT": "Urgent"
+    },
+    "hours": "{{value}} h",
+    "startDate": "Start",
+    "dueDate": "Due",
+    "completedAt": "Completed",
+    "acceptsTime": "Open for time entry",
+    "budget": "Budget",
+    "budgetHint": "Cost budget for labour and expenses in the company currency.",
+    "budgetTitle": "Budget and cost",
+    "budgetUsage": "Budget usage",
+    "remaining": "Remaining",
+    "laborCost": "Labour cost",
+    "expenseCost": "Expenses",
+    "totalCost": "Total cost",
+    "progress": "Progress",
+    "tasksDone": "{{done}} / {{total}} tasks",
+    "loggedHours": "Logged time",
+    "estimatedHours": "Estimated time",
+    "overdue": "Overdue",
+    "overdueTasks_one": "{{count}} task is past its due date",
+    "overdueTasks_other": "{{count}} tasks are past their due date",
+    "workload": "Task status",
+    "logTime": "Log time",
+    "openOnly": "Open projects",
+    "onlyMine": "Only mine",
+    "validation": {
+      "dueBeforeStart": "The due date cannot be before the start date"
+    },
+    "summary": {
+      "active": "Active projects",
+      "overdue_one": "{{count}} overdue",
+      "overdue_other": "{{count}} overdue",
+      "overBudget": "Over budget",
+      "myTasks": "My open tasks",
+      "myHours": "My time this week"
+    },
+    "tabs": {
+      "overview": "Overview",
+      "tasks": "Task board",
+      "time": "Time entries",
+      "expenses": "Expenses"
+    },
+    "tasks": {
+      "new": "New task",
+      "created": "Task #{{no}} created",
+      "logged": "Logged {{logged}} · estimated {{estimate}}",
+      "completedAt": "Completed on {{date}}",
+      "title": "Task",
+      "priority": "Priority",
+      "assignee": "Assignee",
+      "unassigned": "Unassigned",
+      "estimate": "Estimate (hours)",
+      "empty": "No tasks"
+    },
+    "members": {
+      "title": "Team",
+      "add": "Add member",
+      "employee": "Employee",
+      "hourlyCost": "Hourly cost",
+      "roleLabel": "Role",
+      "role": {
+        "LEAD": "Team lead",
+        "MEMBER": "Member"
+      },
+      "removeTitle": "Remove {{name}} from the project?",
+      "removeHint": "Their open tasks become unassigned; logged time is kept."
+    },
+    "time": {
+      "date": "Date",
+      "task": "Task",
+      "general": "General (no task)",
+      "hours": "Time",
+      "cost": "Cost",
+      "allHint": "All time logged on the project",
+      "ownHint": "Time you logged on this project",
+      "total": "Total {{hours}}"
+    },
+    "expenses": {
+      "hint": "Expense reports charged to the project; approved and paid ones add to its cost.",
+      "empty": "No expense reports are charged to this project."
+    },
+    "myTasks": {
+      "title": "My tasks",
+      "subtitle": "Tasks assigned to you on open projects",
+      "empty": "No open tasks are assigned to you."
+    },
+    "timesheet": {
+      "title": "Timesheet",
+      "subtitle": "Log the time you spent on projects week by week",
+      "previous": "Previous week",
+      "next": "Next week",
+      "thisWeek": "This week",
+      "weekTotal": "Week total: {{hours}}",
+      "total": "Total",
+      "dayTotal": "Day total",
+      "locked": "The project no longer accepts time",
+      "empty": "Nothing logged this week. Add a project below.",
+      "addRow": "Add project row",
+      "noProjects": "No open projects to log time on",
+      "overDay": "At most {{max}} hours fit in a day",
+      "duplicate": "Each project and task fits one row",
+      "discard": "Discard changes",
+      "saved": "Timesheet saved",
+      "noEmployee": "Your account is not linked to an employee, so time cannot be logged."
     }
   },
   "sales": {
