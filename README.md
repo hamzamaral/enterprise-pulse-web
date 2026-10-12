@@ -35,12 +35,15 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Teklif karşılaştırma:** kalem bazında en iyi net fiyat, tek tıkla siparişe dönüştürme | **Satın alma siparişi:** teslim alınan / faturalanan miktarlar, bağlı belgeler |
 | ![Satış siparişi](docs/screenshots/sales-order.png)                                     | ![Satış faturası](docs/screenshots/sales-invoice.png)                          |
 | **Satış siparişi:** rezerve / sevk / faturalanan miktarlar, kredi limiti kartı          | **Satış faturası:** tahsilat durumu, iade edilen miktarlar, bağlı iadeler      |
+| ![Kasa ve bankalar](docs/screenshots/finance-accounts.png)                              | ![Çek detayı](docs/screenshots/finance-cheque.png)                             |
+| **Kasa ve bankalar:** nakit pozisyonu, döviz bazında bakiyeler, portföydeki çekler      | **Çek / senet:** portföy, bankaya verme, tahsil ve hareket geçmişi             |
 
 ## Özellikler
 
 - **Platform:** giriş, iki adımlı doğrulama (TOTP), şirket ve şube değiştirme, kullanıcı / rol / izin yönetimi,
   denetim kaydı, Socket.IO ile anlık bildirimler, onay kutusu, ayarlar (para birimi, kur, KDV, birim, numaralandırma, onay akışları).
-- **Gösterge paneli:** kullanıcının yetkilerine göre İK, zimmet ve stok KPI'ları, kritik stok listesi; personel için
+- **Gösterge paneli:** kullanıcının yetkilerine göre İK, zimmet, stok ve finans (alacak, borç, nakit pozisyonu,
+  açık siparişler) KPI'ları, kritik stok listesi; personel için
   kalan izin hakkı ve onay bekleyen zimmetler.
 - **İnsan Kaynakları:** personel kartı, departman ve pozisyonlar, organizasyon şeması, izin talebi ve çok adımlı onay,
   "İzinlerim" ve "Mesaim" (giriş-çıkış) self-servis ekranları, aylık puantaj çizelgesi (İK düzeltmesi, Excel'e aktarma),
@@ -56,6 +59,9 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 - **Satış:** müşteri teklifi ve siparişe dönüştürme, onayda kredi limiti kontrolü ve stok rezervasyonu, depodan lot /
   seri numarası seçerek kısmi sevk irsaliyesi, sevk edilen miktar kadar satış faturası, faturaya bağlı satış iadesi;
   ürün seçicide rezerve stok düşülmüş kullanılabilir miktar.
+- **Finans:** kasa ve banka hesapları ve hesap hareketleri, tahsilat / ödeme (nakit, banka, çek, senet) ve faturalara
+  otomatik veya seçmeli kapama, çek / senet portföyü (bankaya verme, tahsil, ciro, karşılıksız, kendi çekimizi ödeme),
+  yaşlandırma raporu (0-30 / 31-60 / 61-90 / 90+ gün), nakit pozisyonu; hepsi Excel'e aktarılabilir.
 - **Barkod ve QR okutma:** USB okuyucu (klavye gibi yazar) veya tarayıcı destekliyorsa telefon / bilgisayar kamerası
   (yerleşik `BarcodeDetector` API'si, ek kütüphane yok).
 - **Her listede:** sunucu taraflı sayfalama, arama ve sıralama; sütun gizleme; filtrelenmiş tüm kayıtları Excel'e aktarma.
