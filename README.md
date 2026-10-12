@@ -19,31 +19,33 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 
 ## Ekranlar
 
-|                                                                                         |                                                                                |
-| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| ![Giriş](docs/screenshots/login.png)                                                    | ![Stok hareket fişi](docs/screenshots/stock-movement-form.png)                 |
-| **Giriş:** demo hesaplar, iki adımlı doğrulama, şifre sıfırlama                         | **Stok fişi:** lot ve son kullanma tarihi, seri numaraları, anlık toplam       |
-| ![Stok kartı](docs/screenshots/stock-card.png)                                          | ![Demirbaş](docs/screenshots/asset-detail.png)                                 |
-| **Stok kartı:** her hareketin bakiyesi ve birim maliyeti                                | **Demirbaş kartı:** QR etiket, zimmet durumu, net defter değeri                |
-| ![Amortisman](docs/screenshots/asset-depreciation.png)                                  | ![Organizasyon şeması](docs/screenshots/org-chart.png)                         |
-| **Amortisman tablosu:** yıllık ve birikmiş amortisman                                   | **Organizasyon şeması:** yönetici hiyerarşisi                                  |
-| ![Puantaj](docs/screenshots/timesheet.png)                                              | ![Vardiya planı](docs/screenshots/shift-plan.png)                              |
-| **Puantaj:** geç kalma, devamsızlık, izin ve fazla mesai                                | **Vardiya planı:** haftalık plan, gece vardiyası, önceki haftayı kopyala       |
-| ![Demirbaş sayımı](docs/screenshots/asset-count.png)                                    | ![Gösterge paneli](docs/screenshots/dashboard.png)                             |
-| **Demirbaş sayımı:** QR / kamera ile okutma, fark raporu                                | **Gösterge paneli:** yetkiye göre KPI'lar, kritik stok                         |
-| ![Teklif karşılaştırma](docs/screenshots/purchase-quote-comparison.png)                 | ![Satın alma siparişi](docs/screenshots/purchase-order.png)                    |
-| **Teklif karşılaştırma:** kalem bazında en iyi net fiyat, tek tıkla siparişe dönüştürme | **Satın alma siparişi:** teslim alınan / faturalanan miktarlar, bağlı belgeler |
-| ![Satış siparişi](docs/screenshots/sales-order.png)                                     | ![Satış faturası](docs/screenshots/sales-invoice.png)                          |
-| **Satış siparişi:** rezerve / sevk / faturalanan miktarlar, kredi limiti kartı          | **Satış faturası:** tahsilat durumu, iade edilen miktarlar, bağlı iadeler      |
-| ![Kasa ve bankalar](docs/screenshots/finance-accounts.png)                              | ![Çek detayı](docs/screenshots/finance-cheque.png)                             |
-| **Kasa ve bankalar:** nakit pozisyonu, döviz bazında bakiyeler, portföydeki çekler      | **Çek / senet:** portföy, bankaya verme, tahsil ve hareket geçmişi             |
+|                                                                                         |                                                                                     |
+| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| ![Giriş](docs/screenshots/login.png)                                                    | ![Stok hareket fişi](docs/screenshots/stock-movement-form.png)                      |
+| **Giriş:** demo hesaplar, iki adımlı doğrulama, şifre sıfırlama                         | **Stok fişi:** lot ve son kullanma tarihi, seri numaraları, anlık toplam            |
+| ![Stok kartı](docs/screenshots/stock-card.png)                                          | ![Demirbaş](docs/screenshots/asset-detail.png)                                      |
+| **Stok kartı:** her hareketin bakiyesi ve birim maliyeti                                | **Demirbaş kartı:** QR etiket, zimmet durumu, net defter değeri                     |
+| ![Amortisman](docs/screenshots/asset-depreciation.png)                                  | ![Organizasyon şeması](docs/screenshots/org-chart.png)                              |
+| **Amortisman tablosu:** yıllık ve birikmiş amortisman                                   | **Organizasyon şeması:** yönetici hiyerarşisi                                       |
+| ![Puantaj](docs/screenshots/timesheet.png)                                              | ![Vardiya planı](docs/screenshots/shift-plan.png)                                   |
+| **Puantaj:** geç kalma, devamsızlık, izin ve fazla mesai                                | **Vardiya planı:** haftalık plan, gece vardiyası, önceki haftayı kopyala            |
+| ![Demirbaş sayımı](docs/screenshots/asset-count.png)                                    | ![Gösterge paneli](docs/screenshots/dashboard.png)                                  |
+| **Demirbaş sayımı:** QR / kamera ile okutma, fark raporu                                | **Gösterge paneli:** yetkiye göre KPI'lar, 6 aylık satış / alış ve nakit grafikleri |
+| ![Teklif karşılaştırma](docs/screenshots/purchase-quote-comparison.png)                 | ![Satın alma siparişi](docs/screenshots/purchase-order.png)                         |
+| **Teklif karşılaştırma:** kalem bazında en iyi net fiyat, tek tıkla siparişe dönüştürme | **Satın alma siparişi:** teslim alınan / faturalanan miktarlar, bağlı belgeler      |
+| ![Satış siparişi](docs/screenshots/sales-order.png)                                     | ![Satış faturası](docs/screenshots/sales-invoice.png)                               |
+| **Satış siparişi:** rezerve / sevk / faturalanan miktarlar, kredi limiti kartı          | **Satış faturası:** tahsilat durumu, iade edilen miktarlar, bağlı iadeler           |
+| ![Kasa ve bankalar](docs/screenshots/finance-accounts.png)                              | ![Çek detayı](docs/screenshots/finance-cheque.png)                                  |
+| **Kasa ve bankalar:** nakit pozisyonu, döviz bazında bakiyeler, portföydeki çekler      | **Çek / senet:** portföy, bankaya verme, tahsil ve hareket geçmişi                  |
+| ![Satış analizi](docs/screenshots/reports-sales.png)                                    | ![Nakit akışı](docs/screenshots/reports-cash-flow.png)                              |
+| **Satış analizi:** aylık / cari / ürün bazında, iadeler düşülmüş, Excel / PDF           | **Nakit akışı:** dönem başı ve sonu bakiye, aylık giriş / çıkış, belge türleri      |
 
 ## Özellikler
 
 - **Platform:** giriş, iki adımlı doğrulama (TOTP), şirket ve şube değiştirme, kullanıcı / rol / izin yönetimi,
   denetim kaydı, Socket.IO ile anlık bildirimler, onay kutusu, ayarlar (para birimi, kur, KDV, birim, numaralandırma, onay akışları).
 - **Gösterge paneli:** kullanıcının yetkilerine göre İK, zimmet, stok ve finans (alacak, borç, nakit pozisyonu,
-  açık siparişler) KPI'ları, kritik stok listesi; personel için
+  açık siparişler) KPI'ları, son 6 ayın satış / alış ve nakit akışı grafikleri, kritik stok listesi; personel için
   kalan izin hakkı ve onay bekleyen zimmetler.
 - **İnsan Kaynakları:** personel kartı, departman ve pozisyonlar, organizasyon şeması, izin talebi ve çok adımlı onay,
   "İzinlerim" ve "Mesaim" (giriş-çıkış) self-servis ekranları, aylık puantaj çizelgesi (İK düzeltmesi, Excel'e aktarma),
@@ -61,10 +63,14 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   ürün seçicide rezerve stok düşülmüş kullanılabilir miktar.
 - **Finans:** kasa ve banka hesapları ve hesap hareketleri, tahsilat / ödeme (nakit, banka, çek, senet) ve faturalara
   otomatik veya seçmeli kapama, çek / senet portföyü (bankaya verme, tahsil, ciro, karşılıksız, kendi çekimizi ödeme),
-  yaşlandırma raporu (0-30 / 31-60 / 61-90 / 90+ gün), nakit pozisyonu; hepsi Excel'e aktarılabilir.
+  yaşlandırma raporu (0-30 / 31-60 / 61-90 / 90+ gün), nakit pozisyonu; hepsi Excel / PDF olarak aktarılabilir.
+- **Raporlar:** satış ve alış analizi (aylık, cari veya ürün bazında; KDV, iade ve net tutarlar), nakit akışı
+  (hesap seçimi, dönem başı / sonu bakiye); dönem hazır seçimleri ve filtreler URL'de saklanır, paylaşılabilir;
+  recharts ile aylık seyir ve ilk 10 grafikleri.
 - **Barkod ve QR okutma:** USB okuyucu (klavye gibi yazar) veya tarayıcı destekliyorsa telefon / bilgisayar kamerası
   (yerleşik `BarcodeDetector` API'si, ek kütüphane yok).
-- **Her listede:** sunucu taraflı sayfalama, arama ve sıralama; sütun gizleme; filtrelenmiş tüm kayıtları Excel'e aktarma.
+- **Her listede:** sunucu taraflı sayfalama, arama ve sıralama; sütun gizleme; filtrelenmiş tüm kayıtları Excel veya PDF olarak
+  dışa aktarma (PDF kütüphanesi ilk kullanımda yüklenir).
 - **Yetkiye duyarlı arayüz:** menü, butonlar ve sayfalar kullanıcının izinlerine göre gösterilir; yetkisiz adreslere girişte
   `/forbidden` sayfasına yönlendirilir.
 

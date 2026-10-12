@@ -18,7 +18,9 @@ Every list page follows the same pattern (see `features/organization/branches-pa
 
 - `useTableState()` holds page/size/sort/search and produces the query params; pass `{ query: tableQuery }` to keep the previous page visible while loading.
 - Columns are memoised with `useMemo<ColumnDef<Dto, unknown>[]>` and depend on `t`.
-- Excel export uses `exportToExcel(fileName, columns, rows)` with `fetchAllPages` so it exports all filtered rows, not just the visible page.
+- Exports use `exportTable(format, fileName, columns, rows)` behind an `ExportMenu` (Excel / PDF; DataTable's
+  `onExport(format)` renders it) with `fetchAllPages` so all filtered rows are exported, not just the visible page.
+  pdfmake is imported lazily in `export-pdf.ts`; never import it statically.
 - Destructive actions use `ConfirmDialog`; status values use `ToneBadge` / `ActiveBadge` / domain badges (`WorkflowStatusBadge`).
 - Detail pages: back link, `PageHeader` with a status badge, two-column grid (`lg:grid-cols-3`) of `Card`s.
 - Detail fields use `InfoCard` / `Field` from `shared/components/info-card.tsx`.
