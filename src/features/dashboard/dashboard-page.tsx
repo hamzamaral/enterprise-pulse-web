@@ -5,12 +5,16 @@ import {
   CalendarClock,
   CalendarDays,
   ClipboardCheck,
+  HandCoins,
+  Landmark,
   Laptop,
   MapPin,
   PackageCheck,
+  ShoppingCart,
   TriangleAlert,
   UserRound,
   Users,
+  Wallet,
   type LucideIcon,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
@@ -24,6 +28,7 @@ import {
   useEmployeesFindAll,
   useEmployeesFindMine,
 } from '@/api/generated/endpoints/employees/employees';
+import { useFinanceReportsSummary } from '@/api/generated/endpoints/finance/finance';
 import { useStockFindLevels, useStockSummary } from '@/api/generated/endpoints/inventory/inventory';
 import {
   useLeaveBalancesFindAll,
@@ -117,6 +122,8 @@ export function DashboardPage() {
     { lowStock: true, pageSize: 6, sortBy: 'quantity', sortOrder: 'asc' },
     { query: { enabled: can('inventory:read') } },
   );
+
+  const finance = useFinanceReportsSummary({ query: { enabled: can('finance:read') } });
 
   const myEmployee = useEmployeesFindMine({ query: { enabled: !!me?.employeeId } });
   const myBalances = useLeaveBalancesFindAll(
@@ -249,6 +256,73 @@ export function DashboardPage() {
               to="/inventory"
             />
           )}
+        </div>
+      )}
+
+      {can('finance:read') && (
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <StatCard
+            label={t('dashboard.receivables')}
+            value={
+              finance.data
+                ? formatMoney(finance.data.receivables, finance.data.baseCurrency)
+                : undefined
+            }
+            hint={
+              finance.data && Number(finance.data.overdueReceivables)
+                ? t('dashboard.overdueHint', {
+                    amount: formatMoney(finance.data.overdueReceivables, finance.data.baseCurrency),
+                  })
+                : undefined
+            }
+            icon={HandCoins}
+            to="/finance/aging"
+          />
+          <StatCard
+            label={t('dashboard.payables')}
+            value={
+              finance.data
+                ? formatMoney(finance.data.payables, finance.data.baseCurrency)
+                : undefined
+            }
+            hint={
+              finance.data && Number(finance.data.overduePayables)
+                ? t('dashboard.overdueHint', {
+                    amount: formatMoney(finance.data.overduePayables, finance.data.baseCurrency),
+                  })
+                : undefined
+            }
+            icon={Wallet}
+            to="/finance/payments"
+          />
+          <StatCard
+            label={t('dashboard.cashPosition')}
+            value={
+              finance.data
+                ? formatMoney(finance.data.cashPosition, finance.data.baseCurrency)
+                : undefined
+            }
+            hint={
+              finance.data && Number(finance.data.chequesInPortfolio)
+                ? t('dashboard.chequesHint', {
+                    amount: formatMoney(finance.data.chequesInPortfolio, finance.data.baseCurrency),
+                  })
+                : undefined
+            }
+            icon={Landmark}
+            to="/finance/accounts"
+          />
+          <StatCard
+            label={t('dashboard.openPurchaseOrders')}
+            value={finance.data?.openPurchaseOrders}
+            hint={
+              finance.data
+                ? t('dashboard.openSalesOrdersHint', { count: finance.data.openSalesOrders })
+                : undefined
+            }
+            icon={ShoppingCart}
+            to="/purchasing/orders"
+          />
         </div>
       )}
 

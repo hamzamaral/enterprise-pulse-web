@@ -51,7 +51,6 @@
       "organization": "Organizasyon",
       "workflow": "Onay Süreçleri",
       "system": "Sistem",
-      "modules": "Modüller",
       "hr": "İnsan Kaynakları",
       "assets": "Zimmet ve Demirbaş",
       "inventory": "Stok ve Depo",
@@ -75,7 +74,6 @@
     "assets": "Zimmet ve Demirbaş",
     "purchasing": "Satın Alma",
     "sales": "Satış",
-    "finance": "Finans",
     "employees": "Personel",
     "orgChart": "Organizasyon Şeması",
     "departments": "Departmanlar",
@@ -106,7 +104,12 @@
     "salesOrders": "Satış Siparişleri",
     "deliveries": "Sevk İrsaliyeleri",
     "salesInvoices": "Satış Faturaları",
-    "salesReturns": "Satış İadeleri"
+    "salesReturns": "Satış İadeleri",
+    "treasuryAccounts": "Kasa ve Bankalar",
+    "collections": "Tahsilatlar",
+    "payments": "Ödemeler",
+    "cheques": "Çek ve Senetler",
+    "aging": "Yaşlandırma"
   },
   "auth": {
     "login": "Giriş yap",
@@ -178,7 +181,14 @@
     "days_other": "{{count}} gün",
     "myAssets": "Zimmetimdeki demirbaş",
     "awaitingAcknowledgement_one": "{{count}} tutanak onay bekliyor",
-    "awaitingAcknowledgement_other": "{{count}} tutanak onay bekliyor"
+    "awaitingAcknowledgement_other": "{{count}} tutanak onay bekliyor",
+    "receivables": "Alacaklar",
+    "payables": "Borçlar",
+    "overdueHint": "{{amount}} vadesi geçmiş",
+    "cashPosition": "Nakit pozisyonu",
+    "chequesHint": "Portföyde {{amount}} çek / senet",
+    "openPurchaseOrders": "Açık satın alma siparişi",
+    "openSalesOrdersHint": "{{count}} açık satış siparişi"
   },
   "users": {
     "title": "Kullanıcılar",
@@ -1370,6 +1380,196 @@
       "errors": {
         "noLines": "En az bir kalem seçin"
       }
+    }
+  },
+  "finance": {
+    "direction": {
+      "IN": "Tahsilat",
+      "OUT": "Ödeme"
+    },
+    "methods": {
+      "CASH": "Nakit",
+      "BANK": "Banka (EFT / havale)",
+      "CHEQUE": "Çek",
+      "NOTE": "Senet"
+    },
+    "accountTypes": {
+      "CASH": "Kasa",
+      "BANK": "Banka"
+    },
+    "chequeKinds": {
+      "CHEQUE": "Çek",
+      "NOTE": "Senet"
+    },
+    "chequeDirections": {
+      "RECEIVED": "Alınan (müşteri)",
+      "ISSUED": "Verilen (kendi)"
+    },
+    "chequeStatus": {
+      "PORTFOLIO": "Portföyde",
+      "DEPOSITED": "Bankada tahsilde",
+      "COLLECTED": "Tahsil edildi",
+      "ENDORSED": "Ciro edildi",
+      "BOUNCED": "Karşılıksız",
+      "ISSUED": "Verildi",
+      "PAID": "Ödendi",
+      "CANCELLED": "İptal"
+    },
+    "recordStatus": {
+      "POSTED": "Kayıtlı",
+      "CANCELLED": "İptal"
+    },
+    "treasuryDocs": {
+      "OPENING": "Açılış",
+      "COLLECTION": "Tahsilat",
+      "PAYMENT": "Ödeme",
+      "CHEQUE_COLLECTION": "Çek tahsili",
+      "CHEQUE_PAYMENT": "Çek ödemesi"
+    },
+    "accounts": {
+      "title": "Kasa ve Bankalar",
+      "subtitle": "Kasa ve banka hesaplarının bakiyeleri ve nakit pozisyonu",
+      "single": "Hesap",
+      "new": "Yeni hesap",
+      "edit": "Hesabı düzenle",
+      "created": "Hesap oluşturuldu",
+      "type": "Tür",
+      "allTypes": "Tüm hesaplar",
+      "bankName": "Banka",
+      "branchName": "Şube",
+      "iban": "IBAN",
+      "balance": "Bakiye",
+      "balanceBase": "Bakiye (yerel)",
+      "openingBalance": "Açılış bakiyesi",
+      "openingDate": "Açılış tarihi",
+      "statement": "Hesap hareketleri",
+      "in": "Giriş",
+      "out": "Çıkış",
+      "opening": "Devreden bakiye",
+      "closing": "Toplam / kapanış bakiyesi",
+      "empty": "Bu aralıkta hareket yok.",
+      "reversal": "iptal kaydı",
+      "codeHint": "Büyük harf, rakam ve tire (ör. KASA-TL)",
+      "position": "Nakit pozisyonu",
+      "cash": "Kasa",
+      "bank": "Banka",
+      "total": "Toplam",
+      "totalBase": "Toplam (yerel)",
+      "liquidTotal": "Kasa + banka toplamı",
+      "chequesInPortfolio": "Portföydeki müşteri çekleri",
+      "chequesIssued": "Ödenecek kendi çeklerimiz"
+    },
+    "payments": {
+      "collectionsTitle": "Tahsilatlar",
+      "collectionsSubtitle": "Müşterilerden nakit, banka, çek ve senetle yapılan tahsilatlar",
+      "paymentsTitle": "Ödemeler",
+      "paymentsSubtitle": "Tedarikçilere nakit, banka, çek ve senetle yapılan ödemeler",
+      "newCollection": "Yeni tahsilat",
+      "newPayment": "Yeni ödeme",
+      "collection": "Tahsilat makbuzu",
+      "payment": "Ödeme makbuzu",
+      "date": "Tarih",
+      "method": "Yöntem",
+      "allMethods": "Tüm yöntemler",
+      "account": "Kasa / banka",
+      "amount": "Tutar",
+      "allocated": "Kapatılan",
+      "unallocated": "Açıkta kalan (avans)",
+      "customer": "Müşteri",
+      "supplier": "Tedarikçi",
+      "cheque": "Çek / senet",
+      "created": "{{number}} kaydedildi",
+      "cancelled": "Kayıt iptal edildi",
+      "cancelTitle": "Kaydı iptal et",
+      "cancelDescription": "Cari ve kasa / banka hareketleri ters kayıtla geri alınır, fatura kapamaları çözülür.",
+      "allocations": "Fatura kapamaları",
+      "allocationMode": "Fatura kapama",
+      "auto": "Otomatik (en eski vadeden)",
+      "manual": "Faturaları seç",
+      "none": "Kapama yapma (avans)",
+      "noOpenInvoices": "Bu cari için {{currency}} cinsinden açık fatura yok.",
+      "noAllocations": "Faturaya kapatılmadı; tutar cari hesapta açık bekliyor.",
+      "invoice": "Fatura",
+      "invoiceDate": "Fatura tarihi",
+      "dueDate": "Vade",
+      "invoiceTotal": "Fatura tutarı",
+      "remaining": "Kalan",
+      "allocate": "Kapatılacak",
+      "chequeDetails": "Çek / senet bilgileri",
+      "serialNo": "Seri no",
+      "bankName": "Banka",
+      "branchName": "Şube",
+      "drawer": "Keşideci",
+      "chequeDue": "Vade tarihi",
+      "source": "Kaynak",
+      "newOwnCheque": "Kendi çekimiz / senedimiz",
+      "endorse": "Portföyden ciro",
+      "pickCheque": "Portföydeki çek / senet",
+      "noPortfolio": "Portföyde uygun çek / senet yok.",
+      "drawnOn": "Çekin bağlı olduğu banka hesabı",
+      "createdBy": "Kaydeden",
+      "fromInvoice": "Tahsilat al",
+      "payInvoice": "Ödeme yap",
+      "forPartner": "{{partner}} için",
+      "errors": {
+        "amount": "Tutar sıfırdan büyük olmalı",
+        "allocationsExceed": "Kapamalar toplamı tutarı aşıyor",
+        "remaining": "Kalan tutarı aşıyor"
+      }
+    },
+    "cheques": {
+      "title": "Çek ve Senetler",
+      "subtitle": "Müşteri çek / senet portföyü ve verilen kendi çeklerimiz",
+      "single": "Çek / senet",
+      "kind": "Tür",
+      "direction": "Yön",
+      "allKinds": "Çek ve senet",
+      "allDirections": "Alınan ve verilen",
+      "openOnly": "Sadece açık olanlar",
+      "serialNo": "Seri no",
+      "issueDate": "Düzenleme",
+      "dueDate": "Vade",
+      "amount": "Tutar",
+      "partner": "Cari",
+      "drawer": "Keşideci",
+      "bank": "Banka / şube",
+      "endorsedTo": "Ciro edilen",
+      "account": "Hesap",
+      "originPayment": "Giriş belgesi",
+      "endorsementPayment": "Ciro belgesi",
+      "history": "Hareket geçmişi",
+      "date": "İşlem tarihi",
+      "note": "Not",
+      "done": "İşlem kaydedildi",
+      "actions": {
+        "deposit": "Bankaya tahsile ver",
+        "collect": "Tahsil et",
+        "bounce": "Karşılıksız",
+        "pay": "Öde"
+      },
+      "hints": {
+        "deposit": "Çek tahsil için bankaya verilir; para tahsil edilince hesaba geçer.",
+        "collect": "Tutar seçilen kasa / banka hesabına giriş olarak kaydedilir.",
+        "bounce": "Tahsilat iptal edilir; tutar müşterinin cari hesabına tekrar borç yazılır.",
+        "pay": "Tutar seçilen hesaptan çıkış olarak kaydedilir."
+      }
+    },
+    "aging": {
+      "title": "Yaşlandırma raporu",
+      "subtitle": "Açık faturaların vadesine göre dağılımı (yerel para birimi)",
+      "receivable": "Alacaklar",
+      "payable": "Borçlar",
+      "asOf": "Tarih itibarıyla",
+      "current": "Vadesi gelmemiş",
+      "d1_30": "1–30 gün",
+      "d31_60": "31–60 gün",
+      "d61_90": "61–90 gün",
+      "d90plus": "90+ gün",
+      "total": "Toplam",
+      "invoices": "Fatura",
+      "oldest": "En eski vade",
+      "totals": "Genel toplam",
+      "empty": "Açık fatura yok."
     }
   }
 }

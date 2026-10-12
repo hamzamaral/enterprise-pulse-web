@@ -27,6 +27,7 @@ import { Route as AppAssetsIndexRouteImport } from './routes/_app/assets/index'
 import { Route as AppAssetsIdRouteImport } from './routes/_app/assets/$id'
 import { Route as AppAssetsMyRouteImport } from './routes/_app/assets/my'
 import { Route as AppAssetsSettingsRouteImport } from './routes/_app/assets/settings'
+import { Route as AppFinanceAgingRouteImport } from './routes/_app/finance/aging'
 import { Route as AppHrDepartmentsRouteImport } from './routes/_app/hr/departments'
 import { Route as AppHrLeaveRequestsRouteImport } from './routes/_app/hr/leave-requests'
 import { Route as AppHrLeaveSettingsRouteImport } from './routes/_app/hr/leave-settings'
@@ -46,6 +47,16 @@ import { Route as AppAssetsAssignmentsIndexRouteImport } from './routes/_app/ass
 import { Route as AppAssetsAssignmentsIdRouteImport } from './routes/_app/assets/assignments/$id'
 import { Route as AppAssetsCountsIndexRouteImport } from './routes/_app/assets/counts/index'
 import { Route as AppAssetsCountsIdRouteImport } from './routes/_app/assets/counts/$id'
+import { Route as AppFinanceAccountsIndexRouteImport } from './routes/_app/finance/accounts/index'
+import { Route as AppFinanceAccountsIdRouteImport } from './routes/_app/finance/accounts/$id'
+import { Route as AppFinanceChequesIndexRouteImport } from './routes/_app/finance/cheques/index'
+import { Route as AppFinanceChequesIdRouteImport } from './routes/_app/finance/cheques/$id'
+import { Route as AppFinanceCollectionsIndexRouteImport } from './routes/_app/finance/collections/index'
+import { Route as AppFinanceCollectionsIdRouteImport } from './routes/_app/finance/collections/$id'
+import { Route as AppFinanceCollectionsNewRouteImport } from './routes/_app/finance/collections/new'
+import { Route as AppFinancePaymentsIndexRouteImport } from './routes/_app/finance/payments/index'
+import { Route as AppFinancePaymentsIdRouteImport } from './routes/_app/finance/payments/$id'
+import { Route as AppFinancePaymentsNewRouteImport } from './routes/_app/finance/payments/new'
 import { Route as AppHrEmployeesIndexRouteImport } from './routes/_app/hr/employees/index'
 import { Route as AppHrEmployeesIdRouteImport } from './routes/_app/hr/employees/$id'
 import { Route as AppInventoryCountsIndexRouteImport } from './routes/_app/inventory/counts/index'
@@ -179,6 +190,11 @@ const AppAssetsSettingsRoute = AppAssetsSettingsRouteImport.update({
   path: '/assets/settings',
   getParentRoute: () => AppRoute,
 } as any)
+const AppFinanceAgingRoute = AppFinanceAgingRouteImport.update({
+  id: '/finance/aging',
+  path: '/finance/aging',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppHrDepartmentsRoute = AppHrDepartmentsRouteImport.update({
   id: '/hr/departments',
   path: '/hr/departments',
@@ -273,6 +289,58 @@ const AppAssetsCountsIndexRoute = AppAssetsCountsIndexRouteImport.update({
 const AppAssetsCountsIdRoute = AppAssetsCountsIdRouteImport.update({
   id: '/assets/counts/$id',
   path: '/assets/counts/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFinanceAccountsIndexRoute = AppFinanceAccountsIndexRouteImport.update({
+  id: '/finance/accounts/',
+  path: '/finance/accounts/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFinanceAccountsIdRoute = AppFinanceAccountsIdRouteImport.update({
+  id: '/finance/accounts/$id',
+  path: '/finance/accounts/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFinanceChequesIndexRoute = AppFinanceChequesIndexRouteImport.update({
+  id: '/finance/cheques/',
+  path: '/finance/cheques/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFinanceChequesIdRoute = AppFinanceChequesIdRouteImport.update({
+  id: '/finance/cheques/$id',
+  path: '/finance/cheques/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFinanceCollectionsIndexRoute =
+  AppFinanceCollectionsIndexRouteImport.update({
+    id: '/finance/collections/',
+    path: '/finance/collections/',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppFinanceCollectionsIdRoute = AppFinanceCollectionsIdRouteImport.update({
+  id: '/finance/collections/$id',
+  path: '/finance/collections/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFinanceCollectionsNewRoute =
+  AppFinanceCollectionsNewRouteImport.update({
+    id: '/finance/collections/new',
+    path: '/finance/collections/new',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppFinancePaymentsIndexRoute = AppFinancePaymentsIndexRouteImport.update({
+  id: '/finance/payments/',
+  path: '/finance/payments/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFinancePaymentsIdRoute = AppFinancePaymentsIdRouteImport.update({
+  id: '/finance/payments/$id',
+  path: '/finance/payments/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFinancePaymentsNewRoute = AppFinancePaymentsNewRouteImport.update({
+  id: '/finance/payments/new',
+  path: '/finance/payments/new',
   getParentRoute: () => AppRoute,
 } as any)
 const AppHrEmployeesIndexRoute = AppHrEmployeesIndexRouteImport.update({
@@ -521,6 +589,7 @@ export interface FileRoutesByFullPath {
   '/assets/$id': typeof AppAssetsIdRoute
   '/assets/my': typeof AppAssetsMyRoute
   '/assets/settings': typeof AppAssetsSettingsRoute
+  '/finance/aging': typeof AppFinanceAgingRoute
   '/hr/departments': typeof AppHrDepartmentsRoute
   '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/hr/leave-settings': typeof AppHrLeaveSettingsRoute
@@ -539,6 +608,12 @@ export interface FileRoutesByFullPath {
   '/partners/': typeof AppPartnersIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
+  '/finance/accounts/$id': typeof AppFinanceAccountsIdRoute
+  '/finance/cheques/$id': typeof AppFinanceChequesIdRoute
+  '/finance/collections/$id': typeof AppFinanceCollectionsIdRoute
+  '/finance/collections/new': typeof AppFinanceCollectionsNewRoute
+  '/finance/payments/$id': typeof AppFinancePaymentsIdRoute
+  '/finance/payments/new': typeof AppFinancePaymentsNewRoute
   '/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/inventory/counts/$id': typeof AppInventoryCountsIdRoute
   '/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
@@ -567,6 +642,10 @@ export interface FileRoutesByFullPath {
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/assets/counts/': typeof AppAssetsCountsIndexRoute
+  '/finance/accounts/': typeof AppFinanceAccountsIndexRoute
+  '/finance/cheques/': typeof AppFinanceChequesIndexRoute
+  '/finance/collections/': typeof AppFinanceCollectionsIndexRoute
+  '/finance/payments/': typeof AppFinancePaymentsIndexRoute
   '/hr/employees/': typeof AppHrEmployeesIndexRoute
   '/inventory/counts/': typeof AppInventoryCountsIndexRoute
   '/inventory/movements/': typeof AppInventoryMovementsIndexRoute
@@ -602,6 +681,7 @@ export interface FileRoutesByTo {
   '/assets/$id': typeof AppAssetsIdRoute
   '/assets/my': typeof AppAssetsMyRoute
   '/assets/settings': typeof AppAssetsSettingsRoute
+  '/finance/aging': typeof AppFinanceAgingRoute
   '/hr/departments': typeof AppHrDepartmentsRoute
   '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/hr/leave-settings': typeof AppHrLeaveSettingsRoute
@@ -620,6 +700,12 @@ export interface FileRoutesByTo {
   '/partners': typeof AppPartnersIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
+  '/finance/accounts/$id': typeof AppFinanceAccountsIdRoute
+  '/finance/cheques/$id': typeof AppFinanceChequesIdRoute
+  '/finance/collections/$id': typeof AppFinanceCollectionsIdRoute
+  '/finance/collections/new': typeof AppFinanceCollectionsNewRoute
+  '/finance/payments/$id': typeof AppFinancePaymentsIdRoute
+  '/finance/payments/new': typeof AppFinancePaymentsNewRoute
   '/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/inventory/counts/$id': typeof AppInventoryCountsIdRoute
   '/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
@@ -648,6 +734,10 @@ export interface FileRoutesByTo {
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments': typeof AppAssetsAssignmentsIndexRoute
   '/assets/counts': typeof AppAssetsCountsIndexRoute
+  '/finance/accounts': typeof AppFinanceAccountsIndexRoute
+  '/finance/cheques': typeof AppFinanceChequesIndexRoute
+  '/finance/collections': typeof AppFinanceCollectionsIndexRoute
+  '/finance/payments': typeof AppFinancePaymentsIndexRoute
   '/hr/employees': typeof AppHrEmployeesIndexRoute
   '/inventory/counts': typeof AppInventoryCountsIndexRoute
   '/inventory/movements': typeof AppInventoryMovementsIndexRoute
@@ -685,6 +775,7 @@ export interface FileRoutesById {
   '/_app/assets/$id': typeof AppAssetsIdRoute
   '/_app/assets/my': typeof AppAssetsMyRoute
   '/_app/assets/settings': typeof AppAssetsSettingsRoute
+  '/_app/finance/aging': typeof AppFinanceAgingRoute
   '/_app/hr/departments': typeof AppHrDepartmentsRoute
   '/_app/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/_app/hr/leave-settings': typeof AppHrLeaveSettingsRoute
@@ -703,6 +794,12 @@ export interface FileRoutesById {
   '/_app/partners/': typeof AppPartnersIndexRoute
   '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/_app/assets/counts/$id': typeof AppAssetsCountsIdRoute
+  '/_app/finance/accounts/$id': typeof AppFinanceAccountsIdRoute
+  '/_app/finance/cheques/$id': typeof AppFinanceChequesIdRoute
+  '/_app/finance/collections/$id': typeof AppFinanceCollectionsIdRoute
+  '/_app/finance/collections/new': typeof AppFinanceCollectionsNewRoute
+  '/_app/finance/payments/$id': typeof AppFinancePaymentsIdRoute
+  '/_app/finance/payments/new': typeof AppFinancePaymentsNewRoute
   '/_app/hr/employees/$id': typeof AppHrEmployeesIdRoute
   '/_app/inventory/counts/$id': typeof AppInventoryCountsIdRoute
   '/_app/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
@@ -731,6 +828,10 @@ export interface FileRoutesById {
   '/_app/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/_app/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/_app/assets/counts/': typeof AppAssetsCountsIndexRoute
+  '/_app/finance/accounts/': typeof AppFinanceAccountsIndexRoute
+  '/_app/finance/cheques/': typeof AppFinanceChequesIndexRoute
+  '/_app/finance/collections/': typeof AppFinanceCollectionsIndexRoute
+  '/_app/finance/payments/': typeof AppFinancePaymentsIndexRoute
   '/_app/hr/employees/': typeof AppHrEmployeesIndexRoute
   '/_app/inventory/counts/': typeof AppInventoryCountsIndexRoute
   '/_app/inventory/movements/': typeof AppInventoryMovementsIndexRoute
@@ -768,6 +869,7 @@ export interface FileRouteTypes {
     | '/assets/$id'
     | '/assets/my'
     | '/assets/settings'
+    | '/finance/aging'
     | '/hr/departments'
     | '/hr/leave-requests'
     | '/hr/leave-settings'
@@ -786,6 +888,12 @@ export interface FileRouteTypes {
     | '/partners/'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
+    | '/finance/accounts/$id'
+    | '/finance/cheques/$id'
+    | '/finance/collections/$id'
+    | '/finance/collections/new'
+    | '/finance/payments/$id'
+    | '/finance/payments/new'
     | '/hr/employees/$id'
     | '/inventory/counts/$id'
     | '/inventory/movements/$id'
@@ -814,6 +922,10 @@ export interface FileRouteTypes {
     | '/workflow/instances/$id'
     | '/assets/assignments/'
     | '/assets/counts/'
+    | '/finance/accounts/'
+    | '/finance/cheques/'
+    | '/finance/collections/'
+    | '/finance/payments/'
     | '/hr/employees/'
     | '/inventory/counts/'
     | '/inventory/movements/'
@@ -849,6 +961,7 @@ export interface FileRouteTypes {
     | '/assets/$id'
     | '/assets/my'
     | '/assets/settings'
+    | '/finance/aging'
     | '/hr/departments'
     | '/hr/leave-requests'
     | '/hr/leave-settings'
@@ -867,6 +980,12 @@ export interface FileRouteTypes {
     | '/partners'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
+    | '/finance/accounts/$id'
+    | '/finance/cheques/$id'
+    | '/finance/collections/$id'
+    | '/finance/collections/new'
+    | '/finance/payments/$id'
+    | '/finance/payments/new'
     | '/hr/employees/$id'
     | '/inventory/counts/$id'
     | '/inventory/movements/$id'
@@ -895,6 +1014,10 @@ export interface FileRouteTypes {
     | '/workflow/instances/$id'
     | '/assets/assignments'
     | '/assets/counts'
+    | '/finance/accounts'
+    | '/finance/cheques'
+    | '/finance/collections'
+    | '/finance/payments'
     | '/hr/employees'
     | '/inventory/counts'
     | '/inventory/movements'
@@ -931,6 +1054,7 @@ export interface FileRouteTypes {
     | '/_app/assets/$id'
     | '/_app/assets/my'
     | '/_app/assets/settings'
+    | '/_app/finance/aging'
     | '/_app/hr/departments'
     | '/_app/hr/leave-requests'
     | '/_app/hr/leave-settings'
@@ -949,6 +1073,12 @@ export interface FileRouteTypes {
     | '/_app/partners/'
     | '/_app/assets/assignments/$id'
     | '/_app/assets/counts/$id'
+    | '/_app/finance/accounts/$id'
+    | '/_app/finance/cheques/$id'
+    | '/_app/finance/collections/$id'
+    | '/_app/finance/collections/new'
+    | '/_app/finance/payments/$id'
+    | '/_app/finance/payments/new'
     | '/_app/hr/employees/$id'
     | '/_app/inventory/counts/$id'
     | '/_app/inventory/movements/$id'
@@ -977,6 +1107,10 @@ export interface FileRouteTypes {
     | '/_app/workflow/instances/$id'
     | '/_app/assets/assignments/'
     | '/_app/assets/counts/'
+    | '/_app/finance/accounts/'
+    | '/_app/finance/cheques/'
+    | '/_app/finance/collections/'
+    | '/_app/finance/payments/'
     | '/_app/hr/employees/'
     | '/_app/inventory/counts/'
     | '/_app/inventory/movements/'
@@ -1131,6 +1265,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAssetsSettingsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/finance/aging': {
+      id: '/_app/finance/aging'
+      path: '/finance/aging'
+      fullPath: '/finance/aging'
+      preLoaderRoute: typeof AppFinanceAgingRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/hr/departments': {
       id: '/_app/hr/departments'
       path: '/hr/departments'
@@ -1262,6 +1403,76 @@ declare module '@tanstack/react-router' {
       path: '/assets/counts/$id'
       fullPath: '/assets/counts/$id'
       preLoaderRoute: typeof AppAssetsCountsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/finance/accounts/': {
+      id: '/_app/finance/accounts/'
+      path: '/finance/accounts'
+      fullPath: '/finance/accounts/'
+      preLoaderRoute: typeof AppFinanceAccountsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/finance/accounts/$id': {
+      id: '/_app/finance/accounts/$id'
+      path: '/finance/accounts/$id'
+      fullPath: '/finance/accounts/$id'
+      preLoaderRoute: typeof AppFinanceAccountsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/finance/cheques/': {
+      id: '/_app/finance/cheques/'
+      path: '/finance/cheques'
+      fullPath: '/finance/cheques/'
+      preLoaderRoute: typeof AppFinanceChequesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/finance/cheques/$id': {
+      id: '/_app/finance/cheques/$id'
+      path: '/finance/cheques/$id'
+      fullPath: '/finance/cheques/$id'
+      preLoaderRoute: typeof AppFinanceChequesIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/finance/collections/': {
+      id: '/_app/finance/collections/'
+      path: '/finance/collections'
+      fullPath: '/finance/collections/'
+      preLoaderRoute: typeof AppFinanceCollectionsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/finance/collections/$id': {
+      id: '/_app/finance/collections/$id'
+      path: '/finance/collections/$id'
+      fullPath: '/finance/collections/$id'
+      preLoaderRoute: typeof AppFinanceCollectionsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/finance/collections/new': {
+      id: '/_app/finance/collections/new'
+      path: '/finance/collections/new'
+      fullPath: '/finance/collections/new'
+      preLoaderRoute: typeof AppFinanceCollectionsNewRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/finance/payments/': {
+      id: '/_app/finance/payments/'
+      path: '/finance/payments'
+      fullPath: '/finance/payments/'
+      preLoaderRoute: typeof AppFinancePaymentsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/finance/payments/$id': {
+      id: '/_app/finance/payments/$id'
+      path: '/finance/payments/$id'
+      fullPath: '/finance/payments/$id'
+      preLoaderRoute: typeof AppFinancePaymentsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/finance/payments/new': {
+      id: '/_app/finance/payments/new'
+      path: '/finance/payments/new'
+      fullPath: '/finance/payments/new'
+      preLoaderRoute: typeof AppFinancePaymentsNewRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/hr/employees/': {
@@ -1582,6 +1793,7 @@ interface AppRouteChildren {
   AppAssetsIdRoute: typeof AppAssetsIdRoute
   AppAssetsMyRoute: typeof AppAssetsMyRoute
   AppAssetsSettingsRoute: typeof AppAssetsSettingsRoute
+  AppFinanceAgingRoute: typeof AppFinanceAgingRoute
   AppHrDepartmentsRoute: typeof AppHrDepartmentsRoute
   AppHrLeaveRequestsRoute: typeof AppHrLeaveRequestsRoute
   AppHrLeaveSettingsRoute: typeof AppHrLeaveSettingsRoute
@@ -1600,6 +1812,12 @@ interface AppRouteChildren {
   AppPartnersIndexRoute: typeof AppPartnersIndexRoute
   AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
   AppAssetsCountsIdRoute: typeof AppAssetsCountsIdRoute
+  AppFinanceAccountsIdRoute: typeof AppFinanceAccountsIdRoute
+  AppFinanceChequesIdRoute: typeof AppFinanceChequesIdRoute
+  AppFinanceCollectionsIdRoute: typeof AppFinanceCollectionsIdRoute
+  AppFinanceCollectionsNewRoute: typeof AppFinanceCollectionsNewRoute
+  AppFinancePaymentsIdRoute: typeof AppFinancePaymentsIdRoute
+  AppFinancePaymentsNewRoute: typeof AppFinancePaymentsNewRoute
   AppHrEmployeesIdRoute: typeof AppHrEmployeesIdRoute
   AppInventoryCountsIdRoute: typeof AppInventoryCountsIdRoute
   AppInventoryMovementsIdRoute: typeof AppInventoryMovementsIdRoute
@@ -1628,6 +1846,10 @@ interface AppRouteChildren {
   AppWorkflowInstancesIdRoute: typeof AppWorkflowInstancesIdRoute
   AppAssetsAssignmentsIndexRoute: typeof AppAssetsAssignmentsIndexRoute
   AppAssetsCountsIndexRoute: typeof AppAssetsCountsIndexRoute
+  AppFinanceAccountsIndexRoute: typeof AppFinanceAccountsIndexRoute
+  AppFinanceChequesIndexRoute: typeof AppFinanceChequesIndexRoute
+  AppFinanceCollectionsIndexRoute: typeof AppFinanceCollectionsIndexRoute
+  AppFinancePaymentsIndexRoute: typeof AppFinancePaymentsIndexRoute
   AppHrEmployeesIndexRoute: typeof AppHrEmployeesIndexRoute
   AppInventoryCountsIndexRoute: typeof AppInventoryCountsIndexRoute
   AppInventoryMovementsIndexRoute: typeof AppInventoryMovementsIndexRoute
@@ -1661,6 +1883,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAssetsIdRoute: AppAssetsIdRoute,
   AppAssetsMyRoute: AppAssetsMyRoute,
   AppAssetsSettingsRoute: AppAssetsSettingsRoute,
+  AppFinanceAgingRoute: AppFinanceAgingRoute,
   AppHrDepartmentsRoute: AppHrDepartmentsRoute,
   AppHrLeaveRequestsRoute: AppHrLeaveRequestsRoute,
   AppHrLeaveSettingsRoute: AppHrLeaveSettingsRoute,
@@ -1679,6 +1902,12 @@ const AppRouteChildren: AppRouteChildren = {
   AppPartnersIndexRoute: AppPartnersIndexRoute,
   AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
   AppAssetsCountsIdRoute: AppAssetsCountsIdRoute,
+  AppFinanceAccountsIdRoute: AppFinanceAccountsIdRoute,
+  AppFinanceChequesIdRoute: AppFinanceChequesIdRoute,
+  AppFinanceCollectionsIdRoute: AppFinanceCollectionsIdRoute,
+  AppFinanceCollectionsNewRoute: AppFinanceCollectionsNewRoute,
+  AppFinancePaymentsIdRoute: AppFinancePaymentsIdRoute,
+  AppFinancePaymentsNewRoute: AppFinancePaymentsNewRoute,
   AppHrEmployeesIdRoute: AppHrEmployeesIdRoute,
   AppInventoryCountsIdRoute: AppInventoryCountsIdRoute,
   AppInventoryMovementsIdRoute: AppInventoryMovementsIdRoute,
@@ -1707,6 +1936,10 @@ const AppRouteChildren: AppRouteChildren = {
   AppWorkflowInstancesIdRoute: AppWorkflowInstancesIdRoute,
   AppAssetsAssignmentsIndexRoute: AppAssetsAssignmentsIndexRoute,
   AppAssetsCountsIndexRoute: AppAssetsCountsIndexRoute,
+  AppFinanceAccountsIndexRoute: AppFinanceAccountsIndexRoute,
+  AppFinanceChequesIndexRoute: AppFinanceChequesIndexRoute,
+  AppFinanceCollectionsIndexRoute: AppFinanceCollectionsIndexRoute,
+  AppFinancePaymentsIndexRoute: AppFinancePaymentsIndexRoute,
   AppHrEmployeesIndexRoute: AppHrEmployeesIndexRoute,
   AppInventoryCountsIndexRoute: AppInventoryCountsIndexRoute,
   AppInventoryMovementsIndexRoute: AppInventoryMovementsIndexRoute,

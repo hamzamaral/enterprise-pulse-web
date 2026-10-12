@@ -35,5 +35,16 @@ export function DocumentLink({
       </Link>
     );
   }
+  if (id && (type === 'COLLECTION' || type === 'PAYMENT') && can('finance:read')) {
+    return (
+      <Link
+        to={type === 'COLLECTION' ? '/finance/collections/$id' : '/finance/payments/$id'}
+        params={{ id }}
+        className={className}
+      >
+        {number}
+      </Link>
+    );
+  }
   return <code className="text-xs">{number}</code>;
 }

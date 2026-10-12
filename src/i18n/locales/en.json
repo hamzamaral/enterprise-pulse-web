@@ -51,7 +51,6 @@
       "organization": "Organization",
       "workflow": "Approvals",
       "system": "System",
-      "modules": "Modules",
       "hr": "Human Resources",
       "assets": "Assets",
       "inventory": "Inventory",
@@ -75,7 +74,6 @@
     "assets": "Assets & Assignments",
     "purchasing": "Purchasing",
     "sales": "Sales",
-    "finance": "Finance",
     "employees": "Employees",
     "orgChart": "Org Chart",
     "departments": "Departments",
@@ -106,7 +104,12 @@
     "salesOrders": "Sales Orders",
     "deliveries": "Delivery Notes",
     "salesInvoices": "Sales Invoices",
-    "salesReturns": "Sales Returns"
+    "salesReturns": "Sales Returns",
+    "treasuryAccounts": "Cash & Banks",
+    "collections": "Collections",
+    "payments": "Payments",
+    "cheques": "Cheques & Notes",
+    "aging": "Aging"
   },
   "auth": {
     "login": "Sign in",
@@ -178,7 +181,14 @@
     "days_other": "{{count}} days",
     "myAssets": "Assets assigned to me",
     "awaitingAcknowledgement_one": "{{count}} hand-over form awaiting your approval",
-    "awaitingAcknowledgement_other": "{{count}} hand-over forms awaiting your approval"
+    "awaitingAcknowledgement_other": "{{count}} hand-over forms awaiting your approval",
+    "receivables": "Receivables",
+    "payables": "Payables",
+    "overdueHint": "{{amount}} overdue",
+    "cashPosition": "Cash position",
+    "chequesHint": "{{amount}} in cheques / notes",
+    "openPurchaseOrders": "Open purchase orders",
+    "openSalesOrdersHint": "{{count}} open sales orders"
   },
   "users": {
     "title": "Users",
@@ -1370,6 +1380,196 @@
       "errors": {
         "noLines": "Select at least one line"
       }
+    }
+  },
+  "finance": {
+    "direction": {
+      "IN": "Collection",
+      "OUT": "Payment"
+    },
+    "methods": {
+      "CASH": "Cash",
+      "BANK": "Bank transfer",
+      "CHEQUE": "Cheque",
+      "NOTE": "Promissory note"
+    },
+    "accountTypes": {
+      "CASH": "Cash",
+      "BANK": "Bank"
+    },
+    "chequeKinds": {
+      "CHEQUE": "Cheque",
+      "NOTE": "Promissory note"
+    },
+    "chequeDirections": {
+      "RECEIVED": "Received (customer)",
+      "ISSUED": "Issued (own)"
+    },
+    "chequeStatus": {
+      "PORTFOLIO": "In portfolio",
+      "DEPOSITED": "At the bank",
+      "COLLECTED": "Collected",
+      "ENDORSED": "Endorsed",
+      "BOUNCED": "Bounced",
+      "ISSUED": "Issued",
+      "PAID": "Paid",
+      "CANCELLED": "Cancelled"
+    },
+    "recordStatus": {
+      "POSTED": "Posted",
+      "CANCELLED": "Cancelled"
+    },
+    "treasuryDocs": {
+      "OPENING": "Opening",
+      "COLLECTION": "Collection",
+      "PAYMENT": "Payment",
+      "CHEQUE_COLLECTION": "Cheque collected",
+      "CHEQUE_PAYMENT": "Cheque paid"
+    },
+    "accounts": {
+      "title": "Cash & Banks",
+      "subtitle": "Cash box and bank account balances and the cash position",
+      "single": "Account",
+      "new": "New account",
+      "edit": "Edit account",
+      "created": "Account created",
+      "type": "Type",
+      "allTypes": "All accounts",
+      "bankName": "Bank",
+      "branchName": "Branch",
+      "iban": "IBAN",
+      "balance": "Balance",
+      "balanceBase": "Balance (base)",
+      "openingBalance": "Opening balance",
+      "openingDate": "Opening date",
+      "statement": "Account transactions",
+      "in": "In",
+      "out": "Out",
+      "opening": "Opening balance",
+      "closing": "Total / closing balance",
+      "empty": "No transactions in this range.",
+      "reversal": "reversal",
+      "codeHint": "Upper case, digits and dashes (e.g. CASH-TRY)",
+      "position": "Cash position",
+      "cash": "Cash",
+      "bank": "Bank",
+      "total": "Total",
+      "totalBase": "Total (base)",
+      "liquidTotal": "Cash + bank total",
+      "chequesInPortfolio": "Customer cheques in portfolio",
+      "chequesIssued": "Own cheques to be paid"
+    },
+    "payments": {
+      "collectionsTitle": "Collections",
+      "collectionsSubtitle": "Cash, bank, cheque and note collections from customers",
+      "paymentsTitle": "Payments",
+      "paymentsSubtitle": "Cash, bank, cheque and note payments to suppliers",
+      "newCollection": "New collection",
+      "newPayment": "New payment",
+      "collection": "Collection receipt",
+      "payment": "Payment voucher",
+      "date": "Date",
+      "method": "Method",
+      "allMethods": "All methods",
+      "account": "Cash / bank",
+      "amount": "Amount",
+      "allocated": "Allocated",
+      "unallocated": "Unallocated (on account)",
+      "customer": "Customer",
+      "supplier": "Supplier",
+      "cheque": "Cheque / note",
+      "created": "{{number}} posted",
+      "cancelled": "Record cancelled",
+      "cancelTitle": "Cancel record",
+      "cancelDescription": "Ledger and cash / bank postings are reversed and invoice allocations released.",
+      "allocations": "Invoice allocations",
+      "allocationMode": "Invoice allocation",
+      "auto": "Automatic (oldest due first)",
+      "manual": "Pick invoices",
+      "none": "Do not allocate (on account)",
+      "noOpenInvoices": "No open {{currency}} invoices for this partner.",
+      "noAllocations": "Not allocated to invoices; the amount stays open on the account.",
+      "invoice": "Invoice",
+      "invoiceDate": "Invoice date",
+      "dueDate": "Due",
+      "invoiceTotal": "Invoice total",
+      "remaining": "Remaining",
+      "allocate": "Allocate",
+      "chequeDetails": "Cheque / note details",
+      "serialNo": "Serial no",
+      "bankName": "Bank",
+      "branchName": "Branch",
+      "drawer": "Drawer",
+      "chequeDue": "Due date",
+      "source": "Source",
+      "newOwnCheque": "Our own cheque / note",
+      "endorse": "Endorse from portfolio",
+      "pickCheque": "Portfolio cheque / note",
+      "noPortfolio": "No suitable cheque / note in the portfolio.",
+      "drawnOn": "Bank account the cheque is drawn on",
+      "createdBy": "Posted by",
+      "fromInvoice": "Collect",
+      "payInvoice": "Pay",
+      "forPartner": "For {{partner}}",
+      "errors": {
+        "amount": "Amount must be greater than zero",
+        "allocationsExceed": "Allocations exceed the amount",
+        "remaining": "Exceeds the remaining amount"
+      }
+    },
+    "cheques": {
+      "title": "Cheques & Notes",
+      "subtitle": "Customer cheque / note portfolio and our issued cheques",
+      "single": "Cheque / note",
+      "kind": "Kind",
+      "direction": "Direction",
+      "allKinds": "Cheques and notes",
+      "allDirections": "Received and issued",
+      "openOnly": "Open only",
+      "serialNo": "Serial no",
+      "issueDate": "Issued",
+      "dueDate": "Due",
+      "amount": "Amount",
+      "partner": "Partner",
+      "drawer": "Drawer",
+      "bank": "Bank / branch",
+      "endorsedTo": "Endorsed to",
+      "account": "Account",
+      "originPayment": "Source document",
+      "endorsementPayment": "Endorsement",
+      "history": "History",
+      "date": "Date",
+      "note": "Note",
+      "done": "Saved",
+      "actions": {
+        "deposit": "Deposit to bank",
+        "collect": "Collect",
+        "bounce": "Bounced",
+        "pay": "Pay"
+      },
+      "hints": {
+        "deposit": "The cheque is handed to the bank for collection; money arrives when it is collected.",
+        "collect": "The amount is posted as money in to the selected cash / bank account.",
+        "bounce": "The collection is cancelled and the amount is charged back to the customer's account.",
+        "pay": "The amount is posted as money out of the selected account."
+      }
+    },
+    "aging": {
+      "title": "Aging report",
+      "subtitle": "Open invoices by days past due (base currency)",
+      "receivable": "Receivables",
+      "payable": "Payables",
+      "asOf": "As of",
+      "current": "Not due",
+      "d1_30": "1–30 days",
+      "d31_60": "31–60 days",
+      "d61_90": "61–90 days",
+      "d90plus": "90+ days",
+      "total": "Total",
+      "invoices": "Invoices",
+      "oldest": "Oldest due",
+      "totals": "Grand total",
+      "empty": "No open invoices."
     }
   }
 }
