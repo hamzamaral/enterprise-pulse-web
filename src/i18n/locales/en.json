@@ -1508,8 +1508,8 @@
       "noPortfolio": "No suitable cheque / note in the portfolio.",
       "drawnOn": "Bank account the cheque is drawn on",
       "createdBy": "Posted by",
-      "fromInvoice": "Collect",
-      "payInvoice": "Pay",
+      "fromInvoice": "Receive payment",
+      "payInvoice": "Make payment",
       "forPartner": "For {{partner}}",
       "errors": {
         "amount": "Amount must be greater than zero",

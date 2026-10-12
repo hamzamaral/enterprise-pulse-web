@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { ArrowLeft, Ban, Printer, Undo2 } from 'lucide-react';
+import { ArrowLeft, Ban, HandCoins, Printer, Undo2 } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -84,6 +84,18 @@ export function SalesInvoiceDetailPage({ id }: { id: string }) {
           <ArrowLeft className="size-4" /> {t('sales.invoices.title')}
         </Link>
         <div className="flex gap-2">
+          {issued && invoice.paymentStatus !== 'PAID' && (
+            <Can permission="finance:create">
+              <Button asChild>
+                <Link
+                  to="/finance/collections/new"
+                  search={{ partnerId: invoice.partnerId, invoiceId: id }}
+                >
+                  <HandCoins /> {t('finance.payments.fromInvoice')}
+                </Link>
+              </Button>
+            </Can>
+          )}
           {canReturn && (
             <Can permission="sales:deliver">
               <Button variant="outline" asChild>

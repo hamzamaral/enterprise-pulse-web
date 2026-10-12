@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { ArrowLeft, Ban, Printer } from 'lucide-react';
+import { ArrowLeft, Ban, Printer, Wallet } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -76,6 +76,18 @@ export function InvoiceDetailPage({ id }: { id: string }) {
           <ArrowLeft className="size-4" /> {t('purchasing.invoices.title')}
         </Link>
         <div className="flex gap-2">
+          {issued && invoice.paymentStatus !== 'PAID' && (
+            <Can permission="finance:create">
+              <Button asChild>
+                <Link
+                  to="/finance/payments/new"
+                  search={{ partnerId: invoice.partnerId, invoiceId: id }}
+                >
+                  <Wallet /> {t('finance.payments.payInvoice')}
+                </Link>
+              </Button>
+            </Can>
+          )}
           {issued && Number(invoice.paidAmount) === 0 && (
             <Can permission="purchasing:update">
               <Button variant="outline" onClick={() => setCancelling(true)}>

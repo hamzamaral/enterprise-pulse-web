@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, useNavigate } from '@tanstack/react-router';
 import { ArrowLeft, Loader2 } from 'lucide-react';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -80,9 +80,11 @@ function accountTypesFor(
 export function PaymentFormPage({
   direction,
   partnerId,
+  invoiceId,
 }: {
   direction: PaymentDirection;
   partnerId?: string;
+  invoiceId?: string;
 }) {
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -131,6 +133,24 @@ export function PaymentFormPage({
 
   const accountTypes = accountTypesFor(direction, method, source);
   const accounts = useAccountOptions({ types: accountTypes ?? undefined });
+
+  const { data: presetInvoices } = usePaymentsOpenInvoices(
+    { partnerId: partnerId ?? '', direction },
+    { query: { enabled: !!partnerId && !!invoiceId } },
+  );
+  const invoicePreset = useRef(false);
+  useEffect(() => {
+    if (invoicePreset.current || !presetPartner || !accounts.length) return;
+    const invoice = presetInvoices?.find((inv) => inv.id === invoiceId);
+    if (!invoice) return;
+    invoicePreset.current = true;
+    form.setValue('currencyCode', invoice.currencyCode);
+    const account = accounts.find((a) => a.currencyCode === invoice.currencyCode);
+    if (account) form.setValue('accountId', account.id);
+    form.setValue('amount', invoice.remaining);
+    form.setValue('allocationMode', 'manual');
+    form.setValue('allocations', { [invoice.id]: invoice.remaining });
+  }, [presetPartner, presetInvoices, invoiceId, accounts, form]);
   const account = accounts.find((a) => a.id === values.accountId);
 
   const { data: portfolio } = useChequesFindAll(
