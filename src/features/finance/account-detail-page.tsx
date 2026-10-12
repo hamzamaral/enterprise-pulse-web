@@ -71,6 +71,13 @@ function TreasuryDocumentLink({ entry }: { entry: TreasuryEntryDto }) {
       );
     }
   }
+  if (id && type === 'EXPENSE_PAYMENT' && can('expenses:read')) {
+    return (
+      <Link to="/expenses/$id" params={{ id }} className={className}>
+        {entry.documentNumber}
+      </Link>
+    );
+  }
   return <code className="text-xs">{entry.documentNumber}</code>;
 }
 

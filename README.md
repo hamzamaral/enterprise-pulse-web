@@ -41,6 +41,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Satış analizi:** aylık / cari / ürün bazında, iadeler düşülmüş, Excel / PDF           | **Nakit akışı:** dönem başı ve sonu bakiye, aylık giriş / çıkış, belge türleri      |
 | ![Satış fırsatları](docs/screenshots/crm-pipeline.png)                                  | ![Satış fırsatı](docs/screenshots/crm-opportunity.png)                              |
 | **Satış fırsatları:** sürükle-bırak pano, ağırlıklı hat, kazanma oranı                  | **Satış fırsatı:** aşama çubuğu, bağlı teklifler, aktivite zaman çizelgesi          |
+| ![Masraf formları](docs/screenshots/expense-reports.png)                                | ![Masraf formu](docs/screenshots/expense-report.png)                                |
+| **Masraf formları:** onay ve ödeme bekleyenler, aylık ve türe göre masraf               | **Masraf formu:** dövizli fişler, limit uyarıları, fiş ekleri, ödeme                |
 
 ## Özellikler
 
@@ -48,7 +50,7 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   denetim kaydı, Socket.IO ile anlık bildirimler, onay kutusu, ayarlar (para birimi, kur, KDV, birim, numaralandırma, onay akışları).
 - **Gösterge paneli:** kullanıcının yetkilerine göre İK, zimmet, stok ve finans (alacak, borç, nakit pozisyonu,
   açık siparişler) KPI'ları, son 6 ayın satış / alış ve nakit akışı grafikleri, kritik stok listesi; personel için
-  kalan izin hakkı ve onay bekleyen zimmetler.
+  kalan izin hakkı, onay bekleyen zimmetler ve masraflarım; finans için ödenecek masraflar.
 - **İnsan Kaynakları:** personel kartı, departman ve pozisyonlar, organizasyon şeması, izin talebi ve çok adımlı onay,
   "İzinlerim" ve "Mesaim" (giriş-çıkış) self-servis ekranları, aylık puantaj çizelgesi (İK düzeltmesi, Excel'e aktarma),
   vardiya tanımları ve haftalık vardiya planı.
@@ -61,6 +63,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   satış fırsatı panosu (kaybedilene bırakınca neden sorulur) ve liste görünümü, aşama çubuklu fırsat kartı, fırsattan
   teklif hazırlama; arama / toplantı / görev aktiviteleri (geciken ve bugünkü işler), cari kartında fırsatlar ve
   aktiviteler, gösterge panelinde açık hat, bu ay kazanılan ve kazanma oranı.
+- **Masraf ve Harcırah:** "Masraflarım" self-servis ekranı; fişli masraf (döviz ve KDV), günlük harcırah ve km
+  ücretli araç kalemleriyle masraf formu, fiş görseli / PDF yükleme, limit üstü ve eksik fiş uyarıları; onaycının
+  formu açıp onaylaması veya reddetmesi, finansın kasa / bankadan ödemesi ve geri alması; masraf türleri
+  (limit, fiş zorunluluğu, harcırah ve km ücreti), aylık ve türe göre masraf grafikleri.
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.

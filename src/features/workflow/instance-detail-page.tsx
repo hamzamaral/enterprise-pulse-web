@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { ArrowLeft, Check, CircleDot, Loader2, X } from 'lucide-react';
+import { ArrowLeft, Check, CircleDot, ExternalLink, Loader2, X } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -11,8 +11,9 @@ import {
   useWorkflowInstancesFindOne,
   useWorkflowInstancesReject,
 } from '@/api/generated/endpoints/workflow/workflow';
+import { useExpenseReportsFindAll } from '@/api/generated/endpoints/expenses/expenses';
 import type { WorkflowInstanceDetailDto } from '@/api/generated/model';
-import { useMe } from '@/features/auth/use-session';
+import { useMe, usePermission } from '@/features/auth/use-session';
 import { PageHeader } from '@/shared/components/page-header';
 import { formatDateTime } from '@/shared/lib/format';
 import { useInvalidate } from '@/shared/lib/query';
@@ -61,6 +62,25 @@ function StepTimeline({ instance }: { instance: WorkflowInstanceDetailDto }) {
   );
 }
 
+/** Expense approvals carry the report number; resolve it to open the report. */
+function ExpenseReportLink({ number }: { number: string }) {
+  const { t } = useTranslation();
+  const can = usePermission();
+  const { data } = useExpenseReportsFindAll(
+    { search: number, pageSize: 1 },
+    { query: { enabled: can('expenses:read') } },
+  );
+  const report = data?.data.find((r) => r.number === number);
+  if (!report) return null;
+  return (
+    <Button asChild variant="outline" size="sm">
+      <Link to="/expenses/$id" params={{ id: report.id }}>
+        <ExternalLink /> {t('workflow.openDocument')}
+      </Link>
+    </Button>
+  );
+}
+
 export function InstanceDetailPage({ id }: { id: string }) {
   const { t } = useTranslation();
   const { data: me } = useMe();
@@ -97,7 +117,14 @@ export function InstanceDetailPage({ id }: { id: string }) {
       <PageHeader
         title={instance.title}
         description={`${instance.definitionName} · ${instance.entityType} ${instance.entityId}`}
-        actions={<WorkflowStatusBadge status={instance.status} />}
+        actions={
+          <>
+            {instance.entityType === 'ExpenseReport' && (
+              <ExpenseReportLink number={instance.entityId} />
+            )}
+            <WorkflowStatusBadge status={instance.status} />
+          </>
+        }
       />
 
       <div className="grid gap-6 lg:grid-cols-3">

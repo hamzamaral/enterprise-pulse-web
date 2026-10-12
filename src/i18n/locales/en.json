@@ -57,6 +57,7 @@
       "workflow": "Approvals",
       "system": "System",
       "hr": "Human Resources",
+      "expenses": "Expenses & Allowances",
       "assets": "Assets",
       "inventory": "Inventory",
       "finance": "Accounts & Finance",
@@ -122,7 +123,10 @@
     "cashFlow": "Cash Flow",
     "leads": "Leads",
     "opportunities": "Opportunities",
-    "crmActivities": "Activities"
+    "crmActivities": "Activities",
+    "myExpenses": "My Expenses",
+    "expenseReports": "Expense Reports",
+    "expenseSettings": "Expense Types"
   },
   "auth": {
     "login": "Sign in",
@@ -209,7 +213,11 @@
     "winRate": "Win rate",
     "winRateHint": "Last 90 days · {{count}} new leads",
     "myActivities": "My open activities",
-    "myActivitiesHint": "{{overdue}} overdue · {{today}} today"
+    "myActivitiesHint": "{{overdue}} overdue · {{today}} today",
+    "expensesToPay": "Expenses to pay",
+    "expensesToPayHint": "Approved reports: {{count}}",
+    "myExpenses": "My expenses",
+    "myExpensesHint": "Pending: {{pending}} · Draft: {{draft}}"
   },
   "users": {
     "title": "Users",
@@ -262,7 +270,9 @@
       "partners": "Partners",
       "purchasing": "Purchasing",
       "sales": "Sales",
-      "finance": "Finance"
+      "finance": "Finance",
+      "crm": "CRM",
+      "expenses": "Expenses and allowances"
     },
     "actions": {
       "read": "Read",
@@ -277,7 +287,8 @@
       "approve": "Approve",
       "receive": "Receive goods",
       "deliver": "Deliver",
-      "invoice": "Invoice"
+      "invoice": "Invoice",
+      "pay": "Pay"
     }
   },
   "organization": {
@@ -365,7 +376,8 @@
       "APPROVE": "Approved",
       "REJECT": "Rejected",
       "CANCEL": "Cancelled"
-    }
+    },
+    "openDocument": "Open document"
   },
   "settings": {
     "title": "Settings",
@@ -1394,6 +1406,141 @@
       }
     }
   },
+  "expenses": {
+    "title": "Expense Reports",
+    "subtitle": "Employee expenses, approvals and reimbursement status",
+    "myTitle": "My Expenses",
+    "mySubtitle": "Your expense and allowance reports; approved amounts are reimbursed by finance",
+    "new": "New expense report",
+    "edit": "Edit expense report",
+    "newHint": "Attach receipts; enter days for per diem and kilometres for mileage",
+    "titleField": "Title",
+    "titlePlaceholder": "E.g. Customer visit in Ankara",
+    "description": "Description",
+    "descriptionPlaceholder": "Purpose of the trip or expense",
+    "employee": "Employee",
+    "department": "Department",
+    "total": "Total",
+    "vatTotal": "VAT total",
+    "lineCount": "Lines",
+    "createdAt": "Created",
+    "submittedAt": "Submitted",
+    "decidedAt": "Decided",
+    "paymentDate": "Payment date",
+    "paymentAccount": "Paid from",
+    "paidBy": "Paid by",
+    "createdBy": "Created by",
+    "approval": "Approval",
+    "viewApproval": "View approval steps",
+    "onlyMine": "Only mine",
+    "status": {
+      "DRAFT": "Draft",
+      "PENDING": "Pending",
+      "APPROVED": "Awaiting payment",
+      "REJECTED": "Rejected",
+      "PAID": "Paid",
+      "CANCELLED": "Cancelled"
+    },
+    "kinds": {
+      "RECEIPT": "Receipt",
+      "PER_DIEM": "Per diem (days)",
+      "MILEAGE": "Mileage (km)"
+    },
+    "lines": {
+      "title": "Expense lines",
+      "add": "Add line",
+      "category": "Expense type",
+      "date": "Date",
+      "description": "Description",
+      "merchant": "Merchant",
+      "days": "Days",
+      "km": "Km",
+      "amount": "Amount",
+      "vat": "VAT",
+      "currency": "Currency",
+      "rate": "Rate",
+      "rateAuto": "Latest rate",
+      "amountBase": "Amount ({{currency}})",
+      "receipt": "Receipt",
+      "attach": "Attach receipt",
+      "remove": "Remove line",
+      "removeReceipt": "Remove receipt",
+      "uploading": "Uploading...",
+      "missingReceipt": "Receipt missing",
+      "overLimit": "Over limit",
+      "overLimitHint": "The line limit of this expense type is {{limit}}",
+      "perDiemHint": "{{rate}} per day",
+      "mileageHint": "{{rate}} per km",
+      "foreignHint": "Foreign currency lines are converted to {{currency}} at the saved rate",
+      "noCategories": "No active expense types; ask an administrator to define them"
+    },
+    "actions": {
+      "save": "Save as draft",
+      "saveAndSubmit": "Save and submit",
+      "submit": "Submit for approval",
+      "withdraw": "Withdraw",
+      "cancel": "Cancel report",
+      "delete": "Delete draft",
+      "pay": "Pay",
+      "reversePayment": "Reverse payment",
+      "downloadReceipt": "Open receipt"
+    },
+    "messages": {
+      "saved": "{{number}} saved",
+      "submitted": "{{number}} submitted for approval",
+      "withdrawn": "Report returned to draft",
+      "cancelled": "Report cancelled",
+      "deleted": "Draft deleted",
+      "paid": "Payment recorded",
+      "reversed": "Payment reversed",
+      "missingReceipts_one": "{{count}} line has no receipt; attach it before submitting",
+      "missingReceipts_other": "{{count}} lines have no receipt; attach them before submitting",
+      "overLimit_one": "{{count}} line is above its expense type limit",
+      "overLimit_other": "{{count}} lines are above their expense type limit",
+      "deleteConfirm": "The draft report will be deleted permanently.",
+      "reverseTitle": "Reverse the payment?",
+      "reverseConfirm": "The paid amount is booked back and the report awaits payment again.",
+      "withdrawTitle": "Withdraw the report?",
+      "withdrawConfirm": "The approval is cancelled and the report returns to draft.",
+      "cancelTitle": "Cancel {{number}}?",
+      "rejected": "The report was rejected; fix it and submit again.",
+      "pendingApproval": "The report is waiting for manager approval.",
+      "approvedToPay": "The report is approved and waiting for payment.",
+      "noEmployee": "Your account has no employee record; contact HR to file expenses."
+    },
+    "pay": {
+      "title": "Expense reimbursement",
+      "description": "Pay {{amount}} to {{employee}}",
+      "account": "Pay from",
+      "date": "Payment date",
+      "noAccount": "No active cash or bank account in {{currency}}"
+    },
+    "summary": {
+      "pending": "Pending approval",
+      "toPay": "Awaiting payment",
+      "paidThisMonth": "Paid this month",
+      "count_one": "{{count}} report",
+      "count_other": "{{count}} reports",
+      "byCategory": "By expense type (this year)",
+      "byMonth": "Monthly expenses (last 6 months)",
+      "amount": "Amount",
+      "myDrafts": "My drafts",
+      "myPending": "Pending",
+      "myToPay": "To be paid to me"
+    },
+    "categories": {
+      "title": "Expense Types",
+      "subtitle": "Line limits, receipt rules, per diem and mileage rates",
+      "new": "New expense type",
+      "kind": "Calculation",
+      "rate": "Unit rate",
+      "rateHint": "Daily amount for per diem, amount per km for mileage",
+      "limit": "Line limit",
+      "requiresReceipt": "Receipt required",
+      "noLimit": "No limit",
+      "rateRequired": "Per diem and mileage types need a unit rate"
+    }
+  },
   "sales": {
     "customer": "Customer",
     "quoteStatus": {
@@ -1588,7 +1735,8 @@
       "COLLECTION": "Collection",
       "PAYMENT": "Payment",
       "CHEQUE_COLLECTION": "Cheque collected",
-      "CHEQUE_PAYMENT": "Cheque paid"
+      "CHEQUE_PAYMENT": "Cheque paid",
+      "EXPENSE_PAYMENT": "Expense reimbursement"
     },
     "accounts": {
       "title": "Cash & Banks",

@@ -57,6 +57,7 @@
       "workflow": "Onay Süreçleri",
       "system": "Sistem",
       "hr": "İnsan Kaynakları",
+      "expenses": "Masraf ve Harcırah",
       "assets": "Zimmet ve Demirbaş",
       "inventory": "Stok ve Depo",
       "finance": "Cari ve Finans",
@@ -122,7 +123,10 @@
     "cashFlow": "Nakit Akışı",
     "leads": "Potansiyel müşteriler",
     "opportunities": "Satış fırsatları",
-    "crmActivities": "Aktiviteler"
+    "crmActivities": "Aktiviteler",
+    "myExpenses": "Masraflarım",
+    "expenseReports": "Masraf Formları",
+    "expenseSettings": "Masraf Türleri"
   },
   "auth": {
     "login": "Giriş yap",
@@ -209,7 +213,11 @@
     "winRate": "Kazanma oranı",
     "winRateHint": "Son 90 gün · {{count}} yeni potansiyel müşteri",
     "myActivities": "Açık aktivitelerim",
-    "myActivitiesHint": "{{overdue}} gecikmiş · {{today}} bugün"
+    "myActivitiesHint": "{{overdue}} gecikmiş · {{today}} bugün",
+    "expensesToPay": "Ödenecek masraflar",
+    "expensesToPayHint": "Onaylı form: {{count}}",
+    "myExpenses": "Masraflarım",
+    "myExpensesHint": "Onayda: {{pending}} · Taslak: {{draft}}"
   },
   "users": {
     "title": "Kullanıcılar",
@@ -262,7 +270,9 @@
       "partners": "Cari hesaplar",
       "purchasing": "Satın alma",
       "sales": "Satış",
-      "finance": "Finans"
+      "finance": "Finans",
+      "crm": "CRM",
+      "expenses": "Masraf ve harcırah"
     },
     "actions": {
       "read": "Görüntüle",
@@ -277,7 +287,8 @@
       "approve": "Onaylama",
       "receive": "Mal kabul",
       "deliver": "Sevkiyat",
-      "invoice": "Faturalama"
+      "invoice": "Faturalama",
+      "pay": "Ödeme"
     }
   },
   "organization": {
@@ -365,7 +376,8 @@
       "APPROVE": "Onayladı",
       "REJECT": "Reddetti",
       "CANCEL": "İptal etti"
-    }
+    },
+    "openDocument": "Belgeyi aç"
   },
   "settings": {
     "title": "Ayarlar",
@@ -1394,6 +1406,141 @@
       }
     }
   },
+  "expenses": {
+    "title": "Masraf Formları",
+    "subtitle": "Personel masrafları, onay ve geri ödeme durumu",
+    "myTitle": "Masraflarım",
+    "mySubtitle": "Masraf ve harcırah formlarınız; onaylanan tutarlar finans tarafından ödenir",
+    "new": "Yeni masraf formu",
+    "edit": "Masraf formunu düzenle",
+    "newHint": "Fişleri ekleyin; harcırah için gün, araç kullanımı için km girin",
+    "titleField": "Başlık",
+    "titlePlaceholder": "Örn. Ankara müşteri ziyareti",
+    "description": "Açıklama",
+    "descriptionPlaceholder": "Seyahatin veya harcamanın amacı",
+    "employee": "Personel",
+    "department": "Departman",
+    "total": "Toplam",
+    "vatTotal": "KDV toplamı",
+    "lineCount": "Kalem",
+    "createdAt": "Oluşturma",
+    "submittedAt": "Gönderim",
+    "decidedAt": "Karar",
+    "paymentDate": "Ödeme tarihi",
+    "paymentAccount": "Ödeme hesabı",
+    "paidBy": "Ödeyen",
+    "createdBy": "Oluşturan",
+    "approval": "Onay süreci",
+    "viewApproval": "Onay adımlarını gör",
+    "onlyMine": "Yalnızca benimkiler",
+    "status": {
+      "DRAFT": "Taslak",
+      "PENDING": "Onayda",
+      "APPROVED": "Ödeme bekliyor",
+      "REJECTED": "Reddedildi",
+      "PAID": "Ödendi",
+      "CANCELLED": "İptal"
+    },
+    "kinds": {
+      "RECEIPT": "Fişli masraf",
+      "PER_DIEM": "Harcırah (gün)",
+      "MILEAGE": "Araç (km)"
+    },
+    "lines": {
+      "title": "Masraf kalemleri",
+      "add": "Kalem ekle",
+      "category": "Masraf türü",
+      "date": "Tarih",
+      "description": "Açıklama",
+      "merchant": "Firma",
+      "days": "Gün",
+      "km": "Km",
+      "amount": "Tutar",
+      "vat": "KDV",
+      "currency": "Döviz",
+      "rate": "Kur",
+      "rateAuto": "Güncel kur",
+      "amountBase": "Tutar ({{currency}})",
+      "receipt": "Fiş",
+      "attach": "Fiş ekle",
+      "remove": "Kalemi sil",
+      "removeReceipt": "Fişi kaldır",
+      "uploading": "Yükleniyor...",
+      "missingReceipt": "Fiş eksik",
+      "overLimit": "Limit üstü",
+      "overLimitHint": "Masraf türünün kalem limiti {{limit}}",
+      "perDiemHint": "Günlük {{rate}}",
+      "mileageHint": "Km başına {{rate}}",
+      "foreignHint": "Döviz kalemleri kayıtta kurla {{currency}} tutarına çevrilir",
+      "noCategories": "Aktif masraf türü yok; yöneticinizden tanımlamasını isteyin"
+    },
+    "actions": {
+      "save": "Taslak olarak kaydet",
+      "saveAndSubmit": "Kaydet ve onaya gönder",
+      "submit": "Onaya gönder",
+      "withdraw": "Geri çek",
+      "cancel": "Formu iptal et",
+      "delete": "Taslağı sil",
+      "pay": "Öde",
+      "reversePayment": "Ödemeyi geri al",
+      "downloadReceipt": "Fişi aç"
+    },
+    "messages": {
+      "saved": "{{number}} kaydedildi",
+      "submitted": "{{number}} onaya gönderildi",
+      "withdrawn": "Form taslağa döndü",
+      "cancelled": "Form iptal edildi",
+      "deleted": "Taslak silindi",
+      "paid": "Ödeme kaydedildi",
+      "reversed": "Ödeme geri alındı",
+      "missingReceipts_one": "{{count}} kalemde fiş eksik; onaya göndermeden önce ekleyin",
+      "missingReceipts_other": "{{count}} kalemde fiş eksik; onaya göndermeden önce ekleyin",
+      "overLimit_one": "{{count}} kalem masraf türü limitinin üstünde",
+      "overLimit_other": "{{count}} kalem masraf türü limitinin üstünde",
+      "deleteConfirm": "Taslak form kalıcı olarak silinecek.",
+      "reverseTitle": "Ödeme geri alınsın mı?",
+      "reverseConfirm": "Hesaptan çıkan tutar geri kaydedilir ve form yeniden ödeme bekler.",
+      "withdrawTitle": "Form geri çekilsin mi?",
+      "withdrawConfirm": "Onay süreci iptal edilir ve form taslağa döner.",
+      "cancelTitle": "{{number}} iptal edilsin mi?",
+      "rejected": "Form reddedildi; düzeltip yeniden gönderebilirsiniz.",
+      "pendingApproval": "Form yönetici onayı bekliyor.",
+      "approvedToPay": "Form onaylandı; finans ödemesi bekleniyor.",
+      "noEmployee": "Hesabınıza bağlı personel kaydı yok; masraf formu için İK ile görüşün."
+    },
+    "pay": {
+      "title": "Masraf ödemesi",
+      "description": "{{employee}} adına {{amount}} ödenecek",
+      "account": "Ödeme hesabı",
+      "date": "Ödeme tarihi",
+      "noAccount": "{{currency}} cinsinden aktif kasa veya banka hesabı yok"
+    },
+    "summary": {
+      "pending": "Onay bekleyen",
+      "toPay": "Ödeme bekleyen",
+      "paidThisMonth": "Bu ay ödenen",
+      "count_one": "{{count}} form",
+      "count_other": "{{count}} form",
+      "byCategory": "Türe göre masraf (bu yıl)",
+      "byMonth": "Aylık masraf (son 6 ay)",
+      "amount": "Tutar",
+      "myDrafts": "Taslaklarım",
+      "myPending": "Onayda",
+      "myToPay": "Bana ödenecek"
+    },
+    "categories": {
+      "title": "Masraf Türleri",
+      "subtitle": "Kalem limitleri, fiş zorunluluğu, harcırah ve km ücretleri",
+      "new": "Yeni masraf türü",
+      "kind": "Hesaplama",
+      "rate": "Birim ücret",
+      "rateHint": "Harcırah için günlük, araç için km başına tutar",
+      "limit": "Kalem limiti",
+      "requiresReceipt": "Fiş zorunlu",
+      "noLimit": "Limitsiz",
+      "rateRequired": "Harcırah ve km türleri için birim ücret zorunludur"
+    }
+  },
   "sales": {
     "customer": "Müşteri",
     "quoteStatus": {
@@ -1588,7 +1735,8 @@
       "COLLECTION": "Tahsilat",
       "PAYMENT": "Ödeme",
       "CHEQUE_COLLECTION": "Çek tahsili",
-      "CHEQUE_PAYMENT": "Çek ödemesi"
+      "CHEQUE_PAYMENT": "Çek ödemesi",
+      "EXPENSE_PAYMENT": "Masraf ödemesi"
     },
     "accounts": {
       "title": "Kasa ve Bankalar",

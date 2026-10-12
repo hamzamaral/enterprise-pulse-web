@@ -1,5 +1,6 @@
 import { Link, type LinkProps } from '@tanstack/react-router';
 import {
+  Banknote,
   Bell,
   Boxes,
   CalendarClock,
@@ -12,6 +13,7 @@ import {
   MapPin,
   Percent,
   PackageCheck,
+  ReceiptText,
   ShoppingCart,
   Target,
   TriangleAlert,
@@ -33,6 +35,7 @@ import {
   useEmployeesFindMine,
 } from '@/api/generated/endpoints/employees/employees';
 import { useCrmSummary } from '@/api/generated/endpoints/crm/crm';
+import { useExpenseReportsSummary } from '@/api/generated/endpoints/expenses/expenses';
 import { useFinanceReportsSummary } from '@/api/generated/endpoints/finance/finance';
 import { useStockFindLevels, useStockSummary } from '@/api/generated/endpoints/inventory/inventory';
 import {
@@ -131,6 +134,9 @@ export function DashboardPage() {
 
   const finance = useFinanceReportsSummary({ query: { enabled: can('finance:read') } });
   const crm = useCrmSummary({ query: { enabled: can('crm:read') } });
+  const expenses = useExpenseReportsSummary({
+    query: { enabled: !!me?.employeeId || can('expenses:read') },
+  });
 
   const myEmployee = useEmployeesFindMine({ query: { enabled: !!me?.employeeId } });
   const myBalances = useLeaveBalancesFindAll(
@@ -190,30 +196,69 @@ export function DashboardPage() {
         />
       </div>
 
-      {myEmployee.isSuccess && (
+      {(myEmployee.isSuccess || can('expenses:read')) && (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <StatCard
-            label={t('dashboard.myLeaveBalance')}
-            value={
-              myBalances.data
-                ? t('dashboard.days', { count: annualBalance?.remainingDays ?? 0 })
-                : undefined
-            }
-            hint={annualBalance?.leaveTypeName}
-            icon={CalendarDays}
-            to="/hr/my-leave"
-          />
-          <StatCard
-            label={t('dashboard.myAssets')}
-            value={activeAssignments?.length}
-            hint={
-              unacknowledged
-                ? t('dashboard.awaitingAcknowledgement', { count: unacknowledged })
-                : undefined
-            }
-            icon={PackageCheck}
-            to="/assets/my"
-          />
+          {myEmployee.isSuccess && (
+            <>
+              <StatCard
+                label={t('dashboard.myLeaveBalance')}
+                value={
+                  myBalances.data
+                    ? t('dashboard.days', { count: annualBalance?.remainingDays ?? 0 })
+                    : undefined
+                }
+                hint={annualBalance?.leaveTypeName}
+                icon={CalendarDays}
+                to="/hr/my-leave"
+              />
+              <StatCard
+                label={t('dashboard.myAssets')}
+                value={activeAssignments?.length}
+                hint={
+                  unacknowledged
+                    ? t('dashboard.awaitingAcknowledgement', { count: unacknowledged })
+                    : undefined
+                }
+                icon={PackageCheck}
+                to="/assets/my"
+              />
+              <StatCard
+                label={t('dashboard.myExpenses')}
+                value={
+                  expenses.data
+                    ? formatMoney(expenses.data.myToPayAmount, expenses.data.currencyCode)
+                    : undefined
+                }
+                hint={
+                  expenses.data
+                    ? t('dashboard.myExpensesHint', {
+                        pending: expenses.data.myPendingCount,
+                        draft: expenses.data.myDraftCount,
+                      })
+                    : undefined
+                }
+                icon={ReceiptText}
+                to="/expenses/my"
+              />
+            </>
+          )}
+          {can('expenses:read') && (
+            <StatCard
+              label={t('dashboard.expensesToPay')}
+              value={
+                expenses.data
+                  ? formatMoney(expenses.data.toPayAmount, expenses.data.currencyCode)
+                  : undefined
+              }
+              hint={
+                expenses.data
+                  ? t('dashboard.expensesToPayHint', { count: expenses.data.toPayCount })
+                  : undefined
+              }
+              icon={Banknote}
+              to="/expenses"
+            />
+          )}
         </div>
       )}
 
