@@ -42,6 +42,18 @@ export function NotFound() {
   return <ErrorScreen icon={<SearchX className="size-8" />} title={t('errors.notFound')} />;
 }
 
+/** A detail record that does not exist, or that the user may not see. */
+export function RecordNotFound() {
+  const { t } = useTranslation();
+  return (
+    <ErrorScreen
+      icon={<SearchX className="size-8" />}
+      title={t('errors.recordNotFound')}
+      message={t('errors.recordNotFoundHint')}
+    />
+  );
+}
+
 export function Forbidden() {
   const { t } = useTranslation();
   return <ErrorScreen icon={<ShieldX className="size-8" />} title={t('errors.forbidden')} />;

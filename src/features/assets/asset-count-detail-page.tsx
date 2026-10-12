@@ -48,6 +48,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table';
 import { Tabs, TabsList, TabsTrigger } from '@/shared/ui/tabs';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { ConditionBadge } from './asset-components';
 import { AssetCountProgress, AssetCountStatusBadge, scopeLabel } from './asset-counts-page';
 
@@ -92,7 +93,8 @@ export function AssetCountDetailPage({ id }: { id: string }) {
     [count, filter],
   );
 
-  if (isLoading || !count) {
+  if (!count) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

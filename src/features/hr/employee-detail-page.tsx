@@ -33,6 +33,7 @@ import { Button } from '@/shared/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { EmployeeFormDialog } from './employee-form-dialog';
 import { EmployeeStatusBadge } from './hr-components';
 import { BalanceCards, LeaveRequestsTable } from './leave-components';
@@ -196,7 +197,8 @@ export function EmployeeDetailPage({ id }: { id: string }) {
   );
   const heldCount = heldAssets?.meta.total ?? 0;
 
-  if (isLoading || !employee) {
+  if (!employee) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

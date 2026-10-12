@@ -400,7 +400,9 @@
     "notFound": "Sayfa bulunamadı",
     "forbidden": "Bu sayfayı görüntüleme yetkiniz yok",
     "generic": "Bir hata oluştu",
-    "goHome": "Ana sayfaya dön"
+    "goHome": "Ana sayfaya dön",
+    "recordNotFound": "Kayıt bulunamadı",
+    "recordNotFoundHint": "Kayıt silinmiş olabilir ya da görüntüleme yetkiniz yok."
   },
   "employees": {
     "title": "Personel",

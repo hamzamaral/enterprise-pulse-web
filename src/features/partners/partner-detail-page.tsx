@@ -12,6 +12,7 @@ import { formatMoney } from '@/shared/lib/format';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { BalanceText, PartnerTypeBadge } from './partner-components';
 import { PartnerFormDialog } from './partner-form-dialog';
 import { PartnerStatement } from './partner-statement';
@@ -22,7 +23,8 @@ export function PartnerDetailPage({ id }: { id: string }) {
   const [editing, setEditing] = useState(false);
   const { data: partner, isLoading } = usePartnersFindOne(id);
 
-  if (isLoading || !partner) {
+  if (!partner) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

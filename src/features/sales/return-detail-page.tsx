@@ -13,6 +13,7 @@ import { formatDate, formatDateTime } from '@/shared/lib/format';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { useBaseCurrency } from '@/features/trade/trade-components';
 
 export function SalesReturnDetailPage({ id }: { id: string }) {
@@ -21,7 +22,8 @@ export function SalesReturnDetailPage({ id }: { id: string }) {
   const base = useBaseCurrency();
   const { data: item, isLoading } = useSalesReturnsFindOne(id);
 
-  if (isLoading || !item) {
+  if (!item) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

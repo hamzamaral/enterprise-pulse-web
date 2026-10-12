@@ -29,6 +29,7 @@ import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
+import { RecordNotFound } from '@/shared/components/route-error';
 import {
   CancelDocumentDialog,
   InvoiceStatusBadge,
@@ -71,7 +72,8 @@ export function SalesOrderDetailPage({ id }: { id: string }) {
   const reserve = useSalesOrdersReserve();
   const cancel = useSalesOrdersCancel();
 
-  if (isLoading || !order) {
+  if (!order) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

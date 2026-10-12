@@ -20,6 +20,7 @@ import { useInvalidate } from '@/shared/lib/query';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { useBaseCurrency } from '@/features/trade/trade-components';
 import { ConvertQuoteDialog } from './convert-quote-dialog';
 import { SalesQuoteStatusBadge } from './sales-components';
@@ -32,7 +33,8 @@ export function SalesQuoteDetailPage({ id }: { id: string }) {
   const { data: quote, isLoading } = useSalesQuotesFindOne(id);
   const reject = useSalesQuotesReject();
 
-  if (isLoading || !quote) {
+  if (!quote) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

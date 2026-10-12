@@ -8,6 +8,7 @@ import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { itemName, MovementTypeBadge, SignedQuantity } from './inventory-components';
 import { WarehouseRoute } from './movements-page';
 
@@ -15,7 +16,8 @@ export function MovementDetailPage({ id }: { id: string }) {
   const { t } = useTranslation();
   const { data: movement, isLoading } = useStockMovementsFindOne(id);
 
-  if (isLoading || !movement) {
+  if (!movement) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

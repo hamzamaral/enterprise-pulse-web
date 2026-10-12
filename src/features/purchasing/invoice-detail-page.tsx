@@ -23,6 +23,7 @@ import { useInvalidate } from '@/shared/lib/query';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
+import { RecordNotFound } from '@/shared/components/route-error';
 import {
   CancelDocumentDialog,
   InvoiceStatusBadge,
@@ -39,7 +40,8 @@ export function InvoiceDetailPage({ id }: { id: string }) {
   const { data: invoice, isLoading } = usePurchaseInvoicesFindOne(id);
   const cancel = usePurchaseInvoicesCancel();
 
-  if (isLoading || !invoice) {
+  if (!invoice) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

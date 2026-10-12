@@ -14,6 +14,7 @@ import { formatDate, formatDateTime } from '@/shared/lib/format';
 import { useInvalidate } from '@/shared/lib/query';
 import { Button } from '@/shared/ui/button';
 import { Skeleton } from '@/shared/ui/skeleton';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { AssignmentStatusBadge } from './asset-components';
 
 function Row({ label, children }: { label: string; children: ReactNode }) {
@@ -167,7 +168,8 @@ export function AssignmentDocumentPage({ id }: { id: string }) {
   const { data: doc, isLoading } = useAssetAssignmentsFindOne(id);
   const acknowledge = useAssetAssignmentsAcknowledge();
 
-  if (isLoading || !doc) {
+  if (!doc) {
+    if (!isLoading) return <RecordNotFound />;
     return <Skeleton className="mx-auto h-[600px] max-w-3xl" />;
   }
 

@@ -37,6 +37,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shared/ui/tabs';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { Assignee, AssetStatusBadge, ConditionBadge } from './asset-components';
 import { AssetFormDialog } from './asset-form-dialog';
 import { AssetMaintenanceTab } from './asset-maintenance';
@@ -298,7 +299,8 @@ export function AssetDetailPage({ id }: { id: string }) {
   const remove = useAssetsRemove();
   const close = (open: boolean) => !open && setDialog(null);
 
-  if (isLoading || !asset) {
+  if (!asset) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

@@ -18,6 +18,7 @@ import { formatDate, formatDateTime, formatMoney } from '@/shared/lib/format';
 import { Button } from '@/shared/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
+import { RecordNotFound } from '@/shared/components/route-error';
 import {
   ChequeActionDialog,
   ChequeStatusBadge,
@@ -42,7 +43,8 @@ export function ChequeDetailPage({ id }: { id: string }) {
   const banks = useAccountOptions({ types: ['BANK'], currencyCode: cheque?.currencyCode });
   const cashAndBanks = useAccountOptions({ currencyCode: cheque?.currencyCode });
 
-  if (isLoading || !cheque) {
+  if (!cheque) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

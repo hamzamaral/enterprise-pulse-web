@@ -400,7 +400,9 @@
     "notFound": "Page not found",
     "forbidden": "You do not have permission to view this page",
     "generic": "Something went wrong",
-    "goHome": "Go to home page"
+    "goHome": "Go to home page",
+    "recordNotFound": "Record not found",
+    "recordNotFoundHint": "It may have been deleted, or you are not allowed to view it."
   },
   "employees": {
     "title": "Employees",

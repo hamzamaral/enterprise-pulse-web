@@ -21,6 +21,7 @@ import { Button } from '@/shared/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Textarea } from '@/shared/ui/textarea';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { WorkflowStatusBadge } from './workflow-components';
 
 function StepTimeline({ instance }: { instance: WorkflowInstanceDetailDto }) {
@@ -76,7 +77,8 @@ export function InstanceDetailPage({ id }: { id: string }) {
     await invalidate(getWorkflowInstancesFindOneQueryKey(id), getWorkflowInstancesInboxQueryKey());
   };
 
-  if (isLoading || !instance) {
+  if (!instance) {
+    if (!isLoading) return <RecordNotFound />;
     return <Skeleton className="h-96 w-full" />;
   }
 

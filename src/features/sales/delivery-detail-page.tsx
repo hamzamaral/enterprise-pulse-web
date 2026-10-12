@@ -10,13 +10,15 @@ import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table';
+import { RecordNotFound } from '@/shared/components/route-error';
 
 export function DeliveryDetailPage({ id }: { id: string }) {
   const { t } = useTranslation();
   const can = usePermission();
   const { data: note, isLoading } = useDeliveryNotesFindOne(id);
 
-  if (isLoading || !note) {
+  if (!note) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

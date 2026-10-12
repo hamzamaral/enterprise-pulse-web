@@ -14,6 +14,7 @@ import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { CancelDocumentDialog, useBaseCurrency } from '@/features/trade/trade-components';
 import { paymentBase, RecordStatusBadge, useInvalidateFinance } from './finance-components';
 
@@ -27,7 +28,8 @@ export function PaymentDetailPage({ id, direction }: { id: string; direction: Pa
   const cancel = usePaymentsCancel();
   const incoming = direction === 'IN';
 
-  if (isLoading || !item) {
+  if (!item) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

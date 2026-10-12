@@ -30,6 +30,7 @@ import { Input } from '@/shared/ui/input';
 import { Label } from '@/shared/ui/label';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { useBaseCurrency } from '@/features/trade/trade-components';
 import { AccountTypeBadge } from './finance-components';
 
@@ -87,7 +88,8 @@ export function TreasuryAccountDetailPage({ id }: { id: string }) {
   });
   const update = useTreasuryAccountsUpdate();
 
-  if (isLoading || !account) {
+  if (!account) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />

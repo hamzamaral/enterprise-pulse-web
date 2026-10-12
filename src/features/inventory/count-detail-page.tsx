@@ -40,6 +40,7 @@ import { Label } from '@/shared/ui/label';
 import { Skeleton } from '@/shared/ui/skeleton';
 import { Switch } from '@/shared/ui/switch';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/shared/ui/table';
+import { RecordNotFound } from '@/shared/components/route-error';
 import { CountProgress } from './counts-page';
 import { CountStatusBadge, ItemPicker, itemName, SignedQuantity } from './inventory-components';
 
@@ -159,7 +160,8 @@ export function CountDetailPage({ id }: { id: string }) {
     });
   }, [count, edits, onlyDifferences]);
 
-  if (isLoading || !count) {
+  if (!count) {
+    if (!isLoading) return <RecordNotFound />;
     return (
       <div className="space-y-4">
         <Skeleton className="h-12 w-72" />
