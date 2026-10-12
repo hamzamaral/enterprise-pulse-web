@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next';
 import { useFinanceReportsAging } from '@/api/generated/endpoints/finance/finance';
 import { AgingSide, type AgingBucketsDto, type AgingRowDto } from '@/api/generated/model';
 import { usePermission } from '@/features/auth/use-session';
-import { exportToExcel } from '@/shared/components/data-table/export-excel';
+import { ExportMenu } from '@/shared/components/data-table/export-menu';
+import { exportTable, type ExportFormat } from '@/shared/components/data-table/export-table';
 import { PageHeader } from '@/shared/components/page-header';
 import { formatDate, formatMoney } from '@/shared/lib/format';
 import { cn } from '@/shared/lib/utils';
-import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Input } from '@/shared/ui/input';
 import { Label } from '@/shared/ui/label';
@@ -28,9 +28,10 @@ export function AgingPage() {
   const { data, isLoading } = useFinanceReportsAging({ side, asOf: asOf || undefined });
   const currency = data?.baseCurrency;
 
-  const handleExport = async () => {
+  const handleExport = async (format: ExportFormat) => {
     if (!data) return;
-    await exportToExcel<AgingRowDto>(
+    await exportTable<AgingRowDto>(
+      format,
       `aging-${side.toLowerCase()}-${data.asOf}`,
       [
         { header: t('common.code'), value: (r) => r.partnerCode },
@@ -82,14 +83,7 @@ export function AgingPage() {
                 onChange={(e) => setAsOf(e.target.value)}
               />
             </div>
-            <Button
-              variant="outline"
-              className="ml-auto"
-              onClick={() => void handleExport()}
-              disabled={!data?.rows.length}
-            >
-              {t('common.export')}
-            </Button>
+            <ExportMenu className="ml-auto" onExport={handleExport} disabled={!data?.rows.length} />
           </div>
 
           {isLoading || !data ? (

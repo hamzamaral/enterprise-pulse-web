@@ -5,7 +5,7 @@ import {
   useAssetAssignmentsFindAll,
 } from '@/api/generated/endpoints/assets/assets';
 import { AssigneeType, AssignmentStatus } from '@/api/generated/model';
-import { exportToExcel } from '@/shared/components/data-table/export-excel';
+import { exportTable, type ExportFormat } from '@/shared/components/data-table/export-table';
 import { useTableState } from '@/shared/components/data-table/use-table-state';
 import { PageHeader } from '@/shared/components/page-header';
 import { fetchAllPages, tableQuery } from '@/shared/lib/query';
@@ -28,11 +28,12 @@ export function AssignmentsPage() {
   const { data, isLoading } = useAssetAssignmentsFindAll(params, { query: tableQuery });
   const resetPage = () => table.setPagination((p) => ({ ...p, pageIndex: 0 }));
 
-  const handleExport = async () => {
+  const handleExport = async (format: ExportFormat) => {
     const rows = await fetchAllPages((page) =>
       assetAssignmentsFindAll({ ...params, page, pageSize: 100 }),
     );
-    await exportToExcel(
+    await exportTable(
+      format,
       'assignments',
       [
         { header: t('assets.assignmentNo'), value: (a) => a.number },

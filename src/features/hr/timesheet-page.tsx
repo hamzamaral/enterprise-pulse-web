@@ -1,14 +1,13 @@
-import { Download } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useAttendanceTimesheet } from '@/api/generated/endpoints/attendance/attendance';
 import type { TimesheetDayDto, TimesheetRowDto } from '@/api/generated/model';
 import { usePermission } from '@/features/auth/use-session';
-import { exportToExcel } from '@/shared/components/data-table/export-excel';
+import { ExportMenu } from '@/shared/components/data-table/export-menu';
+import { exportTable, type ExportFormat } from '@/shared/components/data-table/export-table';
 import { PageHeader } from '@/shared/components/page-header';
 import { formatDate } from '@/shared/lib/format';
 import { cn } from '@/shared/lib/utils';
-import { Button } from '@/shared/ui/button';
 import { Card, CardContent } from '@/shared/ui/card';
 import { Input } from '@/shared/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/shared/ui/select';
@@ -62,8 +61,9 @@ export function TimesheetPage() {
   const sum = (pick: (row: TimesheetRowDto) => number) =>
     rows.reduce((total, row) => total + pick(row), 0);
 
-  const exportRows = () =>
-    exportToExcel(
+  const exportRows = (format: ExportFormat) =>
+    exportTable(
+      format,
       `${t('attendance.timesheetFile')}-${month}`,
       [
         { header: t('employees.employeeNo'), value: (row: TimesheetRowDto) => row.employeeNo },
@@ -104,11 +104,7 @@ export function TimesheetPage() {
       <PageHeader
         title={t('attendance.timesheetTitle')}
         description={t('attendance.timesheetSubtitle')}
-        actions={
-          <Button variant="outline" onClick={exportRows} disabled={!rows.length}>
-            <Download /> {t('common.export')}
-          </Button>
-        }
+        actions={<ExportMenu onExport={exportRows} disabled={!rows.length} />}
       />
       <div className="mb-4 flex flex-wrap items-center gap-2">
         <Input

@@ -14,7 +14,8 @@ import {
 import type { TreasuryDocumentType, TreasuryEntryDto } from '@/api/generated/model';
 import { Can } from '@/features/auth/can';
 import { usePermission } from '@/features/auth/use-session';
-import { exportToExcel } from '@/shared/components/data-table/export-excel';
+import { ExportMenu } from '@/shared/components/data-table/export-menu';
+import { exportTable, type ExportFormat } from '@/shared/components/data-table/export-table';
 import { Field } from '@/shared/components/info-card';
 import { PageHeader } from '@/shared/components/page-header';
 import { SimpleFormDialog } from '@/shared/components/simple-form-dialog';
@@ -96,9 +97,10 @@ export function TreasuryAccountDetailPage({ id }: { id: string }) {
   }
   const currency = account.currencyCode;
 
-  const handleExport = async () => {
+  const handleExport = async (format: ExportFormat) => {
     if (!statement) return;
-    await exportToExcel<TreasuryEntryDto>(
+    await exportTable<TreasuryEntryDto>(
+      format,
       `account-${account.code}`,
       [
         { header: t('statement.date'), value: (e) => new Date(e.txDate) },
@@ -231,9 +233,7 @@ export function TreasuryAccountDetailPage({ id }: { id: string }) {
               />
             </div>
             <div className="ml-auto flex gap-2">
-              <Button variant="outline" onClick={() => void handleExport()} disabled={!statement}>
-                {t('common.export')}
-              </Button>
+              <ExportMenu onExport={handleExport} disabled={!statement} />
               <Button variant="outline" onClick={() => window.print()}>
                 <Printer /> {t('trade.print')}
               </Button>

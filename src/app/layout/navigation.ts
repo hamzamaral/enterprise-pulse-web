@@ -10,6 +10,9 @@ import {
   CalendarCog,
   CalendarDays,
   CalendarRange,
+  ChartColumn,
+  ChartLine,
+  ChartNoAxesCombined,
   ClipboardCheck,
   ClipboardList,
   ClipboardPen,
@@ -277,6 +280,29 @@ export const NAVIGATION: NavGroup[] = [
         permission: 'finance:read',
       },
       { to: '/finance/aging', labelKey: 'nav.aging', icon: Hourglass, permission: 'finance:read' },
+    ],
+  },
+  {
+    labelKey: 'nav.groups.reports',
+    items: [
+      {
+        to: '/reports/sales',
+        labelKey: 'nav.salesReport',
+        icon: ChartColumn,
+        permission: 'sales:read',
+      },
+      {
+        to: '/reports/purchases',
+        labelKey: 'nav.purchaseReport',
+        icon: ChartNoAxesCombined,
+        permission: 'purchasing:read',
+      },
+      {
+        to: '/reports/cash-flow',
+        labelKey: 'nav.cashFlow',
+        icon: ChartLine,
+        permission: 'finance:read',
+      },
     ],
   },
   {

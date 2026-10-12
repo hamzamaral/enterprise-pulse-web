@@ -5,6 +5,7 @@ import { useMemo, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import type { AssignmentDto } from '@/api/generated/model';
 import { DataTable, type PageMeta } from '@/shared/components/data-table/data-table';
+import type { ExportFormat } from '@/shared/components/data-table/export-table';
 import type { TableState } from '@/shared/components/data-table/use-table-state';
 import { formatDate } from '@/shared/lib/format';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/shared/ui/tooltip';
@@ -40,7 +41,7 @@ interface AssignmentsTableProps {
   hideAssignee?: boolean;
   searchable?: boolean;
   toolbar?: ReactNode;
-  onExport?: () => Promise<void>;
+  onExport?: (format: ExportFormat) => Promise<void>;
 }
 
 export function AssignmentsTable({

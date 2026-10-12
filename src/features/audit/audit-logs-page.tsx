@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { auditFindAll, useAuditFindAll } from '@/api/generated/endpoints/audit/audit';
 import type { AuditLogDto } from '@/api/generated/model';
 import { DataTable } from '@/shared/components/data-table/data-table';
-import { exportToExcel } from '@/shared/components/data-table/export-excel';
+import { exportTable } from '@/shared/components/data-table/export-table';
 import { useTableState } from '@/shared/components/data-table/use-table-state';
 import { PageHeader } from '@/shared/components/page-header';
 import { ToneBadge, type Tone } from '@/shared/components/status-badge';
@@ -161,8 +161,9 @@ export function AuditLogsPage() {
         isLoading={isLoading}
         state={table}
         onRowClick={setSelected}
-        onExport={async () =>
-          exportToExcel(
+        onExport={async (format) =>
+          exportTable(
+            format,
             'audit-log',
             [
               { header: t('audit.date'), value: (l) => new Date(l.createdAt) },

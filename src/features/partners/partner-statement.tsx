@@ -3,7 +3,8 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePartnersStatement } from '@/api/generated/endpoints/partners/partners';
 import type { StatementEntryDto } from '@/api/generated/model';
-import { exportToExcel } from '@/shared/components/data-table/export-excel';
+import { ExportMenu } from '@/shared/components/data-table/export-menu';
+import { exportTable, type ExportFormat } from '@/shared/components/data-table/export-table';
 import { formatDate, formatMoney } from '@/shared/lib/format';
 import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
@@ -26,9 +27,10 @@ export function PartnerStatement({ partnerId }: { partnerId: string }) {
     dateTo: dateTo || undefined,
   });
 
-  const handleExport = async () => {
+  const handleExport = async (format: ExportFormat) => {
     if (!data) return;
-    await exportToExcel<StatementEntryDto>(
+    await exportTable<StatementEntryDto>(
+      format,
       `statement-${data.code}`,
       [
         { header: t('statement.date'), value: (e) => new Date(e.entryDate) },
@@ -70,9 +72,7 @@ export function PartnerStatement({ partnerId }: { partnerId: string }) {
           />
         </div>
         <div className="ml-auto flex gap-2">
-          <Button variant="outline" onClick={() => void handleExport()} disabled={!data}>
-            {t('common.export')}
-          </Button>
+          <ExportMenu onExport={handleExport} disabled={!data} />
           <Button variant="outline" onClick={() => window.print()}>
             <Printer /> {t('statement.print')}
           </Button>

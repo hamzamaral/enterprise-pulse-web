@@ -16,7 +16,7 @@ import { useSettingsFindCurrencies } from '@/api/generated/endpoints/settings/se
 import { TreasuryAccountType, type TreasuryAccountDto } from '@/api/generated/model';
 import { Can } from '@/features/auth/can';
 import { DataTable } from '@/shared/components/data-table/data-table';
-import { exportToExcel } from '@/shared/components/data-table/export-excel';
+import { exportTable, type ExportFormat } from '@/shared/components/data-table/export-table';
 import { PageHeader } from '@/shared/components/page-header';
 import { SimpleFormDialog } from '@/shared/components/simple-form-dialog';
 import { ActiveBadge } from '@/shared/components/status-badge';
@@ -182,8 +182,9 @@ export function TreasuryAccountsPage() {
     [t, base],
   );
 
-  const handleExport = async () => {
-    await exportToExcel(
+  const handleExport = async (format: ExportFormat) => {
+    await exportTable(
+      format,
       'treasury-accounts',
       [
         { header: t('common.code'), value: (a) => a.code },

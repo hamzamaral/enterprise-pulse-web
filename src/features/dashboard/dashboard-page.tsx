@@ -44,6 +44,7 @@ import {
 import { NAVIGATION } from '@/app/layout/navigation';
 import { useMe, usePermission } from '@/features/auth/use-session';
 import { itemName } from '@/features/inventory/inventory-components';
+import { CashFlowTrendCard, TradeTrendCard } from '@/features/reports/dashboard-charts';
 import { WorkflowStatusBadge } from '@/features/workflow/workflow-components';
 import { formatMoney, formatQuantity, formatRelative } from '@/shared/lib/format';
 import { Badge } from '@/shared/ui/badge';
@@ -323,6 +324,13 @@ export function DashboardPage() {
             icon={ShoppingCart}
             to="/purchasing/orders"
           />
+        </div>
+      )}
+
+      {(can('sales:read') || can('purchasing:read') || can('finance:read')) && (
+        <div className="grid gap-6 lg:grid-cols-2">
+          {(can('sales:read') || can('purchasing:read')) && <TradeTrendCard />}
+          {can('finance:read') && <CashFlowTrendCard />}
         </div>
       )}
 

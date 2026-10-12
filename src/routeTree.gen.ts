@@ -41,6 +41,9 @@ import { Route as AppInventoryIndexRouteImport } from './routes/_app/inventory/i
 import { Route as AppInventorySettingsRouteImport } from './routes/_app/inventory/settings'
 import { Route as AppPartnersIndexRouteImport } from './routes/_app/partners/index'
 import { Route as AppPartnersIdRouteImport } from './routes/_app/partners/$id'
+import { Route as AppReportsCashFlowRouteImport } from './routes/_app/reports/cash-flow'
+import { Route as AppReportsPurchasesRouteImport } from './routes/_app/reports/purchases'
+import { Route as AppReportsSalesRouteImport } from './routes/_app/reports/sales'
 import { Route as AppWorkflowDefinitionsRouteImport } from './routes/_app/workflow/definitions'
 import { Route as AppWorkflowInboxRouteImport } from './routes/_app/workflow/inbox'
 import { Route as AppAssetsAssignmentsIndexRouteImport } from './routes/_app/assets/assignments/index'
@@ -258,6 +261,21 @@ const AppPartnersIndexRoute = AppPartnersIndexRouteImport.update({
 const AppPartnersIdRoute = AppPartnersIdRouteImport.update({
   id: '/partners/$id',
   path: '/partners/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReportsCashFlowRoute = AppReportsCashFlowRouteImport.update({
+  id: '/reports/cash-flow',
+  path: '/reports/cash-flow',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReportsPurchasesRoute = AppReportsPurchasesRouteImport.update({
+  id: '/reports/purchases',
+  path: '/reports/purchases',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppReportsSalesRoute = AppReportsSalesRouteImport.update({
+  id: '/reports/sales',
+  path: '/reports/sales',
   getParentRoute: () => AppRoute,
 } as any)
 const AppWorkflowDefinitionsRoute = AppWorkflowDefinitionsRouteImport.update({
@@ -601,6 +619,9 @@ export interface FileRoutesByFullPath {
   '/hr/timesheet': typeof AppHrTimesheetRoute
   '/inventory/settings': typeof AppInventorySettingsRoute
   '/partners/$id': typeof AppPartnersIdRoute
+  '/reports/cash-flow': typeof AppReportsCashFlowRoute
+  '/reports/purchases': typeof AppReportsPurchasesRoute
+  '/reports/sales': typeof AppReportsSalesRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
   '/assets/': typeof AppAssetsIndexRoute
@@ -693,6 +714,9 @@ export interface FileRoutesByTo {
   '/hr/timesheet': typeof AppHrTimesheetRoute
   '/inventory/settings': typeof AppInventorySettingsRoute
   '/partners/$id': typeof AppPartnersIdRoute
+  '/reports/cash-flow': typeof AppReportsCashFlowRoute
+  '/reports/purchases': typeof AppReportsPurchasesRoute
+  '/reports/sales': typeof AppReportsSalesRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
   '/assets': typeof AppAssetsIndexRoute
@@ -787,6 +811,9 @@ export interface FileRoutesById {
   '/_app/hr/timesheet': typeof AppHrTimesheetRoute
   '/_app/inventory/settings': typeof AppInventorySettingsRoute
   '/_app/partners/$id': typeof AppPartnersIdRoute
+  '/_app/reports/cash-flow': typeof AppReportsCashFlowRoute
+  '/_app/reports/purchases': typeof AppReportsPurchasesRoute
+  '/_app/reports/sales': typeof AppReportsSalesRoute
   '/_app/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/_app/workflow/inbox': typeof AppWorkflowInboxRoute
   '/_app/assets/': typeof AppAssetsIndexRoute
@@ -881,6 +908,9 @@ export interface FileRouteTypes {
     | '/hr/timesheet'
     | '/inventory/settings'
     | '/partners/$id'
+    | '/reports/cash-flow'
+    | '/reports/purchases'
+    | '/reports/sales'
     | '/workflow/definitions'
     | '/workflow/inbox'
     | '/assets/'
@@ -973,6 +1003,9 @@ export interface FileRouteTypes {
     | '/hr/timesheet'
     | '/inventory/settings'
     | '/partners/$id'
+    | '/reports/cash-flow'
+    | '/reports/purchases'
+    | '/reports/sales'
     | '/workflow/definitions'
     | '/workflow/inbox'
     | '/assets'
@@ -1066,6 +1099,9 @@ export interface FileRouteTypes {
     | '/_app/hr/timesheet'
     | '/_app/inventory/settings'
     | '/_app/partners/$id'
+    | '/_app/reports/cash-flow'
+    | '/_app/reports/purchases'
+    | '/_app/reports/sales'
     | '/_app/workflow/definitions'
     | '/_app/workflow/inbox'
     | '/_app/assets/'
@@ -1361,6 +1397,27 @@ declare module '@tanstack/react-router' {
       path: '/partners/$id'
       fullPath: '/partners/$id'
       preLoaderRoute: typeof AppPartnersIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/reports/cash-flow': {
+      id: '/_app/reports/cash-flow'
+      path: '/reports/cash-flow'
+      fullPath: '/reports/cash-flow'
+      preLoaderRoute: typeof AppReportsCashFlowRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/reports/purchases': {
+      id: '/_app/reports/purchases'
+      path: '/reports/purchases'
+      fullPath: '/reports/purchases'
+      preLoaderRoute: typeof AppReportsPurchasesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/reports/sales': {
+      id: '/_app/reports/sales'
+      path: '/reports/sales'
+      fullPath: '/reports/sales'
+      preLoaderRoute: typeof AppReportsSalesRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/workflow/definitions': {
@@ -1805,6 +1862,9 @@ interface AppRouteChildren {
   AppHrTimesheetRoute: typeof AppHrTimesheetRoute
   AppInventorySettingsRoute: typeof AppInventorySettingsRoute
   AppPartnersIdRoute: typeof AppPartnersIdRoute
+  AppReportsCashFlowRoute: typeof AppReportsCashFlowRoute
+  AppReportsPurchasesRoute: typeof AppReportsPurchasesRoute
+  AppReportsSalesRoute: typeof AppReportsSalesRoute
   AppWorkflowDefinitionsRoute: typeof AppWorkflowDefinitionsRoute
   AppWorkflowInboxRoute: typeof AppWorkflowInboxRoute
   AppAssetsIndexRoute: typeof AppAssetsIndexRoute
@@ -1895,6 +1955,9 @@ const AppRouteChildren: AppRouteChildren = {
   AppHrTimesheetRoute: AppHrTimesheetRoute,
   AppInventorySettingsRoute: AppInventorySettingsRoute,
   AppPartnersIdRoute: AppPartnersIdRoute,
+  AppReportsCashFlowRoute: AppReportsCashFlowRoute,
+  AppReportsPurchasesRoute: AppReportsPurchasesRoute,
+  AppReportsSalesRoute: AppReportsSalesRoute,
   AppWorkflowDefinitionsRoute: AppWorkflowDefinitionsRoute,
   AppWorkflowInboxRoute: AppWorkflowInboxRoute,
   AppAssetsIndexRoute: AppAssetsIndexRoute,

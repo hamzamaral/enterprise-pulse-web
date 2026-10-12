@@ -19,7 +19,7 @@
     "no": "Hayır",
     "loading": "Yükleniyor...",
     "noResults": "Kayıt bulunamadı.",
-    "export": "Excel'e aktar",
+    "export": "Dışa aktar",
     "columns": "Sütunlar",
     "rowsPerPage": "Sayfa başına",
     "pageOf": "Sayfa {{page}} / {{total}}",
@@ -42,7 +42,12 @@
     "address": "Adres",
     "none": "—",
     "notes": "Notlar",
-    "select": "Seçiniz"
+    "select": "Seçiniz",
+    "exportExcel": "Excel (.xlsx)",
+    "exportPdf": "PDF",
+    "recordCount_one": "{{count}} kayıt",
+    "recordCount_other": "{{count}} kayıt",
+    "clear": "Temizle"
   },
   "nav": {
     "dashboard": "Gösterge Paneli",
@@ -56,7 +61,8 @@
       "inventory": "Stok ve Depo",
       "finance": "Cari ve Finans",
       "purchasing": "Satın Alma",
-      "sales": "Satış"
+      "sales": "Satış",
+      "reports": "Raporlar"
     },
     "users": "Kullanıcılar",
     "roles": "Roller ve İzinler",
@@ -109,7 +115,10 @@
     "collections": "Tahsilatlar",
     "payments": "Ödemeler",
     "cheques": "Çek ve Senetler",
-    "aging": "Yaşlandırma"
+    "aging": "Yaşlandırma",
+    "salesReport": "Satış Analizi",
+    "purchaseReport": "Alış Analizi",
+    "cashFlow": "Nakit Akışı"
   },
   "auth": {
     "login": "Giriş yap",
@@ -1571,5 +1580,78 @@
       "totals": "Genel toplam",
       "empty": "Açık fatura yok."
     }
+  },
+  "reports": {
+    "ranges": {
+      "label": "Dönem",
+      "thisMonth": "Bu ay",
+      "lastMonth": "Geçen ay",
+      "thisQuarter": "Bu çeyrek",
+      "thisYear": "Bu yıl",
+      "lastYear": "Geçen yıl",
+      "last12Months": "Son 12 ay",
+      "custom": "Özel aralık"
+    },
+    "from": "Başlangıç",
+    "to": "Bitiş",
+    "groupBy": {
+      "label": "Gruplama",
+      "MONTH": "Aylık",
+      "PARTNER": "Cari",
+      "PRODUCT": "Ürün"
+    },
+    "columns": {
+      "MONTH": "Ay",
+      "PARTNER": "Cari",
+      "PRODUCT": "Ürün / hizmet",
+      "documents": "Fatura",
+      "quantity": "Net miktar",
+      "net": "Net tutar",
+      "vat": "KDV",
+      "gross": "KDV dahil",
+      "returns": "İadeler",
+      "netTotal": "İade sonrası net"
+    },
+    "sales": {
+      "title": "Satış Analizi",
+      "subtitle": "Kesilen satış faturaları ve iadeler, şirket para biriminde (belge kuruyla)",
+      "partner": "Müşteri",
+      "netLabel": "Net satış"
+    },
+    "purchases": {
+      "title": "Alış Analizi",
+      "subtitle": "Alış faturaları, şirket para biriminde (belge kuruyla)",
+      "partner": "Tedarikçi",
+      "netLabel": "Net alış"
+    },
+    "cashFlow": {
+      "title": "Nakit Akışı",
+      "subtitle": "Kasa ve banka giriş / çıkışları; dönem içinde iptal edilen kayıtlar hariç",
+      "account": "Hesap",
+      "allAccounts": "Tüm hesaplar",
+      "opening": "Dönem başı bakiye",
+      "in": "Giriş",
+      "out": "Çıkış",
+      "net": "Net",
+      "closing": "Dönem sonu bakiye",
+      "months": "Aylık hareketler",
+      "byType": "Belge türüne göre",
+      "documentType": "Belge türü",
+      "rateNote": "Döviz hesapları güncel kurla şirket para birimine çevrilir.",
+      "unconverted": "Kuru bulunmayan para birimleri hariç: {{currencies}}"
+    },
+    "dashboard": {
+      "trade": "Satış ve alış (son 6 ay)",
+      "cashFlow": "Nakit akışı (son 6 ay)",
+      "sales": "Net satış",
+      "purchases": "Net alış",
+      "details": "Rapora git"
+    },
+    "trend": "Aylık seyir",
+    "top": "İlk 10 — {{group}}",
+    "totals": "Toplam",
+    "documentsHint_one": "{{count}} fatura",
+    "documentsHint_other": "{{count}} fatura",
+    "empty": "Bu dönemde kayıt yok."
   }
 }

@@ -19,7 +19,7 @@
     "no": "No",
     "loading": "Loading...",
     "noResults": "No records found.",
-    "export": "Export to Excel",
+    "export": "Export",
     "columns": "Columns",
     "rowsPerPage": "Rows per page",
     "pageOf": "Page {{page}} of {{total}}",
@@ -42,7 +42,12 @@
     "address": "Address",
     "none": "—",
     "notes": "Notes",
-    "select": "Select"
+    "select": "Select",
+    "exportExcel": "Excel (.xlsx)",
+    "exportPdf": "PDF",
+    "recordCount_one": "{{count}} record",
+    "recordCount_other": "{{count}} records",
+    "clear": "Clear"
   },
   "nav": {
     "dashboard": "Dashboard",
@@ -56,7 +61,8 @@
       "inventory": "Inventory",
       "finance": "Accounts & Finance",
       "purchasing": "Purchasing",
-      "sales": "Sales"
+      "sales": "Sales",
+      "reports": "Reports"
     },
     "users": "Users",
     "roles": "Roles & Permissions",
@@ -109,7 +115,10 @@
     "collections": "Collections",
     "payments": "Payments",
     "cheques": "Cheques & Notes",
-    "aging": "Aging"
+    "aging": "Aging",
+    "salesReport": "Sales Analysis",
+    "purchaseReport": "Purchase Analysis",
+    "cashFlow": "Cash Flow"
   },
   "auth": {
     "login": "Sign in",
@@ -1571,5 +1580,78 @@
       "totals": "Grand total",
       "empty": "No open invoices."
     }
+  },
+  "reports": {
+    "ranges": {
+      "label": "Period",
+      "thisMonth": "This month",
+      "lastMonth": "Last month",
+      "thisQuarter": "This quarter",
+      "thisYear": "This year",
+      "lastYear": "Last year",
+      "last12Months": "Last 12 months",
+      "custom": "Custom range"
+    },
+    "from": "From",
+    "to": "To",
+    "groupBy": {
+      "label": "Group by",
+      "MONTH": "Month",
+      "PARTNER": "Partner",
+      "PRODUCT": "Product"
+    },
+    "columns": {
+      "MONTH": "Month",
+      "PARTNER": "Partner",
+      "PRODUCT": "Product / service",
+      "documents": "Invoices",
+      "quantity": "Net quantity",
+      "net": "Net amount",
+      "vat": "VAT",
+      "gross": "Incl. VAT",
+      "returns": "Returns",
+      "netTotal": "Net after returns"
+    },
+    "sales": {
+      "title": "Sales Analysis",
+      "subtitle": "Issued sales invoices and returns in company currency (document rate)",
+      "partner": "Customer",
+      "netLabel": "Net sales"
+    },
+    "purchases": {
+      "title": "Purchase Analysis",
+      "subtitle": "Purchase invoices in company currency (document rate)",
+      "partner": "Supplier",
+      "netLabel": "Net purchases"
+    },
+    "cashFlow": {
+      "title": "Cash Flow",
+      "subtitle": "Cash and bank inflows / outflows; entries cancelled within the period are left out",
+      "account": "Account",
+      "allAccounts": "All accounts",
+      "opening": "Opening balance",
+      "in": "Inflow",
+      "out": "Outflow",
+      "net": "Net",
+      "closing": "Closing balance",
+      "months": "Monthly movements",
+      "byType": "By document type",
+      "documentType": "Document type",
+      "rateNote": "Foreign currency accounts are converted at the latest rate.",
+      "unconverted": "Currencies without a rate are left out: {{currencies}}"
+    },
+    "dashboard": {
+      "trade": "Sales and purchases (last 6 months)",
+      "cashFlow": "Cash flow (last 6 months)",
+      "sales": "Net sales",
+      "purchases": "Net purchases",
+      "details": "Open report"
+    },
+    "trend": "Monthly trend",
+    "top": "Top 10 — {{group}}",
+    "totals": "Total",
+    "documentsHint_one": "{{count}} invoice",
+    "documentsHint_other": "{{count}} invoices",
+    "empty": "No records in this period."
   }
 }

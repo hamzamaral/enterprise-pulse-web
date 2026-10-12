@@ -14,7 +14,7 @@ import { Can } from '@/features/auth/can';
 import { usePermission } from '@/features/auth/use-session';
 import { ConfirmDialog } from '@/shared/components/confirm-dialog';
 import { DataTable } from '@/shared/components/data-table/data-table';
-import { exportToExcel } from '@/shared/components/data-table/export-excel';
+import { exportTable, type ExportFormat } from '@/shared/components/data-table/export-table';
 import { useTableState } from '@/shared/components/data-table/use-table-state';
 import { PageHeader } from '@/shared/components/page-header';
 import { ActiveBadge, ToneBadge } from '@/shared/components/status-badge';
@@ -169,9 +169,10 @@ export function UsersPage() {
     [t, can],
   );
 
-  const handleExport = async () => {
+  const handleExport = async (format: ExportFormat) => {
     const rows = await fetchAllPages((page) => usersFindAll({ ...params, page, pageSize: 100 }));
-    await exportToExcel(
+    await exportTable(
+      format,
       'users',
       [
         { header: t('users.firstName'), value: (u) => u.firstName },

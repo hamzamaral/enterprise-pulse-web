@@ -10,7 +10,7 @@ import {
 import { InvoiceStatus, PaymentStatus, type SalesInvoiceDto } from '@/api/generated/model';
 import { Can } from '@/features/auth/can';
 import { DataTable } from '@/shared/components/data-table/data-table';
-import { exportToExcel } from '@/shared/components/data-table/export-excel';
+import { exportTable, type ExportFormat } from '@/shared/components/data-table/export-table';
 import { useTableState } from '@/shared/components/data-table/use-table-state';
 import { PageHeader } from '@/shared/components/page-header';
 import { formatDate, formatMoney } from '@/shared/lib/format';
@@ -100,11 +100,12 @@ export function SalesInvoicesPage() {
     [t],
   );
 
-  const handleExport = async () => {
+  const handleExport = async (format: ExportFormat) => {
     const rows = await fetchAllPages((page) =>
       salesInvoicesFindAll({ ...params, page, pageSize: 100 }),
     );
-    await exportToExcel(
+    await exportTable(
+      format,
       'sales-invoices',
       [
         { header: t('trade.number'), value: (i) => i.number },

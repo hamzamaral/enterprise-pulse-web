@@ -18,7 +18,7 @@ import { Can } from '@/features/auth/can';
 import { usePermission } from '@/features/auth/use-session';
 import { ConfirmDialog } from '@/shared/components/confirm-dialog';
 import { DataTable } from '@/shared/components/data-table/data-table';
-import { exportToExcel } from '@/shared/components/data-table/export-excel';
+import { exportTable } from '@/shared/components/data-table/export-table';
 import { useTableState } from '@/shared/components/data-table/use-table-state';
 import { PageHeader } from '@/shared/components/page-header';
 import { SimpleFormDialog } from '@/shared/components/simple-form-dialog';
@@ -177,8 +177,9 @@ export function BranchesPage() {
         meta={data?.meta}
         isLoading={isLoading}
         state={table}
-        onExport={async () =>
-          exportToExcel(
+        onExport={async (format) =>
+          exportTable(
+            format,
             'branches',
             [
               { header: t('common.code'), value: (b) => b.code },

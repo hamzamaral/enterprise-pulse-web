@@ -13,7 +13,6 @@ import {
   ChevronRight,
   ChevronsLeft,
   ChevronsRight,
-  Download,
   Search,
   Settings2,
 } from 'lucide-react';
@@ -21,6 +20,8 @@ import { useState, type ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
+import { ExportMenu } from './export-menu';
+import type { ExportFormat } from './export-table';
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -51,7 +52,7 @@ interface DataTableProps<T> {
   state?: TableState;
   searchable?: boolean;
   toolbar?: ReactNode;
-  onExport?: () => void | Promise<void>;
+  onExport?: (format: ExportFormat) => void | Promise<void>;
   onRowClick?: (row: T) => void;
 }
 
@@ -70,7 +71,6 @@ export function DataTable<T>({
 }: DataTableProps<T>) {
   const { t } = useTranslation();
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
-  const [exporting, setExporting] = useState(false);
 
   const table = useReactTable({
     data: data ?? [],
@@ -88,16 +88,6 @@ export function DataTable<T>({
     onSortingChange: state?.setSorting,
   });
 
-  const handleExport = async () => {
-    if (!onExport) return;
-    setExporting(true);
-    try {
-      await onExport();
-    } finally {
-      setExporting(false);
-    }
-  };
-
   return (
     <div className="space-y-3">
       <div className="flex flex-wrap items-center gap-2">
@@ -114,12 +104,7 @@ export function DataTable<T>({
         )}
         {toolbar}
         <div className="ml-auto flex items-center gap-2">
-          {onExport && (
-            <Button variant="outline" size="sm" onClick={handleExport} disabled={exporting}>
-              <Download />
-              {t('common.export')}
-            </Button>
-          )}
+          {onExport && <ExportMenu size="sm" onExport={onExport} />}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
