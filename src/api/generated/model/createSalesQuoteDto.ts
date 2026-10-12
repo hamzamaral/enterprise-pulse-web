@@ -9,6 +9,8 @@ import type { TradeLineInputDto } from './tradeLineInputDto';
 
 export interface CreateSalesQuoteDto {
   partnerId: string;
+  /** CRM opportunity the quote answers; it must belong to the same customer. */
+  opportunityId?: string;
   quoteDate: string;
   validUntil?: string;
   /** @maxLength 2000 */

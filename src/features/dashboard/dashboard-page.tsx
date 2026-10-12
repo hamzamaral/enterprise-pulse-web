@@ -8,10 +8,14 @@ import {
   HandCoins,
   Landmark,
   Laptop,
+  ListTodo,
   MapPin,
+  Percent,
   PackageCheck,
   ShoppingCart,
+  Target,
   TriangleAlert,
+  Trophy,
   UserRound,
   Users,
   Wallet,
@@ -28,6 +32,7 @@ import {
   useEmployeesFindAll,
   useEmployeesFindMine,
 } from '@/api/generated/endpoints/employees/employees';
+import { useCrmSummary } from '@/api/generated/endpoints/crm/crm';
 import { useFinanceReportsSummary } from '@/api/generated/endpoints/finance/finance';
 import { useStockFindLevels, useStockSummary } from '@/api/generated/endpoints/inventory/inventory';
 import {
@@ -125,6 +130,7 @@ export function DashboardPage() {
   );
 
   const finance = useFinanceReportsSummary({ query: { enabled: can('finance:read') } });
+  const crm = useCrmSummary({ query: { enabled: can('crm:read') } });
 
   const myEmployee = useEmployeesFindMine({ query: { enabled: !!me?.employeeId } });
   const myBalances = useLeaveBalancesFindAll(
@@ -323,6 +329,66 @@ export function DashboardPage() {
             }
             icon={ShoppingCart}
             to="/purchasing/orders"
+          />
+        </div>
+      )}
+
+      {can('crm:read') && (
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <StatCard
+            label={t('dashboard.pipeline')}
+            value={
+              crm.data ? formatMoney(crm.data.pipelineAmount, crm.data.currencyCode) : undefined
+            }
+            hint={
+              crm.data
+                ? t('dashboard.pipelineHint', {
+                    count: crm.data.openCount,
+                    weighted: formatMoney(crm.data.weightedAmount, crm.data.currencyCode),
+                  })
+                : undefined
+            }
+            icon={Target}
+            to="/crm/opportunities"
+          />
+          <StatCard
+            label={t('dashboard.wonThisMonth')}
+            value={
+              crm.data ? formatMoney(crm.data.wonAmountThisMonth, crm.data.currencyCode) : undefined
+            }
+            hint={
+              crm.data
+                ? t('dashboard.wonHint', {
+                    won: crm.data.wonThisMonth,
+                    lost: crm.data.lostThisMonth,
+                  })
+                : undefined
+            }
+            icon={Trophy}
+            to="/crm/opportunities"
+          />
+          <StatCard
+            label={t('dashboard.winRate')}
+            value={
+              crm.data ? (crm.data.winRate === null ? '—' : `%${crm.data.winRate}`) : undefined
+            }
+            hint={crm.data ? t('dashboard.winRateHint', { count: crm.data.newLeads }) : undefined}
+            icon={Percent}
+            to="/crm/leads"
+          />
+          <StatCard
+            label={t('dashboard.myActivities')}
+            value={crm.data?.myOpenActivities}
+            hint={
+              crm.data
+                ? t('dashboard.myActivitiesHint', {
+                    overdue: crm.data.myOverdueActivities,
+                    today: crm.data.myActivitiesDueToday,
+                  })
+                : undefined
+            }
+            icon={ListTodo}
+            to="/crm/activities"
           />
         </div>
       )}

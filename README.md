@@ -39,6 +39,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Kasa ve bankalar:** nakit pozisyonu, döviz bazında bakiyeler, portföydeki çekler      | **Çek / senet:** portföy, bankaya verme, tahsil ve hareket geçmişi                  |
 | ![Satış analizi](docs/screenshots/reports-sales.png)                                    | ![Nakit akışı](docs/screenshots/reports-cash-flow.png)                              |
 | **Satış analizi:** aylık / cari / ürün bazında, iadeler düşülmüş, Excel / PDF           | **Nakit akışı:** dönem başı ve sonu bakiye, aylık giriş / çıkış, belge türleri      |
+| ![Satış fırsatları](docs/screenshots/crm-pipeline.png)                                  | ![Satış fırsatı](docs/screenshots/crm-opportunity.png)                              |
+| **Satış fırsatları:** sürükle-bırak pano, ağırlıklı hat, kazanma oranı                  | **Satış fırsatı:** aşama çubuğu, bağlı teklifler, aktivite zaman çizelgesi          |
 
 ## Özellikler
 
@@ -55,6 +57,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 - **Stok ve Depo:** stok durumu ve kritik stok filtresi, ürün ve varyantlar, stok kartı, lot ve seri numaraları,
   giriş / çıkış / transfer / düzeltme fişleri, yazdırılabilir fiş, barkod okutarak stok sayımı, depo ve kategori ayarları.
 - **Cari hesaplar:** müşteri / tedarikçi kartları, vade ve kredi limiti, döviz, cari hareketler ve bakiye.
+- **CRM:** potansiyel müşteri listesi ve kartı, adayı yeni / mevcut cariye ve satış fırsatına dönüştürme; sürükle-bırak
+  satış fırsatı panosu (kaybedilene bırakınca neden sorulur) ve liste görünümü, aşama çubuklu fırsat kartı, fırsattan
+  teklif hazırlama; arama / toplantı / görev aktiviteleri (geciken ve bugünkü işler), cari kartında fırsatlar ve
+  aktiviteler, gösterge panelinde açık hat, bu ay kazanılan ve kazanma oranı.
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.

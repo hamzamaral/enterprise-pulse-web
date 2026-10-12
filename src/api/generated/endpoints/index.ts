@@ -4,6 +4,7 @@ export * from './audit/audit';
 export * from './auth/auth';
 export * from './branches/branches';
 export * from './companies/companies';
+export * from './crm/crm';
 export * from './departments/departments';
 export * from './employees/employees';
 export * from './files/files';

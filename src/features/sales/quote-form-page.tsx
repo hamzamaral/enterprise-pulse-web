@@ -1,10 +1,18 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Link, useNavigate } from '@tanstack/react-router';
-import { ArrowLeft, Loader2 } from 'lucide-react';
+import { ArrowLeft, Loader2, Target } from 'lucide-react';
+import { useEffect, useRef } from 'react';
 import { useForm, useWatch } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
 import { z } from 'zod';
+import {
+  getCrmSummaryQueryKey,
+  getOpportunitiesBoardQueryKey,
+  getOpportunitiesFindOneQueryKey,
+  useOpportunitiesFindOne,
+} from '@/api/generated/endpoints/crm/crm';
+import { usePartnersFindOne } from '@/api/generated/endpoints/partners/partners';
 import {
   getSalesQuotesFindAllQueryKey,
   useSalesQuotesCreate,
@@ -58,12 +66,25 @@ const inDays = (days: number) => {
   return date.toISOString().slice(0, 10);
 };
 
-export function SalesQuoteFormPage() {
+export function SalesQuoteFormPage({
+  partnerId,
+  opportunityId,
+}: {
+  partnerId?: string;
+  /** CRM opportunity the quote answers; its customer is fixed. */
+  opportunityId?: string;
+}) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const invalidate = useInvalidate();
   const base = useBaseCurrency();
   const create = useSalesQuotesCreate();
+  const { data: presetPartner } = usePartnersFindOne(partnerId ?? '', {
+    query: { enabled: !!partnerId },
+  });
+  const { data: opportunity } = useOpportunitiesFindOne(opportunityId ?? '', {
+    query: { enabled: !!opportunityId },
+  });
   const form = useForm<FormValues>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -77,6 +98,14 @@ export function SalesQuoteFormPage() {
     },
   });
 
+  const partnerPreset = useRef(false);
+  useEffect(() => {
+    if (!presetPartner || partnerPreset.current) return;
+    partnerPreset.current = true;
+    form.setValue('partner', presetPartner);
+    form.setValue('currencyCode', opportunity?.currencyCode ?? presetPartner.currencyCode);
+  }, [presetPartner, opportunity, form]);
+
   const [currency, lines] = useWatch({ control: form.control, name: ['currencyCode', 'lines'] });
   const totals = documentAmounts(lines.map(toLineInput));
 
@@ -85,6 +114,7 @@ export function SalesQuoteFormPage() {
       {
         data: {
           partnerId: data.partner!.id,
+          opportunityId: opportunity?.id,
           quoteDate: data.quoteDate,
           validUntil: data.validUntil || undefined,
           currencyCode: data.currencyCode,
@@ -96,7 +126,16 @@ export function SalesQuoteFormPage() {
       {
         onSuccess: async (quote) => {
           toast.success(t('sales.quotes.created', { number: quote.number }));
-          await invalidate(getSalesQuotesFindAllQueryKey());
+          await invalidate(
+            getSalesQuotesFindAllQueryKey(),
+            ...(opportunity
+              ? [
+                  getOpportunitiesFindOneQueryKey(opportunity.id),
+                  getOpportunitiesBoardQueryKey(),
+                  getCrmSummaryQueryKey(),
+                ]
+              : []),
+          );
           await navigate({ to: '/sales/quotes/$id', params: { id: quote.id } });
         },
       },
@@ -111,6 +150,15 @@ export function SalesQuoteFormPage() {
         <ArrowLeft className="size-4" /> {t('sales.quotes.title')}
       </Link>
       <PageHeader title={t('sales.quotes.new')} description={t('sales.quotes.newHint')} />
+      {opportunity && (
+        <div className="border-primary/30 bg-primary/5 mb-4 flex items-start gap-2 rounded-md border px-3 py-2 text-sm">
+          <Target className="text-primary mt-0.5 size-4 shrink-0" />
+          {t('sales.quotes.forOpportunity', {
+            number: opportunity.number,
+            title: opportunity.title,
+          })}
+        </div>
+      )}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4" noValidate>
           <Card>
@@ -121,6 +169,7 @@ export function SalesQuoteFormPage() {
                   name="partner"
                   label={t('sales.customer')}
                   type="CUSTOMER"
+                  disabled={!!opportunity}
                   onPicked={(partner) => form.setValue('currencyCode', partner.currencyCode)}
                 />
               </div>

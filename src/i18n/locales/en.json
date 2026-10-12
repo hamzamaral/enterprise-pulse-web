@@ -62,7 +62,8 @@
       "finance": "Accounts & Finance",
       "purchasing": "Purchasing",
       "sales": "Sales",
-      "reports": "Reports"
+      "reports": "Reports",
+      "crm": "CRM"
     },
     "users": "Users",
     "roles": "Roles & Permissions",
@@ -118,7 +119,10 @@
     "aging": "Aging",
     "salesReport": "Sales Analysis",
     "purchaseReport": "Purchase Analysis",
-    "cashFlow": "Cash Flow"
+    "cashFlow": "Cash Flow",
+    "leads": "Leads",
+    "opportunities": "Opportunities",
+    "crmActivities": "Activities"
   },
   "auth": {
     "login": "Sign in",
@@ -197,7 +201,15 @@
     "cashPosition": "Cash position",
     "chequesHint": "{{amount}} in cheques / notes",
     "openPurchaseOrders": "Open purchase orders",
-    "openSalesOrdersHint": "{{count}} open sales orders"
+    "openSalesOrdersHint": "{{count}} open sales orders",
+    "pipeline": "Open pipeline",
+    "pipelineHint": "{{count}} opportunities · weighted {{weighted}}",
+    "wonThisMonth": "Won this month",
+    "wonHint": "{{won}} won · {{lost}} lost",
+    "winRate": "Win rate",
+    "winRateHint": "Last 90 days · {{count}} new leads",
+    "myActivities": "My open activities",
+    "myActivitiesHint": "{{overdue}} overdue · {{today}} today"
   },
   "users": {
     "title": "Users",
@@ -1243,6 +1255,145 @@
       "nothingToInvoice": "Nothing on this order is waiting to be invoiced: invoice goods after they are received."
     }
   },
+  "crm": {
+    "owner": "Owner",
+    "allOwners": "All owners",
+    "mine": "Mine",
+    "amount": "Amount",
+    "unconverted": "Currencies without a rate are left out of the totals: {{codes}}",
+    "leads": {
+      "title": "Leads",
+      "subtitle": "Companies that are not customers yet: follow up, qualify and convert them",
+      "single": "Lead",
+      "new": "New lead",
+      "edit": "Edit lead",
+      "companyName": "Company name",
+      "contactName": "Contact person",
+      "source": "Source",
+      "estimatedValue": "Estimated value",
+      "created": "{{number}} created",
+      "deleted": "Lead deleted",
+      "allStatuses": "All statuses",
+      "allSources": "All sources",
+      "activeOnly": "Open only",
+      "disqualify": "Disqualify",
+      "disqualifyTitle": "Disqualify {{number}}?",
+      "disqualifyReason": "Reason",
+      "disqualified": "Lead disqualified",
+      "reopen": "Reopen",
+      "reopened": "Lead reopened",
+      "convert": "Convert to customer",
+      "convertTitle": "Convert {{number}} to a customer",
+      "convertHint": "{{name}} is linked to a customer account; optionally an opportunity is opened too.",
+      "newCustomer": "Create a new customer",
+      "existingCustomer": "Link an existing customer",
+      "createOpportunity": "Also open an opportunity",
+      "opportunityTitle": "Opportunity title",
+      "converted": "Converted to customer",
+      "customer": "Customer",
+      "convertedAt": "Converted on",
+      "conversion": "Conversion",
+      "notConverted": "Not converted to a customer yet.",
+      "opportunities": "Opportunities",
+      "statuses": {
+        "NEW": "New",
+        "CONTACTED": "Contacted",
+        "QUALIFIED": "Qualified",
+        "DISQUALIFIED": "Disqualified",
+        "CONVERTED": "Converted"
+      },
+      "sources": {
+        "WEBSITE": "Website",
+        "REFERRAL": "Referral",
+        "EVENT": "Event / fair",
+        "COLD_CALL": "Cold call",
+        "SOCIAL_MEDIA": "Social media",
+        "PARTNER": "Partner",
+        "OTHER": "Other"
+      }
+    },
+    "opportunities": {
+      "title": "Opportunities",
+      "subtitle": "Sales pipeline: move deals through the stages, send quotes, win",
+      "single": "Opportunity",
+      "new": "New opportunity",
+      "edit": "Edit opportunity",
+      "name": "Title",
+      "probability": "Probability",
+      "weighted": "Weighted amount",
+      "expectedClose": "Expected close",
+      "stage": "Stage",
+      "allStages": "All stages",
+      "openOnly": "Open only",
+      "closedOnly": "Closed only",
+      "board": "Board",
+      "list": "List",
+      "boardHint": "Drag and drop cards to change their stage. Closed columns show the last 90 days.",
+      "created": "{{number}} created",
+      "deleted": "Opportunity deleted",
+      "moved": "{{number}} → {{stage}}",
+      "win": "Won",
+      "won": "Opportunity won",
+      "lose": "Lost",
+      "loseTitle": "Mark {{number}} as lost?",
+      "lostReason": "Reason for losing",
+      "lost": "Opportunity lost",
+      "reopen": "Reopen",
+      "reopened": "Opportunity reopened",
+      "createQuote": "Prepare quote",
+      "quotes": "Quotes",
+      "noQuotes": "No quotes for this opportunity yet.",
+      "lead": "Source lead",
+      "closedAt": "Closed",
+      "overdue": "Past the expected close date",
+      "probabilityHint": "Resets to the stage default when the stage changes.",
+      "count_one": "{{count}} opportunity",
+      "count_other": "{{count}} opportunities",
+      "stages": {
+        "PROSPECTING": "Prospecting",
+        "QUALIFICATION": "Qualification",
+        "PROPOSAL": "Proposal",
+        "NEGOTIATION": "Negotiation",
+        "WON": "Won",
+        "LOST": "Lost"
+      }
+    },
+    "activities": {
+      "title": "Activities",
+      "subtitle": "Calls, meetings, e-mails, tasks and notes",
+      "new": "New activity",
+      "add": "Add activity",
+      "edit": "Edit activity",
+      "subject": "Subject",
+      "type": "Type",
+      "dueAt": "Date / time",
+      "assignee": "Assigned to",
+      "logDone": "Log as already done",
+      "complete": "Complete",
+      "completed": "Activity completed",
+      "reopen": "Reopen",
+      "reopened": "Activity reopened",
+      "deleted": "Activity deleted",
+      "related": "Related to",
+      "empty": "No activities yet.",
+      "allTypes": "All types",
+      "allStates": "All states",
+      "assignedToMe": "Assigned to me",
+      "doneAt": "Done {{date}}",
+      "states": {
+        "open": "Open",
+        "overdue": "Overdue",
+        "done": "Done"
+      },
+      "types": {
+        "CALL": "Call",
+        "MEETING": "Meeting",
+        "EMAIL": "E-mail",
+        "TASK": "Task",
+        "NOTE": "Note"
+      }
+    }
+  },
   "sales": {
     "customer": "Customer",
     "quoteStatus": {
@@ -1285,7 +1436,9 @@
       "validityNote": "This quote is valid until {{date}}.",
       "errors": {
         "validUntil": "Validity cannot be before the quote date"
-      }
+      },
+      "opportunity": "Opportunity",
+      "forOpportunity": "This quote is for opportunity {{number}} · {{title}}. Saving it moves the opportunity to the \"Proposal\" stage."
     },
     "orders": {
       "title": "Sales Orders",

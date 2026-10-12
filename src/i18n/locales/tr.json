@@ -62,7 +62,8 @@
       "finance": "Cari ve Finans",
       "purchasing": "Satın Alma",
       "sales": "Satış",
-      "reports": "Raporlar"
+      "reports": "Raporlar",
+      "crm": "CRM"
     },
     "users": "Kullanıcılar",
     "roles": "Roller ve İzinler",
@@ -118,7 +119,10 @@
     "aging": "Yaşlandırma",
     "salesReport": "Satış Analizi",
     "purchaseReport": "Alış Analizi",
-    "cashFlow": "Nakit Akışı"
+    "cashFlow": "Nakit Akışı",
+    "leads": "Potansiyel müşteriler",
+    "opportunities": "Satış fırsatları",
+    "crmActivities": "Aktiviteler"
   },
   "auth": {
     "login": "Giriş yap",
@@ -197,7 +201,15 @@
     "cashPosition": "Nakit pozisyonu",
     "chequesHint": "Portföyde {{amount}} çek / senet",
     "openPurchaseOrders": "Açık satın alma siparişi",
-    "openSalesOrdersHint": "{{count}} açık satış siparişi"
+    "openSalesOrdersHint": "{{count}} açık satış siparişi",
+    "pipeline": "Açık satış hattı",
+    "pipelineHint": "{{count}} fırsat · ağırlıklı {{weighted}}",
+    "wonThisMonth": "Bu ay kazanılan",
+    "wonHint": "{{won}} kazanıldı · {{lost}} kaybedildi",
+    "winRate": "Kazanma oranı",
+    "winRateHint": "Son 90 gün · {{count}} yeni potansiyel müşteri",
+    "myActivities": "Açık aktivitelerim",
+    "myActivitiesHint": "{{overdue}} gecikmiş · {{today}} bugün"
   },
   "users": {
     "title": "Kullanıcılar",
@@ -1243,6 +1255,145 @@
       "nothingToInvoice": "Bu siparişte faturalanmayı bekleyen miktar yok; mallar teslim alındıktan sonra faturalanabilir."
     }
   },
+  "crm": {
+    "owner": "Sorumlu",
+    "allOwners": "Tüm sorumlular",
+    "mine": "Benimkiler",
+    "amount": "Tutar",
+    "unconverted": "Kuru olmayan para birimleri toplama katılmadı: {{codes}}",
+    "leads": {
+      "title": "Potansiyel müşteriler",
+      "subtitle": "Henüz müşteri olmayan firmalar: takip edin, niteleyin ve müşteriye dönüştürün",
+      "single": "Potansiyel müşteri",
+      "new": "Yeni potansiyel müşteri",
+      "edit": "Potansiyel müşteriyi düzenle",
+      "companyName": "Firma adı",
+      "contactName": "Yetkili kişi",
+      "source": "Kaynak",
+      "estimatedValue": "Tahmini değer",
+      "created": "{{number}} oluşturuldu",
+      "deleted": "Potansiyel müşteri silindi",
+      "allStatuses": "Tüm durumlar",
+      "allSources": "Tüm kaynaklar",
+      "activeOnly": "Açık olanlar",
+      "disqualify": "Diskalifiye et",
+      "disqualifyTitle": "{{number}} diskalifiye edilsin mi?",
+      "disqualifyReason": "Diskalifiye nedeni",
+      "disqualified": "Potansiyel müşteri diskalifiye edildi",
+      "reopen": "Tekrar aç",
+      "reopened": "Potansiyel müşteri tekrar açıldı",
+      "convert": "Müşteriye dönüştür",
+      "convertTitle": "{{number}} müşteriye dönüştür",
+      "convertHint": "{{name}} bir cari hesaba bağlanır; isterseniz bir satış fırsatı da açılır.",
+      "newCustomer": "Yeni cari hesap oluştur",
+      "existingCustomer": "Mevcut cari hesaba bağla",
+      "createOpportunity": "Satış fırsatı da aç",
+      "opportunityTitle": "Fırsat başlığı",
+      "converted": "Müşteriye dönüştürüldü",
+      "customer": "Cari hesap",
+      "convertedAt": "Dönüşüm tarihi",
+      "conversion": "Dönüşüm",
+      "notConverted": "Henüz müşteriye dönüştürülmedi.",
+      "opportunities": "Satış fırsatları",
+      "statuses": {
+        "NEW": "Yeni",
+        "CONTACTED": "İletişim kuruldu",
+        "QUALIFIED": "Nitelikli",
+        "DISQUALIFIED": "Diskalifiye",
+        "CONVERTED": "Dönüştürüldü"
+      },
+      "sources": {
+        "WEBSITE": "Web sitesi",
+        "REFERRAL": "Referans",
+        "EVENT": "Etkinlik / fuar",
+        "COLD_CALL": "Soğuk arama",
+        "SOCIAL_MEDIA": "Sosyal medya",
+        "PARTNER": "İş ortağı",
+        "OTHER": "Diğer"
+      }
+    },
+    "opportunities": {
+      "title": "Satış fırsatları",
+      "subtitle": "Satış hattı: fırsatları aşamalar arasında taşıyın, teklif verin, kazanın",
+      "single": "Satış fırsatı",
+      "new": "Yeni fırsat",
+      "edit": "Fırsatı düzenle",
+      "name": "Başlık",
+      "probability": "Olasılık",
+      "weighted": "Ağırlıklı tutar",
+      "expectedClose": "Tahmini kapanış",
+      "stage": "Aşama",
+      "allStages": "Tüm aşamalar",
+      "openOnly": "Açık olanlar",
+      "closedOnly": "Kapananlar",
+      "board": "Pano",
+      "list": "Liste",
+      "boardHint": "Kartları sürükleyip bırakarak aşamasını değiştirin. Kapananlar son 90 günü gösterir.",
+      "created": "{{number}} oluşturuldu",
+      "deleted": "Fırsat silindi",
+      "moved": "{{number}} → {{stage}}",
+      "win": "Kazanıldı",
+      "won": "Fırsat kazanıldı",
+      "lose": "Kaybedildi",
+      "loseTitle": "{{number}} kaybedildi olarak işaretlensin mi?",
+      "lostReason": "Kaybetme nedeni",
+      "lost": "Fırsat kaybedildi",
+      "reopen": "Tekrar aç",
+      "reopened": "Fırsat tekrar açıldı",
+      "createQuote": "Teklif hazırla",
+      "quotes": "Teklifler",
+      "noQuotes": "Bu fırsat için henüz teklif yok.",
+      "lead": "Kaynak",
+      "closedAt": "Kapanış",
+      "overdue": "Kapanış tarihi geçti",
+      "probabilityHint": "Aşama değişince aşamanın varsayılan olasılığına döner.",
+      "count_one": "{{count}} fırsat",
+      "count_other": "{{count}} fırsat",
+      "stages": {
+        "PROSPECTING": "Aday",
+        "QUALIFICATION": "Nitelendirme",
+        "PROPOSAL": "Teklif",
+        "NEGOTIATION": "Pazarlık",
+        "WON": "Kazanıldı",
+        "LOST": "Kaybedildi"
+      }
+    },
+    "activities": {
+      "title": "Aktiviteler",
+      "subtitle": "Aramalar, toplantılar, e-postalar, görevler ve notlar",
+      "new": "Yeni aktivite",
+      "add": "Aktivite ekle",
+      "edit": "Aktiviteyi düzenle",
+      "subject": "Konu",
+      "type": "Tür",
+      "dueAt": "Tarih / saat",
+      "assignee": "Atanan kişi",
+      "logDone": "Gerçekleşti olarak kaydet",
+      "complete": "Tamamla",
+      "completed": "Aktivite tamamlandı",
+      "reopen": "Tekrar aç",
+      "reopened": "Aktivite tekrar açıldı",
+      "deleted": "Aktivite silindi",
+      "related": "İlgili kayıt",
+      "empty": "Henüz aktivite yok.",
+      "allTypes": "Tüm türler",
+      "allStates": "Tüm durumlar",
+      "assignedToMe": "Bana atananlar",
+      "doneAt": "{{date}} tamamlandı",
+      "states": {
+        "open": "Açık",
+        "overdue": "Gecikmiş",
+        "done": "Tamamlandı"
+      },
+      "types": {
+        "CALL": "Arama",
+        "MEETING": "Toplantı",
+        "EMAIL": "E-posta",
+        "TASK": "Görev",
+        "NOTE": "Not"
+      }
+    }
+  },
   "sales": {
     "customer": "Müşteri",
     "quoteStatus": {
@@ -1285,7 +1436,9 @@
       "validityNote": "Bu teklif {{date}} tarihine kadar geçerlidir.",
       "errors": {
         "validUntil": "Geçerlilik teklif tarihinden önce olamaz"
-      }
+      },
+      "opportunity": "Satış fırsatı",
+      "forOpportunity": "Bu teklif {{number}} · {{title}} fırsatı için hazırlanıyor. Teklif kaydedilince fırsat \"Teklif\" aşamasına geçer."
     },
     "orders": {
       "title": "Satış Siparişleri",

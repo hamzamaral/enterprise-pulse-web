@@ -14,6 +14,12 @@ export interface SalesQuoteDto {
   partnerId: string;
   partnerCode: string;
   partnerTitle: string;
+  /** @nullable */
+  opportunityId: string | null;
+  /** @nullable */
+  opportunityNumber: string | null;
+  /** @nullable */
+  opportunityTitle: string | null;
   quoteDate: string;
   /** @nullable */
   validUntil: string | null;

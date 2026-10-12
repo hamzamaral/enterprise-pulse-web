@@ -10,6 +10,7 @@ import {
   useSalesQuotesReject,
 } from '@/api/generated/endpoints/sales/sales';
 import { Can } from '@/features/auth/can';
+import { usePermission } from '@/features/auth/use-session';
 import { storedBreakdown } from '@/features/trade/document-math';
 import { DocumentLinesTable } from '@/features/trade/document-lines-table';
 import { DocumentHeader } from '@/features/trade/document-print';
@@ -28,6 +29,7 @@ import { SalesQuoteStatusBadge } from './sales-components';
 export function SalesQuoteDetailPage({ id }: { id: string }) {
   const { t } = useTranslation();
   const base = useBaseCurrency();
+  const can = usePermission();
   const invalidate = useInvalidate();
   const [converting, setConverting] = useState(false);
   const { data: quote, isLoading } = useSalesQuotesFindOne(id);
@@ -109,6 +111,21 @@ export function SalesQuoteDetailPage({ id }: { id: string }) {
               {quote.currencyCode !== base && ` · ${Number(quote.exchangeRate)}`}
             </Field>
             <Field label={t('sales.orders.createdBy')}>{quote.createdByName}</Field>
+            {quote.opportunityId && (
+              <Field label={t('sales.quotes.opportunity')}>
+                {can('crm:read') ? (
+                  <Link
+                    to="/crm/opportunities/$id"
+                    params={{ id: quote.opportunityId }}
+                    className="text-primary hover:underline print:no-underline"
+                  >
+                    {quote.opportunityNumber} · {quote.opportunityTitle}
+                  </Link>
+                ) : (
+                  `${quote.opportunityNumber} · ${quote.opportunityTitle}`
+                )}
+              </Field>
+            )}
             {quote.orderId && (
               <Field label={t('sales.orders.single')}>
                 <Link

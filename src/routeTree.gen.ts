@@ -27,6 +27,7 @@ import { Route as AppAssetsIndexRouteImport } from './routes/_app/assets/index'
 import { Route as AppAssetsIdRouteImport } from './routes/_app/assets/$id'
 import { Route as AppAssetsMyRouteImport } from './routes/_app/assets/my'
 import { Route as AppAssetsSettingsRouteImport } from './routes/_app/assets/settings'
+import { Route as AppCrmActivitiesRouteImport } from './routes/_app/crm/activities'
 import { Route as AppFinanceAgingRouteImport } from './routes/_app/finance/aging'
 import { Route as AppHrDepartmentsRouteImport } from './routes/_app/hr/departments'
 import { Route as AppHrLeaveRequestsRouteImport } from './routes/_app/hr/leave-requests'
@@ -50,6 +51,10 @@ import { Route as AppAssetsAssignmentsIndexRouteImport } from './routes/_app/ass
 import { Route as AppAssetsAssignmentsIdRouteImport } from './routes/_app/assets/assignments/$id'
 import { Route as AppAssetsCountsIndexRouteImport } from './routes/_app/assets/counts/index'
 import { Route as AppAssetsCountsIdRouteImport } from './routes/_app/assets/counts/$id'
+import { Route as AppCrmLeadsIndexRouteImport } from './routes/_app/crm/leads/index'
+import { Route as AppCrmLeadsIdRouteImport } from './routes/_app/crm/leads/$id'
+import { Route as AppCrmOpportunitiesIndexRouteImport } from './routes/_app/crm/opportunities/index'
+import { Route as AppCrmOpportunitiesIdRouteImport } from './routes/_app/crm/opportunities/$id'
 import { Route as AppFinanceAccountsIndexRouteImport } from './routes/_app/finance/accounts/index'
 import { Route as AppFinanceAccountsIdRouteImport } from './routes/_app/finance/accounts/$id'
 import { Route as AppFinanceChequesIndexRouteImport } from './routes/_app/finance/cheques/index'
@@ -193,6 +198,11 @@ const AppAssetsSettingsRoute = AppAssetsSettingsRouteImport.update({
   path: '/assets/settings',
   getParentRoute: () => AppRoute,
 } as any)
+const AppCrmActivitiesRoute = AppCrmActivitiesRouteImport.update({
+  id: '/crm/activities',
+  path: '/crm/activities',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppFinanceAgingRoute = AppFinanceAgingRouteImport.update({
   id: '/finance/aging',
   path: '/finance/aging',
@@ -307,6 +317,27 @@ const AppAssetsCountsIndexRoute = AppAssetsCountsIndexRouteImport.update({
 const AppAssetsCountsIdRoute = AppAssetsCountsIdRouteImport.update({
   id: '/assets/counts/$id',
   path: '/assets/counts/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCrmLeadsIndexRoute = AppCrmLeadsIndexRouteImport.update({
+  id: '/crm/leads/',
+  path: '/crm/leads/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCrmLeadsIdRoute = AppCrmLeadsIdRouteImport.update({
+  id: '/crm/leads/$id',
+  path: '/crm/leads/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCrmOpportunitiesIndexRoute =
+  AppCrmOpportunitiesIndexRouteImport.update({
+    id: '/crm/opportunities/',
+    path: '/crm/opportunities/',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppCrmOpportunitiesIdRoute = AppCrmOpportunitiesIdRouteImport.update({
+  id: '/crm/opportunities/$id',
+  path: '/crm/opportunities/$id',
   getParentRoute: () => AppRoute,
 } as any)
 const AppFinanceAccountsIndexRoute = AppFinanceAccountsIndexRouteImport.update({
@@ -607,6 +638,7 @@ export interface FileRoutesByFullPath {
   '/assets/$id': typeof AppAssetsIdRoute
   '/assets/my': typeof AppAssetsMyRoute
   '/assets/settings': typeof AppAssetsSettingsRoute
+  '/crm/activities': typeof AppCrmActivitiesRoute
   '/finance/aging': typeof AppFinanceAgingRoute
   '/hr/departments': typeof AppHrDepartmentsRoute
   '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
@@ -629,6 +661,8 @@ export interface FileRoutesByFullPath {
   '/partners/': typeof AppPartnersIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
+  '/crm/leads/$id': typeof AppCrmLeadsIdRoute
+  '/crm/opportunities/$id': typeof AppCrmOpportunitiesIdRoute
   '/finance/accounts/$id': typeof AppFinanceAccountsIdRoute
   '/finance/cheques/$id': typeof AppFinanceChequesIdRoute
   '/finance/collections/$id': typeof AppFinanceCollectionsIdRoute
@@ -663,6 +697,8 @@ export interface FileRoutesByFullPath {
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/assets/counts/': typeof AppAssetsCountsIndexRoute
+  '/crm/leads/': typeof AppCrmLeadsIndexRoute
+  '/crm/opportunities/': typeof AppCrmOpportunitiesIndexRoute
   '/finance/accounts/': typeof AppFinanceAccountsIndexRoute
   '/finance/cheques/': typeof AppFinanceChequesIndexRoute
   '/finance/collections/': typeof AppFinanceCollectionsIndexRoute
@@ -702,6 +738,7 @@ export interface FileRoutesByTo {
   '/assets/$id': typeof AppAssetsIdRoute
   '/assets/my': typeof AppAssetsMyRoute
   '/assets/settings': typeof AppAssetsSettingsRoute
+  '/crm/activities': typeof AppCrmActivitiesRoute
   '/finance/aging': typeof AppFinanceAgingRoute
   '/hr/departments': typeof AppHrDepartmentsRoute
   '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
@@ -724,6 +761,8 @@ export interface FileRoutesByTo {
   '/partners': typeof AppPartnersIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
+  '/crm/leads/$id': typeof AppCrmLeadsIdRoute
+  '/crm/opportunities/$id': typeof AppCrmOpportunitiesIdRoute
   '/finance/accounts/$id': typeof AppFinanceAccountsIdRoute
   '/finance/cheques/$id': typeof AppFinanceChequesIdRoute
   '/finance/collections/$id': typeof AppFinanceCollectionsIdRoute
@@ -758,6 +797,8 @@ export interface FileRoutesByTo {
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments': typeof AppAssetsAssignmentsIndexRoute
   '/assets/counts': typeof AppAssetsCountsIndexRoute
+  '/crm/leads': typeof AppCrmLeadsIndexRoute
+  '/crm/opportunities': typeof AppCrmOpportunitiesIndexRoute
   '/finance/accounts': typeof AppFinanceAccountsIndexRoute
   '/finance/cheques': typeof AppFinanceChequesIndexRoute
   '/finance/collections': typeof AppFinanceCollectionsIndexRoute
@@ -799,6 +840,7 @@ export interface FileRoutesById {
   '/_app/assets/$id': typeof AppAssetsIdRoute
   '/_app/assets/my': typeof AppAssetsMyRoute
   '/_app/assets/settings': typeof AppAssetsSettingsRoute
+  '/_app/crm/activities': typeof AppCrmActivitiesRoute
   '/_app/finance/aging': typeof AppFinanceAgingRoute
   '/_app/hr/departments': typeof AppHrDepartmentsRoute
   '/_app/hr/leave-requests': typeof AppHrLeaveRequestsRoute
@@ -821,6 +863,8 @@ export interface FileRoutesById {
   '/_app/partners/': typeof AppPartnersIndexRoute
   '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/_app/assets/counts/$id': typeof AppAssetsCountsIdRoute
+  '/_app/crm/leads/$id': typeof AppCrmLeadsIdRoute
+  '/_app/crm/opportunities/$id': typeof AppCrmOpportunitiesIdRoute
   '/_app/finance/accounts/$id': typeof AppFinanceAccountsIdRoute
   '/_app/finance/cheques/$id': typeof AppFinanceChequesIdRoute
   '/_app/finance/collections/$id': typeof AppFinanceCollectionsIdRoute
@@ -855,6 +899,8 @@ export interface FileRoutesById {
   '/_app/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/_app/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/_app/assets/counts/': typeof AppAssetsCountsIndexRoute
+  '/_app/crm/leads/': typeof AppCrmLeadsIndexRoute
+  '/_app/crm/opportunities/': typeof AppCrmOpportunitiesIndexRoute
   '/_app/finance/accounts/': typeof AppFinanceAccountsIndexRoute
   '/_app/finance/cheques/': typeof AppFinanceChequesIndexRoute
   '/_app/finance/collections/': typeof AppFinanceCollectionsIndexRoute
@@ -896,6 +942,7 @@ export interface FileRouteTypes {
     | '/assets/$id'
     | '/assets/my'
     | '/assets/settings'
+    | '/crm/activities'
     | '/finance/aging'
     | '/hr/departments'
     | '/hr/leave-requests'
@@ -918,6 +965,8 @@ export interface FileRouteTypes {
     | '/partners/'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
+    | '/crm/leads/$id'
+    | '/crm/opportunities/$id'
     | '/finance/accounts/$id'
     | '/finance/cheques/$id'
     | '/finance/collections/$id'
@@ -952,6 +1001,8 @@ export interface FileRouteTypes {
     | '/workflow/instances/$id'
     | '/assets/assignments/'
     | '/assets/counts/'
+    | '/crm/leads/'
+    | '/crm/opportunities/'
     | '/finance/accounts/'
     | '/finance/cheques/'
     | '/finance/collections/'
@@ -991,6 +1042,7 @@ export interface FileRouteTypes {
     | '/assets/$id'
     | '/assets/my'
     | '/assets/settings'
+    | '/crm/activities'
     | '/finance/aging'
     | '/hr/departments'
     | '/hr/leave-requests'
@@ -1013,6 +1065,8 @@ export interface FileRouteTypes {
     | '/partners'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
+    | '/crm/leads/$id'
+    | '/crm/opportunities/$id'
     | '/finance/accounts/$id'
     | '/finance/cheques/$id'
     | '/finance/collections/$id'
@@ -1047,6 +1101,8 @@ export interface FileRouteTypes {
     | '/workflow/instances/$id'
     | '/assets/assignments'
     | '/assets/counts'
+    | '/crm/leads'
+    | '/crm/opportunities'
     | '/finance/accounts'
     | '/finance/cheques'
     | '/finance/collections'
@@ -1087,6 +1143,7 @@ export interface FileRouteTypes {
     | '/_app/assets/$id'
     | '/_app/assets/my'
     | '/_app/assets/settings'
+    | '/_app/crm/activities'
     | '/_app/finance/aging'
     | '/_app/hr/departments'
     | '/_app/hr/leave-requests'
@@ -1109,6 +1166,8 @@ export interface FileRouteTypes {
     | '/_app/partners/'
     | '/_app/assets/assignments/$id'
     | '/_app/assets/counts/$id'
+    | '/_app/crm/leads/$id'
+    | '/_app/crm/opportunities/$id'
     | '/_app/finance/accounts/$id'
     | '/_app/finance/cheques/$id'
     | '/_app/finance/collections/$id'
@@ -1143,6 +1202,8 @@ export interface FileRouteTypes {
     | '/_app/workflow/instances/$id'
     | '/_app/assets/assignments/'
     | '/_app/assets/counts/'
+    | '/_app/crm/leads/'
+    | '/_app/crm/opportunities/'
     | '/_app/finance/accounts/'
     | '/_app/finance/cheques/'
     | '/_app/finance/collections/'
@@ -1299,6 +1360,13 @@ declare module '@tanstack/react-router' {
       path: '/assets/settings'
       fullPath: '/assets/settings'
       preLoaderRoute: typeof AppAssetsSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/crm/activities': {
+      id: '/_app/crm/activities'
+      path: '/crm/activities'
+      fullPath: '/crm/activities'
+      preLoaderRoute: typeof AppCrmActivitiesRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/finance/aging': {
@@ -1460,6 +1528,34 @@ declare module '@tanstack/react-router' {
       path: '/assets/counts/$id'
       fullPath: '/assets/counts/$id'
       preLoaderRoute: typeof AppAssetsCountsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/crm/leads/': {
+      id: '/_app/crm/leads/'
+      path: '/crm/leads'
+      fullPath: '/crm/leads/'
+      preLoaderRoute: typeof AppCrmLeadsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/crm/leads/$id': {
+      id: '/_app/crm/leads/$id'
+      path: '/crm/leads/$id'
+      fullPath: '/crm/leads/$id'
+      preLoaderRoute: typeof AppCrmLeadsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/crm/opportunities/': {
+      id: '/_app/crm/opportunities/'
+      path: '/crm/opportunities'
+      fullPath: '/crm/opportunities/'
+      preLoaderRoute: typeof AppCrmOpportunitiesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/crm/opportunities/$id': {
+      id: '/_app/crm/opportunities/$id'
+      path: '/crm/opportunities/$id'
+      fullPath: '/crm/opportunities/$id'
+      preLoaderRoute: typeof AppCrmOpportunitiesIdRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/finance/accounts/': {
@@ -1850,6 +1946,7 @@ interface AppRouteChildren {
   AppAssetsIdRoute: typeof AppAssetsIdRoute
   AppAssetsMyRoute: typeof AppAssetsMyRoute
   AppAssetsSettingsRoute: typeof AppAssetsSettingsRoute
+  AppCrmActivitiesRoute: typeof AppCrmActivitiesRoute
   AppFinanceAgingRoute: typeof AppFinanceAgingRoute
   AppHrDepartmentsRoute: typeof AppHrDepartmentsRoute
   AppHrLeaveRequestsRoute: typeof AppHrLeaveRequestsRoute
@@ -1872,6 +1969,8 @@ interface AppRouteChildren {
   AppPartnersIndexRoute: typeof AppPartnersIndexRoute
   AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
   AppAssetsCountsIdRoute: typeof AppAssetsCountsIdRoute
+  AppCrmLeadsIdRoute: typeof AppCrmLeadsIdRoute
+  AppCrmOpportunitiesIdRoute: typeof AppCrmOpportunitiesIdRoute
   AppFinanceAccountsIdRoute: typeof AppFinanceAccountsIdRoute
   AppFinanceChequesIdRoute: typeof AppFinanceChequesIdRoute
   AppFinanceCollectionsIdRoute: typeof AppFinanceCollectionsIdRoute
@@ -1906,6 +2005,8 @@ interface AppRouteChildren {
   AppWorkflowInstancesIdRoute: typeof AppWorkflowInstancesIdRoute
   AppAssetsAssignmentsIndexRoute: typeof AppAssetsAssignmentsIndexRoute
   AppAssetsCountsIndexRoute: typeof AppAssetsCountsIndexRoute
+  AppCrmLeadsIndexRoute: typeof AppCrmLeadsIndexRoute
+  AppCrmOpportunitiesIndexRoute: typeof AppCrmOpportunitiesIndexRoute
   AppFinanceAccountsIndexRoute: typeof AppFinanceAccountsIndexRoute
   AppFinanceChequesIndexRoute: typeof AppFinanceChequesIndexRoute
   AppFinanceCollectionsIndexRoute: typeof AppFinanceCollectionsIndexRoute
@@ -1943,6 +2044,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAssetsIdRoute: AppAssetsIdRoute,
   AppAssetsMyRoute: AppAssetsMyRoute,
   AppAssetsSettingsRoute: AppAssetsSettingsRoute,
+  AppCrmActivitiesRoute: AppCrmActivitiesRoute,
   AppFinanceAgingRoute: AppFinanceAgingRoute,
   AppHrDepartmentsRoute: AppHrDepartmentsRoute,
   AppHrLeaveRequestsRoute: AppHrLeaveRequestsRoute,
@@ -1965,6 +2067,8 @@ const AppRouteChildren: AppRouteChildren = {
   AppPartnersIndexRoute: AppPartnersIndexRoute,
   AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
   AppAssetsCountsIdRoute: AppAssetsCountsIdRoute,
+  AppCrmLeadsIdRoute: AppCrmLeadsIdRoute,
+  AppCrmOpportunitiesIdRoute: AppCrmOpportunitiesIdRoute,
   AppFinanceAccountsIdRoute: AppFinanceAccountsIdRoute,
   AppFinanceChequesIdRoute: AppFinanceChequesIdRoute,
   AppFinanceCollectionsIdRoute: AppFinanceCollectionsIdRoute,
@@ -1999,6 +2103,8 @@ const AppRouteChildren: AppRouteChildren = {
   AppWorkflowInstancesIdRoute: AppWorkflowInstancesIdRoute,
   AppAssetsAssignmentsIndexRoute: AppAssetsAssignmentsIndexRoute,
   AppAssetsCountsIndexRoute: AppAssetsCountsIndexRoute,
+  AppCrmLeadsIndexRoute: AppCrmLeadsIndexRoute,
+  AppCrmOpportunitiesIndexRoute: AppCrmOpportunitiesIndexRoute,
   AppFinanceAccountsIndexRoute: AppFinanceAccountsIndexRoute,
   AppFinanceChequesIndexRoute: AppFinanceChequesIndexRoute,
   AppFinanceCollectionsIndexRoute: AppFinanceCollectionsIndexRoute,
