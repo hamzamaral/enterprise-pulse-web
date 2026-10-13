@@ -31,12 +31,14 @@ import {
   GitBranch,
   GraduationCap,
   HandCoins,
+  Headset,
   Hourglass,
   Inbox,
   Kanban,
   Landmark,
   Laptop,
   LayoutDashboard,
+  LifeBuoy,
   ListChecks,
   ListTodo,
   type LucideIcon,
@@ -73,6 +75,7 @@ import {
   Wallet,
   Warehouse,
   Workflow,
+  Wrench,
 } from 'lucide-react';
 import type { FileRoutesByTo } from '@/routeTree.gen';
 
@@ -249,6 +252,19 @@ export const NAVIGATION: NavGroup[] = [
         labelKey: 'nav.trainingCompliance',
         icon: BadgeCheck,
         permission: 'training:read',
+      },
+    ],
+  },
+  {
+    labelKey: 'nav.groups.support',
+    items: [
+      { to: '/support/my', labelKey: 'nav.myTickets', icon: LifeBuoy },
+      { to: '/support', labelKey: 'nav.supportQueue', icon: Headset, permission: 'support:read' },
+      {
+        to: '/support/settings',
+        labelKey: 'nav.supportSettings',
+        icon: Wrench,
+        permission: 'support:update',
       },
     ],
   },

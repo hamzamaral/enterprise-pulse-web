@@ -26,6 +26,7 @@ export * from './reports/reports';
 export * from './roles/roles';
 export * from './sales/sales';
 export * from './settings/settings';
+export * from './support/support';
 export * from './training/training';
 export * from './users/users';
 export * from './workflow/workflow';

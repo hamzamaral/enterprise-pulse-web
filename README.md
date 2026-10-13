@@ -55,6 +55,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Değerlendirme dönemi:** tamamlanma, puan dağılımı, departman kırılımı, formlar        | **Değerlendirme formu:** hedefler, yetkinlikler, öz ve yönetici puanı, sonuç        |
 | ![Eğitim oturumları](docs/screenshots/training.png)                                     | ![Zorunlu eğitim uyumu](docs/screenshots/training-compliance.png)                   |
 | **Eğitim oturumları:** eğitim saati, maliyet, memnuniyet, uyum oranı                    | **Zorunlu eğitim uyumu:** personel × eğitim sertifika matrisi                       |
+| ![Destek kuyruğu](docs/screenshots/support-queue.png)                                   | ![Destek talebi](docs/screenshots/support-ticket.png)                               |
+| **Destek kuyruğu:** SLA göstergeleri, 14 günlük trend, ekip iş yükü, kuyruk filtreleri  | **Destek talebi:** yazışma, dahili not, atama, SLA hedefleri, ekler ve geçmiş       |
 
 ## Özellikler
 
@@ -97,6 +99,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   onaylama. Eğitim kataloğu, oturum planlama, katılımcı ekleme, katılım ve puan girişi; "Eğitimlerim"
   ekranında zorunlu sertifikalar, kayda açık oturumlara kaydolma ve geri bildirim; zorunlu eğitim uyum
   matrisi ve personel kartında "Eğitimler" sekmesi.
+- **Destek Talepleri:** "Destek Taleplerim" ekranında talep açma, yanıt verme, dosya ekleme, çözümü onaylayıp
+  puanlama veya yeniden açma; destek kuyruğunda SLA göstergeleri, trend grafiği, ekip iş yükü ve görünüm /
+  öncelik / kategori filtreleri; talep ekranında atama, öncelik ve kategori değişikliği, bilgi isteme,
+  çözme, dahili not ve geçmiş; destek ayarlarında kategori, varsayılan sorumlu ve SLA hedefleri.
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.
