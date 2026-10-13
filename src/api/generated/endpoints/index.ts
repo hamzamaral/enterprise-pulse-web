@@ -3,6 +3,7 @@ export * from './attendance/attendance';
 export * from './audit/audit';
 export * from './auth/auth';
 export * from './branches/branches';
+export * from './budgets/budgets';
 export * from './companies/companies';
 export * from './contracts/contracts';
 export * from './crm/crm';

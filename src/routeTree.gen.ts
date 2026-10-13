@@ -27,6 +27,10 @@ import { Route as AppAssetsIndexRouteImport } from './routes/_app/assets/index'
 import { Route as AppAssetsIdRouteImport } from './routes/_app/assets/$id'
 import { Route as AppAssetsMyRouteImport } from './routes/_app/assets/my'
 import { Route as AppAssetsSettingsRouteImport } from './routes/_app/assets/settings'
+import { Route as AppBudgetsIndexRouteImport } from './routes/_app/budgets/index'
+import { Route as AppBudgetsIdRouteImport } from './routes/_app/budgets/$id'
+import { Route as AppBudgetsEntriesRouteImport } from './routes/_app/budgets/entries'
+import { Route as AppBudgetsItemsRouteImport } from './routes/_app/budgets/items'
 import { Route as AppContractsIndexRouteImport } from './routes/_app/contracts/index'
 import { Route as AppContractsIdRouteImport } from './routes/_app/contracts/$id'
 import { Route as AppContractsTypesRouteImport } from './routes/_app/contracts/types'
@@ -236,6 +240,26 @@ const AppAssetsMyRoute = AppAssetsMyRouteImport.update({
 const AppAssetsSettingsRoute = AppAssetsSettingsRouteImport.update({
   id: '/assets/settings',
   path: '/assets/settings',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBudgetsIndexRoute = AppBudgetsIndexRouteImport.update({
+  id: '/budgets/',
+  path: '/budgets/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBudgetsIdRoute = AppBudgetsIdRouteImport.update({
+  id: '/budgets/$id',
+  path: '/budgets/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBudgetsEntriesRoute = AppBudgetsEntriesRouteImport.update({
+  id: '/budgets/entries',
+  path: '/budgets/entries',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppBudgetsItemsRoute = AppBudgetsItemsRouteImport.update({
+  id: '/budgets/items',
+  path: '/budgets/items',
   getParentRoute: () => AppRoute,
 } as any)
 const AppContractsIndexRoute = AppContractsIndexRouteImport.update({
@@ -884,6 +908,9 @@ export interface FileRoutesByFullPath {
   '/assets/$id': typeof AppAssetsIdRoute
   '/assets/my': typeof AppAssetsMyRoute
   '/assets/settings': typeof AppAssetsSettingsRoute
+  '/budgets/$id': typeof AppBudgetsIdRoute
+  '/budgets/entries': typeof AppBudgetsEntriesRoute
+  '/budgets/items': typeof AppBudgetsItemsRoute
   '/contracts/$id': typeof AppContractsIdRoute
   '/contracts/types': typeof AppContractsTypesRoute
   '/crm/activities': typeof AppCrmActivitiesRoute
@@ -925,6 +952,7 @@ export interface FileRoutesByFullPath {
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
   '/assets/': typeof AppAssetsIndexRoute
+  '/budgets/': typeof AppBudgetsIndexRoute
   '/contracts/': typeof AppContractsIndexRoute
   '/expenses/': typeof AppExpensesIndexRoute
   '/inventory/': typeof AppInventoryIndexRoute
@@ -1024,6 +1052,9 @@ export interface FileRoutesByTo {
   '/assets/$id': typeof AppAssetsIdRoute
   '/assets/my': typeof AppAssetsMyRoute
   '/assets/settings': typeof AppAssetsSettingsRoute
+  '/budgets/$id': typeof AppBudgetsIdRoute
+  '/budgets/entries': typeof AppBudgetsEntriesRoute
+  '/budgets/items': typeof AppBudgetsItemsRoute
   '/contracts/$id': typeof AppContractsIdRoute
   '/contracts/types': typeof AppContractsTypesRoute
   '/crm/activities': typeof AppCrmActivitiesRoute
@@ -1065,6 +1096,7 @@ export interface FileRoutesByTo {
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
   '/assets': typeof AppAssetsIndexRoute
+  '/budgets': typeof AppBudgetsIndexRoute
   '/contracts': typeof AppContractsIndexRoute
   '/expenses': typeof AppExpensesIndexRoute
   '/inventory': typeof AppInventoryIndexRoute
@@ -1166,6 +1198,9 @@ export interface FileRoutesById {
   '/_app/assets/$id': typeof AppAssetsIdRoute
   '/_app/assets/my': typeof AppAssetsMyRoute
   '/_app/assets/settings': typeof AppAssetsSettingsRoute
+  '/_app/budgets/$id': typeof AppBudgetsIdRoute
+  '/_app/budgets/entries': typeof AppBudgetsEntriesRoute
+  '/_app/budgets/items': typeof AppBudgetsItemsRoute
   '/_app/contracts/$id': typeof AppContractsIdRoute
   '/_app/contracts/types': typeof AppContractsTypesRoute
   '/_app/crm/activities': typeof AppCrmActivitiesRoute
@@ -1207,6 +1242,7 @@ export interface FileRoutesById {
   '/_app/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/_app/workflow/inbox': typeof AppWorkflowInboxRoute
   '/_app/assets/': typeof AppAssetsIndexRoute
+  '/_app/budgets/': typeof AppBudgetsIndexRoute
   '/_app/contracts/': typeof AppContractsIndexRoute
   '/_app/expenses/': typeof AppExpensesIndexRoute
   '/_app/inventory/': typeof AppInventoryIndexRoute
@@ -1308,6 +1344,9 @@ export interface FileRouteTypes {
     | '/assets/$id'
     | '/assets/my'
     | '/assets/settings'
+    | '/budgets/$id'
+    | '/budgets/entries'
+    | '/budgets/items'
     | '/contracts/$id'
     | '/contracts/types'
     | '/crm/activities'
@@ -1349,6 +1388,7 @@ export interface FileRouteTypes {
     | '/workflow/definitions'
     | '/workflow/inbox'
     | '/assets/'
+    | '/budgets/'
     | '/contracts/'
     | '/expenses/'
     | '/inventory/'
@@ -1448,6 +1488,9 @@ export interface FileRouteTypes {
     | '/assets/$id'
     | '/assets/my'
     | '/assets/settings'
+    | '/budgets/$id'
+    | '/budgets/entries'
+    | '/budgets/items'
     | '/contracts/$id'
     | '/contracts/types'
     | '/crm/activities'
@@ -1489,6 +1532,7 @@ export interface FileRouteTypes {
     | '/workflow/definitions'
     | '/workflow/inbox'
     | '/assets'
+    | '/budgets'
     | '/contracts'
     | '/expenses'
     | '/inventory'
@@ -1589,6 +1633,9 @@ export interface FileRouteTypes {
     | '/_app/assets/$id'
     | '/_app/assets/my'
     | '/_app/assets/settings'
+    | '/_app/budgets/$id'
+    | '/_app/budgets/entries'
+    | '/_app/budgets/items'
     | '/_app/contracts/$id'
     | '/_app/contracts/types'
     | '/_app/crm/activities'
@@ -1630,6 +1677,7 @@ export interface FileRouteTypes {
     | '/_app/workflow/definitions'
     | '/_app/workflow/inbox'
     | '/_app/assets/'
+    | '/_app/budgets/'
     | '/_app/contracts/'
     | '/_app/expenses/'
     | '/_app/inventory/'
@@ -1846,6 +1894,34 @@ declare module '@tanstack/react-router' {
       path: '/assets/settings'
       fullPath: '/assets/settings'
       preLoaderRoute: typeof AppAssetsSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/budgets/': {
+      id: '/_app/budgets/'
+      path: '/budgets'
+      fullPath: '/budgets/'
+      preLoaderRoute: typeof AppBudgetsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/budgets/$id': {
+      id: '/_app/budgets/$id'
+      path: '/budgets/$id'
+      fullPath: '/budgets/$id'
+      preLoaderRoute: typeof AppBudgetsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/budgets/entries': {
+      id: '/_app/budgets/entries'
+      path: '/budgets/entries'
+      fullPath: '/budgets/entries'
+      preLoaderRoute: typeof AppBudgetsEntriesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/budgets/items': {
+      id: '/_app/budgets/items'
+      path: '/budgets/items'
+      fullPath: '/budgets/items'
+      preLoaderRoute: typeof AppBudgetsItemsRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/contracts/': {
@@ -2712,6 +2788,9 @@ interface AppRouteChildren {
   AppAssetsIdRoute: typeof AppAssetsIdRoute
   AppAssetsMyRoute: typeof AppAssetsMyRoute
   AppAssetsSettingsRoute: typeof AppAssetsSettingsRoute
+  AppBudgetsIdRoute: typeof AppBudgetsIdRoute
+  AppBudgetsEntriesRoute: typeof AppBudgetsEntriesRoute
+  AppBudgetsItemsRoute: typeof AppBudgetsItemsRoute
   AppContractsIdRoute: typeof AppContractsIdRoute
   AppContractsTypesRoute: typeof AppContractsTypesRoute
   AppCrmActivitiesRoute: typeof AppCrmActivitiesRoute
@@ -2753,6 +2832,7 @@ interface AppRouteChildren {
   AppWorkflowDefinitionsRoute: typeof AppWorkflowDefinitionsRoute
   AppWorkflowInboxRoute: typeof AppWorkflowInboxRoute
   AppAssetsIndexRoute: typeof AppAssetsIndexRoute
+  AppBudgetsIndexRoute: typeof AppBudgetsIndexRoute
   AppContractsIndexRoute: typeof AppContractsIndexRoute
   AppExpensesIndexRoute: typeof AppExpensesIndexRoute
   AppInventoryIndexRoute: typeof AppInventoryIndexRoute
@@ -2850,6 +2930,9 @@ const AppRouteChildren: AppRouteChildren = {
   AppAssetsIdRoute: AppAssetsIdRoute,
   AppAssetsMyRoute: AppAssetsMyRoute,
   AppAssetsSettingsRoute: AppAssetsSettingsRoute,
+  AppBudgetsIdRoute: AppBudgetsIdRoute,
+  AppBudgetsEntriesRoute: AppBudgetsEntriesRoute,
+  AppBudgetsItemsRoute: AppBudgetsItemsRoute,
   AppContractsIdRoute: AppContractsIdRoute,
   AppContractsTypesRoute: AppContractsTypesRoute,
   AppCrmActivitiesRoute: AppCrmActivitiesRoute,
@@ -2891,6 +2974,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppWorkflowDefinitionsRoute: AppWorkflowDefinitionsRoute,
   AppWorkflowInboxRoute: AppWorkflowInboxRoute,
   AppAssetsIndexRoute: AppAssetsIndexRoute,
+  AppBudgetsIndexRoute: AppBudgetsIndexRoute,
   AppContractsIndexRoute: AppContractsIndexRoute,
   AppExpensesIndexRoute: AppExpensesIndexRoute,
   AppInventoryIndexRoute: AppInventoryIndexRoute,

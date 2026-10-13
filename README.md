@@ -59,6 +59,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Destek kuyruğu:** SLA göstergeleri, 14 günlük trend, ekip iş yükü, kuyruk filtreleri  | **Destek talebi:** yazışma, dahili not, atama, SLA hedefleri, ekler ve geçmiş       |
 | ![Sözleşmeler](docs/screenshots/contracts.png)                                          | ![Sözleşme](docs/screenshots/contract.png)                                          |
 | **Sözleşmeler:** yıllık gelir / gider, 12 aylık bitiş takvimi, yaklaşan karar tarihleri | **Sözleşme:** süre ve otomatik yenileme, fesih son günü, ekler ve geçmiş            |
+| ![Bütçeler](docs/screenshots/budgets.png)                                               | ![Bütçe](docs/screenshots/budget.png)                                               |
+| **Bütçeler:** YBK gider ve gelir, departman karşılaştırması, dikkat gerektiren kalemler | **Bütçe:** aylık plan ve gerçekleşen, kalem bazında sapma, belge kırılımı           |
 
 ## Özellikler
 
@@ -109,6 +111,11 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   feshedilen görünümleri; taraf ve tür filtresi), yıllık gelir / gider göstergeleri, 12 aylık bitiş ve yenileme
   grafiği, yaklaşan karar tarihleri; sözleşme ekranında yürürlüğe alma, yenileme, fesih bildirme ve geri alma,
   imzalı sözleşme ekleri ve geçmiş; sözleşme türleri; cari kartında ve personel kartında "Sözleşmeler".
+- **Bütçe:** yıla göre şirket ve departman bütçeleri, YBK gider / gelir göstergeleri, departman grafiği ve
+  dikkat gerektiren kalemler; bütçe ekranında aylık plan ve gerçekleşen grafiği, kalem bazında YBK sapma ve
+  kullanım, kaleme tıklayınca kaynak belgeler (masraf, bordro, alış / satış faturası), 12 aylık plan tablosu
+  (kalem ekleme, eşit dağıtma), onaylama ve gerekçeli yeniden açma; bütçe kalemleri ve kategori eşlemesi;
+  kira, lisans, reklam gibi gerçekleşenler için bütçe girişleri.
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.
