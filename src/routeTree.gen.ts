@@ -52,6 +52,9 @@ import { Route as AppPayrollIdRouteImport } from './routes/_app/payroll/$id'
 import { Route as AppPayrollMyRouteImport } from './routes/_app/payroll/my'
 import { Route as AppPayrollSalariesRouteImport } from './routes/_app/payroll/salaries'
 import { Route as AppPayrollSettingsRouteImport } from './routes/_app/payroll/settings'
+import { Route as AppPerformanceIndexRouteImport } from './routes/_app/performance/index'
+import { Route as AppPerformanceCompetenciesRouteImport } from './routes/_app/performance/competencies'
+import { Route as AppPerformanceMyRouteImport } from './routes/_app/performance/my'
 import { Route as AppProjectsIndexRouteImport } from './routes/_app/projects/index'
 import { Route as AppProjectsIdRouteImport } from './routes/_app/projects/$id'
 import { Route as AppProjectsMyTasksRouteImport } from './routes/_app/projects/my-tasks'
@@ -62,6 +65,10 @@ import { Route as AppRecruitmentInterviewsRouteImport } from './routes/_app/recr
 import { Route as AppReportsCashFlowRouteImport } from './routes/_app/reports/cash-flow'
 import { Route as AppReportsPurchasesRouteImport } from './routes/_app/reports/purchases'
 import { Route as AppReportsSalesRouteImport } from './routes/_app/reports/sales'
+import { Route as AppTrainingIndexRouteImport } from './routes/_app/training/index'
+import { Route as AppTrainingComplianceRouteImport } from './routes/_app/training/compliance'
+import { Route as AppTrainingCoursesRouteImport } from './routes/_app/training/courses'
+import { Route as AppTrainingMyRouteImport } from './routes/_app/training/my'
 import { Route as AppWorkflowDefinitionsRouteImport } from './routes/_app/workflow/definitions'
 import { Route as AppWorkflowInboxRouteImport } from './routes/_app/workflow/inbox'
 import { Route as AppAssetsAssignmentsIndexRouteImport } from './routes/_app/assets/assignments/index'
@@ -93,6 +100,8 @@ import { Route as AppInventoryMovementsNewRouteImport } from './routes/_app/inve
 import { Route as AppInventoryProductsIndexRouteImport } from './routes/_app/inventory/products/index'
 import { Route as AppInventoryProductsIdRouteImport } from './routes/_app/inventory/products/$id'
 import { Route as AppPayrollPayslipsIdRouteImport } from './routes/_app/payroll/payslips/$id'
+import { Route as AppPerformanceCyclesIdRouteImport } from './routes/_app/performance/cycles/$id'
+import { Route as AppPerformanceReviewsIdRouteImport } from './routes/_app/performance/reviews/$id'
 import { Route as AppPurchasingInvoicesIndexRouteImport } from './routes/_app/purchasing/invoices/index'
 import { Route as AppPurchasingInvoicesIdRouteImport } from './routes/_app/purchasing/invoices/$id'
 import { Route as AppPurchasingInvoicesNewRouteImport } from './routes/_app/purchasing/invoices/new'
@@ -127,6 +136,7 @@ import { Route as AppSalesQuotesNewRouteImport } from './routes/_app/sales/quote
 import { Route as AppSalesReturnsIndexRouteImport } from './routes/_app/sales/returns/index'
 import { Route as AppSalesReturnsIdRouteImport } from './routes/_app/sales/returns/$id'
 import { Route as AppSalesReturnsNewRouteImport } from './routes/_app/sales/returns/new'
+import { Route as AppTrainingSessionsIdRouteImport } from './routes/_app/training/sessions/$id'
 import { Route as AppWorkflowInstancesIndexRouteImport } from './routes/_app/workflow/instances/index'
 import { Route as AppWorkflowInstancesIdRouteImport } from './routes/_app/workflow/instances/$id'
 import { Route as AppPurchasingOrdersEditIdRouteImport } from './routes/_app/purchasing/orders/edit.$id'
@@ -346,6 +356,22 @@ const AppPayrollSettingsRoute = AppPayrollSettingsRouteImport.update({
   path: '/payroll/settings',
   getParentRoute: () => AppRoute,
 } as any)
+const AppPerformanceIndexRoute = AppPerformanceIndexRouteImport.update({
+  id: '/performance/',
+  path: '/performance/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPerformanceCompetenciesRoute =
+  AppPerformanceCompetenciesRouteImport.update({
+    id: '/performance/competencies',
+    path: '/performance/competencies',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppPerformanceMyRoute = AppPerformanceMyRouteImport.update({
+  id: '/performance/my',
+  path: '/performance/my',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppProjectsIndexRoute = AppProjectsIndexRouteImport.update({
   id: '/projects/',
   path: '/projects/',
@@ -395,6 +421,26 @@ const AppReportsPurchasesRoute = AppReportsPurchasesRouteImport.update({
 const AppReportsSalesRoute = AppReportsSalesRouteImport.update({
   id: '/reports/sales',
   path: '/reports/sales',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTrainingIndexRoute = AppTrainingIndexRouteImport.update({
+  id: '/training/',
+  path: '/training/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTrainingComplianceRoute = AppTrainingComplianceRouteImport.update({
+  id: '/training/compliance',
+  path: '/training/compliance',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTrainingCoursesRoute = AppTrainingCoursesRouteImport.update({
+  id: '/training/courses',
+  path: '/training/courses',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppTrainingMyRoute = AppTrainingMyRouteImport.update({
+  id: '/training/my',
+  path: '/training/my',
   getParentRoute: () => AppRoute,
 } as any)
 const AppWorkflowDefinitionsRoute = AppWorkflowDefinitionsRouteImport.update({
@@ -557,6 +603,16 @@ const AppInventoryProductsIdRoute = AppInventoryProductsIdRouteImport.update({
 const AppPayrollPayslipsIdRoute = AppPayrollPayslipsIdRouteImport.update({
   id: '/payroll/payslips/$id',
   path: '/payroll/payslips/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPerformanceCyclesIdRoute = AppPerformanceCyclesIdRouteImport.update({
+  id: '/performance/cycles/$id',
+  path: '/performance/cycles/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPerformanceReviewsIdRoute = AppPerformanceReviewsIdRouteImport.update({
+  id: '/performance/reviews/$id',
+  path: '/performance/reviews/$id',
   getParentRoute: () => AppRoute,
 } as any)
 const AppPurchasingInvoicesIndexRoute =
@@ -741,6 +797,11 @@ const AppSalesReturnsNewRoute = AppSalesReturnsNewRouteImport.update({
   path: '/sales/returns/new',
   getParentRoute: () => AppRoute,
 } as any)
+const AppTrainingSessionsIdRoute = AppTrainingSessionsIdRouteImport.update({
+  id: '/training/sessions/$id',
+  path: '/training/sessions/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppWorkflowInstancesIndexRoute =
   AppWorkflowInstancesIndexRouteImport.update({
     id: '/workflow/instances/',
@@ -802,6 +863,8 @@ export interface FileRoutesByFullPath {
   '/payroll/my': typeof AppPayrollMyRoute
   '/payroll/salaries': typeof AppPayrollSalariesRoute
   '/payroll/settings': typeof AppPayrollSettingsRoute
+  '/performance/competencies': typeof AppPerformanceCompetenciesRoute
+  '/performance/my': typeof AppPerformanceMyRoute
   '/projects/$id': typeof AppProjectsIdRoute
   '/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/projects/timesheet': typeof AppProjectsTimesheetRoute
@@ -810,6 +873,9 @@ export interface FileRoutesByFullPath {
   '/reports/cash-flow': typeof AppReportsCashFlowRoute
   '/reports/purchases': typeof AppReportsPurchasesRoute
   '/reports/sales': typeof AppReportsSalesRoute
+  '/training/compliance': typeof AppTrainingComplianceRoute
+  '/training/courses': typeof AppTrainingCoursesRoute
+  '/training/my': typeof AppTrainingMyRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
   '/assets/': typeof AppAssetsIndexRoute
@@ -817,8 +883,10 @@ export interface FileRoutesByFullPath {
   '/inventory/': typeof AppInventoryIndexRoute
   '/partners/': typeof AppPartnersIndexRoute
   '/payroll/': typeof AppPayrollIndexRoute
+  '/performance/': typeof AppPerformanceIndexRoute
   '/projects/': typeof AppProjectsIndexRoute
   '/recruitment/': typeof AppRecruitmentIndexRoute
+  '/training/': typeof AppTrainingIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -836,6 +904,8 @@ export interface FileRoutesByFullPath {
   '/inventory/movements/new': typeof AppInventoryMovementsNewRoute
   '/inventory/products/$id': typeof AppInventoryProductsIdRoute
   '/payroll/payslips/$id': typeof AppPayrollPayslipsIdRoute
+  '/performance/cycles/$id': typeof AppPerformanceCyclesIdRoute
+  '/performance/reviews/$id': typeof AppPerformanceReviewsIdRoute
   '/purchasing/invoices/$id': typeof AppPurchasingInvoicesIdRoute
   '/purchasing/invoices/new': typeof AppPurchasingInvoicesNewRoute
   '/purchasing/orders/$id': typeof AppPurchasingOrdersIdRoute
@@ -858,6 +928,7 @@ export interface FileRoutesByFullPath {
   '/sales/quotes/new': typeof AppSalesQuotesNewRoute
   '/sales/returns/$id': typeof AppSalesReturnsIdRoute
   '/sales/returns/new': typeof AppSalesReturnsNewRoute
+  '/training/sessions/$id': typeof AppTrainingSessionsIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/assets/counts/': typeof AppAssetsCountsIndexRoute
@@ -925,6 +996,8 @@ export interface FileRoutesByTo {
   '/payroll/my': typeof AppPayrollMyRoute
   '/payroll/salaries': typeof AppPayrollSalariesRoute
   '/payroll/settings': typeof AppPayrollSettingsRoute
+  '/performance/competencies': typeof AppPerformanceCompetenciesRoute
+  '/performance/my': typeof AppPerformanceMyRoute
   '/projects/$id': typeof AppProjectsIdRoute
   '/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/projects/timesheet': typeof AppProjectsTimesheetRoute
@@ -933,6 +1006,9 @@ export interface FileRoutesByTo {
   '/reports/cash-flow': typeof AppReportsCashFlowRoute
   '/reports/purchases': typeof AppReportsPurchasesRoute
   '/reports/sales': typeof AppReportsSalesRoute
+  '/training/compliance': typeof AppTrainingComplianceRoute
+  '/training/courses': typeof AppTrainingCoursesRoute
+  '/training/my': typeof AppTrainingMyRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
   '/assets': typeof AppAssetsIndexRoute
@@ -940,8 +1016,10 @@ export interface FileRoutesByTo {
   '/inventory': typeof AppInventoryIndexRoute
   '/partners': typeof AppPartnersIndexRoute
   '/payroll': typeof AppPayrollIndexRoute
+  '/performance': typeof AppPerformanceIndexRoute
   '/projects': typeof AppProjectsIndexRoute
   '/recruitment': typeof AppRecruitmentIndexRoute
+  '/training': typeof AppTrainingIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -959,6 +1037,8 @@ export interface FileRoutesByTo {
   '/inventory/movements/new': typeof AppInventoryMovementsNewRoute
   '/inventory/products/$id': typeof AppInventoryProductsIdRoute
   '/payroll/payslips/$id': typeof AppPayrollPayslipsIdRoute
+  '/performance/cycles/$id': typeof AppPerformanceCyclesIdRoute
+  '/performance/reviews/$id': typeof AppPerformanceReviewsIdRoute
   '/purchasing/invoices/$id': typeof AppPurchasingInvoicesIdRoute
   '/purchasing/invoices/new': typeof AppPurchasingInvoicesNewRoute
   '/purchasing/orders/$id': typeof AppPurchasingOrdersIdRoute
@@ -981,6 +1061,7 @@ export interface FileRoutesByTo {
   '/sales/quotes/new': typeof AppSalesQuotesNewRoute
   '/sales/returns/$id': typeof AppSalesReturnsIdRoute
   '/sales/returns/new': typeof AppSalesReturnsNewRoute
+  '/training/sessions/$id': typeof AppTrainingSessionsIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/assets/assignments': typeof AppAssetsAssignmentsIndexRoute
   '/assets/counts': typeof AppAssetsCountsIndexRoute
@@ -1050,6 +1131,8 @@ export interface FileRoutesById {
   '/_app/payroll/my': typeof AppPayrollMyRoute
   '/_app/payroll/salaries': typeof AppPayrollSalariesRoute
   '/_app/payroll/settings': typeof AppPayrollSettingsRoute
+  '/_app/performance/competencies': typeof AppPerformanceCompetenciesRoute
+  '/_app/performance/my': typeof AppPerformanceMyRoute
   '/_app/projects/$id': typeof AppProjectsIdRoute
   '/_app/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/_app/projects/timesheet': typeof AppProjectsTimesheetRoute
@@ -1058,6 +1141,9 @@ export interface FileRoutesById {
   '/_app/reports/cash-flow': typeof AppReportsCashFlowRoute
   '/_app/reports/purchases': typeof AppReportsPurchasesRoute
   '/_app/reports/sales': typeof AppReportsSalesRoute
+  '/_app/training/compliance': typeof AppTrainingComplianceRoute
+  '/_app/training/courses': typeof AppTrainingCoursesRoute
+  '/_app/training/my': typeof AppTrainingMyRoute
   '/_app/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/_app/workflow/inbox': typeof AppWorkflowInboxRoute
   '/_app/assets/': typeof AppAssetsIndexRoute
@@ -1065,8 +1151,10 @@ export interface FileRoutesById {
   '/_app/inventory/': typeof AppInventoryIndexRoute
   '/_app/partners/': typeof AppPartnersIndexRoute
   '/_app/payroll/': typeof AppPayrollIndexRoute
+  '/_app/performance/': typeof AppPerformanceIndexRoute
   '/_app/projects/': typeof AppProjectsIndexRoute
   '/_app/recruitment/': typeof AppRecruitmentIndexRoute
+  '/_app/training/': typeof AppTrainingIndexRoute
   '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/_app/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/_app/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -1084,6 +1172,8 @@ export interface FileRoutesById {
   '/_app/inventory/movements/new': typeof AppInventoryMovementsNewRoute
   '/_app/inventory/products/$id': typeof AppInventoryProductsIdRoute
   '/_app/payroll/payslips/$id': typeof AppPayrollPayslipsIdRoute
+  '/_app/performance/cycles/$id': typeof AppPerformanceCyclesIdRoute
+  '/_app/performance/reviews/$id': typeof AppPerformanceReviewsIdRoute
   '/_app/purchasing/invoices/$id': typeof AppPurchasingInvoicesIdRoute
   '/_app/purchasing/invoices/new': typeof AppPurchasingInvoicesNewRoute
   '/_app/purchasing/orders/$id': typeof AppPurchasingOrdersIdRoute
@@ -1106,6 +1196,7 @@ export interface FileRoutesById {
   '/_app/sales/quotes/new': typeof AppSalesQuotesNewRoute
   '/_app/sales/returns/$id': typeof AppSalesReturnsIdRoute
   '/_app/sales/returns/new': typeof AppSalesReturnsNewRoute
+  '/_app/training/sessions/$id': typeof AppTrainingSessionsIdRoute
   '/_app/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
   '/_app/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/_app/assets/counts/': typeof AppAssetsCountsIndexRoute
@@ -1175,6 +1266,8 @@ export interface FileRouteTypes {
     | '/payroll/my'
     | '/payroll/salaries'
     | '/payroll/settings'
+    | '/performance/competencies'
+    | '/performance/my'
     | '/projects/$id'
     | '/projects/my-tasks'
     | '/projects/timesheet'
@@ -1183,6 +1276,9 @@ export interface FileRouteTypes {
     | '/reports/cash-flow'
     | '/reports/purchases'
     | '/reports/sales'
+    | '/training/compliance'
+    | '/training/courses'
+    | '/training/my'
     | '/workflow/definitions'
     | '/workflow/inbox'
     | '/assets/'
@@ -1190,8 +1286,10 @@ export interface FileRouteTypes {
     | '/inventory/'
     | '/partners/'
     | '/payroll/'
+    | '/performance/'
     | '/projects/'
     | '/recruitment/'
+    | '/training/'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
     | '/crm/leads/$id'
@@ -1209,6 +1307,8 @@ export interface FileRouteTypes {
     | '/inventory/movements/new'
     | '/inventory/products/$id'
     | '/payroll/payslips/$id'
+    | '/performance/cycles/$id'
+    | '/performance/reviews/$id'
     | '/purchasing/invoices/$id'
     | '/purchasing/invoices/new'
     | '/purchasing/orders/$id'
@@ -1231,6 +1331,7 @@ export interface FileRouteTypes {
     | '/sales/quotes/new'
     | '/sales/returns/$id'
     | '/sales/returns/new'
+    | '/training/sessions/$id'
     | '/workflow/instances/$id'
     | '/assets/assignments/'
     | '/assets/counts/'
@@ -1298,6 +1399,8 @@ export interface FileRouteTypes {
     | '/payroll/my'
     | '/payroll/salaries'
     | '/payroll/settings'
+    | '/performance/competencies'
+    | '/performance/my'
     | '/projects/$id'
     | '/projects/my-tasks'
     | '/projects/timesheet'
@@ -1306,6 +1409,9 @@ export interface FileRouteTypes {
     | '/reports/cash-flow'
     | '/reports/purchases'
     | '/reports/sales'
+    | '/training/compliance'
+    | '/training/courses'
+    | '/training/my'
     | '/workflow/definitions'
     | '/workflow/inbox'
     | '/assets'
@@ -1313,8 +1419,10 @@ export interface FileRouteTypes {
     | '/inventory'
     | '/partners'
     | '/payroll'
+    | '/performance'
     | '/projects'
     | '/recruitment'
+    | '/training'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
     | '/crm/leads/$id'
@@ -1332,6 +1440,8 @@ export interface FileRouteTypes {
     | '/inventory/movements/new'
     | '/inventory/products/$id'
     | '/payroll/payslips/$id'
+    | '/performance/cycles/$id'
+    | '/performance/reviews/$id'
     | '/purchasing/invoices/$id'
     | '/purchasing/invoices/new'
     | '/purchasing/orders/$id'
@@ -1354,6 +1464,7 @@ export interface FileRouteTypes {
     | '/sales/quotes/new'
     | '/sales/returns/$id'
     | '/sales/returns/new'
+    | '/training/sessions/$id'
     | '/workflow/instances/$id'
     | '/assets/assignments'
     | '/assets/counts'
@@ -1422,6 +1533,8 @@ export interface FileRouteTypes {
     | '/_app/payroll/my'
     | '/_app/payroll/salaries'
     | '/_app/payroll/settings'
+    | '/_app/performance/competencies'
+    | '/_app/performance/my'
     | '/_app/projects/$id'
     | '/_app/projects/my-tasks'
     | '/_app/projects/timesheet'
@@ -1430,6 +1543,9 @@ export interface FileRouteTypes {
     | '/_app/reports/cash-flow'
     | '/_app/reports/purchases'
     | '/_app/reports/sales'
+    | '/_app/training/compliance'
+    | '/_app/training/courses'
+    | '/_app/training/my'
     | '/_app/workflow/definitions'
     | '/_app/workflow/inbox'
     | '/_app/assets/'
@@ -1437,8 +1553,10 @@ export interface FileRouteTypes {
     | '/_app/inventory/'
     | '/_app/partners/'
     | '/_app/payroll/'
+    | '/_app/performance/'
     | '/_app/projects/'
     | '/_app/recruitment/'
+    | '/_app/training/'
     | '/_app/assets/assignments/$id'
     | '/_app/assets/counts/$id'
     | '/_app/crm/leads/$id'
@@ -1456,6 +1574,8 @@ export interface FileRouteTypes {
     | '/_app/inventory/movements/new'
     | '/_app/inventory/products/$id'
     | '/_app/payroll/payslips/$id'
+    | '/_app/performance/cycles/$id'
+    | '/_app/performance/reviews/$id'
     | '/_app/purchasing/invoices/$id'
     | '/_app/purchasing/invoices/new'
     | '/_app/purchasing/orders/$id'
@@ -1478,6 +1598,7 @@ export interface FileRouteTypes {
     | '/_app/sales/quotes/new'
     | '/_app/sales/returns/$id'
     | '/_app/sales/returns/new'
+    | '/_app/training/sessions/$id'
     | '/_app/workflow/instances/$id'
     | '/_app/assets/assignments/'
     | '/_app/assets/counts/'
@@ -1818,6 +1939,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPayrollSettingsRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/performance/': {
+      id: '/_app/performance/'
+      path: '/performance'
+      fullPath: '/performance/'
+      preLoaderRoute: typeof AppPerformanceIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/performance/competencies': {
+      id: '/_app/performance/competencies'
+      path: '/performance/competencies'
+      fullPath: '/performance/competencies'
+      preLoaderRoute: typeof AppPerformanceCompetenciesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/performance/my': {
+      id: '/_app/performance/my'
+      path: '/performance/my'
+      fullPath: '/performance/my'
+      preLoaderRoute: typeof AppPerformanceMyRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/projects/': {
       id: '/_app/projects/'
       path: '/projects'
@@ -1886,6 +2028,34 @@ declare module '@tanstack/react-router' {
       path: '/reports/sales'
       fullPath: '/reports/sales'
       preLoaderRoute: typeof AppReportsSalesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/training/': {
+      id: '/_app/training/'
+      path: '/training'
+      fullPath: '/training/'
+      preLoaderRoute: typeof AppTrainingIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/training/compliance': {
+      id: '/_app/training/compliance'
+      path: '/training/compliance'
+      fullPath: '/training/compliance'
+      preLoaderRoute: typeof AppTrainingComplianceRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/training/courses': {
+      id: '/_app/training/courses'
+      path: '/training/courses'
+      fullPath: '/training/courses'
+      preLoaderRoute: typeof AppTrainingCoursesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/training/my': {
+      id: '/_app/training/my'
+      path: '/training/my'
+      fullPath: '/training/my'
+      preLoaderRoute: typeof AppTrainingMyRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/workflow/definitions': {
@@ -2103,6 +2273,20 @@ declare module '@tanstack/react-router' {
       path: '/payroll/payslips/$id'
       fullPath: '/payroll/payslips/$id'
       preLoaderRoute: typeof AppPayrollPayslipsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/performance/cycles/$id': {
+      id: '/_app/performance/cycles/$id'
+      path: '/performance/cycles/$id'
+      fullPath: '/performance/cycles/$id'
+      preLoaderRoute: typeof AppPerformanceCyclesIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/performance/reviews/$id': {
+      id: '/_app/performance/reviews/$id'
+      path: '/performance/reviews/$id'
+      fullPath: '/performance/reviews/$id'
+      preLoaderRoute: typeof AppPerformanceReviewsIdRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/purchasing/invoices/': {
@@ -2343,6 +2527,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppSalesReturnsNewRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/training/sessions/$id': {
+      id: '/_app/training/sessions/$id'
+      path: '/training/sessions/$id'
+      fullPath: '/training/sessions/$id'
+      preLoaderRoute: typeof AppTrainingSessionsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/workflow/instances/': {
       id: '/_app/workflow/instances/'
       path: '/workflow/instances'
@@ -2409,6 +2600,8 @@ interface AppRouteChildren {
   AppPayrollMyRoute: typeof AppPayrollMyRoute
   AppPayrollSalariesRoute: typeof AppPayrollSalariesRoute
   AppPayrollSettingsRoute: typeof AppPayrollSettingsRoute
+  AppPerformanceCompetenciesRoute: typeof AppPerformanceCompetenciesRoute
+  AppPerformanceMyRoute: typeof AppPerformanceMyRoute
   AppProjectsIdRoute: typeof AppProjectsIdRoute
   AppProjectsMyTasksRoute: typeof AppProjectsMyTasksRoute
   AppProjectsTimesheetRoute: typeof AppProjectsTimesheetRoute
@@ -2417,6 +2610,9 @@ interface AppRouteChildren {
   AppReportsCashFlowRoute: typeof AppReportsCashFlowRoute
   AppReportsPurchasesRoute: typeof AppReportsPurchasesRoute
   AppReportsSalesRoute: typeof AppReportsSalesRoute
+  AppTrainingComplianceRoute: typeof AppTrainingComplianceRoute
+  AppTrainingCoursesRoute: typeof AppTrainingCoursesRoute
+  AppTrainingMyRoute: typeof AppTrainingMyRoute
   AppWorkflowDefinitionsRoute: typeof AppWorkflowDefinitionsRoute
   AppWorkflowInboxRoute: typeof AppWorkflowInboxRoute
   AppAssetsIndexRoute: typeof AppAssetsIndexRoute
@@ -2424,8 +2620,10 @@ interface AppRouteChildren {
   AppInventoryIndexRoute: typeof AppInventoryIndexRoute
   AppPartnersIndexRoute: typeof AppPartnersIndexRoute
   AppPayrollIndexRoute: typeof AppPayrollIndexRoute
+  AppPerformanceIndexRoute: typeof AppPerformanceIndexRoute
   AppProjectsIndexRoute: typeof AppProjectsIndexRoute
   AppRecruitmentIndexRoute: typeof AppRecruitmentIndexRoute
+  AppTrainingIndexRoute: typeof AppTrainingIndexRoute
   AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
   AppAssetsCountsIdRoute: typeof AppAssetsCountsIdRoute
   AppCrmLeadsIdRoute: typeof AppCrmLeadsIdRoute
@@ -2443,6 +2641,8 @@ interface AppRouteChildren {
   AppInventoryMovementsNewRoute: typeof AppInventoryMovementsNewRoute
   AppInventoryProductsIdRoute: typeof AppInventoryProductsIdRoute
   AppPayrollPayslipsIdRoute: typeof AppPayrollPayslipsIdRoute
+  AppPerformanceCyclesIdRoute: typeof AppPerformanceCyclesIdRoute
+  AppPerformanceReviewsIdRoute: typeof AppPerformanceReviewsIdRoute
   AppPurchasingInvoicesIdRoute: typeof AppPurchasingInvoicesIdRoute
   AppPurchasingInvoicesNewRoute: typeof AppPurchasingInvoicesNewRoute
   AppPurchasingOrdersIdRoute: typeof AppPurchasingOrdersIdRoute
@@ -2465,6 +2665,7 @@ interface AppRouteChildren {
   AppSalesQuotesNewRoute: typeof AppSalesQuotesNewRoute
   AppSalesReturnsIdRoute: typeof AppSalesReturnsIdRoute
   AppSalesReturnsNewRoute: typeof AppSalesReturnsNewRoute
+  AppTrainingSessionsIdRoute: typeof AppTrainingSessionsIdRoute
   AppWorkflowInstancesIdRoute: typeof AppWorkflowInstancesIdRoute
   AppAssetsAssignmentsIndexRoute: typeof AppAssetsAssignmentsIndexRoute
   AppAssetsCountsIndexRoute: typeof AppAssetsCountsIndexRoute
@@ -2530,6 +2731,8 @@ const AppRouteChildren: AppRouteChildren = {
   AppPayrollMyRoute: AppPayrollMyRoute,
   AppPayrollSalariesRoute: AppPayrollSalariesRoute,
   AppPayrollSettingsRoute: AppPayrollSettingsRoute,
+  AppPerformanceCompetenciesRoute: AppPerformanceCompetenciesRoute,
+  AppPerformanceMyRoute: AppPerformanceMyRoute,
   AppProjectsIdRoute: AppProjectsIdRoute,
   AppProjectsMyTasksRoute: AppProjectsMyTasksRoute,
   AppProjectsTimesheetRoute: AppProjectsTimesheetRoute,
@@ -2538,6 +2741,9 @@ const AppRouteChildren: AppRouteChildren = {
   AppReportsCashFlowRoute: AppReportsCashFlowRoute,
   AppReportsPurchasesRoute: AppReportsPurchasesRoute,
   AppReportsSalesRoute: AppReportsSalesRoute,
+  AppTrainingComplianceRoute: AppTrainingComplianceRoute,
+  AppTrainingCoursesRoute: AppTrainingCoursesRoute,
+  AppTrainingMyRoute: AppTrainingMyRoute,
   AppWorkflowDefinitionsRoute: AppWorkflowDefinitionsRoute,
   AppWorkflowInboxRoute: AppWorkflowInboxRoute,
   AppAssetsIndexRoute: AppAssetsIndexRoute,
@@ -2545,8 +2751,10 @@ const AppRouteChildren: AppRouteChildren = {
   AppInventoryIndexRoute: AppInventoryIndexRoute,
   AppPartnersIndexRoute: AppPartnersIndexRoute,
   AppPayrollIndexRoute: AppPayrollIndexRoute,
+  AppPerformanceIndexRoute: AppPerformanceIndexRoute,
   AppProjectsIndexRoute: AppProjectsIndexRoute,
   AppRecruitmentIndexRoute: AppRecruitmentIndexRoute,
+  AppTrainingIndexRoute: AppTrainingIndexRoute,
   AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
   AppAssetsCountsIdRoute: AppAssetsCountsIdRoute,
   AppCrmLeadsIdRoute: AppCrmLeadsIdRoute,
@@ -2564,6 +2772,8 @@ const AppRouteChildren: AppRouteChildren = {
   AppInventoryMovementsNewRoute: AppInventoryMovementsNewRoute,
   AppInventoryProductsIdRoute: AppInventoryProductsIdRoute,
   AppPayrollPayslipsIdRoute: AppPayrollPayslipsIdRoute,
+  AppPerformanceCyclesIdRoute: AppPerformanceCyclesIdRoute,
+  AppPerformanceReviewsIdRoute: AppPerformanceReviewsIdRoute,
   AppPurchasingInvoicesIdRoute: AppPurchasingInvoicesIdRoute,
   AppPurchasingInvoicesNewRoute: AppPurchasingInvoicesNewRoute,
   AppPurchasingOrdersIdRoute: AppPurchasingOrdersIdRoute,
@@ -2586,6 +2796,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppSalesQuotesNewRoute: AppSalesQuotesNewRoute,
   AppSalesReturnsIdRoute: AppSalesReturnsIdRoute,
   AppSalesReturnsNewRoute: AppSalesReturnsNewRoute,
+  AppTrainingSessionsIdRoute: AppTrainingSessionsIdRoute,
   AppWorkflowInstancesIdRoute: AppWorkflowInstancesIdRoute,
   AppAssetsAssignmentsIndexRoute: AppAssetsAssignmentsIndexRoute,
   AppAssetsCountsIndexRoute: AppAssetsCountsIndexRoute,

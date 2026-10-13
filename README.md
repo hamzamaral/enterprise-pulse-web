@@ -51,6 +51,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **İş ilanları:** işe alım hunisi, yaklaşan mülakatlar, ilan bazında başvuru hattı       | **Başvuru hattı:** sürükle-bırak aşamalar, mülakat puanı, teklif durumu             |
 | ![Başvuru](docs/screenshots/job-application.png)                                        |                                                                                     |
 | **Başvuru:** aşama çubuğu, mülakat değerlendirmeleri, teklifler, süreç geçmişi          |                                                                                     |
+| ![Değerlendirme dönemi](docs/screenshots/performance-cycle.png)                         | ![Performans değerlendirmesi](docs/screenshots/performance-review.png)              |
+| **Değerlendirme dönemi:** tamamlanma, puan dağılımı, departman kırılımı, formlar        | **Değerlendirme formu:** hedefler, yetkinlikler, öz ve yönetici puanı, sonuç        |
+| ![Eğitim oturumları](docs/screenshots/training.png)                                     | ![Zorunlu eğitim uyumu](docs/screenshots/training-compliance.png)                   |
+| **Eğitim oturumları:** eğitim saati, maliyet, memnuniyet, uyum oranı                    | **Zorunlu eğitim uyumu:** personel × eğitim sertifika matrisi                       |
 
 ## Özellikler
 
@@ -87,6 +91,12 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   sürükle-bırak başvuru hattı; aday havuzu, CV yükleme ve aday profili; mülakat planlama (mülakatçı seçimi,
   süre, yer), "Mülakatlarım" ekranında puan ve tavsiyeyle değerlendirme; teklif verme, kabul / ret / geri
   çekme; kabul edilen adayı tek adımda personele dönüştürme (departman, pozisyon, yönetici ve ilk ücret).
+- **Performans ve Eğitim:** yetkinlik kataloğu; değerlendirme dönemi oluşturma, başlatma ve kapatma; dönem
+  özeti (tamamlanma, puan dağılımı, departman bazında ortalama); "Değerlendirmelerim" ekranında kendi
+  formları ve ekip formları; hedef ekleme, öz değerlendirme, yönetici değerlendirmesi, geri gönderme ve sonucu
+  onaylama. Eğitim kataloğu, oturum planlama, katılımcı ekleme, katılım ve puan girişi; "Eğitimlerim"
+  ekranında zorunlu sertifikalar, kayda açık oturumlara kaydolma ve geri bildirim; zorunlu eğitim uyum
+  matrisi ve personel kartında "Eğitimler" sekmesi.
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.
