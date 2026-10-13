@@ -19,6 +19,7 @@ import {
 import type { EmployeeDetailDto } from '@/api/generated/model';
 import { AssignmentsTable } from '@/features/assets/assignments-table';
 import { Can } from '@/features/auth/can';
+import { SalaryHistory } from '@/features/payroll/salary-history';
 import { usePermission } from '@/features/auth/use-session';
 import { ConfirmDialog } from '@/shared/components/confirm-dialog';
 import { useTableState } from '@/shared/components/data-table/use-table-state';
@@ -260,6 +261,7 @@ export function EmployeeDetailPage({ id }: { id: string }) {
           <TabsTrigger value="overview">{t('employees.overview')}</TabsTrigger>
           {can('leave:read') && <TabsTrigger value="leave">{t('employees.leave')}</TabsTrigger>}
           {can('assets:read') && <TabsTrigger value="assets">{t('employees.assets')}</TabsTrigger>}
+          {can('payroll:read') && <TabsTrigger value="salary">{t('employees.salary')}</TabsTrigger>}
         </TabsList>
         <TabsContent value="overview">
           <Overview employee={employee} />
@@ -272,6 +274,11 @@ export function EmployeeDetailPage({ id }: { id: string }) {
         {can('assets:read') && (
           <TabsContent value="assets">
             <EmployeeAssets employeeId={employee.id} />
+          </TabsContent>
+        )}
+        {can('payroll:read') && (
+          <TabsContent value="salary">
+            <SalaryHistory employeeId={employee.id} />
           </TabsContent>
         )}
       </Tabs>

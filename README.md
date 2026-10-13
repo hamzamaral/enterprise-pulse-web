@@ -45,6 +45,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Masraf formları:** onay ve ödeme bekleyenler, aylık ve türe göre masraf               | **Masraf formu:** dövizli fişler, limit uyarıları, fiş ekleri, ödeme                |
 | ![Projeler](docs/screenshots/projects.png)                                              | ![Görev panosu](docs/screenshots/project-board.png)                                 |
 | **Projeler:** ilerleme, kayıtlı süre, bütçe kullanımı, geciken projeler                 | **Görev panosu:** sürükle-bırak, öncelik, sorumlu, harcanan / tahmini süre          |
+| ![Bordrolar](docs/screenshots/payroll.png)                                              | ![Ücret pusulası](docs/screenshots/payslip.png)                                     |
+| **Bordrolar:** aylık net ödeme ve işveren maliyeti, ödenecek maaşlar                    | **Ücret pusulası:** kazançlar, SGK ve vergi kesintileri, asgari ücret istisnaları   |
 
 ## Özellikler
 
@@ -73,6 +75,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 - **Proje Yönetimi:** proje listesi (ilerleme, kayıtlı süre, bütçe kullanımı, geciken ve bütçesi aşan projeler),
   proje ekibi ve saatlik maliyetler, sürükle-bırak görev panosu, "Görevlerim" ve haftalık "Zaman Çizelgesi"
   self-servis ekranları, proje detayında zaman kayıtları ve projeye bağlı masraflar; masraf formunda proje seçimi.
+- **Bordro:** bordro dönemleri (yeni ay hesaplama, yeniden hesaplama, onay, maaş ödemesi ve geri alma), dönem
+  detayında personel bazında brüt, SGK, vergi ve net; düzenlenebilir ücret pusulası (eksik gün, fazla mesai,
+  prim ve kesinti kalemleri) ve yazdırma; "Bordrolarım" self-servis ekranı; ücretler listesi ve ücret geçmişi
+  (personel kartında da "Ücret" sekmesi); yıla göre bordro parametreleri ve gelir vergisi dilimleri.
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.

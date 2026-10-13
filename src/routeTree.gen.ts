@@ -47,6 +47,11 @@ import { Route as AppInventoryIndexRouteImport } from './routes/_app/inventory/i
 import { Route as AppInventorySettingsRouteImport } from './routes/_app/inventory/settings'
 import { Route as AppPartnersIndexRouteImport } from './routes/_app/partners/index'
 import { Route as AppPartnersIdRouteImport } from './routes/_app/partners/$id'
+import { Route as AppPayrollIndexRouteImport } from './routes/_app/payroll/index'
+import { Route as AppPayrollIdRouteImport } from './routes/_app/payroll/$id'
+import { Route as AppPayrollMyRouteImport } from './routes/_app/payroll/my'
+import { Route as AppPayrollSalariesRouteImport } from './routes/_app/payroll/salaries'
+import { Route as AppPayrollSettingsRouteImport } from './routes/_app/payroll/settings'
 import { Route as AppProjectsIndexRouteImport } from './routes/_app/projects/index'
 import { Route as AppProjectsIdRouteImport } from './routes/_app/projects/$id'
 import { Route as AppProjectsMyTasksRouteImport } from './routes/_app/projects/my-tasks'
@@ -84,6 +89,7 @@ import { Route as AppInventoryMovementsIdRouteImport } from './routes/_app/inven
 import { Route as AppInventoryMovementsNewRouteImport } from './routes/_app/inventory/movements/new'
 import { Route as AppInventoryProductsIndexRouteImport } from './routes/_app/inventory/products/index'
 import { Route as AppInventoryProductsIdRouteImport } from './routes/_app/inventory/products/$id'
+import { Route as AppPayrollPayslipsIdRouteImport } from './routes/_app/payroll/payslips/$id'
 import { Route as AppPurchasingInvoicesIndexRouteImport } from './routes/_app/purchasing/invoices/index'
 import { Route as AppPurchasingInvoicesIdRouteImport } from './routes/_app/purchasing/invoices/$id'
 import { Route as AppPurchasingInvoicesNewRouteImport } from './routes/_app/purchasing/invoices/new'
@@ -308,6 +314,31 @@ const AppPartnersIdRoute = AppPartnersIdRouteImport.update({
   path: '/partners/$id',
   getParentRoute: () => AppRoute,
 } as any)
+const AppPayrollIndexRoute = AppPayrollIndexRouteImport.update({
+  id: '/payroll/',
+  path: '/payroll/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPayrollIdRoute = AppPayrollIdRouteImport.update({
+  id: '/payroll/$id',
+  path: '/payroll/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPayrollMyRoute = AppPayrollMyRouteImport.update({
+  id: '/payroll/my',
+  path: '/payroll/my',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPayrollSalariesRoute = AppPayrollSalariesRouteImport.update({
+  id: '/payroll/salaries',
+  path: '/payroll/salaries',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPayrollSettingsRoute = AppPayrollSettingsRouteImport.update({
+  id: '/payroll/settings',
+  path: '/payroll/settings',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppProjectsIndexRoute = AppProjectsIndexRouteImport.update({
   id: '/projects/',
   path: '/projects/',
@@ -498,6 +529,11 @@ const AppInventoryProductsIndexRoute =
 const AppInventoryProductsIdRoute = AppInventoryProductsIdRouteImport.update({
   id: '/inventory/products/$id',
   path: '/inventory/products/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPayrollPayslipsIdRoute = AppPayrollPayslipsIdRouteImport.update({
+  id: '/payroll/payslips/$id',
+  path: '/payroll/payslips/$id',
   getParentRoute: () => AppRoute,
 } as any)
 const AppPurchasingInvoicesIndexRoute =
@@ -715,6 +751,10 @@ export interface FileRoutesByFullPath {
   '/hr/timesheet': typeof AppHrTimesheetRoute
   '/inventory/settings': typeof AppInventorySettingsRoute
   '/partners/$id': typeof AppPartnersIdRoute
+  '/payroll/$id': typeof AppPayrollIdRoute
+  '/payroll/my': typeof AppPayrollMyRoute
+  '/payroll/salaries': typeof AppPayrollSalariesRoute
+  '/payroll/settings': typeof AppPayrollSettingsRoute
   '/projects/$id': typeof AppProjectsIdRoute
   '/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/projects/timesheet': typeof AppProjectsTimesheetRoute
@@ -727,6 +767,7 @@ export interface FileRoutesByFullPath {
   '/expenses/': typeof AppExpensesIndexRoute
   '/inventory/': typeof AppInventoryIndexRoute
   '/partners/': typeof AppPartnersIndexRoute
+  '/payroll/': typeof AppPayrollIndexRoute
   '/projects/': typeof AppProjectsIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
@@ -744,6 +785,7 @@ export interface FileRoutesByFullPath {
   '/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
   '/inventory/movements/new': typeof AppInventoryMovementsNewRoute
   '/inventory/products/$id': typeof AppInventoryProductsIdRoute
+  '/payroll/payslips/$id': typeof AppPayrollPayslipsIdRoute
   '/purchasing/invoices/$id': typeof AppPurchasingInvoicesIdRoute
   '/purchasing/invoices/new': typeof AppPurchasingInvoicesNewRoute
   '/purchasing/orders/$id': typeof AppPurchasingOrdersIdRoute
@@ -825,6 +867,10 @@ export interface FileRoutesByTo {
   '/hr/timesheet': typeof AppHrTimesheetRoute
   '/inventory/settings': typeof AppInventorySettingsRoute
   '/partners/$id': typeof AppPartnersIdRoute
+  '/payroll/$id': typeof AppPayrollIdRoute
+  '/payroll/my': typeof AppPayrollMyRoute
+  '/payroll/salaries': typeof AppPayrollSalariesRoute
+  '/payroll/settings': typeof AppPayrollSettingsRoute
   '/projects/$id': typeof AppProjectsIdRoute
   '/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/projects/timesheet': typeof AppProjectsTimesheetRoute
@@ -837,6 +883,7 @@ export interface FileRoutesByTo {
   '/expenses': typeof AppExpensesIndexRoute
   '/inventory': typeof AppInventoryIndexRoute
   '/partners': typeof AppPartnersIndexRoute
+  '/payroll': typeof AppPayrollIndexRoute
   '/projects': typeof AppProjectsIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
@@ -854,6 +901,7 @@ export interface FileRoutesByTo {
   '/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
   '/inventory/movements/new': typeof AppInventoryMovementsNewRoute
   '/inventory/products/$id': typeof AppInventoryProductsIdRoute
+  '/payroll/payslips/$id': typeof AppPayrollPayslipsIdRoute
   '/purchasing/invoices/$id': typeof AppPurchasingInvoicesIdRoute
   '/purchasing/invoices/new': typeof AppPurchasingInvoicesNewRoute
   '/purchasing/orders/$id': typeof AppPurchasingOrdersIdRoute
@@ -937,6 +985,10 @@ export interface FileRoutesById {
   '/_app/hr/timesheet': typeof AppHrTimesheetRoute
   '/_app/inventory/settings': typeof AppInventorySettingsRoute
   '/_app/partners/$id': typeof AppPartnersIdRoute
+  '/_app/payroll/$id': typeof AppPayrollIdRoute
+  '/_app/payroll/my': typeof AppPayrollMyRoute
+  '/_app/payroll/salaries': typeof AppPayrollSalariesRoute
+  '/_app/payroll/settings': typeof AppPayrollSettingsRoute
   '/_app/projects/$id': typeof AppProjectsIdRoute
   '/_app/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/_app/projects/timesheet': typeof AppProjectsTimesheetRoute
@@ -949,6 +1001,7 @@ export interface FileRoutesById {
   '/_app/expenses/': typeof AppExpensesIndexRoute
   '/_app/inventory/': typeof AppInventoryIndexRoute
   '/_app/partners/': typeof AppPartnersIndexRoute
+  '/_app/payroll/': typeof AppPayrollIndexRoute
   '/_app/projects/': typeof AppProjectsIndexRoute
   '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/_app/assets/counts/$id': typeof AppAssetsCountsIdRoute
@@ -966,6 +1019,7 @@ export interface FileRoutesById {
   '/_app/inventory/movements/$id': typeof AppInventoryMovementsIdRoute
   '/_app/inventory/movements/new': typeof AppInventoryMovementsNewRoute
   '/_app/inventory/products/$id': typeof AppInventoryProductsIdRoute
+  '/_app/payroll/payslips/$id': typeof AppPayrollPayslipsIdRoute
   '/_app/purchasing/invoices/$id': typeof AppPurchasingInvoicesIdRoute
   '/_app/purchasing/invoices/new': typeof AppPurchasingInvoicesNewRoute
   '/_app/purchasing/orders/$id': typeof AppPurchasingOrdersIdRoute
@@ -1049,6 +1103,10 @@ export interface FileRouteTypes {
     | '/hr/timesheet'
     | '/inventory/settings'
     | '/partners/$id'
+    | '/payroll/$id'
+    | '/payroll/my'
+    | '/payroll/salaries'
+    | '/payroll/settings'
     | '/projects/$id'
     | '/projects/my-tasks'
     | '/projects/timesheet'
@@ -1061,6 +1119,7 @@ export interface FileRouteTypes {
     | '/expenses/'
     | '/inventory/'
     | '/partners/'
+    | '/payroll/'
     | '/projects/'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
@@ -1078,6 +1137,7 @@ export interface FileRouteTypes {
     | '/inventory/movements/$id'
     | '/inventory/movements/new'
     | '/inventory/products/$id'
+    | '/payroll/payslips/$id'
     | '/purchasing/invoices/$id'
     | '/purchasing/invoices/new'
     | '/purchasing/orders/$id'
@@ -1159,6 +1219,10 @@ export interface FileRouteTypes {
     | '/hr/timesheet'
     | '/inventory/settings'
     | '/partners/$id'
+    | '/payroll/$id'
+    | '/payroll/my'
+    | '/payroll/salaries'
+    | '/payroll/settings'
     | '/projects/$id'
     | '/projects/my-tasks'
     | '/projects/timesheet'
@@ -1171,6 +1235,7 @@ export interface FileRouteTypes {
     | '/expenses'
     | '/inventory'
     | '/partners'
+    | '/payroll'
     | '/projects'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
@@ -1188,6 +1253,7 @@ export interface FileRouteTypes {
     | '/inventory/movements/$id'
     | '/inventory/movements/new'
     | '/inventory/products/$id'
+    | '/payroll/payslips/$id'
     | '/purchasing/invoices/$id'
     | '/purchasing/invoices/new'
     | '/purchasing/orders/$id'
@@ -1270,6 +1336,10 @@ export interface FileRouteTypes {
     | '/_app/hr/timesheet'
     | '/_app/inventory/settings'
     | '/_app/partners/$id'
+    | '/_app/payroll/$id'
+    | '/_app/payroll/my'
+    | '/_app/payroll/salaries'
+    | '/_app/payroll/settings'
     | '/_app/projects/$id'
     | '/_app/projects/my-tasks'
     | '/_app/projects/timesheet'
@@ -1282,6 +1352,7 @@ export interface FileRouteTypes {
     | '/_app/expenses/'
     | '/_app/inventory/'
     | '/_app/partners/'
+    | '/_app/payroll/'
     | '/_app/projects/'
     | '/_app/assets/assignments/$id'
     | '/_app/assets/counts/$id'
@@ -1299,6 +1370,7 @@ export interface FileRouteTypes {
     | '/_app/inventory/movements/$id'
     | '/_app/inventory/movements/new'
     | '/_app/inventory/products/$id'
+    | '/_app/payroll/payslips/$id'
     | '/_app/purchasing/invoices/$id'
     | '/_app/purchasing/invoices/new'
     | '/_app/purchasing/orders/$id'
@@ -1622,6 +1694,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPartnersIdRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/payroll/': {
+      id: '/_app/payroll/'
+      path: '/payroll'
+      fullPath: '/payroll/'
+      preLoaderRoute: typeof AppPayrollIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/payroll/$id': {
+      id: '/_app/payroll/$id'
+      path: '/payroll/$id'
+      fullPath: '/payroll/$id'
+      preLoaderRoute: typeof AppPayrollIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/payroll/my': {
+      id: '/_app/payroll/my'
+      path: '/payroll/my'
+      fullPath: '/payroll/my'
+      preLoaderRoute: typeof AppPayrollMyRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/payroll/salaries': {
+      id: '/_app/payroll/salaries'
+      path: '/payroll/salaries'
+      fullPath: '/payroll/salaries'
+      preLoaderRoute: typeof AppPayrollSalariesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/payroll/settings': {
+      id: '/_app/payroll/settings'
+      path: '/payroll/settings'
+      fullPath: '/payroll/settings'
+      preLoaderRoute: typeof AppPayrollSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/projects/': {
       id: '/_app/projects/'
       path: '/projects'
@@ -1879,6 +1986,13 @@ declare module '@tanstack/react-router' {
       path: '/inventory/products/$id'
       fullPath: '/inventory/products/$id'
       preLoaderRoute: typeof AppInventoryProductsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/payroll/payslips/$id': {
+      id: '/_app/payroll/payslips/$id'
+      path: '/payroll/payslips/$id'
+      fullPath: '/payroll/payslips/$id'
+      preLoaderRoute: typeof AppPayrollPayslipsIdRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/purchasing/invoices/': {
@@ -2153,6 +2267,10 @@ interface AppRouteChildren {
   AppHrTimesheetRoute: typeof AppHrTimesheetRoute
   AppInventorySettingsRoute: typeof AppInventorySettingsRoute
   AppPartnersIdRoute: typeof AppPartnersIdRoute
+  AppPayrollIdRoute: typeof AppPayrollIdRoute
+  AppPayrollMyRoute: typeof AppPayrollMyRoute
+  AppPayrollSalariesRoute: typeof AppPayrollSalariesRoute
+  AppPayrollSettingsRoute: typeof AppPayrollSettingsRoute
   AppProjectsIdRoute: typeof AppProjectsIdRoute
   AppProjectsMyTasksRoute: typeof AppProjectsMyTasksRoute
   AppProjectsTimesheetRoute: typeof AppProjectsTimesheetRoute
@@ -2165,6 +2283,7 @@ interface AppRouteChildren {
   AppExpensesIndexRoute: typeof AppExpensesIndexRoute
   AppInventoryIndexRoute: typeof AppInventoryIndexRoute
   AppPartnersIndexRoute: typeof AppPartnersIndexRoute
+  AppPayrollIndexRoute: typeof AppPayrollIndexRoute
   AppProjectsIndexRoute: typeof AppProjectsIndexRoute
   AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
   AppAssetsCountsIdRoute: typeof AppAssetsCountsIdRoute
@@ -2182,6 +2301,7 @@ interface AppRouteChildren {
   AppInventoryMovementsIdRoute: typeof AppInventoryMovementsIdRoute
   AppInventoryMovementsNewRoute: typeof AppInventoryMovementsNewRoute
   AppInventoryProductsIdRoute: typeof AppInventoryProductsIdRoute
+  AppPayrollPayslipsIdRoute: typeof AppPayrollPayslipsIdRoute
   AppPurchasingInvoicesIdRoute: typeof AppPurchasingInvoicesIdRoute
   AppPurchasingInvoicesNewRoute: typeof AppPurchasingInvoicesNewRoute
   AppPurchasingOrdersIdRoute: typeof AppPurchasingOrdersIdRoute
@@ -2261,6 +2381,10 @@ const AppRouteChildren: AppRouteChildren = {
   AppHrTimesheetRoute: AppHrTimesheetRoute,
   AppInventorySettingsRoute: AppInventorySettingsRoute,
   AppPartnersIdRoute: AppPartnersIdRoute,
+  AppPayrollIdRoute: AppPayrollIdRoute,
+  AppPayrollMyRoute: AppPayrollMyRoute,
+  AppPayrollSalariesRoute: AppPayrollSalariesRoute,
+  AppPayrollSettingsRoute: AppPayrollSettingsRoute,
   AppProjectsIdRoute: AppProjectsIdRoute,
   AppProjectsMyTasksRoute: AppProjectsMyTasksRoute,
   AppProjectsTimesheetRoute: AppProjectsTimesheetRoute,
@@ -2273,6 +2397,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppExpensesIndexRoute: AppExpensesIndexRoute,
   AppInventoryIndexRoute: AppInventoryIndexRoute,
   AppPartnersIndexRoute: AppPartnersIndexRoute,
+  AppPayrollIndexRoute: AppPayrollIndexRoute,
   AppProjectsIndexRoute: AppProjectsIndexRoute,
   AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
   AppAssetsCountsIdRoute: AppAssetsCountsIdRoute,
@@ -2290,6 +2415,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppInventoryMovementsIdRoute: AppInventoryMovementsIdRoute,
   AppInventoryMovementsNewRoute: AppInventoryMovementsNewRoute,
   AppInventoryProductsIdRoute: AppInventoryProductsIdRoute,
+  AppPayrollPayslipsIdRoute: AppPayrollPayslipsIdRoute,
   AppPurchasingInvoicesIdRoute: AppPurchasingInvoicesIdRoute,
   AppPurchasingInvoicesNewRoute: AppPurchasingInvoicesNewRoute,
   AppPurchasingOrdersIdRoute: AppPurchasingOrdersIdRoute,

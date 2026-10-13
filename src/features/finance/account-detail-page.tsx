@@ -78,6 +78,13 @@ function TreasuryDocumentLink({ entry }: { entry: TreasuryEntryDto }) {
       </Link>
     );
   }
+  if (id && type === 'PAYROLL_PAYMENT' && can('payroll:read')) {
+    return (
+      <Link to="/payroll/$id" params={{ id }} className={className}>
+        {entry.documentNumber}
+      </Link>
+    );
+  }
   return <code className="text-xs">{entry.documentNumber}</code>;
 }
 
