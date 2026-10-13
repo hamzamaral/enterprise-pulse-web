@@ -66,7 +66,8 @@
       "reports": "Reports",
       "crm": "CRM",
       "projects": "Projects",
-      "payroll": "Payroll"
+      "payroll": "Payroll",
+      "recruitment": "Recruitment"
     },
     "users": "Users",
     "roles": "Roles & Permissions",
@@ -135,7 +136,11 @@
     "myPayslips": "My payslips",
     "payrollPeriods": "Payroll",
     "salaries": "Salaries",
-    "payrollSettings": "Payroll parameters"
+    "payrollSettings": "Payroll parameters",
+    "myInterviews": "My Interviews",
+    "jobPostings": "Job Postings",
+    "candidates": "Candidates",
+    "applications": "Applications"
   },
   "auth": {
     "login": "Sign in",
@@ -287,7 +292,8 @@
       "crm": "CRM",
       "expenses": "Expenses and allowances",
       "projects": "Projects",
-      "payroll": "Payroll"
+      "payroll": "Payroll",
+      "recruitment": "Recruitment"
     },
     "actions": {
       "read": "Read",
@@ -303,7 +309,8 @@
       "receive": "Receive goods",
       "deliver": "Deliver",
       "invoice": "Invoice",
-      "pay": "Pay"
+      "pay": "Pay",
+      "hire": "Hire"
     }
   },
   "organization": {
@@ -2284,6 +2291,287 @@
       "addBracket": "Add bracket",
       "bracketOrder": "Upper limits must be ascending",
       "ceilingBelowMinimum": "The ceiling cannot be below the minimum wage"
+    }
+  },
+  "recruitment": {
+    "candidate": "Candidate",
+    "posting": "Posting",
+    "createdBy": "Created by",
+    "stages": {
+      "APPLIED": "Applied",
+      "SCREENING": "Screening",
+      "INTERVIEW": "Interview",
+      "OFFER": "Offer",
+      "HIRED": "Hired",
+      "REJECTED": "Rejected",
+      "WITHDRAWN": "Withdrawn"
+    },
+    "postingStatus": {
+      "DRAFT": "Draft",
+      "OPEN": "Open",
+      "ON_HOLD": "On hold",
+      "CLOSED": "Closed"
+    },
+    "interviewStatus": {
+      "SCHEDULED": "Scheduled",
+      "COMPLETED": "Completed",
+      "CANCELLED": "Cancelled"
+    },
+    "offerStatus": {
+      "PENDING": "Awaiting response",
+      "ACCEPTED": "Accepted",
+      "DECLINED": "Declined",
+      "WITHDRAWN": "Withdrawn"
+    },
+    "recommendations": {
+      "STRONG_YES": "Strong yes",
+      "YES": "Yes",
+      "NO": "No",
+      "STRONG_NO": "Strong no"
+    },
+    "sources": {
+      "CAREER_SITE": "Career site",
+      "REFERRAL": "Employee referral",
+      "LINKEDIN": "LinkedIn",
+      "JOB_BOARD": "Job board",
+      "AGENCY": "Agency",
+      "OTHER": "Other"
+    },
+    "interviewTypes": {
+      "PHONE": "Phone screen",
+      "VIDEO": "Video call",
+      "ONSITE": "On-site interview",
+      "TECHNICAL": "Technical interview"
+    },
+    "postings": {
+      "title": "Job Postings",
+      "subtitle": "Open positions, the hiring pipeline and recruitment performance",
+      "new": "New posting",
+      "created": "Posting {{number}} created",
+      "deleted": "Posting deleted",
+      "titleField": "Position title",
+      "location": "Work location",
+      "openings": "Openings",
+      "hiringManager": "Hiring manager",
+      "closesAt": "Application deadline",
+      "salaryMin": "Gross salary (min)",
+      "salaryMax": "Gross salary (max)",
+      "salaryRangeInvalid": "The maximum cannot be below the minimum",
+      "publishNow": "Publish now",
+      "requirements": "Requirements (one per line)",
+      "requirementsTitle": "Requirements",
+      "pipeline": "Pipeline",
+      "hired": "Hired / openings",
+      "applications": "Applications",
+      "active": "In pipeline",
+      "salary": "Gross salary range",
+      "publishedAt": "Published",
+      "closedAt": "Closed",
+      "activeOnly": "Open and on hold",
+      "publish": "Publish",
+      "hold": "Put on hold",
+      "close": "Close",
+      "resume": "Resume",
+      "reopen": "Reopen",
+      "statusChanged": {
+        "DRAFT": "Posting moved to draft",
+        "OPEN": "Posting is open",
+        "ON_HOLD": "Posting is on hold",
+        "CLOSED": "Posting closed"
+      },
+      "jobDescription": "Job description",
+      "closedApplications": "Closed applications",
+      "notTaking": {
+        "DRAFT": "This posting is a draft; publish it before adding applications.",
+        "ON_HOLD": "This posting is on hold; it takes no new applications, the pipeline can continue."
+      }
+    },
+    "summary": {
+      "openPostings": "Open postings",
+      "openPositions_one": "{{count}} open position",
+      "openPositions_other": "{{count}} open positions",
+      "activeApplications": "Applications in pipeline",
+      "newApplications_one": "{{count}} new in the last 7 days",
+      "newApplications_other": "{{count}} new in the last 7 days",
+      "interviewsThisWeek": "Interviews this week",
+      "pendingOffers_one": "{{count}} offer awaiting response",
+      "pendingOffers_other": "{{count}} offers awaiting response",
+      "hiresThisYear": "Hires this year",
+      "noHires": "No hires yet",
+      "averageDays_one": "{{count}} day on average",
+      "averageDays_other": "{{count}} days on average",
+      "funnel": "Hiring funnel (this year)",
+      "topSources": "Top sources",
+      "upcomingInterviews": "Upcoming interviews",
+      "noUpcoming": "No interviews scheduled."
+    },
+    "candidates": {
+      "title": "Candidates",
+      "subtitle": "Talent pool, CVs and application history",
+      "new": "New candidate",
+      "created": "Candidate added",
+      "deleted": "Candidate deleted",
+      "cv": "CV",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "currentTitle": "Current title",
+      "currentCompany": "Current company",
+      "source": "Source",
+      "expectedSalary": "Expected gross salary",
+      "referredBy": "Referred by",
+      "linkedin": "LinkedIn profile",
+      "urlInvalid": "Enter a valid address (https://...)",
+      "applications": "Applications",
+      "activeCount_one": "{{count}} in pipeline",
+      "activeCount_other": "{{count}} in pipeline",
+      "addedAt": "Added",
+      "allSources": "All sources",
+      "applyToPosting": "Apply to posting",
+      "cvUploaded": "CV uploaded",
+      "removeCv": "Remove CV",
+      "noCv": "No CV uploaded.",
+      "uploadCv": "Upload CV",
+      "replaceCv": "Upload new",
+      "noApplications": "This candidate has no applications."
+    },
+    "applications": {
+      "title": "Applications",
+      "subtitle": "Candidates across all postings and where they stand",
+      "new": "Add application",
+      "created": "Application added",
+      "deleted": "Application deleted",
+      "note": "Note",
+      "daysInStage_one": "{{count}} day in this stage",
+      "daysInStage_other": "{{count}} days in this stage",
+      "daysInStageShort": "Days in stage",
+      "emptyColumn": "No candidates in this stage",
+      "addExisting": "Add from pool",
+      "appliedAt": "Applied",
+      "closedAt": "Closed",
+      "stage": "Stage",
+      "rating": "Rating",
+      "nextInterview": "Next interview",
+      "inPipeline": "In pipeline",
+      "allStages": "All stages",
+      "allPostings": "All postings",
+      "since": "since {{date}}",
+      "reject": "Reject",
+      "rejectTitle": "Reject {{name}}",
+      "rejectReason": "Reason",
+      "rejected": "Application rejected",
+      "withdraw": "Candidate withdrew",
+      "withdrawTitle": "Did the candidate withdraw?",
+      "withdrawDescription": "Open offers are withdrawn and future interviews cancelled.",
+      "withdrawn": "Application marked as withdrawn",
+      "reopen": "Reconsider",
+      "reopened": "Application is back in the pipeline",
+      "closedNotice": {
+        "REJECTED": "This application was rejected on {{date}}.",
+        "WITHDRAWN": "The candidate withdrew on {{date}}."
+      },
+      "hiredNotice": "Hired on {{date}}. Employee record:",
+      "evaluation": "Evaluation",
+      "recruiterRating": "Recruiter rating",
+      "interviewRating": "Interview average",
+      "recommendationScore": "Recommendation score",
+      "feedbackCount": "{{submitted}} of {{total}} interviewers answered",
+      "candidateProfile": "Candidate profile"
+    },
+    "interviews": {
+      "title": "Interviews",
+      "new": "Schedule interview",
+      "edit": "Edit interview",
+      "schedule": "Schedule interview",
+      "scheduled": "Interview scheduled, interviewers notified",
+      "updated": "Interview updated",
+      "type": "Interview type",
+      "scheduledAt": "Date and time",
+      "duration": "Duration (minutes)",
+      "durationRange": "Must be between 15 and 480 minutes",
+      "location": "Location / link",
+      "locationHint": "Meeting room or call link",
+      "interviewers": "Interviewers",
+      "selectedCount_one": "{{count}} selected",
+      "selectedCount_other": "{{count}} selected",
+      "searchInterviewers": "Search interviewers",
+      "interviewersRequired": "Select 1 to 10 interviewers",
+      "minutes_one": "{{count}} min",
+      "minutes_other": "{{count}} min",
+      "cancel": "Cancel interview",
+      "cancelTitle": "Cancel this interview?",
+      "cancelDescription": "Interviewers are notified of the cancellation.",
+      "cancelled": "Interview cancelled",
+      "awaitingFeedback": "Awaiting feedback",
+      "none": "No interviews scheduled yet."
+    },
+    "offers": {
+      "title": "Offers",
+      "new": "Make offer",
+      "created": "Offer created",
+      "hint": "Posting range: {{range}} · Candidate expects: {{expected}}",
+      "grossSalary": "Gross monthly salary ({{currency}})",
+      "startDate": "Start date",
+      "expiresAt": "Valid until",
+      "expiresInPast": "The offer cannot expire in the past",
+      "summary": "Starts {{start}} · Valid until {{expires}}",
+      "respondedAt": "answered {{date}}",
+      "accept": "Accepted",
+      "accepted": "Offer accepted; you can hire the candidate",
+      "decline": "Declined",
+      "declined": "Offer marked as declined",
+      "withdraw": "Withdraw",
+      "withdrawn": "Offer withdrawn",
+      "none": "No offers yet."
+    },
+    "hire": {
+      "action": "Hire",
+      "title": "Hire candidate",
+      "description": "Creates an employee record for {{name}} in {{department}} / {{position}} with an opening salary of {{salary}} gross.",
+      "hireDate": "Hire date",
+      "hint": "Defaults to the start date of the accepted offer.",
+      "confirm": "Create employee record",
+      "done": "Hired, employee no. {{employeeNo}}"
+    },
+    "activity": {
+      "title": "History",
+      "applied": "Application received",
+      "stage": "{{from}} → {{to}}",
+      "interview": {
+        "SCHEDULED": "Interview scheduled",
+        "COMPLETED": "Interview completed",
+        "CANCELLED": "Interview cancelled"
+      },
+      "offer": {
+        "PENDING": "Offer made",
+        "ACCEPTED": "Offer accepted",
+        "DECLINED": "Offer declined",
+        "WITHDRAWN": "Offer withdrawn"
+      },
+      "hired": "Hired ({{employeeNo}})",
+      "note": "Note",
+      "notePlaceholder": "Call notes, reference check...",
+      "addNote": "Add note"
+    },
+    "myInterviews": {
+      "title": "My Interviews",
+      "subtitle": "Interviews you take part in and your feedback",
+      "pending": "Awaiting feedback",
+      "upcoming": "Upcoming",
+      "empty": {
+        "pending": "No interviews are waiting for your feedback.",
+        "upcoming": "You have no upcoming interviews.",
+        "all": "You have not been invited to an interview yet."
+      },
+      "yourFeedback": "Your feedback",
+      "giveFeedback": "Give feedback",
+      "editFeedback": "Edit feedback",
+      "feedbackTitle": "Interview feedback",
+      "rating": "Overall rating",
+      "recommendation": "Your recommendation",
+      "comments": "Comments",
+      "commentsHint": "Strengths, areas to improve, concerns...",
+      "submit": "Save",
+      "feedbackSaved": "Your feedback was saved"
     }
   }
 }

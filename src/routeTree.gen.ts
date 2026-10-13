@@ -56,6 +56,9 @@ import { Route as AppProjectsIndexRouteImport } from './routes/_app/projects/ind
 import { Route as AppProjectsIdRouteImport } from './routes/_app/projects/$id'
 import { Route as AppProjectsMyTasksRouteImport } from './routes/_app/projects/my-tasks'
 import { Route as AppProjectsTimesheetRouteImport } from './routes/_app/projects/timesheet'
+import { Route as AppRecruitmentIndexRouteImport } from './routes/_app/recruitment/index'
+import { Route as AppRecruitmentIdRouteImport } from './routes/_app/recruitment/$id'
+import { Route as AppRecruitmentInterviewsRouteImport } from './routes/_app/recruitment/interviews'
 import { Route as AppReportsCashFlowRouteImport } from './routes/_app/reports/cash-flow'
 import { Route as AppReportsPurchasesRouteImport } from './routes/_app/reports/purchases'
 import { Route as AppReportsSalesRouteImport } from './routes/_app/reports/sales'
@@ -105,6 +108,10 @@ import { Route as AppPurchasingReceiptsNewRouteImport } from './routes/_app/purc
 import { Route as AppPurchasingRequestsIndexRouteImport } from './routes/_app/purchasing/requests/index'
 import { Route as AppPurchasingRequestsIdRouteImport } from './routes/_app/purchasing/requests/$id'
 import { Route as AppPurchasingRequestsNewRouteImport } from './routes/_app/purchasing/requests/new'
+import { Route as AppRecruitmentApplicationsIndexRouteImport } from './routes/_app/recruitment/applications/index'
+import { Route as AppRecruitmentApplicationsIdRouteImport } from './routes/_app/recruitment/applications/$id'
+import { Route as AppRecruitmentCandidatesIndexRouteImport } from './routes/_app/recruitment/candidates/index'
+import { Route as AppRecruitmentCandidatesIdRouteImport } from './routes/_app/recruitment/candidates/$id'
 import { Route as AppSalesDeliveriesIndexRouteImport } from './routes/_app/sales/deliveries/index'
 import { Route as AppSalesDeliveriesIdRouteImport } from './routes/_app/sales/deliveries/$id'
 import { Route as AppSalesDeliveriesNewRouteImport } from './routes/_app/sales/deliveries/new'
@@ -359,6 +366,22 @@ const AppProjectsTimesheetRoute = AppProjectsTimesheetRouteImport.update({
   path: '/projects/timesheet',
   getParentRoute: () => AppRoute,
 } as any)
+const AppRecruitmentIndexRoute = AppRecruitmentIndexRouteImport.update({
+  id: '/recruitment/',
+  path: '/recruitment/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRecruitmentIdRoute = AppRecruitmentIdRouteImport.update({
+  id: '/recruitment/$id',
+  path: '/recruitment/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppRecruitmentInterviewsRoute =
+  AppRecruitmentInterviewsRouteImport.update({
+    id: '/recruitment/interviews',
+    path: '/recruitment/interviews',
+    getParentRoute: () => AppRoute,
+  } as any)
 const AppReportsCashFlowRoute = AppReportsCashFlowRouteImport.update({
   id: '/reports/cash-flow',
   path: '/reports/cash-flow',
@@ -619,6 +642,30 @@ const AppPurchasingRequestsNewRoute =
     path: '/purchasing/requests/new',
     getParentRoute: () => AppRoute,
   } as any)
+const AppRecruitmentApplicationsIndexRoute =
+  AppRecruitmentApplicationsIndexRouteImport.update({
+    id: '/recruitment/applications/',
+    path: '/recruitment/applications/',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppRecruitmentApplicationsIdRoute =
+  AppRecruitmentApplicationsIdRouteImport.update({
+    id: '/recruitment/applications/$id',
+    path: '/recruitment/applications/$id',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppRecruitmentCandidatesIndexRoute =
+  AppRecruitmentCandidatesIndexRouteImport.update({
+    id: '/recruitment/candidates/',
+    path: '/recruitment/candidates/',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppRecruitmentCandidatesIdRoute =
+  AppRecruitmentCandidatesIdRouteImport.update({
+    id: '/recruitment/candidates/$id',
+    path: '/recruitment/candidates/$id',
+    getParentRoute: () => AppRoute,
+  } as any)
 const AppSalesDeliveriesIndexRoute = AppSalesDeliveriesIndexRouteImport.update({
   id: '/sales/deliveries/',
   path: '/sales/deliveries/',
@@ -758,6 +805,8 @@ export interface FileRoutesByFullPath {
   '/projects/$id': typeof AppProjectsIdRoute
   '/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/projects/timesheet': typeof AppProjectsTimesheetRoute
+  '/recruitment/$id': typeof AppRecruitmentIdRoute
+  '/recruitment/interviews': typeof AppRecruitmentInterviewsRoute
   '/reports/cash-flow': typeof AppReportsCashFlowRoute
   '/reports/purchases': typeof AppReportsPurchasesRoute
   '/reports/sales': typeof AppReportsSalesRoute
@@ -769,6 +818,7 @@ export interface FileRoutesByFullPath {
   '/partners/': typeof AppPartnersIndexRoute
   '/payroll/': typeof AppPayrollIndexRoute
   '/projects/': typeof AppProjectsIndexRoute
+  '/recruitment/': typeof AppRecruitmentIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -796,6 +846,8 @@ export interface FileRoutesByFullPath {
   '/purchasing/receipts/new': typeof AppPurchasingReceiptsNewRoute
   '/purchasing/requests/$id': typeof AppPurchasingRequestsIdRoute
   '/purchasing/requests/new': typeof AppPurchasingRequestsNewRoute
+  '/recruitment/applications/$id': typeof AppRecruitmentApplicationsIdRoute
+  '/recruitment/candidates/$id': typeof AppRecruitmentCandidatesIdRoute
   '/sales/deliveries/$id': typeof AppSalesDeliveriesIdRoute
   '/sales/deliveries/new': typeof AppSalesDeliveriesNewRoute
   '/sales/invoices/$id': typeof AppSalesInvoicesIdRoute
@@ -824,6 +876,8 @@ export interface FileRoutesByFullPath {
   '/purchasing/quotes/': typeof AppPurchasingQuotesIndexRoute
   '/purchasing/receipts/': typeof AppPurchasingReceiptsIndexRoute
   '/purchasing/requests/': typeof AppPurchasingRequestsIndexRoute
+  '/recruitment/applications/': typeof AppRecruitmentApplicationsIndexRoute
+  '/recruitment/candidates/': typeof AppRecruitmentCandidatesIndexRoute
   '/sales/deliveries/': typeof AppSalesDeliveriesIndexRoute
   '/sales/invoices/': typeof AppSalesInvoicesIndexRoute
   '/sales/orders/': typeof AppSalesOrdersIndexRoute
@@ -874,6 +928,8 @@ export interface FileRoutesByTo {
   '/projects/$id': typeof AppProjectsIdRoute
   '/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/projects/timesheet': typeof AppProjectsTimesheetRoute
+  '/recruitment/$id': typeof AppRecruitmentIdRoute
+  '/recruitment/interviews': typeof AppRecruitmentInterviewsRoute
   '/reports/cash-flow': typeof AppReportsCashFlowRoute
   '/reports/purchases': typeof AppReportsPurchasesRoute
   '/reports/sales': typeof AppReportsSalesRoute
@@ -885,6 +941,7 @@ export interface FileRoutesByTo {
   '/partners': typeof AppPartnersIndexRoute
   '/payroll': typeof AppPayrollIndexRoute
   '/projects': typeof AppProjectsIndexRoute
+  '/recruitment': typeof AppRecruitmentIndexRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -912,6 +969,8 @@ export interface FileRoutesByTo {
   '/purchasing/receipts/new': typeof AppPurchasingReceiptsNewRoute
   '/purchasing/requests/$id': typeof AppPurchasingRequestsIdRoute
   '/purchasing/requests/new': typeof AppPurchasingRequestsNewRoute
+  '/recruitment/applications/$id': typeof AppRecruitmentApplicationsIdRoute
+  '/recruitment/candidates/$id': typeof AppRecruitmentCandidatesIdRoute
   '/sales/deliveries/$id': typeof AppSalesDeliveriesIdRoute
   '/sales/deliveries/new': typeof AppSalesDeliveriesNewRoute
   '/sales/invoices/$id': typeof AppSalesInvoicesIdRoute
@@ -940,6 +999,8 @@ export interface FileRoutesByTo {
   '/purchasing/quotes': typeof AppPurchasingQuotesIndexRoute
   '/purchasing/receipts': typeof AppPurchasingReceiptsIndexRoute
   '/purchasing/requests': typeof AppPurchasingRequestsIndexRoute
+  '/recruitment/applications': typeof AppRecruitmentApplicationsIndexRoute
+  '/recruitment/candidates': typeof AppRecruitmentCandidatesIndexRoute
   '/sales/deliveries': typeof AppSalesDeliveriesIndexRoute
   '/sales/invoices': typeof AppSalesInvoicesIndexRoute
   '/sales/orders': typeof AppSalesOrdersIndexRoute
@@ -992,6 +1053,8 @@ export interface FileRoutesById {
   '/_app/projects/$id': typeof AppProjectsIdRoute
   '/_app/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/_app/projects/timesheet': typeof AppProjectsTimesheetRoute
+  '/_app/recruitment/$id': typeof AppRecruitmentIdRoute
+  '/_app/recruitment/interviews': typeof AppRecruitmentInterviewsRoute
   '/_app/reports/cash-flow': typeof AppReportsCashFlowRoute
   '/_app/reports/purchases': typeof AppReportsPurchasesRoute
   '/_app/reports/sales': typeof AppReportsSalesRoute
@@ -1003,6 +1066,7 @@ export interface FileRoutesById {
   '/_app/partners/': typeof AppPartnersIndexRoute
   '/_app/payroll/': typeof AppPayrollIndexRoute
   '/_app/projects/': typeof AppProjectsIndexRoute
+  '/_app/recruitment/': typeof AppRecruitmentIndexRoute
   '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/_app/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/_app/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -1030,6 +1094,8 @@ export interface FileRoutesById {
   '/_app/purchasing/receipts/new': typeof AppPurchasingReceiptsNewRoute
   '/_app/purchasing/requests/$id': typeof AppPurchasingRequestsIdRoute
   '/_app/purchasing/requests/new': typeof AppPurchasingRequestsNewRoute
+  '/_app/recruitment/applications/$id': typeof AppRecruitmentApplicationsIdRoute
+  '/_app/recruitment/candidates/$id': typeof AppRecruitmentCandidatesIdRoute
   '/_app/sales/deliveries/$id': typeof AppSalesDeliveriesIdRoute
   '/_app/sales/deliveries/new': typeof AppSalesDeliveriesNewRoute
   '/_app/sales/invoices/$id': typeof AppSalesInvoicesIdRoute
@@ -1058,6 +1124,8 @@ export interface FileRoutesById {
   '/_app/purchasing/quotes/': typeof AppPurchasingQuotesIndexRoute
   '/_app/purchasing/receipts/': typeof AppPurchasingReceiptsIndexRoute
   '/_app/purchasing/requests/': typeof AppPurchasingRequestsIndexRoute
+  '/_app/recruitment/applications/': typeof AppRecruitmentApplicationsIndexRoute
+  '/_app/recruitment/candidates/': typeof AppRecruitmentCandidatesIndexRoute
   '/_app/sales/deliveries/': typeof AppSalesDeliveriesIndexRoute
   '/_app/sales/invoices/': typeof AppSalesInvoicesIndexRoute
   '/_app/sales/orders/': typeof AppSalesOrdersIndexRoute
@@ -1110,6 +1178,8 @@ export interface FileRouteTypes {
     | '/projects/$id'
     | '/projects/my-tasks'
     | '/projects/timesheet'
+    | '/recruitment/$id'
+    | '/recruitment/interviews'
     | '/reports/cash-flow'
     | '/reports/purchases'
     | '/reports/sales'
@@ -1121,6 +1191,7 @@ export interface FileRouteTypes {
     | '/partners/'
     | '/payroll/'
     | '/projects/'
+    | '/recruitment/'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
     | '/crm/leads/$id'
@@ -1148,6 +1219,8 @@ export interface FileRouteTypes {
     | '/purchasing/receipts/new'
     | '/purchasing/requests/$id'
     | '/purchasing/requests/new'
+    | '/recruitment/applications/$id'
+    | '/recruitment/candidates/$id'
     | '/sales/deliveries/$id'
     | '/sales/deliveries/new'
     | '/sales/invoices/$id'
@@ -1176,6 +1249,8 @@ export interface FileRouteTypes {
     | '/purchasing/quotes/'
     | '/purchasing/receipts/'
     | '/purchasing/requests/'
+    | '/recruitment/applications/'
+    | '/recruitment/candidates/'
     | '/sales/deliveries/'
     | '/sales/invoices/'
     | '/sales/orders/'
@@ -1226,6 +1301,8 @@ export interface FileRouteTypes {
     | '/projects/$id'
     | '/projects/my-tasks'
     | '/projects/timesheet'
+    | '/recruitment/$id'
+    | '/recruitment/interviews'
     | '/reports/cash-flow'
     | '/reports/purchases'
     | '/reports/sales'
@@ -1237,6 +1314,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/payroll'
     | '/projects'
+    | '/recruitment'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
     | '/crm/leads/$id'
@@ -1264,6 +1342,8 @@ export interface FileRouteTypes {
     | '/purchasing/receipts/new'
     | '/purchasing/requests/$id'
     | '/purchasing/requests/new'
+    | '/recruitment/applications/$id'
+    | '/recruitment/candidates/$id'
     | '/sales/deliveries/$id'
     | '/sales/deliveries/new'
     | '/sales/invoices/$id'
@@ -1292,6 +1372,8 @@ export interface FileRouteTypes {
     | '/purchasing/quotes'
     | '/purchasing/receipts'
     | '/purchasing/requests'
+    | '/recruitment/applications'
+    | '/recruitment/candidates'
     | '/sales/deliveries'
     | '/sales/invoices'
     | '/sales/orders'
@@ -1343,6 +1425,8 @@ export interface FileRouteTypes {
     | '/_app/projects/$id'
     | '/_app/projects/my-tasks'
     | '/_app/projects/timesheet'
+    | '/_app/recruitment/$id'
+    | '/_app/recruitment/interviews'
     | '/_app/reports/cash-flow'
     | '/_app/reports/purchases'
     | '/_app/reports/sales'
@@ -1354,6 +1438,7 @@ export interface FileRouteTypes {
     | '/_app/partners/'
     | '/_app/payroll/'
     | '/_app/projects/'
+    | '/_app/recruitment/'
     | '/_app/assets/assignments/$id'
     | '/_app/assets/counts/$id'
     | '/_app/crm/leads/$id'
@@ -1381,6 +1466,8 @@ export interface FileRouteTypes {
     | '/_app/purchasing/receipts/new'
     | '/_app/purchasing/requests/$id'
     | '/_app/purchasing/requests/new'
+    | '/_app/recruitment/applications/$id'
+    | '/_app/recruitment/candidates/$id'
     | '/_app/sales/deliveries/$id'
     | '/_app/sales/deliveries/new'
     | '/_app/sales/invoices/$id'
@@ -1409,6 +1496,8 @@ export interface FileRouteTypes {
     | '/_app/purchasing/quotes/'
     | '/_app/purchasing/receipts/'
     | '/_app/purchasing/requests/'
+    | '/_app/recruitment/applications/'
+    | '/_app/recruitment/candidates/'
     | '/_app/sales/deliveries/'
     | '/_app/sales/invoices/'
     | '/_app/sales/orders/'
@@ -1757,6 +1846,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppProjectsTimesheetRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/recruitment/': {
+      id: '/_app/recruitment/'
+      path: '/recruitment'
+      fullPath: '/recruitment/'
+      preLoaderRoute: typeof AppRecruitmentIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/recruitment/$id': {
+      id: '/_app/recruitment/$id'
+      path: '/recruitment/$id'
+      fullPath: '/recruitment/$id'
+      preLoaderRoute: typeof AppRecruitmentIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/recruitment/interviews': {
+      id: '/_app/recruitment/interviews'
+      path: '/recruitment/interviews'
+      fullPath: '/recruitment/interviews'
+      preLoaderRoute: typeof AppRecruitmentInterviewsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/reports/cash-flow': {
       id: '/_app/reports/cash-flow'
       path: '/reports/cash-flow'
@@ -2100,6 +2210,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPurchasingRequestsNewRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/recruitment/applications/': {
+      id: '/_app/recruitment/applications/'
+      path: '/recruitment/applications'
+      fullPath: '/recruitment/applications/'
+      preLoaderRoute: typeof AppRecruitmentApplicationsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/recruitment/applications/$id': {
+      id: '/_app/recruitment/applications/$id'
+      path: '/recruitment/applications/$id'
+      fullPath: '/recruitment/applications/$id'
+      preLoaderRoute: typeof AppRecruitmentApplicationsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/recruitment/candidates/': {
+      id: '/_app/recruitment/candidates/'
+      path: '/recruitment/candidates'
+      fullPath: '/recruitment/candidates/'
+      preLoaderRoute: typeof AppRecruitmentCandidatesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/recruitment/candidates/$id': {
+      id: '/_app/recruitment/candidates/$id'
+      path: '/recruitment/candidates/$id'
+      fullPath: '/recruitment/candidates/$id'
+      preLoaderRoute: typeof AppRecruitmentCandidatesIdRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/sales/deliveries/': {
       id: '/_app/sales/deliveries/'
       path: '/sales/deliveries'
@@ -2274,6 +2412,8 @@ interface AppRouteChildren {
   AppProjectsIdRoute: typeof AppProjectsIdRoute
   AppProjectsMyTasksRoute: typeof AppProjectsMyTasksRoute
   AppProjectsTimesheetRoute: typeof AppProjectsTimesheetRoute
+  AppRecruitmentIdRoute: typeof AppRecruitmentIdRoute
+  AppRecruitmentInterviewsRoute: typeof AppRecruitmentInterviewsRoute
   AppReportsCashFlowRoute: typeof AppReportsCashFlowRoute
   AppReportsPurchasesRoute: typeof AppReportsPurchasesRoute
   AppReportsSalesRoute: typeof AppReportsSalesRoute
@@ -2285,6 +2425,7 @@ interface AppRouteChildren {
   AppPartnersIndexRoute: typeof AppPartnersIndexRoute
   AppPayrollIndexRoute: typeof AppPayrollIndexRoute
   AppProjectsIndexRoute: typeof AppProjectsIndexRoute
+  AppRecruitmentIndexRoute: typeof AppRecruitmentIndexRoute
   AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
   AppAssetsCountsIdRoute: typeof AppAssetsCountsIdRoute
   AppCrmLeadsIdRoute: typeof AppCrmLeadsIdRoute
@@ -2312,6 +2453,8 @@ interface AppRouteChildren {
   AppPurchasingReceiptsNewRoute: typeof AppPurchasingReceiptsNewRoute
   AppPurchasingRequestsIdRoute: typeof AppPurchasingRequestsIdRoute
   AppPurchasingRequestsNewRoute: typeof AppPurchasingRequestsNewRoute
+  AppRecruitmentApplicationsIdRoute: typeof AppRecruitmentApplicationsIdRoute
+  AppRecruitmentCandidatesIdRoute: typeof AppRecruitmentCandidatesIdRoute
   AppSalesDeliveriesIdRoute: typeof AppSalesDeliveriesIdRoute
   AppSalesDeliveriesNewRoute: typeof AppSalesDeliveriesNewRoute
   AppSalesInvoicesIdRoute: typeof AppSalesInvoicesIdRoute
@@ -2340,6 +2483,8 @@ interface AppRouteChildren {
   AppPurchasingQuotesIndexRoute: typeof AppPurchasingQuotesIndexRoute
   AppPurchasingReceiptsIndexRoute: typeof AppPurchasingReceiptsIndexRoute
   AppPurchasingRequestsIndexRoute: typeof AppPurchasingRequestsIndexRoute
+  AppRecruitmentApplicationsIndexRoute: typeof AppRecruitmentApplicationsIndexRoute
+  AppRecruitmentCandidatesIndexRoute: typeof AppRecruitmentCandidatesIndexRoute
   AppSalesDeliveriesIndexRoute: typeof AppSalesDeliveriesIndexRoute
   AppSalesInvoicesIndexRoute: typeof AppSalesInvoicesIndexRoute
   AppSalesOrdersIndexRoute: typeof AppSalesOrdersIndexRoute
@@ -2388,6 +2533,8 @@ const AppRouteChildren: AppRouteChildren = {
   AppProjectsIdRoute: AppProjectsIdRoute,
   AppProjectsMyTasksRoute: AppProjectsMyTasksRoute,
   AppProjectsTimesheetRoute: AppProjectsTimesheetRoute,
+  AppRecruitmentIdRoute: AppRecruitmentIdRoute,
+  AppRecruitmentInterviewsRoute: AppRecruitmentInterviewsRoute,
   AppReportsCashFlowRoute: AppReportsCashFlowRoute,
   AppReportsPurchasesRoute: AppReportsPurchasesRoute,
   AppReportsSalesRoute: AppReportsSalesRoute,
@@ -2399,6 +2546,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppPartnersIndexRoute: AppPartnersIndexRoute,
   AppPayrollIndexRoute: AppPayrollIndexRoute,
   AppProjectsIndexRoute: AppProjectsIndexRoute,
+  AppRecruitmentIndexRoute: AppRecruitmentIndexRoute,
   AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
   AppAssetsCountsIdRoute: AppAssetsCountsIdRoute,
   AppCrmLeadsIdRoute: AppCrmLeadsIdRoute,
@@ -2426,6 +2574,8 @@ const AppRouteChildren: AppRouteChildren = {
   AppPurchasingReceiptsNewRoute: AppPurchasingReceiptsNewRoute,
   AppPurchasingRequestsIdRoute: AppPurchasingRequestsIdRoute,
   AppPurchasingRequestsNewRoute: AppPurchasingRequestsNewRoute,
+  AppRecruitmentApplicationsIdRoute: AppRecruitmentApplicationsIdRoute,
+  AppRecruitmentCandidatesIdRoute: AppRecruitmentCandidatesIdRoute,
   AppSalesDeliveriesIdRoute: AppSalesDeliveriesIdRoute,
   AppSalesDeliveriesNewRoute: AppSalesDeliveriesNewRoute,
   AppSalesInvoicesIdRoute: AppSalesInvoicesIdRoute,
@@ -2454,6 +2604,8 @@ const AppRouteChildren: AppRouteChildren = {
   AppPurchasingQuotesIndexRoute: AppPurchasingQuotesIndexRoute,
   AppPurchasingReceiptsIndexRoute: AppPurchasingReceiptsIndexRoute,
   AppPurchasingRequestsIndexRoute: AppPurchasingRequestsIndexRoute,
+  AppRecruitmentApplicationsIndexRoute: AppRecruitmentApplicationsIndexRoute,
+  AppRecruitmentCandidatesIndexRoute: AppRecruitmentCandidatesIndexRoute,
   AppSalesDeliveriesIndexRoute: AppSalesDeliveriesIndexRoute,
   AppSalesInvoicesIndexRoute: AppSalesInvoicesIndexRoute,
   AppSalesOrdersIndexRoute: AppSalesOrdersIndexRoute,

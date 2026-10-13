@@ -47,6 +47,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Projeler:** ilerleme, kayıtlı süre, bütçe kullanımı, geciken projeler                 | **Görev panosu:** sürükle-bırak, öncelik, sorumlu, harcanan / tahmini süre          |
 | ![Bordrolar](docs/screenshots/payroll.png)                                              | ![Ücret pusulası](docs/screenshots/payslip.png)                                     |
 | **Bordrolar:** aylık net ödeme ve işveren maliyeti, ödenecek maaşlar                    | **Ücret pusulası:** kazançlar, SGK ve vergi kesintileri, asgari ücret istisnaları   |
+| ![İş ilanları](docs/screenshots/recruitment.png)                                        | ![Başvuru hattı](docs/screenshots/recruitment-pipeline.png)                         |
+| **İş ilanları:** işe alım hunisi, yaklaşan mülakatlar, ilan bazında başvuru hattı       | **Başvuru hattı:** sürükle-bırak aşamalar, mülakat puanı, teklif durumu             |
+| ![Başvuru](docs/screenshots/job-application.png)                                        |                                                                                     |
+| **Başvuru:** aşama çubuğu, mülakat değerlendirmeleri, teklifler, süreç geçmişi          |                                                                                     |
 
 ## Özellikler
 
@@ -79,6 +83,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   detayında personel bazında brüt, SGK, vergi ve net; düzenlenebilir ücret pusulası (eksik gün, fazla mesai,
   prim ve kesinti kalemleri) ve yazdırma; "Bordrolarım" self-servis ekranı; ücretler listesi ve ücret geçmişi
   (personel kartında da "Ücret" sekmesi); yıla göre bordro parametreleri ve gelir vergisi dilimleri.
+- **İşe Alım:** iş ilanları (yayınlama, bekletme, kapatma, yeniden açma) ve işe alım hunisi; ilan başına
+  sürükle-bırak başvuru hattı; aday havuzu, CV yükleme ve aday profili; mülakat planlama (mülakatçı seçimi,
+  süre, yer), "Mülakatlarım" ekranında puan ve tavsiyeyle değerlendirme; teklif verme, kabul / ret / geri
+  çekme; kabul edilen adayı tek adımda personele dönüştürme (departman, pozisyon, yönetici ve ilk ücret).
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.

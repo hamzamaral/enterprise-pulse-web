@@ -66,7 +66,8 @@
       "reports": "Raporlar",
       "crm": "CRM",
       "projects": "Proje Yönetimi",
-      "payroll": "Bordro"
+      "payroll": "Bordro",
+      "recruitment": "İşe Alım"
     },
     "users": "Kullanıcılar",
     "roles": "Roller ve İzinler",
@@ -135,7 +136,11 @@
     "myPayslips": "Bordrolarım",
     "payrollPeriods": "Bordrolar",
     "salaries": "Ücretler",
-    "payrollSettings": "Bordro parametreleri"
+    "payrollSettings": "Bordro parametreleri",
+    "myInterviews": "Mülakatlarım",
+    "jobPostings": "İş İlanları",
+    "candidates": "Adaylar",
+    "applications": "Başvurular"
   },
   "auth": {
     "login": "Giriş yap",
@@ -287,7 +292,8 @@
       "crm": "CRM",
       "expenses": "Masraf ve harcırah",
       "projects": "Proje yönetimi",
-      "payroll": "Bordro"
+      "payroll": "Bordro",
+      "recruitment": "İşe alım"
     },
     "actions": {
       "read": "Görüntüle",
@@ -303,7 +309,8 @@
       "receive": "Mal kabul",
       "deliver": "Sevkiyat",
       "invoice": "Faturalama",
-      "pay": "Ödeme"
+      "pay": "Ödeme",
+      "hire": "İşe alma"
     }
   },
   "organization": {
@@ -2284,6 +2291,287 @@
       "addBracket": "Dilim ekle",
       "bracketOrder": "Üst sınırlar artan sırada olmalı",
       "ceilingBelowMinimum": "SGK tavanı asgari ücretten düşük olamaz"
+    }
+  },
+  "recruitment": {
+    "candidate": "Aday",
+    "posting": "İlan",
+    "createdBy": "Oluşturan",
+    "stages": {
+      "APPLIED": "Başvurdu",
+      "SCREENING": "Ön değerlendirme",
+      "INTERVIEW": "Mülakat",
+      "OFFER": "Teklif",
+      "HIRED": "İşe alındı",
+      "REJECTED": "Reddedildi",
+      "WITHDRAWN": "Geri çekildi"
+    },
+    "postingStatus": {
+      "DRAFT": "Taslak",
+      "OPEN": "Yayında",
+      "ON_HOLD": "Beklemede",
+      "CLOSED": "Kapandı"
+    },
+    "interviewStatus": {
+      "SCHEDULED": "Planlandı",
+      "COMPLETED": "Tamamlandı",
+      "CANCELLED": "İptal edildi"
+    },
+    "offerStatus": {
+      "PENDING": "Yanıt bekleniyor",
+      "ACCEPTED": "Kabul edildi",
+      "DECLINED": "Reddedildi",
+      "WITHDRAWN": "Geri çekildi"
+    },
+    "recommendations": {
+      "STRONG_YES": "Kesinlikle evet",
+      "YES": "Evet",
+      "NO": "Hayır",
+      "STRONG_NO": "Kesinlikle hayır"
+    },
+    "sources": {
+      "CAREER_SITE": "Kariyer sayfası",
+      "REFERRAL": "Çalışan önerisi",
+      "LINKEDIN": "LinkedIn",
+      "JOB_BOARD": "İş ilanı sitesi",
+      "AGENCY": "Danışmanlık firması",
+      "OTHER": "Diğer"
+    },
+    "interviewTypes": {
+      "PHONE": "Telefon görüşmesi",
+      "VIDEO": "Görüntülü görüşme",
+      "ONSITE": "Yüz yüze görüşme",
+      "TECHNICAL": "Teknik mülakat"
+    },
+    "postings": {
+      "title": "İş İlanları",
+      "subtitle": "Açık pozisyonlar, başvuru hattı ve işe alım performansı",
+      "new": "Yeni ilan",
+      "created": "{{number}} numaralı ilan oluşturuldu",
+      "deleted": "İlan silindi",
+      "titleField": "Pozisyon adı",
+      "location": "Çalışma yeri",
+      "openings": "Kadro sayısı",
+      "hiringManager": "İşe alım yöneticisi",
+      "closesAt": "Son başvuru",
+      "salaryMin": "Brüt ücret (en az)",
+      "salaryMax": "Brüt ücret (en çok)",
+      "salaryRangeInvalid": "Üst sınır alt sınırdan küçük olamaz",
+      "publishNow": "Hemen yayınla",
+      "requirements": "Aranan nitelikler (her satıra bir madde)",
+      "requirementsTitle": "Aranan nitelikler",
+      "pipeline": "Başvuru hattı",
+      "hired": "Alınan / kadro",
+      "applications": "Başvuru",
+      "active": "Süreçte",
+      "salary": "Brüt ücret aralığı",
+      "publishedAt": "Yayın tarihi",
+      "closedAt": "Kapanış",
+      "activeOnly": "Açık ve bekleyen",
+      "publish": "Yayınla",
+      "hold": "Beklet",
+      "close": "Kapat",
+      "resume": "Yayına devam et",
+      "reopen": "Yeniden aç",
+      "statusChanged": {
+        "DRAFT": "İlan taslağa alındı",
+        "OPEN": "İlan yayında",
+        "ON_HOLD": "İlan bekletiliyor",
+        "CLOSED": "İlan kapatıldı"
+      },
+      "jobDescription": "İş tanımı",
+      "closedApplications": "Sonuçlanan başvurular",
+      "notTaking": {
+        "DRAFT": "İlan taslak; başvuru eklemek için önce yayınlayın.",
+        "ON_HOLD": "İlan beklemede; yeni başvuru alınmıyor, mevcut süreç devam edebilir."
+      }
+    },
+    "summary": {
+      "openPostings": "Yayındaki ilanlar",
+      "openPositions_one": "{{count}} açık kadro",
+      "openPositions_other": "{{count}} açık kadro",
+      "activeApplications": "Süreçteki başvurular",
+      "newApplications_one": "Son 7 günde {{count}} yeni",
+      "newApplications_other": "Son 7 günde {{count}} yeni",
+      "interviewsThisWeek": "Bu haftaki mülakatlar",
+      "pendingOffers_one": "{{count}} teklif yanıt bekliyor",
+      "pendingOffers_other": "{{count}} teklif yanıt bekliyor",
+      "hiresThisYear": "Bu yıl işe alınan",
+      "noHires": "Henüz işe alım yok",
+      "averageDays_one": "Ortalama {{count}} günde",
+      "averageDays_other": "Ortalama {{count}} günde",
+      "funnel": "İşe alım hunisi (bu yıl)",
+      "topSources": "En çok başvuru gelen kaynaklar",
+      "upcomingInterviews": "Yaklaşan mülakatlar",
+      "noUpcoming": "Planlanmış mülakat yok."
+    },
+    "candidates": {
+      "title": "Adaylar",
+      "subtitle": "Aday havuzu, özgeçmişler ve başvuru geçmişi",
+      "new": "Yeni aday",
+      "created": "Aday eklendi",
+      "deleted": "Aday silindi",
+      "cv": "Özgeçmiş",
+      "firstName": "Ad",
+      "lastName": "Soyad",
+      "currentTitle": "Mevcut unvan",
+      "currentCompany": "Mevcut şirket",
+      "source": "Kaynak",
+      "expectedSalary": "Beklenen brüt ücret",
+      "referredBy": "Öneren çalışan",
+      "linkedin": "LinkedIn profili",
+      "urlInvalid": "Geçerli bir adres girin (https://...)",
+      "applications": "Başvurular",
+      "activeCount_one": "{{count}} süreçte",
+      "activeCount_other": "{{count}} süreçte",
+      "addedAt": "Eklenme",
+      "allSources": "Tüm kaynaklar",
+      "applyToPosting": "İlana başvur",
+      "cvUploaded": "Özgeçmiş yüklendi",
+      "removeCv": "Özgeçmişi kaldır",
+      "noCv": "Özgeçmiş yüklenmedi.",
+      "uploadCv": "Özgeçmiş yükle",
+      "replaceCv": "Yenisini yükle",
+      "noApplications": "Bu adayın başvurusu yok."
+    },
+    "applications": {
+      "title": "Başvurular",
+      "subtitle": "Tüm ilanlardaki adaylar ve süreç durumları",
+      "new": "Başvuru ekle",
+      "created": "Başvuru eklendi",
+      "deleted": "Başvuru silindi",
+      "note": "Not",
+      "daysInStage_one": "{{count}} gündür bu aşamada",
+      "daysInStage_other": "{{count}} gündür bu aşamada",
+      "daysInStageShort": "Aşamadaki gün",
+      "emptyColumn": "Bu aşamada aday yok",
+      "addExisting": "Havuzdan aday ekle",
+      "appliedAt": "Başvuru tarihi",
+      "closedAt": "Sonuç tarihi",
+      "stage": "Aşama",
+      "rating": "Puan",
+      "nextInterview": "Sıradaki mülakat",
+      "inPipeline": "Süreçtekiler",
+      "allStages": "Tüm aşamalar",
+      "allPostings": "Tüm ilanlar",
+      "since": "{{date}} tarihinden beri",
+      "reject": "Reddet",
+      "rejectTitle": "{{name}} adayını reddet",
+      "rejectReason": "Ret nedeni",
+      "rejected": "Başvuru reddedildi",
+      "withdraw": "Aday çekildi",
+      "withdrawTitle": "Aday süreçten çekildi mi?",
+      "withdrawDescription": "Bekleyen teklifler geri çekilir, ileri tarihli mülakatlar iptal edilir.",
+      "withdrawn": "Başvuru geri çekildi olarak işaretlendi",
+      "reopen": "Yeniden değerlendir",
+      "reopened": "Başvuru yeniden sürece alındı",
+      "closedNotice": {
+        "REJECTED": "Bu başvuru {{date}} tarihinde reddedildi.",
+        "WITHDRAWN": "Aday {{date}} tarihinde süreçten çekildi."
+      },
+      "hiredNotice": "Aday {{date}} tarihinde işe alındı. Personel kaydı:",
+      "evaluation": "Değerlendirme",
+      "recruiterRating": "İK puanı",
+      "interviewRating": "Mülakat ortalaması",
+      "recommendationScore": "Tavsiye skoru",
+      "feedbackCount": "{{total}} mülakatçıdan {{submitted}} değerlendirme",
+      "candidateProfile": "Aday profili"
+    },
+    "interviews": {
+      "title": "Mülakatlar",
+      "new": "Mülakat planla",
+      "edit": "Mülakatı düzenle",
+      "schedule": "Mülakat planla",
+      "scheduled": "Mülakat planlandı, mülakatçılara bildirim gönderildi",
+      "updated": "Mülakat güncellendi",
+      "type": "Mülakat türü",
+      "scheduledAt": "Tarih ve saat",
+      "duration": "Süre (dakika)",
+      "durationRange": "15 ile 480 dakika arasında olmalı",
+      "location": "Yer / bağlantı",
+      "locationHint": "Toplantı odası veya görüşme bağlantısı",
+      "interviewers": "Mülakatçılar",
+      "selectedCount_one": "{{count}} seçili",
+      "selectedCount_other": "{{count}} seçili",
+      "searchInterviewers": "Mülakatçı ara",
+      "interviewersRequired": "1 ile 10 arasında mülakatçı seçin",
+      "minutes_one": "{{count}} dk",
+      "minutes_other": "{{count}} dk",
+      "cancel": "İptal et",
+      "cancelTitle": "Mülakat iptal edilsin mi?",
+      "cancelDescription": "Mülakatçılara iptal bildirimi gönderilir.",
+      "cancelled": "Mülakat iptal edildi",
+      "awaitingFeedback": "Değerlendirme bekleniyor",
+      "none": "Henüz mülakat planlanmadı."
+    },
+    "offers": {
+      "title": "Teklifler",
+      "new": "Teklif ver",
+      "created": "Teklif oluşturuldu",
+      "hint": "İlan aralığı: {{range}} · Adayın beklentisi: {{expected}}",
+      "grossSalary": "Aylık brüt ücret ({{currency}})",
+      "startDate": "İşe başlama tarihi",
+      "expiresAt": "Geçerlilik tarihi",
+      "expiresInPast": "Geçerlilik tarihi geçmişte olamaz",
+      "summary": "Başlangıç {{start}} · Geçerlilik {{expires}}",
+      "respondedAt": "yanıt {{date}}",
+      "accept": "Kabul edildi",
+      "accepted": "Teklif kabul edildi; adayı işe alabilirsiniz",
+      "decline": "Reddedildi",
+      "declined": "Teklif reddedildi olarak işaretlendi",
+      "withdraw": "Geri çek",
+      "withdrawn": "Teklif geri çekildi",
+      "none": "Henüz teklif verilmedi."
+    },
+    "hire": {
+      "action": "İşe al",
+      "title": "Adayı işe al",
+      "description": "{{name}} için {{department}} / {{position}} personel kaydı ve {{salary}} brüt ücretle ilk ücret kaydı oluşturulur.",
+      "hireDate": "İşe giriş tarihi",
+      "hint": "Varsayılan olarak kabul edilen teklifteki başlama tarihidir.",
+      "confirm": "Personel kaydını oluştur",
+      "done": "İşe alındı, sicil no {{employeeNo}}"
+    },
+    "activity": {
+      "title": "Süreç geçmişi",
+      "applied": "Başvuru alındı",
+      "stage": "{{from}} → {{to}}",
+      "interview": {
+        "SCHEDULED": "Mülakat planlandı",
+        "COMPLETED": "Mülakat tamamlandı",
+        "CANCELLED": "Mülakat iptal edildi"
+      },
+      "offer": {
+        "PENDING": "Teklif verildi",
+        "ACCEPTED": "Teklif kabul edildi",
+        "DECLINED": "Teklif reddedildi",
+        "WITHDRAWN": "Teklif geri çekildi"
+      },
+      "hired": "İşe alındı ({{employeeNo}})",
+      "note": "Not",
+      "notePlaceholder": "Görüşme notu, referans kontrolü...",
+      "addNote": "Not ekle"
+    },
+    "myInterviews": {
+      "title": "Mülakatlarım",
+      "subtitle": "Mülakatçı olarak katıldığınız görüşmeler ve değerlendirmeleriniz",
+      "pending": "Değerlendirme bekleyen",
+      "upcoming": "Yaklaşan",
+      "empty": {
+        "pending": "Değerlendirmenizi bekleyen mülakat yok.",
+        "upcoming": "Yaklaşan mülakatınız yok.",
+        "all": "Henüz bir mülakata davet edilmediniz."
+      },
+      "yourFeedback": "Değerlendirmeniz",
+      "giveFeedback": "Değerlendir",
+      "editFeedback": "Değerlendirmeyi düzenle",
+      "feedbackTitle": "Mülakat değerlendirmesi",
+      "rating": "Genel puan",
+      "recommendation": "Tavsiyeniz",
+      "comments": "Görüşleriniz",
+      "commentsHint": "Güçlü yönler, gelişim alanları, dikkat edilmesi gerekenler...",
+      "submit": "Kaydet",
+      "feedbackSaved": "Değerlendirmeniz kaydedildi"
     }
   }
 }

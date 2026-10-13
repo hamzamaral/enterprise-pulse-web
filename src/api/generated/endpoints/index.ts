@@ -20,6 +20,7 @@ export * from './payroll/payroll';
 export * from './positions/positions';
 export * from './projects/projects';
 export * from './purchasing/purchasing';
+export * from './recruitment/recruitment';
 export * from './reports/reports';
 export * from './roles/roles';
 export * from './sales/sales';
