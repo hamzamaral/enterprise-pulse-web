@@ -27,10 +27,12 @@ import {
   FileUser,
   FolderKanban,
   FileClock,
+  FilePen,
   Gauge,
   GitBranch,
   GraduationCap,
   HandCoins,
+  Handshake,
   Headset,
   Hourglass,
   Inbox,
@@ -448,6 +450,23 @@ export const NAVIGATION: NavGroup[] = [
         permission: 'finance:read',
       },
       { to: '/finance/aging', labelKey: 'nav.aging', icon: Hourglass, permission: 'finance:read' },
+    ],
+  },
+  {
+    labelKey: 'nav.groups.contracts',
+    items: [
+      {
+        to: '/contracts',
+        labelKey: 'nav.contracts',
+        icon: Handshake,
+        permission: 'contracts:read',
+      },
+      {
+        to: '/contracts/types',
+        labelKey: 'nav.contractTypes',
+        icon: FilePen,
+        permission: 'contracts:update',
+      },
     ],
   },
   {

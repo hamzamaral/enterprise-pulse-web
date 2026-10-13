@@ -18,6 +18,7 @@ import { PartnerFormDialog } from './partner-form-dialog';
 import { PartnerStatement } from './partner-statement';
 import { PartnerOpportunities } from '@/features/crm/partner-opportunities';
 import { ActivityTimeline } from '@/features/crm/activity-timeline';
+import { PartyContracts } from '@/features/contracts/party-contracts';
 
 export function PartnerDetailPage({ id }: { id: string }) {
   const { t } = useTranslation();
@@ -138,6 +139,18 @@ export function PartnerDetailPage({ id }: { id: string }) {
         <div className="mt-4 grid gap-4 lg:grid-cols-2 print:hidden">
           <PartnerOpportunities partner={partner} />
           <ActivityTimeline link={{ partnerId: partner.id }} />
+        </div>
+      )}
+
+      {can('contracts:read') && (
+        <div className="mt-4 print:hidden">
+          <PartyContracts
+            filter={{ partnerId: partner.id }}
+            preset={{
+              party: 'PARTNER',
+              partner: { id: partner.id, code: partner.code, title: partner.title },
+            }}
+          />
         </div>
       )}
 

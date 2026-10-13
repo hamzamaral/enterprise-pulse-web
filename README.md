@@ -57,6 +57,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Eğitim oturumları:** eğitim saati, maliyet, memnuniyet, uyum oranı                    | **Zorunlu eğitim uyumu:** personel × eğitim sertifika matrisi                       |
 | ![Destek kuyruğu](docs/screenshots/support-queue.png)                                   | ![Destek talebi](docs/screenshots/support-ticket.png)                               |
 | **Destek kuyruğu:** SLA göstergeleri, 14 günlük trend, ekip iş yükü, kuyruk filtreleri  | **Destek talebi:** yazışma, dahili not, atama, SLA hedefleri, ekler ve geçmiş       |
+| ![Sözleşmeler](docs/screenshots/contracts.png)                                          | ![Sözleşme](docs/screenshots/contract.png)                                          |
+| **Sözleşmeler:** yıllık gelir / gider, 12 aylık bitiş takvimi, yaklaşan karar tarihleri | **Sözleşme:** süre ve otomatik yenileme, fesih son günü, ekler ve geçmiş            |
 
 ## Özellikler
 
@@ -103,6 +105,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   puanlama veya yeniden açma; destek kuyruğunda SLA göstergeleri, trend grafiği, ekip iş yükü ve görünüm /
   öncelik / kategori filtreleri; talep ekranında atama, öncelik ve kategori değişikliği, bilgi isteme,
   çözme, dahili not ve geçmiş; destek ayarlarında kategori, varsayılan sorumlu ve SLA hedefleri.
+- **Sözleşmeler:** cari ve personel sözleşmeleri listesi (yürürlükte, bitiyor, bana atanan, taslak, sona eren,
+  feshedilen görünümleri; taraf ve tür filtresi), yıllık gelir / gider göstergeleri, 12 aylık bitiş ve yenileme
+  grafiği, yaklaşan karar tarihleri; sözleşme ekranında yürürlüğe alma, yenileme, fesih bildirme ve geri alma,
+  imzalı sözleşme ekleri ve geçmiş; sözleşme türleri; cari kartında ve personel kartında "Sözleşmeler".
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.

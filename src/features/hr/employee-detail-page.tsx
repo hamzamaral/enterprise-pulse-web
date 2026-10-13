@@ -18,6 +18,7 @@ import {
 } from '@/api/generated/endpoints/leave/leave';
 import type { EmployeeDetailDto } from '@/api/generated/model';
 import { AssignmentsTable } from '@/features/assets/assignments-table';
+import { PartyContracts } from '@/features/contracts/party-contracts';
 import { Can } from '@/features/auth/can';
 import { SalaryHistory } from '@/features/payroll/salary-history';
 import { EmployeeTrainings } from '@/features/training/employee-trainings';
@@ -266,6 +267,9 @@ export function EmployeeDetailPage({ id }: { id: string }) {
           {can('training:read') && (
             <TabsTrigger value="training">{t('employees.trainings')}</TabsTrigger>
           )}
+          {can('contracts:read') && (
+            <TabsTrigger value="contracts">{t('employees.contracts')}</TabsTrigger>
+          )}
         </TabsList>
         <TabsContent value="overview">
           <Overview employee={employee} />
@@ -288,6 +292,18 @@ export function EmployeeDetailPage({ id }: { id: string }) {
         {can('training:read') && (
           <TabsContent value="training">
             <EmployeeTrainings employeeId={employee.id} />
+          </TabsContent>
+        )}
+        {can('contracts:read') && (
+          <TabsContent value="contracts">
+            <PartyContracts
+              filter={{ employeeId: employee.id }}
+              preset={{
+                party: 'EMPLOYEE',
+                employeeId: employee.id,
+                employeeName: employee.fullName,
+              }}
+            />
           </TabsContent>
         )}
       </Tabs>
