@@ -23,7 +23,7 @@ export function MyLeavePage() {
   const me = useEmployeesFindMine({ query: { enabled: !!session?.employeeId } });
   const hasEmployee = me.isSuccess;
   const balances = useLeaveBalancesFindAll(
-    { year: new Date().getFullYear() },
+    { year: new Date().getFullYear(), employeeId: me.data?.id },
     { query: { enabled: hasEmployee } },
   );
   const requests = useLeaveRequestsFindAll(
