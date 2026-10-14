@@ -61,6 +61,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Sözleşmeler:** yıllık gelir / gider, 12 aylık bitiş takvimi, yaklaşan karar tarihleri | **Sözleşme:** süre ve otomatik yenileme, fesih son günü, ekler ve geçmiş            |
 | ![Bütçeler](docs/screenshots/budgets.png)                                               | ![Bütçe](docs/screenshots/budget.png)                                               |
 | **Bütçeler:** YBK gider ve gelir, departman karşılaştırması, dikkat gerektiren kalemler | **Bütçe:** aylık plan ve gerçekleşen, kalem bazında sapma, belge kırılımı           |
+| ![Filo](docs/screenshots/fleet.png)                                                     | ![Araç](docs/screenshots/vehicle.png)                                               |
+| **Filo:** maliyet, km ve tüketim göstergeleri, son 12 ay maliyeti, takip gerektirenler  | **Araç:** yıllık özet, sürücü, sonraki bakım, muayene ve sigorta durumu             |
 
 ## Özellikler
 
@@ -116,6 +118,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   kullanım, kaleme tıklayınca kaynak belgeler (masraf, bordro, alış / satış faturası), 12 aylık plan tablosu
   (kalem ekleme, eşit dağıtma), onaylama ve gerekçeli yeniden açma; bütçe kalemleri ve kategori eşlemesi;
   kira, lisans, reklam gibi gerçekleşenler için bütçe girişleri.
+- **Araç ve Filo:** filo panosu (araç sayısı, yıllık maliyet, km başına maliyet, ortalama tüketim, son 12 ay
+  maliyet grafiği, süresi dolan / yaklaşan belge ve bakımlar), araç listesi; araç ekranında yıllık özet ve aylık
+  km / maliyet grafiği, sürücü zimmeti, devir ve teslim alma, yakıt, bakım ve onarım, muayene ve sigorta, zimmet
+  ve km geçmişi sekmeleri; filo geneli yakıt defteri; sürücünün "Araçlarım" ekranından yakıt ve km girişi.
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.

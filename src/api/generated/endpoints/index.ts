@@ -12,6 +12,7 @@ export * from './employees/employees';
 export * from './expenses/expenses';
 export * from './files/files';
 export * from './finance/finance';
+export * from './fleet/fleet';
 export * from './health/health';
 export * from './inventory/inventory';
 export * from './leave/leave';

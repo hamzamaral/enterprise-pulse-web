@@ -41,6 +41,10 @@ import { Route as AppExpensesMyRouteImport } from './routes/_app/expenses/my'
 import { Route as AppExpensesNewRouteImport } from './routes/_app/expenses/new'
 import { Route as AppExpensesSettingsRouteImport } from './routes/_app/expenses/settings'
 import { Route as AppFinanceAgingRouteImport } from './routes/_app/finance/aging'
+import { Route as AppFleetIndexRouteImport } from './routes/_app/fleet/index'
+import { Route as AppFleetIdRouteImport } from './routes/_app/fleet/$id'
+import { Route as AppFleetFuelRouteImport } from './routes/_app/fleet/fuel'
+import { Route as AppFleetMyRouteImport } from './routes/_app/fleet/my'
 import { Route as AppHrDepartmentsRouteImport } from './routes/_app/hr/departments'
 import { Route as AppHrLeaveRequestsRouteImport } from './routes/_app/hr/leave-requests'
 import { Route as AppHrLeaveSettingsRouteImport } from './routes/_app/hr/leave-settings'
@@ -310,6 +314,26 @@ const AppExpensesSettingsRoute = AppExpensesSettingsRouteImport.update({
 const AppFinanceAgingRoute = AppFinanceAgingRouteImport.update({
   id: '/finance/aging',
   path: '/finance/aging',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFleetIndexRoute = AppFleetIndexRouteImport.update({
+  id: '/fleet/',
+  path: '/fleet/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFleetIdRoute = AppFleetIdRouteImport.update({
+  id: '/fleet/$id',
+  path: '/fleet/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFleetFuelRoute = AppFleetFuelRouteImport.update({
+  id: '/fleet/fuel',
+  path: '/fleet/fuel',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppFleetMyRoute = AppFleetMyRouteImport.update({
+  id: '/fleet/my',
+  path: '/fleet/my',
   getParentRoute: () => AppRoute,
 } as any)
 const AppHrDepartmentsRoute = AppHrDepartmentsRouteImport.update({
@@ -919,6 +943,9 @@ export interface FileRoutesByFullPath {
   '/expenses/new': typeof AppExpensesNewRoute
   '/expenses/settings': typeof AppExpensesSettingsRoute
   '/finance/aging': typeof AppFinanceAgingRoute
+  '/fleet/$id': typeof AppFleetIdRoute
+  '/fleet/fuel': typeof AppFleetFuelRoute
+  '/fleet/my': typeof AppFleetMyRoute
   '/hr/departments': typeof AppHrDepartmentsRoute
   '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/hr/leave-settings': typeof AppHrLeaveSettingsRoute
@@ -955,6 +982,7 @@ export interface FileRoutesByFullPath {
   '/budgets/': typeof AppBudgetsIndexRoute
   '/contracts/': typeof AppContractsIndexRoute
   '/expenses/': typeof AppExpensesIndexRoute
+  '/fleet/': typeof AppFleetIndexRoute
   '/inventory/': typeof AppInventoryIndexRoute
   '/partners/': typeof AppPartnersIndexRoute
   '/payroll/': typeof AppPayrollIndexRoute
@@ -1063,6 +1091,9 @@ export interface FileRoutesByTo {
   '/expenses/new': typeof AppExpensesNewRoute
   '/expenses/settings': typeof AppExpensesSettingsRoute
   '/finance/aging': typeof AppFinanceAgingRoute
+  '/fleet/$id': typeof AppFleetIdRoute
+  '/fleet/fuel': typeof AppFleetFuelRoute
+  '/fleet/my': typeof AppFleetMyRoute
   '/hr/departments': typeof AppHrDepartmentsRoute
   '/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/hr/leave-settings': typeof AppHrLeaveSettingsRoute
@@ -1099,6 +1130,7 @@ export interface FileRoutesByTo {
   '/budgets': typeof AppBudgetsIndexRoute
   '/contracts': typeof AppContractsIndexRoute
   '/expenses': typeof AppExpensesIndexRoute
+  '/fleet': typeof AppFleetIndexRoute
   '/inventory': typeof AppInventoryIndexRoute
   '/partners': typeof AppPartnersIndexRoute
   '/payroll': typeof AppPayrollIndexRoute
@@ -1209,6 +1241,9 @@ export interface FileRoutesById {
   '/_app/expenses/new': typeof AppExpensesNewRoute
   '/_app/expenses/settings': typeof AppExpensesSettingsRoute
   '/_app/finance/aging': typeof AppFinanceAgingRoute
+  '/_app/fleet/$id': typeof AppFleetIdRoute
+  '/_app/fleet/fuel': typeof AppFleetFuelRoute
+  '/_app/fleet/my': typeof AppFleetMyRoute
   '/_app/hr/departments': typeof AppHrDepartmentsRoute
   '/_app/hr/leave-requests': typeof AppHrLeaveRequestsRoute
   '/_app/hr/leave-settings': typeof AppHrLeaveSettingsRoute
@@ -1245,6 +1280,7 @@ export interface FileRoutesById {
   '/_app/budgets/': typeof AppBudgetsIndexRoute
   '/_app/contracts/': typeof AppContractsIndexRoute
   '/_app/expenses/': typeof AppExpensesIndexRoute
+  '/_app/fleet/': typeof AppFleetIndexRoute
   '/_app/inventory/': typeof AppInventoryIndexRoute
   '/_app/partners/': typeof AppPartnersIndexRoute
   '/_app/payroll/': typeof AppPayrollIndexRoute
@@ -1355,6 +1391,9 @@ export interface FileRouteTypes {
     | '/expenses/new'
     | '/expenses/settings'
     | '/finance/aging'
+    | '/fleet/$id'
+    | '/fleet/fuel'
+    | '/fleet/my'
     | '/hr/departments'
     | '/hr/leave-requests'
     | '/hr/leave-settings'
@@ -1391,6 +1430,7 @@ export interface FileRouteTypes {
     | '/budgets/'
     | '/contracts/'
     | '/expenses/'
+    | '/fleet/'
     | '/inventory/'
     | '/partners/'
     | '/payroll/'
@@ -1499,6 +1539,9 @@ export interface FileRouteTypes {
     | '/expenses/new'
     | '/expenses/settings'
     | '/finance/aging'
+    | '/fleet/$id'
+    | '/fleet/fuel'
+    | '/fleet/my'
     | '/hr/departments'
     | '/hr/leave-requests'
     | '/hr/leave-settings'
@@ -1535,6 +1578,7 @@ export interface FileRouteTypes {
     | '/budgets'
     | '/contracts'
     | '/expenses'
+    | '/fleet'
     | '/inventory'
     | '/partners'
     | '/payroll'
@@ -1644,6 +1688,9 @@ export interface FileRouteTypes {
     | '/_app/expenses/new'
     | '/_app/expenses/settings'
     | '/_app/finance/aging'
+    | '/_app/fleet/$id'
+    | '/_app/fleet/fuel'
+    | '/_app/fleet/my'
     | '/_app/hr/departments'
     | '/_app/hr/leave-requests'
     | '/_app/hr/leave-settings'
@@ -1680,6 +1727,7 @@ export interface FileRouteTypes {
     | '/_app/budgets/'
     | '/_app/contracts/'
     | '/_app/expenses/'
+    | '/_app/fleet/'
     | '/_app/inventory/'
     | '/_app/partners/'
     | '/_app/payroll/'
@@ -1992,6 +2040,34 @@ declare module '@tanstack/react-router' {
       path: '/finance/aging'
       fullPath: '/finance/aging'
       preLoaderRoute: typeof AppFinanceAgingRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/fleet/': {
+      id: '/_app/fleet/'
+      path: '/fleet'
+      fullPath: '/fleet/'
+      preLoaderRoute: typeof AppFleetIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/fleet/$id': {
+      id: '/_app/fleet/$id'
+      path: '/fleet/$id'
+      fullPath: '/fleet/$id'
+      preLoaderRoute: typeof AppFleetIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/fleet/fuel': {
+      id: '/_app/fleet/fuel'
+      path: '/fleet/fuel'
+      fullPath: '/fleet/fuel'
+      preLoaderRoute: typeof AppFleetFuelRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/fleet/my': {
+      id: '/_app/fleet/my'
+      path: '/fleet/my'
+      fullPath: '/fleet/my'
+      preLoaderRoute: typeof AppFleetMyRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/hr/departments': {
@@ -2799,6 +2875,9 @@ interface AppRouteChildren {
   AppExpensesNewRoute: typeof AppExpensesNewRoute
   AppExpensesSettingsRoute: typeof AppExpensesSettingsRoute
   AppFinanceAgingRoute: typeof AppFinanceAgingRoute
+  AppFleetIdRoute: typeof AppFleetIdRoute
+  AppFleetFuelRoute: typeof AppFleetFuelRoute
+  AppFleetMyRoute: typeof AppFleetMyRoute
   AppHrDepartmentsRoute: typeof AppHrDepartmentsRoute
   AppHrLeaveRequestsRoute: typeof AppHrLeaveRequestsRoute
   AppHrLeaveSettingsRoute: typeof AppHrLeaveSettingsRoute
@@ -2835,6 +2914,7 @@ interface AppRouteChildren {
   AppBudgetsIndexRoute: typeof AppBudgetsIndexRoute
   AppContractsIndexRoute: typeof AppContractsIndexRoute
   AppExpensesIndexRoute: typeof AppExpensesIndexRoute
+  AppFleetIndexRoute: typeof AppFleetIndexRoute
   AppInventoryIndexRoute: typeof AppInventoryIndexRoute
   AppPartnersIndexRoute: typeof AppPartnersIndexRoute
   AppPayrollIndexRoute: typeof AppPayrollIndexRoute
@@ -2941,6 +3021,9 @@ const AppRouteChildren: AppRouteChildren = {
   AppExpensesNewRoute: AppExpensesNewRoute,
   AppExpensesSettingsRoute: AppExpensesSettingsRoute,
   AppFinanceAgingRoute: AppFinanceAgingRoute,
+  AppFleetIdRoute: AppFleetIdRoute,
+  AppFleetFuelRoute: AppFleetFuelRoute,
+  AppFleetMyRoute: AppFleetMyRoute,
   AppHrDepartmentsRoute: AppHrDepartmentsRoute,
   AppHrLeaveRequestsRoute: AppHrLeaveRequestsRoute,
   AppHrLeaveSettingsRoute: AppHrLeaveSettingsRoute,
@@ -2977,6 +3060,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppBudgetsIndexRoute: AppBudgetsIndexRoute,
   AppContractsIndexRoute: AppContractsIndexRoute,
   AppExpensesIndexRoute: AppExpensesIndexRoute,
+  AppFleetIndexRoute: AppFleetIndexRoute,
   AppInventoryIndexRoute: AppInventoryIndexRoute,
   AppPartnersIndexRoute: AppPartnersIndexRoute,
   AppPayrollIndexRoute: AppPayrollIndexRoute,

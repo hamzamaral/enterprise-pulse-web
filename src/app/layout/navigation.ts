@@ -5,6 +5,8 @@ import {
   Banknote,
   BookOpen,
   Boxes,
+  Car,
+  CarFront,
   BriefcaseBusiness,
   Building,
   Building2,
@@ -28,6 +30,7 @@ import {
   FolderKanban,
   FileClock,
   FilePen,
+  Fuel,
   Gauge,
   GitBranch,
   GraduationCap,
@@ -492,6 +495,14 @@ export const NAVIGATION: NavGroup[] = [
         icon: ListTree,
         permission: 'budgets:update',
       },
+    ],
+  },
+  {
+    labelKey: 'nav.groups.fleet',
+    items: [
+      { to: '/fleet', labelKey: 'nav.fleet', icon: Car, permission: 'fleet:read' },
+      { to: '/fleet/fuel', labelKey: 'nav.fuelLog', icon: Fuel, permission: 'fleet:read' },
+      { to: '/fleet/my', labelKey: 'nav.myVehicles', icon: CarFront },
     ],
   },
   {
