@@ -8,6 +8,7 @@
 import type { InvoiceStatus } from './invoiceStatus';
 import type { LinkedDocumentDto } from './linkedDocumentDto';
 import type { PaymentStatus } from './paymentStatus';
+import type { SalesInvoiceEInvoiceDto } from './salesInvoiceEInvoiceDto';
 import type { SalesInvoiceLineDto } from './salesInvoiceLineDto';
 
 export interface SalesInvoiceDetailDto {
@@ -49,4 +50,9 @@ export interface SalesInvoiceDetailDto {
   createdByName: string;
   /** @nullable */
   cancelledAt: string | null;
+  /**
+   * e-Fatura / e-Arşiv sent for this invoice.
+   * @nullable
+   */
+  eInvoice: SalesInvoiceEInvoiceDto | null;
 }

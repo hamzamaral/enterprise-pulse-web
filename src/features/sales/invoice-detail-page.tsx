@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router';
-import { ArrowLeft, Ban, HandCoins, Printer, Undo2 } from 'lucide-react';
+import { ArrowLeft, Ban, HandCoins, Printer, Send, Undo2 } from 'lucide-react';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toast } from 'sonner';
@@ -13,6 +13,12 @@ import {
 } from '@/api/generated/endpoints/sales/sales';
 import type { SalesInvoiceLineDto } from '@/api/generated/model';
 import { Can } from '@/features/auth/can';
+import {
+  EInvoiceStatusBadge,
+  ProfileBadge,
+  SendEInvoiceDialog,
+} from '@/features/einvoice/einvoice-components';
+import { blocksSalesCancel, IN_FLIGHT } from '@/features/einvoice/einvoice-rules';
 import { usePermission } from '@/features/auth/use-session';
 import { DocumentLinesTable } from '@/features/trade/document-lines-table';
 import { storedBreakdown } from '@/features/trade/document-math';
@@ -42,7 +48,15 @@ export function SalesInvoiceDetailPage({ id }: { id: string }) {
   const base = useBaseCurrency();
   const invalidate = useInvalidate();
   const [cancelling, setCancelling] = useState(false);
-  const { data: invoice, isLoading } = useSalesInvoicesFindOne(id);
+  const [sending, setSending] = useState(false);
+  const { data: invoice, isLoading } = useSalesInvoicesFindOne(id, {
+    query: {
+      refetchInterval: (query) => {
+        const status = query.state.data?.eInvoice?.status;
+        return status && IN_FLIGHT.includes(status) ? 3000 : false;
+      },
+    },
+  });
   const cancel = useSalesInvoicesCancel();
 
   if (!invoice) {
@@ -57,7 +71,11 @@ export function SalesInvoiceDetailPage({ id }: { id: string }) {
 
   const issued = invoice.status === 'ISSUED';
   const canReturn = issued && invoice.lines.some((line) => openToReturn(line) > 0);
-  const canCancel = issued && Number(invoice.paidAmount) === 0 && !invoice.returns.length;
+  const canCancel =
+    issued &&
+    Number(invoice.paidAmount) === 0 &&
+    !invoice.returns.length &&
+    !blocksSalesCancel(invoice.eInvoice);
   const hasReturns = invoice.lines.some((line) => Number(line.returnedQty) > 0);
   const onCancel = (reason?: string) =>
     cancel.mutate(
@@ -104,6 +122,13 @@ export function SalesInvoiceDetailPage({ id }: { id: string }) {
                 <Link to="/sales/returns/new" search={{ invoiceId: id }}>
                   <Undo2 /> {t('sales.returns.new')}
                 </Link>
+              </Button>
+            </Can>
+          )}
+          {issued && !invoice.eInvoice && (
+            <Can permission="einvoice:send">
+              <Button variant="outline" onClick={() => setSending(true)}>
+                <Send /> {t('einvoice.send.action')}
               </Button>
             </Can>
           )}
@@ -183,6 +208,27 @@ export function SalesInvoiceDetailPage({ id }: { id: string }) {
                 {formatDateTime(invoice.createdAt)}
               </span>
             </Field>
+            {invoice.eInvoice && (
+              <Field label={t('einvoice.single')}>
+                <span className="inline-flex flex-wrap items-center gap-1">
+                  {can('einvoice:read') ? (
+                    <Link
+                      to="/e-invoices/$id"
+                      params={{ id: invoice.eInvoice.id }}
+                      className="text-primary font-mono text-xs hover:underline print:no-underline"
+                    >
+                      {invoice.eInvoice.number}
+                    </Link>
+                  ) : (
+                    <code className="text-xs">{invoice.eInvoice.number}</code>
+                  )}
+                  <span className="inline-flex gap-1 print:hidden">
+                    <ProfileBadge profile={invoice.eInvoice.profile} />
+                    <EInvoiceStatusBadge status={invoice.eInvoice.status} />
+                  </span>
+                </span>
+              </Field>
+            )}
             {invoice.cancelledAt && (
               <Field label={t('sales.invoices.cancelledAt')}>
                 {formatDateTime(invoice.cancelledAt)}
@@ -249,6 +295,13 @@ export function SalesInvoiceDetailPage({ id }: { id: string }) {
           </CardContent>
         </Card>
       )}
+
+      <SendEInvoiceDialog
+        open={sending}
+        onOpenChange={setSending}
+        salesInvoiceId={id}
+        number={invoice.number}
+      />
 
       <CancelDocumentDialog
         open={cancelling}

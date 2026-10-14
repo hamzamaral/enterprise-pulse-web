@@ -29,6 +29,8 @@ export interface PartnerDto {
   paymentTermDays: number;
   currencyCode: string;
   /** @nullable */
+  eInvoiceAlias: string | null;
+  /** @nullable */
   creditLimit: string | null;
   /** @nullable */
   notes: string | null;

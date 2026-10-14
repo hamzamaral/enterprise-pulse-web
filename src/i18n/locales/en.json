@@ -172,7 +172,8 @@
     "chartOfAccounts": "Chart of accounts",
     "trialBalance": "Trial balance",
     "balanceSheet": "Balance sheet",
-    "incomeStatement": "Income statement"
+    "incomeStatement": "Income statement",
+    "eInvoices": "e-Invoices"
   },
   "auth": {
     "login": "Sign in",
@@ -332,7 +333,8 @@
       "contracts": "Contracts",
       "budgets": "Budgets",
       "fleet": "Fleet",
-      "accounting": "Accounting"
+      "accounting": "Accounting",
+      "einvoice": "e-Invoice"
     },
     "actions": {
       "read": "Read",
@@ -1112,8 +1114,11 @@
     "select": "Select partner",
     "search": "Search code, title or tax ID...",
     "errors": {
-      "taxNumber": "Tax ID must have 10 or 11 digits"
-    }
+      "taxNumber": "Tax ID must have 10 or 11 digits",
+      "eInvoiceAlias": "Must look like urn:mail:pk@company.com"
+    },
+    "eInvoiceAlias": "e-Invoice mailbox",
+    "eArchiveOnly": "Not registered (e-Archive)"
   },
   "statement": {
     "title": "Account statement",
@@ -3934,6 +3939,147 @@
         "profitBeforeTax": "Profit / loss for the period",
         "netProfit": "Net profit / loss for the period"
       }
+    }
+  },
+  "einvoice": {
+    "title": "e-Invoice",
+    "subtitle": "e-Fatura and e-Archive sending, GİB responses and incoming invoices (simulation)",
+    "single": "e-Invoice",
+    "document": "Document",
+    "history": "Status history",
+    "lines": "Invoice lines",
+    "item": "Goods / service",
+    "quantity": "Quantity",
+    "unitPrice": "Unit price",
+    "discount": "Discount",
+    "net": "Amount",
+    "vat": "VAT",
+    "vatAt": "VAT {{rate}} (base {{base}})",
+    "lineExtension": "Goods / services total",
+    "allowance": "Total discount",
+    "payable": "Payable amount",
+    "profileLabel": "Scenario",
+    "number": "Invoice no",
+    "issueDate": "Invoice date",
+    "customer": "Receiver",
+    "supplier": "Sending supplier",
+    "amount": "Amount",
+    "ettn": "ETTN (UUID)",
+    "statusMessage": "GİB / receiver response",
+    "salesInvoice": "Sales invoice",
+    "purchaseInvoice": "Purchase invoice",
+    "allStatuses": "All statuses",
+    "awaitingAnswer": "Awaiting answer",
+    "senderTaxId": "Sender tax id",
+    "receiverTaxId": "Receiver tax id",
+    "senderAlias": "Sender alias",
+    "receiverAlias": "Receiver mailbox",
+    "responseDeadline": "Response deadline",
+    "sync": "Run integrator",
+    "syncDone_one": "{{count}} envelope updated",
+    "syncDone_other": "{{count}} envelopes updated",
+    "resend": "Resend",
+    "resent": "The invoice was queued again with the current data",
+    "accept": "Accept",
+    "reject": "Reject",
+    "simulateAccept": "Receiver accepted (simulation)",
+    "simulateReject": "Receiver rejected (simulation)",
+    "record": "Create purchase invoice",
+    "recorded": "Purchase invoice {{number}} created",
+    "errorTitle": "GİB refused the invoice ({{code}})",
+    "errorHint": "Fix the partner or company data and resend it.",
+    "respondBy_one": "You can accept or reject this commercial invoice until {{date}} ({{count}} day left); after that it counts as accepted.",
+    "respondBy_other": "You can accept or reject this commercial invoice until {{date}} ({{count}} days left); after that it counts as accepted.",
+    "awaitingReceiver_one": "Waiting for the receiver; without an answer by {{date}} ({{count}} day) it counts as accepted.",
+    "awaitingReceiver_other": "Waiting for the receiver; without an answer by {{date}} ({{count}} days) it counts as accepted.",
+    "status": {
+      "QUEUED": "Queued",
+      "SENT": "Sent to GİB",
+      "DELIVERED": "Delivered",
+      "ACCEPTED": "Accepted",
+      "REJECTED": "Rejected",
+      "ERROR": "Error",
+      "CANCELLED": "Cancelled"
+    },
+    "profile": {
+      "TEMELFATURA": "Basic invoice",
+      "TICARIFATURA": "Commercial invoice",
+      "EARSIVFATURA": "e-Archive"
+    },
+    "direction": {
+      "OUTGOING": "Outgoing invoices",
+      "INCOMING": "Incoming invoices"
+    },
+    "units": {
+      "C62": "pcs",
+      "KGM": "kg",
+      "LTR": "L",
+      "MTR": "m",
+      "MTK": "m²",
+      "CT": "carton",
+      "HUR": "h"
+    },
+    "kpi": {
+      "unsent": "Not sent",
+      "unsentHint": "Issued sales invoices not sent to GİB yet",
+      "inProgress": "In progress",
+      "monthHint_one": "{{count}} invoice this month · {{amount}}",
+      "monthHint_other": "{{count}} invoices this month · {{amount}}",
+      "errors": "Failed envelopes",
+      "awaitingHint_one": "{{count}} commercial invoice awaiting the receiver",
+      "awaitingHint_other": "{{count}} commercial invoices awaiting the receiver",
+      "inbox": "Waiting in the inbox",
+      "inboxHint": "{{respond}} to answer · {{record}} to record"
+    },
+    "unsent": {
+      "title": "Sales invoices waiting to be sent",
+      "hint": "Registered e-Fatura users receive e-Fatura, everyone else e-Archive invoices.",
+      "sendAll": "Send all",
+      "sentAll_one": "{{count}} invoice queued",
+      "sentAll_other": "{{count}} invoices queued",
+      "more_one": "and {{count}} more invoice",
+      "more_other": "and {{count}} more invoices"
+    },
+    "send": {
+      "action": "Send e-invoice",
+      "title": "{{number}} — send e-invoice",
+      "hint": "The invoice is built as UBL-TR XML and queued at the integrator; GİB answers within a few seconds.",
+      "auto": "Automatic (by receiver)",
+      "done": "{{number}} queued"
+    },
+    "respond": {
+      "incomingAccept": "{{number}} — accept invoice",
+      "incomingReject": "{{number}} — reject invoice",
+      "outgoingAccept": "{{number}} — receiver accepts (simulation)",
+      "outgoingReject": "{{number}} — receiver rejects (simulation)",
+      "acceptHint": "The acceptance is sent to the issuer through GİB.",
+      "rejectHint": "The rejection is sent to the issuer; a reason is required.",
+      "reason": "Rejection reason",
+      "note": "Note",
+      "accepted": "Invoice accepted",
+      "rejected": "Invoice rejected"
+    },
+    "simulate": {
+      "action": "Simulate incoming invoice",
+      "title": "Incoming e-invoice simulation",
+      "hint": "A random e-invoice arrives from the supplier, priced at the products' purchase prices.",
+      "randomSupplier": "Random supplier",
+      "done": "{{number}} received from {{partner}}"
+    },
+    "settings": {
+      "action": "Settings",
+      "title": "e-Invoice settings",
+      "hint": "Sender alias and the default scenario for registered e-Fatura receivers.",
+      "senderAlias": "Sender alias (urn:mail)",
+      "defaultProfile": "Default scenario",
+      "autoSend": "Send new sales invoices automatically"
+    },
+    "xml": {
+      "title": "UBL-TR XML",
+      "hint": "UBL 2.1 with the TR1.2 customisation; the integrator adds the e-seal signature.",
+      "copy": "Copy",
+      "copied": "XML copied to the clipboard",
+      "download": "Download XML"
     }
   }
 }

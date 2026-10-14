@@ -40,6 +40,10 @@ const schema = z.object({
     .string()
     .refine((value) => /^\d{1,3}$/.test(value.trim()), 'validation.number'),
   currencyCode: z.string().min(3, 'validation.required'),
+  eInvoiceAlias: z
+    .string()
+    .trim()
+    .regex(/^(urn:mail:[^\s@]+@[^\s@]+\.[^\s@]+)?$/, 'partners.errors.eInvoiceAlias'),
   creditLimit: optionalNumber,
   notes: z.string(),
   isActive: z.boolean(),
@@ -77,6 +81,7 @@ export function PartnerFormDialog({
       address: orNull(values.address),
       paymentTermDays: Number(values.paymentTermDays),
       currencyCode: values.currencyCode,
+      eInvoiceAlias: orNull(values.eInvoiceAlias),
       creditLimit: values.creditLimit.trim() ? parseDecimal(values.creditLimit) : null,
       notes: orNull(values.notes),
     };
@@ -126,6 +131,7 @@ export function PartnerFormDialog({
         address: partner?.address ?? '',
         paymentTermDays: String(partner?.paymentTermDays ?? 30),
         currencyCode: partner?.currencyCode ?? 'TRY',
+        eInvoiceAlias: partner?.eInvoiceAlias ?? '',
         creditLimit: partner?.creditLimit ?? '',
         notes: partner?.notes ?? '',
         isActive: partner?.isActive ?? true,
@@ -169,6 +175,12 @@ export function PartnerFormDialog({
           name: 'creditLimit',
           label: t('partners.creditLimit'),
           placeholder: t('partners.unlimited'),
+        },
+        {
+          name: 'eInvoiceAlias',
+          label: t('partners.eInvoiceAlias'),
+          placeholder: 'urn:mail:defaultpk@firma.com.tr',
+          wide: true,
         },
         { name: 'notes', label: t('common.notes'), type: 'textarea', wide: true },
         ...(partner

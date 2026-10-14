@@ -65,6 +65,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Filo:** maliyet, km ve tüketim göstergeleri, son 12 ay maliyeti, takip gerektirenler  | **Araç:** yıllık özet, sürücü, sonraki bakım, muayene ve sigorta durumu             |
 | ![Muhasebe](docs/screenshots/accounting.png)                                            | ![Mizan](docs/screenshots/trial-balance.png)                                        |
 | **Muhasebe:** hazır değerler, alacak / borç, aylık gelir ve gider, bekleyen belgeler    | **Mizan:** dönem hareketleri, toplamlar ve bakiyeler, denge kontrolü                |
+| ![e-Fatura](docs/screenshots/e-invoices.png)                                            | ![e-Fatura detayı](docs/screenshots/e-invoice.png)                                  |
+| **e-Fatura:** gönderilmemiş faturalar, GİB durumları, yanıt bekleyenler                 | **e-Fatura detayı:** durum geçmişi, satırlar, vergi toplamları, UBL-TR XML          |
 
 ## Özellikler
 
@@ -130,6 +132,12 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   (borç / alacak farkı, dengeleyen satır önerisi, taslak ve kesinleştirme); fiş detayında kesinleştirme ve
   ters kayıt; Tekdüzen hesap planı (alt hesap ekleme, bakiyeler); muavin defter (yürüyen bakiye, cari
   filtresi); mizan, bilanço ve gelir tablosu (Excel / PDF dışa aktarma).
+- **e-Fatura:** gönderilmemiş satış faturaları (tek tek ya da toplu gönderme, profil seçimi), giden ve gelen
+  sekmeleri, durum filtresi ve canlı güncellenen GİB durumları; detayda hata ve yanıt süresi uyarısı, durum
+  geçmişi, satırlar ve vergi toplamları, UBL-TR XML görüntüleme / kopyalama / indirme; hatalı faturayı yeniden
+  gönderme, alıcı yanıtı simülasyonu, gelen faturayı kabul / ret ve alış faturasına aktarma; satış faturası
+  detayında e-Fatura durumu ve gönderme; carinin e-Fatura etiketi; gönderici etiketi ve otomatik gönderim
+  ayarı.
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.

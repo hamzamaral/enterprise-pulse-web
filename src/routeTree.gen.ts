@@ -39,6 +39,8 @@ import { Route as AppContractsIndexRouteImport } from './routes/_app/contracts/i
 import { Route as AppContractsIdRouteImport } from './routes/_app/contracts/$id'
 import { Route as AppContractsTypesRouteImport } from './routes/_app/contracts/types'
 import { Route as AppCrmActivitiesRouteImport } from './routes/_app/crm/activities'
+import { Route as AppEInvoicesIndexRouteImport } from './routes/_app/e-invoices/index'
+import { Route as AppEInvoicesIdRouteImport } from './routes/_app/e-invoices/$id'
 import { Route as AppExpensesIndexRouteImport } from './routes/_app/expenses/index'
 import { Route as AppExpensesIdRouteImport } from './routes/_app/expenses/$id'
 import { Route as AppExpensesMyRouteImport } from './routes/_app/expenses/my'
@@ -317,6 +319,16 @@ const AppContractsTypesRoute = AppContractsTypesRouteImport.update({
 const AppCrmActivitiesRoute = AppCrmActivitiesRouteImport.update({
   id: '/crm/activities',
   path: '/crm/activities',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEInvoicesIndexRoute = AppEInvoicesIndexRouteImport.update({
+  id: '/e-invoices/',
+  path: '/e-invoices/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppEInvoicesIdRoute = AppEInvoicesIdRouteImport.update({
+  id: '/e-invoices/$id',
+  path: '/e-invoices/$id',
   getParentRoute: () => AppRoute,
 } as any)
 const AppExpensesIndexRoute = AppExpensesIndexRouteImport.update({
@@ -1007,6 +1019,7 @@ export interface FileRoutesByFullPath {
   '/contracts/$id': typeof AppContractsIdRoute
   '/contracts/types': typeof AppContractsTypesRoute
   '/crm/activities': typeof AppCrmActivitiesRoute
+  '/e-invoices/$id': typeof AppEInvoicesIdRoute
   '/expenses/$id': typeof AppExpensesIdRoute
   '/expenses/my': typeof AppExpensesMyRoute
   '/expenses/new': typeof AppExpensesNewRoute
@@ -1051,6 +1064,7 @@ export interface FileRoutesByFullPath {
   '/assets/': typeof AppAssetsIndexRoute
   '/budgets/': typeof AppBudgetsIndexRoute
   '/contracts/': typeof AppContractsIndexRoute
+  '/e-invoices/': typeof AppEInvoicesIndexRoute
   '/expenses/': typeof AppExpensesIndexRoute
   '/fleet/': typeof AppFleetIndexRoute
   '/inventory/': typeof AppInventoryIndexRoute
@@ -1165,6 +1179,7 @@ export interface FileRoutesByTo {
   '/contracts/$id': typeof AppContractsIdRoute
   '/contracts/types': typeof AppContractsTypesRoute
   '/crm/activities': typeof AppCrmActivitiesRoute
+  '/e-invoices/$id': typeof AppEInvoicesIdRoute
   '/expenses/$id': typeof AppExpensesIdRoute
   '/expenses/my': typeof AppExpensesMyRoute
   '/expenses/new': typeof AppExpensesNewRoute
@@ -1209,6 +1224,7 @@ export interface FileRoutesByTo {
   '/assets': typeof AppAssetsIndexRoute
   '/budgets': typeof AppBudgetsIndexRoute
   '/contracts': typeof AppContractsIndexRoute
+  '/e-invoices': typeof AppEInvoicesIndexRoute
   '/expenses': typeof AppExpensesIndexRoute
   '/fleet': typeof AppFleetIndexRoute
   '/inventory': typeof AppInventoryIndexRoute
@@ -1325,6 +1341,7 @@ export interface FileRoutesById {
   '/_app/contracts/$id': typeof AppContractsIdRoute
   '/_app/contracts/types': typeof AppContractsTypesRoute
   '/_app/crm/activities': typeof AppCrmActivitiesRoute
+  '/_app/e-invoices/$id': typeof AppEInvoicesIdRoute
   '/_app/expenses/$id': typeof AppExpensesIdRoute
   '/_app/expenses/my': typeof AppExpensesMyRoute
   '/_app/expenses/new': typeof AppExpensesNewRoute
@@ -1369,6 +1386,7 @@ export interface FileRoutesById {
   '/_app/assets/': typeof AppAssetsIndexRoute
   '/_app/budgets/': typeof AppBudgetsIndexRoute
   '/_app/contracts/': typeof AppContractsIndexRoute
+  '/_app/e-invoices/': typeof AppEInvoicesIndexRoute
   '/_app/expenses/': typeof AppExpensesIndexRoute
   '/_app/fleet/': typeof AppFleetIndexRoute
   '/_app/inventory/': typeof AppInventoryIndexRoute
@@ -1485,6 +1503,7 @@ export interface FileRouteTypes {
     | '/contracts/$id'
     | '/contracts/types'
     | '/crm/activities'
+    | '/e-invoices/$id'
     | '/expenses/$id'
     | '/expenses/my'
     | '/expenses/new'
@@ -1529,6 +1548,7 @@ export interface FileRouteTypes {
     | '/assets/'
     | '/budgets/'
     | '/contracts/'
+    | '/e-invoices/'
     | '/expenses/'
     | '/fleet/'
     | '/inventory/'
@@ -1643,6 +1663,7 @@ export interface FileRouteTypes {
     | '/contracts/$id'
     | '/contracts/types'
     | '/crm/activities'
+    | '/e-invoices/$id'
     | '/expenses/$id'
     | '/expenses/my'
     | '/expenses/new'
@@ -1687,6 +1708,7 @@ export interface FileRouteTypes {
     | '/assets'
     | '/budgets'
     | '/contracts'
+    | '/e-invoices'
     | '/expenses'
     | '/fleet'
     | '/inventory'
@@ -1802,6 +1824,7 @@ export interface FileRouteTypes {
     | '/_app/contracts/$id'
     | '/_app/contracts/types'
     | '/_app/crm/activities'
+    | '/_app/e-invoices/$id'
     | '/_app/expenses/$id'
     | '/_app/expenses/my'
     | '/_app/expenses/new'
@@ -1846,6 +1869,7 @@ export interface FileRouteTypes {
     | '/_app/assets/'
     | '/_app/budgets/'
     | '/_app/contracts/'
+    | '/_app/e-invoices/'
     | '/_app/expenses/'
     | '/_app/fleet/'
     | '/_app/inventory/'
@@ -2152,6 +2176,20 @@ declare module '@tanstack/react-router' {
       path: '/crm/activities'
       fullPath: '/crm/activities'
       preLoaderRoute: typeof AppCrmActivitiesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/e-invoices/': {
+      id: '/_app/e-invoices/'
+      path: '/e-invoices'
+      fullPath: '/e-invoices/'
+      preLoaderRoute: typeof AppEInvoicesIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/e-invoices/$id': {
+      id: '/_app/e-invoices/$id'
+      path: '/e-invoices/$id'
+      fullPath: '/e-invoices/$id'
+      preLoaderRoute: typeof AppEInvoicesIdRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/expenses/': {
@@ -3069,6 +3107,7 @@ interface AppRouteChildren {
   AppContractsIdRoute: typeof AppContractsIdRoute
   AppContractsTypesRoute: typeof AppContractsTypesRoute
   AppCrmActivitiesRoute: typeof AppCrmActivitiesRoute
+  AppEInvoicesIdRoute: typeof AppEInvoicesIdRoute
   AppExpensesIdRoute: typeof AppExpensesIdRoute
   AppExpensesMyRoute: typeof AppExpensesMyRoute
   AppExpensesNewRoute: typeof AppExpensesNewRoute
@@ -3113,6 +3152,7 @@ interface AppRouteChildren {
   AppAssetsIndexRoute: typeof AppAssetsIndexRoute
   AppBudgetsIndexRoute: typeof AppBudgetsIndexRoute
   AppContractsIndexRoute: typeof AppContractsIndexRoute
+  AppEInvoicesIndexRoute: typeof AppEInvoicesIndexRoute
   AppExpensesIndexRoute: typeof AppExpensesIndexRoute
   AppFleetIndexRoute: typeof AppFleetIndexRoute
   AppInventoryIndexRoute: typeof AppInventoryIndexRoute
@@ -3225,6 +3265,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppContractsIdRoute: AppContractsIdRoute,
   AppContractsTypesRoute: AppContractsTypesRoute,
   AppCrmActivitiesRoute: AppCrmActivitiesRoute,
+  AppEInvoicesIdRoute: AppEInvoicesIdRoute,
   AppExpensesIdRoute: AppExpensesIdRoute,
   AppExpensesMyRoute: AppExpensesMyRoute,
   AppExpensesNewRoute: AppExpensesNewRoute,
@@ -3269,6 +3310,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAssetsIndexRoute: AppAssetsIndexRoute,
   AppBudgetsIndexRoute: AppBudgetsIndexRoute,
   AppContractsIndexRoute: AppContractsIndexRoute,
+  AppEInvoicesIndexRoute: AppEInvoicesIndexRoute,
   AppExpensesIndexRoute: AppExpensesIndexRoute,
   AppFleetIndexRoute: AppFleetIndexRoute,
   AppInventoryIndexRoute: AppInventoryIndexRoute,

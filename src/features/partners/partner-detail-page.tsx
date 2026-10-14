@@ -74,6 +74,13 @@ export function PartnerDetailPage({ id }: { id: string }) {
             <dl className="grid gap-4 sm:grid-cols-3">
               <Field label={t('partners.taxNumber')}>{partner.taxNumber}</Field>
               <Field label={t('partners.taxOffice')}>{partner.taxOffice}</Field>
+              <Field label={t('partners.eInvoiceAlias')}>
+                {partner.eInvoiceAlias ? (
+                  <code className="text-xs break-all">{partner.eInvoiceAlias}</code>
+                ) : (
+                  <span className="text-muted-foreground">{t('partners.eArchiveOnly')}</span>
+                )}
+              </Field>
               <Field label={t('partners.contactName')}>{partner.contactName}</Field>
               <Field label={t('common.phone')}>{partner.phone}</Field>
               <Field label={t('common.email')}>{partner.email}</Field>

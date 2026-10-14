@@ -9,6 +9,7 @@ export * from './companies/companies';
 export * from './contracts/contracts';
 export * from './crm/crm';
 export * from './departments/departments';
+export * from './e-invoice/e-invoice';
 export * from './employees/employees';
 export * from './expenses/expenses';
 export * from './files/files';

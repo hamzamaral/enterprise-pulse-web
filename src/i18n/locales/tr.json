@@ -172,7 +172,8 @@
     "chartOfAccounts": "Hesap planı",
     "trialBalance": "Mizan",
     "balanceSheet": "Bilanço",
-    "incomeStatement": "Gelir tablosu"
+    "incomeStatement": "Gelir tablosu",
+    "eInvoices": "e-Fatura"
   },
   "auth": {
     "login": "Giriş yap",
@@ -332,7 +333,8 @@
       "contracts": "Sözleşmeler",
       "budgets": "Bütçe",
       "fleet": "Araç ve filo",
-      "accounting": "Muhasebe"
+      "accounting": "Muhasebe",
+      "einvoice": "e-Fatura"
     },
     "actions": {
       "read": "Görüntüle",
@@ -1112,8 +1114,11 @@
     "select": "Cari seçin",
     "search": "Kod, unvan veya VKN ara...",
     "errors": {
-      "taxNumber": "VKN 10, TCKN 11 haneli olmalıdır"
-    }
+      "taxNumber": "VKN 10, TCKN 11 haneli olmalıdır",
+      "eInvoiceAlias": "urn:mail:pk@firma.com.tr biçiminde olmalıdır"
+    },
+    "eInvoiceAlias": "e-Fatura posta kutusu",
+    "eArchiveOnly": "e-Fatura mükellefi değil (e-Arşiv)"
   },
   "statement": {
     "title": "Cari ekstre",
@@ -3934,6 +3939,147 @@
         "profitBeforeTax": "Dönem kârı / zararı",
         "netProfit": "Dönem net kârı / zararı"
       }
+    }
+  },
+  "einvoice": {
+    "title": "e-Fatura",
+    "subtitle": "e-Fatura ve e-Arşiv gönderimi, GİB yanıtları ve gelen faturalar (simülasyon)",
+    "single": "e-Fatura",
+    "document": "Belge bilgileri",
+    "history": "Durum geçmişi",
+    "lines": "Fatura satırları",
+    "item": "Mal / hizmet",
+    "quantity": "Miktar",
+    "unitPrice": "Birim fiyat",
+    "discount": "İskonto",
+    "net": "Tutar",
+    "vat": "KDV",
+    "vatAt": "KDV {{rate}} (matrah {{base}})",
+    "lineExtension": "Mal / hizmet toplamı",
+    "allowance": "Toplam iskonto",
+    "payable": "Ödenecek tutar",
+    "profileLabel": "Senaryo",
+    "number": "Fatura no",
+    "issueDate": "Fatura tarihi",
+    "customer": "Alıcı",
+    "supplier": "Gönderen tedarikçi",
+    "amount": "Tutar",
+    "ettn": "ETTN",
+    "statusMessage": "GİB / alıcı yanıtı",
+    "salesInvoice": "Satış faturası",
+    "purchaseInvoice": "Alış faturası",
+    "allStatuses": "Tüm durumlar",
+    "awaitingAnswer": "Yanıt bekleniyor",
+    "senderTaxId": "Gönderici VKN/TCKN",
+    "receiverTaxId": "Alıcı VKN/TCKN",
+    "senderAlias": "Gönderici etiketi",
+    "receiverAlias": "Alıcı posta kutusu",
+    "responseDeadline": "Yanıt süresi sonu",
+    "sync": "Entegratörü çalıştır",
+    "syncDone_one": "{{count}} zarfın durumu güncellendi",
+    "syncDone_other": "{{count}} zarfın durumu güncellendi",
+    "resend": "Yeniden gönder",
+    "resent": "Fatura güncel bilgilerle yeniden kuyruğa alındı",
+    "accept": "Kabul et",
+    "reject": "Reddet",
+    "simulateAccept": "Alıcı kabul etti (simülasyon)",
+    "simulateReject": "Alıcı reddetti (simülasyon)",
+    "record": "Alış faturası oluştur",
+    "recorded": "{{number}} numaralı alış faturası oluşturuldu",
+    "errorTitle": "GİB faturayı reddetti ({{code}})",
+    "errorHint": "Cari kartındaki veya şirket bilgilerindeki hatayı düzeltip yeniden gönderin.",
+    "respondBy_one": "Bu ticari faturayı {{date}} tarihine kadar kabul veya reddedebilirsiniz ({{count}} gün kaldı); sonrasında kabul edilmiş sayılır.",
+    "respondBy_other": "Bu ticari faturayı {{date}} tarihine kadar kabul veya reddedebilirsiniz ({{count}} gün kaldı); sonrasında kabul edilmiş sayılır.",
+    "awaitingReceiver_one": "Alıcının yanıtı bekleniyor; {{date}} tarihine kadar ({{count}} gün) yanıt gelmezse kabul edilmiş sayılır.",
+    "awaitingReceiver_other": "Alıcının yanıtı bekleniyor; {{date}} tarihine kadar ({{count}} gün) yanıt gelmezse kabul edilmiş sayılır.",
+    "status": {
+      "QUEUED": "Kuyrukta",
+      "SENT": "GİB'e iletildi",
+      "DELIVERED": "Alıcıya ulaştı",
+      "ACCEPTED": "Kabul edildi",
+      "REJECTED": "Reddedildi",
+      "ERROR": "Hatalı",
+      "CANCELLED": "İptal edildi"
+    },
+    "profile": {
+      "TEMELFATURA": "Temel fatura",
+      "TICARIFATURA": "Ticari fatura",
+      "EARSIVFATURA": "e-Arşiv"
+    },
+    "direction": {
+      "OUTGOING": "Giden faturalar",
+      "INCOMING": "Gelen faturalar"
+    },
+    "units": {
+      "C62": "adet",
+      "KGM": "kg",
+      "LTR": "lt",
+      "MTR": "m",
+      "MTK": "m²",
+      "CT": "koli",
+      "HUR": "saat"
+    },
+    "kpi": {
+      "unsent": "Gönderilmemiş",
+      "unsentHint": "Kesilmiş ama GİB'e gönderilmemiş satış faturası",
+      "inProgress": "İşlemde",
+      "monthHint_one": "Bu ay {{count}} fatura · {{amount}}",
+      "monthHint_other": "Bu ay {{count}} fatura · {{amount}}",
+      "errors": "Hatalı gönderim",
+      "awaitingHint_one": "{{count}} ticari fatura alıcı yanıtı bekliyor",
+      "awaitingHint_other": "{{count}} ticari fatura alıcı yanıtı bekliyor",
+      "inbox": "Gelen kutusunda bekleyen",
+      "inboxHint": "{{respond}} yanıtlanacak · {{record}} kaydedilecek"
+    },
+    "unsent": {
+      "title": "Gönderilmeyi bekleyen satış faturaları",
+      "hint": "e-Fatura mükellefi alıcılara e-Fatura, diğerlerine e-Arşiv olarak gönderilir.",
+      "sendAll": "Tümünü gönder",
+      "sentAll_one": "{{count}} fatura kuyruğa alındı",
+      "sentAll_other": "{{count}} fatura kuyruğa alındı",
+      "more_one": "ve {{count}} fatura daha",
+      "more_other": "ve {{count}} fatura daha"
+    },
+    "send": {
+      "action": "e-Fatura gönder",
+      "title": "{{number}} — e-Fatura gönder",
+      "hint": "Fatura UBL-TR XML olarak oluşturulur ve entegratör kuyruğuna alınır; GİB yanıtı birkaç saniye içinde gelir.",
+      "auto": "Otomatik (alıcıya göre)",
+      "done": "{{number}} kuyruğa alındı"
+    },
+    "respond": {
+      "incomingAccept": "{{number}} — faturayı kabul et",
+      "incomingReject": "{{number}} — faturayı reddet",
+      "outgoingAccept": "{{number}} — alıcı kabulü (simülasyon)",
+      "outgoingReject": "{{number}} — alıcı reddi (simülasyon)",
+      "acceptHint": "Kabul yanıtı GİB üzerinden gönderene iletilir.",
+      "rejectHint": "Red yanıtı gönderene iletilir; red nedeni zorunludur.",
+      "reason": "Red nedeni",
+      "note": "Not",
+      "accepted": "Fatura kabul edildi",
+      "rejected": "Fatura reddedildi"
+    },
+    "simulate": {
+      "action": "Gelen fatura simüle et",
+      "title": "Gelen e-Fatura simülasyonu",
+      "hint": "Seçilen tedarikçiden, ürünlerin alış fiyatlarıyla rastgele bir e-Fatura gelir.",
+      "randomSupplier": "Rastgele tedarikçi",
+      "done": "{{partner}} firmasından {{number}} geldi"
+    },
+    "settings": {
+      "action": "Ayarlar",
+      "title": "e-Fatura ayarları",
+      "hint": "Gönderici birim etiketi ve e-Fatura mükellefi alıcılar için varsayılan senaryo.",
+      "senderAlias": "Gönderici birim etiketi (urn:mail)",
+      "defaultProfile": "Varsayılan senaryo",
+      "autoSend": "Kesilen satış faturalarını otomatik gönder"
+    },
+    "xml": {
+      "title": "UBL-TR XML",
+      "hint": "UBL 2.1, TR1.2 özelleştirmesi; mali mühür imzası entegratör tarafında eklenir.",
+      "copy": "Kopyala",
+      "copied": "XML panoya kopyalandı",
+      "download": "XML indir"
     }
   }
 }

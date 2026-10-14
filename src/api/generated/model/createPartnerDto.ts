@@ -59,6 +59,12 @@ export interface CreatePartnerDto {
   /** @pattern ^[A-Z]{3}$ */
   currencyCode?: string;
   /**
+   * e-Fatura mailbox alias; registered users receive e-Fatura, the rest e-Arşiv.
+   * @maxLength 150
+   * @nullable
+   */
+  eInvoiceAlias?: string | null;
+  /**
    * @minimum 0
    * @nullable
    */
