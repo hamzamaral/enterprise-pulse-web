@@ -98,7 +98,8 @@ type DocumentTarget =
   | '/finance/accounts/$id'
   | '/partners/$id'
   | '/expenses/$id'
-  | '/payroll/$id';
+  | '/payroll/$id'
+  | '/production/work-orders/$id';
 
 const DOCUMENT_TARGETS: Record<JournalSource, { to: DocumentTarget; permission: string } | null> = {
   MANUAL: null,
@@ -116,6 +117,7 @@ const DOCUMENT_TARGETS: Record<JournalSource, { to: DocumentTarget; permission: 
   EXPENSE_PAYMENT: { to: '/expenses/$id', permission: 'expenses:read' },
   PAYROLL: { to: '/payroll/$id', permission: 'payroll:read' },
   PAYROLL_PAYMENT: { to: '/payroll/$id', permission: 'payroll:read' },
+  PRODUCTION: { to: '/production/work-orders/$id', permission: 'production:read' },
 };
 
 const DIRECT_SOURCES = new Set<JournalSource>([

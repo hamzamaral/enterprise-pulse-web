@@ -72,6 +72,8 @@ import { Route as AppPayrollSettingsRouteImport } from './routes/_app/payroll/se
 import { Route as AppPerformanceIndexRouteImport } from './routes/_app/performance/index'
 import { Route as AppPerformanceCompetenciesRouteImport } from './routes/_app/performance/competencies'
 import { Route as AppPerformanceMyRouteImport } from './routes/_app/performance/my'
+import { Route as AppProductionIndexRouteImport } from './routes/_app/production/index'
+import { Route as AppProductionRequirementsRouteImport } from './routes/_app/production/requirements'
 import { Route as AppProjectsIndexRouteImport } from './routes/_app/projects/index'
 import { Route as AppProjectsIdRouteImport } from './routes/_app/projects/$id'
 import { Route as AppProjectsMyTasksRouteImport } from './routes/_app/projects/my-tasks'
@@ -127,6 +129,10 @@ import { Route as AppInventoryProductsIdRouteImport } from './routes/_app/invent
 import { Route as AppPayrollPayslipsIdRouteImport } from './routes/_app/payroll/payslips/$id'
 import { Route as AppPerformanceCyclesIdRouteImport } from './routes/_app/performance/cycles/$id'
 import { Route as AppPerformanceReviewsIdRouteImport } from './routes/_app/performance/reviews/$id'
+import { Route as AppProductionBomsIndexRouteImport } from './routes/_app/production/boms/index'
+import { Route as AppProductionBomsIdRouteImport } from './routes/_app/production/boms/$id'
+import { Route as AppProductionBomsNewRouteImport } from './routes/_app/production/boms/new'
+import { Route as AppProductionWorkOrdersIdRouteImport } from './routes/_app/production/work-orders/$id'
 import { Route as AppPurchasingInvoicesIndexRouteImport } from './routes/_app/purchasing/invoices/index'
 import { Route as AppPurchasingInvoicesIdRouteImport } from './routes/_app/purchasing/invoices/$id'
 import { Route as AppPurchasingInvoicesNewRouteImport } from './routes/_app/purchasing/invoices/new'
@@ -166,6 +172,7 @@ import { Route as AppTrainingSessionsIdRouteImport } from './routes/_app/trainin
 import { Route as AppWorkflowInstancesIndexRouteImport } from './routes/_app/workflow/instances/index'
 import { Route as AppWorkflowInstancesIdRouteImport } from './routes/_app/workflow/instances/$id'
 import { Route as AppAccountingJournalEditIdRouteImport } from './routes/_app/accounting/journal/edit.$id'
+import { Route as AppProductionBomsEditIdRouteImport } from './routes/_app/production/boms/edit/$id'
 import { Route as AppPurchasingOrdersEditIdRouteImport } from './routes/_app/purchasing/orders/edit.$id'
 import { Route as AppSalesOrdersEditIdRouteImport } from './routes/_app/sales/orders/edit.$id'
 
@@ -487,6 +494,17 @@ const AppPerformanceMyRoute = AppPerformanceMyRouteImport.update({
   path: '/performance/my',
   getParentRoute: () => AppRoute,
 } as any)
+const AppProductionIndexRoute = AppProductionIndexRouteImport.update({
+  id: '/production/',
+  path: '/production/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProductionRequirementsRoute =
+  AppProductionRequirementsRouteImport.update({
+    id: '/production/requirements',
+    path: '/production/requirements',
+    getParentRoute: () => AppRoute,
+  } as any)
 const AppProjectsIndexRoute = AppProjectsIndexRouteImport.update({
   id: '/projects/',
   path: '/projects/',
@@ -772,6 +790,27 @@ const AppPerformanceReviewsIdRoute = AppPerformanceReviewsIdRouteImport.update({
   path: '/performance/reviews/$id',
   getParentRoute: () => AppRoute,
 } as any)
+const AppProductionBomsIndexRoute = AppProductionBomsIndexRouteImport.update({
+  id: '/production/boms/',
+  path: '/production/boms/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProductionBomsIdRoute = AppProductionBomsIdRouteImport.update({
+  id: '/production/boms/$id',
+  path: '/production/boms/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProductionBomsNewRoute = AppProductionBomsNewRouteImport.update({
+  id: '/production/boms/new',
+  path: '/production/boms/new',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProductionWorkOrdersIdRoute =
+  AppProductionWorkOrdersIdRouteImport.update({
+    id: '/production/work-orders/$id',
+    path: '/production/work-orders/$id',
+    getParentRoute: () => AppRoute,
+  } as any)
 const AppPurchasingInvoicesIndexRoute =
   AppPurchasingInvoicesIndexRouteImport.update({
     id: '/purchasing/invoices/',
@@ -981,6 +1020,11 @@ const AppAccountingJournalEditIdRoute =
     path: '/accounting/journal/edit/$id',
     getParentRoute: () => AppRoute,
   } as any)
+const AppProductionBomsEditIdRoute = AppProductionBomsEditIdRouteImport.update({
+  id: '/production/boms/edit/$id',
+  path: '/production/boms/edit/$id',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppPurchasingOrdersEditIdRoute =
   AppPurchasingOrdersEditIdRouteImport.update({
     id: '/purchasing/orders/edit/$id',
@@ -1045,6 +1089,7 @@ export interface FileRoutesByFullPath {
   '/payroll/settings': typeof AppPayrollSettingsRoute
   '/performance/competencies': typeof AppPerformanceCompetenciesRoute
   '/performance/my': typeof AppPerformanceMyRoute
+  '/production/requirements': typeof AppProductionRequirementsRoute
   '/projects/$id': typeof AppProjectsIdRoute
   '/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/projects/timesheet': typeof AppProjectsTimesheetRoute
@@ -1071,6 +1116,7 @@ export interface FileRoutesByFullPath {
   '/partners/': typeof AppPartnersIndexRoute
   '/payroll/': typeof AppPayrollIndexRoute
   '/performance/': typeof AppPerformanceIndexRoute
+  '/production/': typeof AppProductionIndexRoute
   '/projects/': typeof AppProjectsIndexRoute
   '/recruitment/': typeof AppRecruitmentIndexRoute
   '/support/': typeof AppSupportIndexRoute
@@ -1097,6 +1143,9 @@ export interface FileRoutesByFullPath {
   '/payroll/payslips/$id': typeof AppPayrollPayslipsIdRoute
   '/performance/cycles/$id': typeof AppPerformanceCyclesIdRoute
   '/performance/reviews/$id': typeof AppPerformanceReviewsIdRoute
+  '/production/boms/$id': typeof AppProductionBomsIdRoute
+  '/production/boms/new': typeof AppProductionBomsNewRoute
+  '/production/work-orders/$id': typeof AppProductionWorkOrdersIdRoute
   '/purchasing/invoices/$id': typeof AppPurchasingInvoicesIdRoute
   '/purchasing/invoices/new': typeof AppPurchasingInvoicesNewRoute
   '/purchasing/orders/$id': typeof AppPurchasingOrdersIdRoute
@@ -1136,6 +1185,7 @@ export interface FileRoutesByFullPath {
   '/inventory/counts/': typeof AppInventoryCountsIndexRoute
   '/inventory/movements/': typeof AppInventoryMovementsIndexRoute
   '/inventory/products/': typeof AppInventoryProductsIndexRoute
+  '/production/boms/': typeof AppProductionBomsIndexRoute
   '/purchasing/invoices/': typeof AppPurchasingInvoicesIndexRoute
   '/purchasing/orders/': typeof AppPurchasingOrdersIndexRoute
   '/purchasing/quotes/': typeof AppPurchasingQuotesIndexRoute
@@ -1150,6 +1200,7 @@ export interface FileRoutesByFullPath {
   '/sales/returns/': typeof AppSalesReturnsIndexRoute
   '/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
   '/accounting/journal/edit/$id': typeof AppAccountingJournalEditIdRoute
+  '/production/boms/edit/$id': typeof AppProductionBomsEditIdRoute
   '/purchasing/orders/edit/$id': typeof AppPurchasingOrdersEditIdRoute
   '/sales/orders/edit/$id': typeof AppSalesOrdersEditIdRoute
 }
@@ -1205,6 +1256,7 @@ export interface FileRoutesByTo {
   '/payroll/settings': typeof AppPayrollSettingsRoute
   '/performance/competencies': typeof AppPerformanceCompetenciesRoute
   '/performance/my': typeof AppPerformanceMyRoute
+  '/production/requirements': typeof AppProductionRequirementsRoute
   '/projects/$id': typeof AppProjectsIdRoute
   '/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/projects/timesheet': typeof AppProjectsTimesheetRoute
@@ -1231,6 +1283,7 @@ export interface FileRoutesByTo {
   '/partners': typeof AppPartnersIndexRoute
   '/payroll': typeof AppPayrollIndexRoute
   '/performance': typeof AppPerformanceIndexRoute
+  '/production': typeof AppProductionIndexRoute
   '/projects': typeof AppProjectsIndexRoute
   '/recruitment': typeof AppRecruitmentIndexRoute
   '/support': typeof AppSupportIndexRoute
@@ -1257,6 +1310,9 @@ export interface FileRoutesByTo {
   '/payroll/payslips/$id': typeof AppPayrollPayslipsIdRoute
   '/performance/cycles/$id': typeof AppPerformanceCyclesIdRoute
   '/performance/reviews/$id': typeof AppPerformanceReviewsIdRoute
+  '/production/boms/$id': typeof AppProductionBomsIdRoute
+  '/production/boms/new': typeof AppProductionBomsNewRoute
+  '/production/work-orders/$id': typeof AppProductionWorkOrdersIdRoute
   '/purchasing/invoices/$id': typeof AppPurchasingInvoicesIdRoute
   '/purchasing/invoices/new': typeof AppPurchasingInvoicesNewRoute
   '/purchasing/orders/$id': typeof AppPurchasingOrdersIdRoute
@@ -1296,6 +1352,7 @@ export interface FileRoutesByTo {
   '/inventory/counts': typeof AppInventoryCountsIndexRoute
   '/inventory/movements': typeof AppInventoryMovementsIndexRoute
   '/inventory/products': typeof AppInventoryProductsIndexRoute
+  '/production/boms': typeof AppProductionBomsIndexRoute
   '/purchasing/invoices': typeof AppPurchasingInvoicesIndexRoute
   '/purchasing/orders': typeof AppPurchasingOrdersIndexRoute
   '/purchasing/quotes': typeof AppPurchasingQuotesIndexRoute
@@ -1310,6 +1367,7 @@ export interface FileRoutesByTo {
   '/sales/returns': typeof AppSalesReturnsIndexRoute
   '/workflow/instances': typeof AppWorkflowInstancesIndexRoute
   '/accounting/journal/edit/$id': typeof AppAccountingJournalEditIdRoute
+  '/production/boms/edit/$id': typeof AppProductionBomsEditIdRoute
   '/purchasing/orders/edit/$id': typeof AppPurchasingOrdersEditIdRoute
   '/sales/orders/edit/$id': typeof AppSalesOrdersEditIdRoute
 }
@@ -1367,6 +1425,7 @@ export interface FileRoutesById {
   '/_app/payroll/settings': typeof AppPayrollSettingsRoute
   '/_app/performance/competencies': typeof AppPerformanceCompetenciesRoute
   '/_app/performance/my': typeof AppPerformanceMyRoute
+  '/_app/production/requirements': typeof AppProductionRequirementsRoute
   '/_app/projects/$id': typeof AppProjectsIdRoute
   '/_app/projects/my-tasks': typeof AppProjectsMyTasksRoute
   '/_app/projects/timesheet': typeof AppProjectsTimesheetRoute
@@ -1393,6 +1452,7 @@ export interface FileRoutesById {
   '/_app/partners/': typeof AppPartnersIndexRoute
   '/_app/payroll/': typeof AppPayrollIndexRoute
   '/_app/performance/': typeof AppPerformanceIndexRoute
+  '/_app/production/': typeof AppProductionIndexRoute
   '/_app/projects/': typeof AppProjectsIndexRoute
   '/_app/recruitment/': typeof AppRecruitmentIndexRoute
   '/_app/support/': typeof AppSupportIndexRoute
@@ -1419,6 +1479,9 @@ export interface FileRoutesById {
   '/_app/payroll/payslips/$id': typeof AppPayrollPayslipsIdRoute
   '/_app/performance/cycles/$id': typeof AppPerformanceCyclesIdRoute
   '/_app/performance/reviews/$id': typeof AppPerformanceReviewsIdRoute
+  '/_app/production/boms/$id': typeof AppProductionBomsIdRoute
+  '/_app/production/boms/new': typeof AppProductionBomsNewRoute
+  '/_app/production/work-orders/$id': typeof AppProductionWorkOrdersIdRoute
   '/_app/purchasing/invoices/$id': typeof AppPurchasingInvoicesIdRoute
   '/_app/purchasing/invoices/new': typeof AppPurchasingInvoicesNewRoute
   '/_app/purchasing/orders/$id': typeof AppPurchasingOrdersIdRoute
@@ -1458,6 +1521,7 @@ export interface FileRoutesById {
   '/_app/inventory/counts/': typeof AppInventoryCountsIndexRoute
   '/_app/inventory/movements/': typeof AppInventoryMovementsIndexRoute
   '/_app/inventory/products/': typeof AppInventoryProductsIndexRoute
+  '/_app/production/boms/': typeof AppProductionBomsIndexRoute
   '/_app/purchasing/invoices/': typeof AppPurchasingInvoicesIndexRoute
   '/_app/purchasing/orders/': typeof AppPurchasingOrdersIndexRoute
   '/_app/purchasing/quotes/': typeof AppPurchasingQuotesIndexRoute
@@ -1472,6 +1536,7 @@ export interface FileRoutesById {
   '/_app/sales/returns/': typeof AppSalesReturnsIndexRoute
   '/_app/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
   '/_app/accounting/journal/edit/$id': typeof AppAccountingJournalEditIdRoute
+  '/_app/production/boms/edit/$id': typeof AppProductionBomsEditIdRoute
   '/_app/purchasing/orders/edit/$id': typeof AppPurchasingOrdersEditIdRoute
   '/_app/sales/orders/edit/$id': typeof AppSalesOrdersEditIdRoute
 }
@@ -1529,6 +1594,7 @@ export interface FileRouteTypes {
     | '/payroll/settings'
     | '/performance/competencies'
     | '/performance/my'
+    | '/production/requirements'
     | '/projects/$id'
     | '/projects/my-tasks'
     | '/projects/timesheet'
@@ -1555,6 +1621,7 @@ export interface FileRouteTypes {
     | '/partners/'
     | '/payroll/'
     | '/performance/'
+    | '/production/'
     | '/projects/'
     | '/recruitment/'
     | '/support/'
@@ -1581,6 +1648,9 @@ export interface FileRouteTypes {
     | '/payroll/payslips/$id'
     | '/performance/cycles/$id'
     | '/performance/reviews/$id'
+    | '/production/boms/$id'
+    | '/production/boms/new'
+    | '/production/work-orders/$id'
     | '/purchasing/invoices/$id'
     | '/purchasing/invoices/new'
     | '/purchasing/orders/$id'
@@ -1620,6 +1690,7 @@ export interface FileRouteTypes {
     | '/inventory/counts/'
     | '/inventory/movements/'
     | '/inventory/products/'
+    | '/production/boms/'
     | '/purchasing/invoices/'
     | '/purchasing/orders/'
     | '/purchasing/quotes/'
@@ -1634,6 +1705,7 @@ export interface FileRouteTypes {
     | '/sales/returns/'
     | '/workflow/instances/'
     | '/accounting/journal/edit/$id'
+    | '/production/boms/edit/$id'
     | '/purchasing/orders/edit/$id'
     | '/sales/orders/edit/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -1689,6 +1761,7 @@ export interface FileRouteTypes {
     | '/payroll/settings'
     | '/performance/competencies'
     | '/performance/my'
+    | '/production/requirements'
     | '/projects/$id'
     | '/projects/my-tasks'
     | '/projects/timesheet'
@@ -1715,6 +1788,7 @@ export interface FileRouteTypes {
     | '/partners'
     | '/payroll'
     | '/performance'
+    | '/production'
     | '/projects'
     | '/recruitment'
     | '/support'
@@ -1741,6 +1815,9 @@ export interface FileRouteTypes {
     | '/payroll/payslips/$id'
     | '/performance/cycles/$id'
     | '/performance/reviews/$id'
+    | '/production/boms/$id'
+    | '/production/boms/new'
+    | '/production/work-orders/$id'
     | '/purchasing/invoices/$id'
     | '/purchasing/invoices/new'
     | '/purchasing/orders/$id'
@@ -1780,6 +1857,7 @@ export interface FileRouteTypes {
     | '/inventory/counts'
     | '/inventory/movements'
     | '/inventory/products'
+    | '/production/boms'
     | '/purchasing/invoices'
     | '/purchasing/orders'
     | '/purchasing/quotes'
@@ -1794,6 +1872,7 @@ export interface FileRouteTypes {
     | '/sales/returns'
     | '/workflow/instances'
     | '/accounting/journal/edit/$id'
+    | '/production/boms/edit/$id'
     | '/purchasing/orders/edit/$id'
     | '/sales/orders/edit/$id'
   id:
@@ -1850,6 +1929,7 @@ export interface FileRouteTypes {
     | '/_app/payroll/settings'
     | '/_app/performance/competencies'
     | '/_app/performance/my'
+    | '/_app/production/requirements'
     | '/_app/projects/$id'
     | '/_app/projects/my-tasks'
     | '/_app/projects/timesheet'
@@ -1876,6 +1956,7 @@ export interface FileRouteTypes {
     | '/_app/partners/'
     | '/_app/payroll/'
     | '/_app/performance/'
+    | '/_app/production/'
     | '/_app/projects/'
     | '/_app/recruitment/'
     | '/_app/support/'
@@ -1902,6 +1983,9 @@ export interface FileRouteTypes {
     | '/_app/payroll/payslips/$id'
     | '/_app/performance/cycles/$id'
     | '/_app/performance/reviews/$id'
+    | '/_app/production/boms/$id'
+    | '/_app/production/boms/new'
+    | '/_app/production/work-orders/$id'
     | '/_app/purchasing/invoices/$id'
     | '/_app/purchasing/invoices/new'
     | '/_app/purchasing/orders/$id'
@@ -1941,6 +2025,7 @@ export interface FileRouteTypes {
     | '/_app/inventory/counts/'
     | '/_app/inventory/movements/'
     | '/_app/inventory/products/'
+    | '/_app/production/boms/'
     | '/_app/purchasing/invoices/'
     | '/_app/purchasing/orders/'
     | '/_app/purchasing/quotes/'
@@ -1955,6 +2040,7 @@ export interface FileRouteTypes {
     | '/_app/sales/returns/'
     | '/_app/workflow/instances/'
     | '/_app/accounting/journal/edit/$id'
+    | '/_app/production/boms/edit/$id'
     | '/_app/purchasing/orders/edit/$id'
     | '/_app/sales/orders/edit/$id'
   fileRoutesById: FileRoutesById
@@ -2409,6 +2495,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPerformanceMyRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/production/': {
+      id: '/_app/production/'
+      path: '/production'
+      fullPath: '/production/'
+      preLoaderRoute: typeof AppProductionIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/production/requirements': {
+      id: '/_app/production/requirements'
+      path: '/production/requirements'
+      fullPath: '/production/requirements'
+      preLoaderRoute: typeof AppProductionRequirementsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/projects/': {
       id: '/_app/projects/'
       path: '/projects'
@@ -2794,6 +2894,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPerformanceReviewsIdRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/production/boms/': {
+      id: '/_app/production/boms/'
+      path: '/production/boms'
+      fullPath: '/production/boms/'
+      preLoaderRoute: typeof AppProductionBomsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/production/boms/$id': {
+      id: '/_app/production/boms/$id'
+      path: '/production/boms/$id'
+      fullPath: '/production/boms/$id'
+      preLoaderRoute: typeof AppProductionBomsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/production/boms/new': {
+      id: '/_app/production/boms/new'
+      path: '/production/boms/new'
+      fullPath: '/production/boms/new'
+      preLoaderRoute: typeof AppProductionBomsNewRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/production/work-orders/$id': {
+      id: '/_app/production/work-orders/$id'
+      path: '/production/work-orders/$id'
+      fullPath: '/production/work-orders/$id'
+      preLoaderRoute: typeof AppProductionWorkOrdersIdRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/purchasing/invoices/': {
       id: '/_app/purchasing/invoices/'
       path: '/purchasing/invoices'
@@ -3067,6 +3195,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppAccountingJournalEditIdRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/production/boms/edit/$id': {
+      id: '/_app/production/boms/edit/$id'
+      path: '/production/boms/edit/$id'
+      fullPath: '/production/boms/edit/$id'
+      preLoaderRoute: typeof AppProductionBomsEditIdRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/purchasing/orders/edit/$id': {
       id: '/_app/purchasing/orders/edit/$id'
       path: '/purchasing/orders/edit/$id'
@@ -3133,6 +3268,7 @@ interface AppRouteChildren {
   AppPayrollSettingsRoute: typeof AppPayrollSettingsRoute
   AppPerformanceCompetenciesRoute: typeof AppPerformanceCompetenciesRoute
   AppPerformanceMyRoute: typeof AppPerformanceMyRoute
+  AppProductionRequirementsRoute: typeof AppProductionRequirementsRoute
   AppProjectsIdRoute: typeof AppProjectsIdRoute
   AppProjectsMyTasksRoute: typeof AppProjectsMyTasksRoute
   AppProjectsTimesheetRoute: typeof AppProjectsTimesheetRoute
@@ -3159,6 +3295,7 @@ interface AppRouteChildren {
   AppPartnersIndexRoute: typeof AppPartnersIndexRoute
   AppPayrollIndexRoute: typeof AppPayrollIndexRoute
   AppPerformanceIndexRoute: typeof AppPerformanceIndexRoute
+  AppProductionIndexRoute: typeof AppProductionIndexRoute
   AppProjectsIndexRoute: typeof AppProjectsIndexRoute
   AppRecruitmentIndexRoute: typeof AppRecruitmentIndexRoute
   AppSupportIndexRoute: typeof AppSupportIndexRoute
@@ -3185,6 +3322,9 @@ interface AppRouteChildren {
   AppPayrollPayslipsIdRoute: typeof AppPayrollPayslipsIdRoute
   AppPerformanceCyclesIdRoute: typeof AppPerformanceCyclesIdRoute
   AppPerformanceReviewsIdRoute: typeof AppPerformanceReviewsIdRoute
+  AppProductionBomsIdRoute: typeof AppProductionBomsIdRoute
+  AppProductionBomsNewRoute: typeof AppProductionBomsNewRoute
+  AppProductionWorkOrdersIdRoute: typeof AppProductionWorkOrdersIdRoute
   AppPurchasingInvoicesIdRoute: typeof AppPurchasingInvoicesIdRoute
   AppPurchasingInvoicesNewRoute: typeof AppPurchasingInvoicesNewRoute
   AppPurchasingOrdersIdRoute: typeof AppPurchasingOrdersIdRoute
@@ -3224,6 +3364,7 @@ interface AppRouteChildren {
   AppInventoryCountsIndexRoute: typeof AppInventoryCountsIndexRoute
   AppInventoryMovementsIndexRoute: typeof AppInventoryMovementsIndexRoute
   AppInventoryProductsIndexRoute: typeof AppInventoryProductsIndexRoute
+  AppProductionBomsIndexRoute: typeof AppProductionBomsIndexRoute
   AppPurchasingInvoicesIndexRoute: typeof AppPurchasingInvoicesIndexRoute
   AppPurchasingOrdersIndexRoute: typeof AppPurchasingOrdersIndexRoute
   AppPurchasingQuotesIndexRoute: typeof AppPurchasingQuotesIndexRoute
@@ -3238,6 +3379,7 @@ interface AppRouteChildren {
   AppSalesReturnsIndexRoute: typeof AppSalesReturnsIndexRoute
   AppWorkflowInstancesIndexRoute: typeof AppWorkflowInstancesIndexRoute
   AppAccountingJournalEditIdRoute: typeof AppAccountingJournalEditIdRoute
+  AppProductionBomsEditIdRoute: typeof AppProductionBomsEditIdRoute
   AppPurchasingOrdersEditIdRoute: typeof AppPurchasingOrdersEditIdRoute
   AppSalesOrdersEditIdRoute: typeof AppSalesOrdersEditIdRoute
 }
@@ -3291,6 +3433,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppPayrollSettingsRoute: AppPayrollSettingsRoute,
   AppPerformanceCompetenciesRoute: AppPerformanceCompetenciesRoute,
   AppPerformanceMyRoute: AppPerformanceMyRoute,
+  AppProductionRequirementsRoute: AppProductionRequirementsRoute,
   AppProjectsIdRoute: AppProjectsIdRoute,
   AppProjectsMyTasksRoute: AppProjectsMyTasksRoute,
   AppProjectsTimesheetRoute: AppProjectsTimesheetRoute,
@@ -3317,6 +3460,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppPartnersIndexRoute: AppPartnersIndexRoute,
   AppPayrollIndexRoute: AppPayrollIndexRoute,
   AppPerformanceIndexRoute: AppPerformanceIndexRoute,
+  AppProductionIndexRoute: AppProductionIndexRoute,
   AppProjectsIndexRoute: AppProjectsIndexRoute,
   AppRecruitmentIndexRoute: AppRecruitmentIndexRoute,
   AppSupportIndexRoute: AppSupportIndexRoute,
@@ -3343,6 +3487,9 @@ const AppRouteChildren: AppRouteChildren = {
   AppPayrollPayslipsIdRoute: AppPayrollPayslipsIdRoute,
   AppPerformanceCyclesIdRoute: AppPerformanceCyclesIdRoute,
   AppPerformanceReviewsIdRoute: AppPerformanceReviewsIdRoute,
+  AppProductionBomsIdRoute: AppProductionBomsIdRoute,
+  AppProductionBomsNewRoute: AppProductionBomsNewRoute,
+  AppProductionWorkOrdersIdRoute: AppProductionWorkOrdersIdRoute,
   AppPurchasingInvoicesIdRoute: AppPurchasingInvoicesIdRoute,
   AppPurchasingInvoicesNewRoute: AppPurchasingInvoicesNewRoute,
   AppPurchasingOrdersIdRoute: AppPurchasingOrdersIdRoute,
@@ -3382,6 +3529,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppInventoryCountsIndexRoute: AppInventoryCountsIndexRoute,
   AppInventoryMovementsIndexRoute: AppInventoryMovementsIndexRoute,
   AppInventoryProductsIndexRoute: AppInventoryProductsIndexRoute,
+  AppProductionBomsIndexRoute: AppProductionBomsIndexRoute,
   AppPurchasingInvoicesIndexRoute: AppPurchasingInvoicesIndexRoute,
   AppPurchasingOrdersIndexRoute: AppPurchasingOrdersIndexRoute,
   AppPurchasingQuotesIndexRoute: AppPurchasingQuotesIndexRoute,
@@ -3396,6 +3544,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppSalesReturnsIndexRoute: AppSalesReturnsIndexRoute,
   AppWorkflowInstancesIndexRoute: AppWorkflowInstancesIndexRoute,
   AppAccountingJournalEditIdRoute: AppAccountingJournalEditIdRoute,
+  AppProductionBomsEditIdRoute: AppProductionBomsEditIdRoute,
   AppPurchasingOrdersEditIdRoute: AppPurchasingOrdersEditIdRoute,
   AppSalesOrdersEditIdRoute: AppSalesOrdersEditIdRoute,
 }

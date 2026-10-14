@@ -24,6 +24,7 @@ export * from './partners/partners';
 export * from './payroll/payroll';
 export * from './performance/performance';
 export * from './positions/positions';
+export * from './production/production';
 export * from './projects/projects';
 export * from './purchasing/purchasing';
 export * from './recruitment/recruitment';

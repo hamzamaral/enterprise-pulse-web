@@ -67,6 +67,10 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Muhasebe:** hazır değerler, alacak / borç, aylık gelir ve gider, bekleyen belgeler    | **Mizan:** dönem hareketleri, toplamlar ve bakiyeler, denge kontrolü                |
 | ![e-Fatura](docs/screenshots/e-invoices.png)                                            | ![e-Fatura detayı](docs/screenshots/e-invoice.png)                                  |
 | **e-Fatura:** gönderilmemiş faturalar, GİB durumları, yanıt bekleyenler                 | **e-Fatura detayı:** durum geçmişi, satırlar, vergi toplamları, UBL-TR XML          |
+| ![Üretim](docs/screenshots/production.png)                                              | ![İş emri](docs/screenshots/work-order.png)                                         |
+| **Üretim:** açık ve geciken iş emirleri, aylık üretim değeri, malzeme eksiği            | **İş emri:** malzeme durumu, üretim kayıtları, standart ve gerçekleşen maliyet      |
+| ![Ürün ağacı](docs/screenshots/bom.png)                                                 | ![Malzeme ihtiyacı](docs/screenshots/mrp.png)                                       |
+| **Ürün ağacı:** bileşenler, standart maliyet, çok seviyeli üretim planı                 | **Malzeme ihtiyacı:** net ihtiyaç, satın alma talebi ve iş emri açma                |
 
 ## Özellikler
 
@@ -138,6 +142,14 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   gönderme, alıcı yanıtı simülasyonu, gelen faturayı kabul / ret ve alış faturasına aktarma; satış faturası
   detayında e-Fatura durumu ve gönderme; carinin e-Fatura etiketi; gönderici etiketi ve otomatik gönderim
   ayarı.
+- **Üretim (MRP):** üretim paneli (açık, geciken ve bu ay tamamlanan iş emirleri, üretim değeri, malzeme
+  eksiği); iş emri listesi (durum ve gecikme filtresi, ilerleme çubuğu, Excel / PDF); iş emri detayında
+  düzenleme, serbest bırakma, üretim kaydı (standart tüketim önizlemesi, gerçekleşen tüketimi düzeltme, son
+  kayıt, mamul lotu), eksik kapatma ve iptal; malzeme durumu, üretim kayıtları ve stok hareketi
+  bağlantıları; ürün ağacı listesi, detayı (bileşenler, maliyet, varsayılan / pasif, iş emri açma) ve çok
+  seviyeli üretim planı; ürün seçicili ürün ağacı formu ve canlı maliyet önizlemesi; malzeme ihtiyaç
+  planlaması (brüt / net ihtiyaç, gelecek miktarlar, kaynak belgeler, seçilen eksiklerden satın alma
+  talebi, üretilen ürün için iş emri).
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.
