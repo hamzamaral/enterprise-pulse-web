@@ -10,6 +10,7 @@ import {
   BriefcaseBusiness,
   Building,
   Building2,
+  Calculator,
   CalendarCheck,
   CalendarClock,
   CalendarCog,
@@ -59,6 +60,7 @@ import {
   PiggyBank,
   Presentation,
   Receipt,
+  Scale,
   ScanQrCode,
   ReceiptText,
   Timer,
@@ -455,6 +457,47 @@ export const NAVIGATION: NavGroup[] = [
         permission: 'finance:read',
       },
       { to: '/finance/aging', labelKey: 'nav.aging', icon: Hourglass, permission: 'finance:read' },
+    ],
+  },
+  {
+    labelKey: 'nav.groups.accounting',
+    items: [
+      {
+        to: '/accounting',
+        labelKey: 'nav.accounting',
+        icon: Calculator,
+        permission: 'accounting:read',
+      },
+      {
+        to: '/accounting/journal',
+        labelKey: 'nav.journal',
+        icon: BookOpen,
+        permission: 'accounting:read',
+      },
+      {
+        to: '/accounting/accounts',
+        labelKey: 'nav.chartOfAccounts',
+        icon: ListTree,
+        permission: 'accounting:read',
+      },
+      {
+        to: '/accounting/trial-balance',
+        labelKey: 'nav.trialBalance',
+        icon: FileSpreadsheet,
+        permission: 'accounting:read',
+      },
+      {
+        to: '/accounting/balance-sheet',
+        labelKey: 'nav.balanceSheet',
+        icon: Scale,
+        permission: 'accounting:read',
+      },
+      {
+        to: '/accounting/income-statement',
+        labelKey: 'nav.incomeStatement',
+        icon: TrendingUp,
+        permission: 'accounting:read',
+      },
     ],
   },
   {

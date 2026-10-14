@@ -23,6 +23,10 @@ import { Route as AppProfileRouteImport } from './routes/_app/profile'
 import { Route as AppRolesRouteImport } from './routes/_app/roles'
 import { Route as AppSettingsRouteImport } from './routes/_app/settings'
 import { Route as AppUsersRouteImport } from './routes/_app/users'
+import { Route as AppAccountingIndexRouteImport } from './routes/_app/accounting/index'
+import { Route as AppAccountingBalanceSheetRouteImport } from './routes/_app/accounting/balance-sheet'
+import { Route as AppAccountingIncomeStatementRouteImport } from './routes/_app/accounting/income-statement'
+import { Route as AppAccountingTrialBalanceRouteImport } from './routes/_app/accounting/trial-balance'
 import { Route as AppAssetsIndexRouteImport } from './routes/_app/assets/index'
 import { Route as AppAssetsIdRouteImport } from './routes/_app/assets/$id'
 import { Route as AppAssetsMyRouteImport } from './routes/_app/assets/my'
@@ -85,6 +89,11 @@ import { Route as AppTrainingCoursesRouteImport } from './routes/_app/training/c
 import { Route as AppTrainingMyRouteImport } from './routes/_app/training/my'
 import { Route as AppWorkflowDefinitionsRouteImport } from './routes/_app/workflow/definitions'
 import { Route as AppWorkflowInboxRouteImport } from './routes/_app/workflow/inbox'
+import { Route as AppAccountingAccountsIndexRouteImport } from './routes/_app/accounting/accounts/index'
+import { Route as AppAccountingAccountsIdRouteImport } from './routes/_app/accounting/accounts/$id'
+import { Route as AppAccountingJournalIndexRouteImport } from './routes/_app/accounting/journal/index'
+import { Route as AppAccountingJournalIdRouteImport } from './routes/_app/accounting/journal/$id'
+import { Route as AppAccountingJournalNewRouteImport } from './routes/_app/accounting/journal/new'
 import { Route as AppAssetsAssignmentsIndexRouteImport } from './routes/_app/assets/assignments/index'
 import { Route as AppAssetsAssignmentsIdRouteImport } from './routes/_app/assets/assignments/$id'
 import { Route as AppAssetsCountsIndexRouteImport } from './routes/_app/assets/counts/index'
@@ -154,6 +163,7 @@ import { Route as AppSupportTicketsIdRouteImport } from './routes/_app/support/t
 import { Route as AppTrainingSessionsIdRouteImport } from './routes/_app/training/sessions/$id'
 import { Route as AppWorkflowInstancesIndexRouteImport } from './routes/_app/workflow/instances/index'
 import { Route as AppWorkflowInstancesIdRouteImport } from './routes/_app/workflow/instances/$id'
+import { Route as AppAccountingJournalEditIdRouteImport } from './routes/_app/accounting/journal/edit.$id'
 import { Route as AppPurchasingOrdersEditIdRouteImport } from './routes/_app/purchasing/orders/edit.$id'
 import { Route as AppSalesOrdersEditIdRouteImport } from './routes/_app/sales/orders/edit.$id'
 
@@ -226,6 +236,29 @@ const AppUsersRoute = AppUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAccountingIndexRoute = AppAccountingIndexRouteImport.update({
+  id: '/accounting/',
+  path: '/accounting/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAccountingBalanceSheetRoute =
+  AppAccountingBalanceSheetRouteImport.update({
+    id: '/accounting/balance-sheet',
+    path: '/accounting/balance-sheet',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppAccountingIncomeStatementRoute =
+  AppAccountingIncomeStatementRouteImport.update({
+    id: '/accounting/income-statement',
+    path: '/accounting/income-statement',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppAccountingTrialBalanceRoute =
+  AppAccountingTrialBalanceRouteImport.update({
+    id: '/accounting/trial-balance',
+    path: '/accounting/trial-balance',
+    getParentRoute: () => AppRoute,
+  } as any)
 const AppAssetsIndexRoute = AppAssetsIndexRouteImport.update({
   id: '/assets/',
   path: '/assets/',
@@ -536,6 +569,33 @@ const AppWorkflowDefinitionsRoute = AppWorkflowDefinitionsRouteImport.update({
 const AppWorkflowInboxRoute = AppWorkflowInboxRouteImport.update({
   id: '/workflow/inbox',
   path: '/workflow/inbox',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAccountingAccountsIndexRoute =
+  AppAccountingAccountsIndexRouteImport.update({
+    id: '/accounting/accounts/',
+    path: '/accounting/accounts/',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppAccountingAccountsIdRoute = AppAccountingAccountsIdRouteImport.update({
+  id: '/accounting/accounts/$id',
+  path: '/accounting/accounts/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAccountingJournalIndexRoute =
+  AppAccountingJournalIndexRouteImport.update({
+    id: '/accounting/journal/',
+    path: '/accounting/journal/',
+    getParentRoute: () => AppRoute,
+  } as any)
+const AppAccountingJournalIdRoute = AppAccountingJournalIdRouteImport.update({
+  id: '/accounting/journal/$id',
+  path: '/accounting/journal/$id',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppAccountingJournalNewRoute = AppAccountingJournalNewRouteImport.update({
+  id: '/accounting/journal/new',
+  path: '/accounting/journal/new',
   getParentRoute: () => AppRoute,
 } as any)
 const AppAssetsAssignmentsIndexRoute =
@@ -903,6 +963,12 @@ const AppWorkflowInstancesIdRoute = AppWorkflowInstancesIdRouteImport.update({
   path: '/workflow/instances/$id',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAccountingJournalEditIdRoute =
+  AppAccountingJournalEditIdRouteImport.update({
+    id: '/accounting/journal/edit/$id',
+    path: '/accounting/journal/edit/$id',
+    getParentRoute: () => AppRoute,
+  } as any)
 const AppPurchasingOrdersEditIdRoute =
   AppPurchasingOrdersEditIdRouteImport.update({
     id: '/purchasing/orders/edit/$id',
@@ -929,6 +995,9 @@ export interface FileRoutesByFullPath {
   '/roles': typeof AppRolesRoute
   '/settings': typeof AppSettingsRoute
   '/users': typeof AppUsersRoute
+  '/accounting/balance-sheet': typeof AppAccountingBalanceSheetRoute
+  '/accounting/income-statement': typeof AppAccountingIncomeStatementRoute
+  '/accounting/trial-balance': typeof AppAccountingTrialBalanceRoute
   '/assets/$id': typeof AppAssetsIdRoute
   '/assets/my': typeof AppAssetsMyRoute
   '/assets/settings': typeof AppAssetsSettingsRoute
@@ -978,6 +1047,7 @@ export interface FileRoutesByFullPath {
   '/training/my': typeof AppTrainingMyRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
+  '/accounting/': typeof AppAccountingIndexRoute
   '/assets/': typeof AppAssetsIndexRoute
   '/budgets/': typeof AppBudgetsIndexRoute
   '/contracts/': typeof AppContractsIndexRoute
@@ -991,6 +1061,9 @@ export interface FileRoutesByFullPath {
   '/recruitment/': typeof AppRecruitmentIndexRoute
   '/support/': typeof AppSupportIndexRoute
   '/training/': typeof AppTrainingIndexRoute
+  '/accounting/accounts/$id': typeof AppAccountingAccountsIdRoute
+  '/accounting/journal/$id': typeof AppAccountingJournalIdRoute
+  '/accounting/journal/new': typeof AppAccountingJournalNewRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -1035,6 +1108,8 @@ export interface FileRoutesByFullPath {
   '/support/tickets/$id': typeof AppSupportTicketsIdRoute
   '/training/sessions/$id': typeof AppTrainingSessionsIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
+  '/accounting/accounts/': typeof AppAccountingAccountsIndexRoute
+  '/accounting/journal/': typeof AppAccountingJournalIndexRoute
   '/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/assets/counts/': typeof AppAssetsCountsIndexRoute
   '/crm/leads/': typeof AppCrmLeadsIndexRoute
@@ -1060,6 +1135,7 @@ export interface FileRoutesByFullPath {
   '/sales/quotes/': typeof AppSalesQuotesIndexRoute
   '/sales/returns/': typeof AppSalesReturnsIndexRoute
   '/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
+  '/accounting/journal/edit/$id': typeof AppAccountingJournalEditIdRoute
   '/purchasing/orders/edit/$id': typeof AppPurchasingOrdersEditIdRoute
   '/sales/orders/edit/$id': typeof AppSalesOrdersEditIdRoute
 }
@@ -1077,6 +1153,9 @@ export interface FileRoutesByTo {
   '/settings': typeof AppSettingsRoute
   '/users': typeof AppUsersRoute
   '/': typeof AppIndexRoute
+  '/accounting/balance-sheet': typeof AppAccountingBalanceSheetRoute
+  '/accounting/income-statement': typeof AppAccountingIncomeStatementRoute
+  '/accounting/trial-balance': typeof AppAccountingTrialBalanceRoute
   '/assets/$id': typeof AppAssetsIdRoute
   '/assets/my': typeof AppAssetsMyRoute
   '/assets/settings': typeof AppAssetsSettingsRoute
@@ -1126,6 +1205,7 @@ export interface FileRoutesByTo {
   '/training/my': typeof AppTrainingMyRoute
   '/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/workflow/inbox': typeof AppWorkflowInboxRoute
+  '/accounting': typeof AppAccountingIndexRoute
   '/assets': typeof AppAssetsIndexRoute
   '/budgets': typeof AppBudgetsIndexRoute
   '/contracts': typeof AppContractsIndexRoute
@@ -1139,6 +1219,9 @@ export interface FileRoutesByTo {
   '/recruitment': typeof AppRecruitmentIndexRoute
   '/support': typeof AppSupportIndexRoute
   '/training': typeof AppTrainingIndexRoute
+  '/accounting/accounts/$id': typeof AppAccountingAccountsIdRoute
+  '/accounting/journal/$id': typeof AppAccountingJournalIdRoute
+  '/accounting/journal/new': typeof AppAccountingJournalNewRoute
   '/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -1183,6 +1266,8 @@ export interface FileRoutesByTo {
   '/support/tickets/$id': typeof AppSupportTicketsIdRoute
   '/training/sessions/$id': typeof AppTrainingSessionsIdRoute
   '/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
+  '/accounting/accounts': typeof AppAccountingAccountsIndexRoute
+  '/accounting/journal': typeof AppAccountingJournalIndexRoute
   '/assets/assignments': typeof AppAssetsAssignmentsIndexRoute
   '/assets/counts': typeof AppAssetsCountsIndexRoute
   '/crm/leads': typeof AppCrmLeadsIndexRoute
@@ -1208,6 +1293,7 @@ export interface FileRoutesByTo {
   '/sales/quotes': typeof AppSalesQuotesIndexRoute
   '/sales/returns': typeof AppSalesReturnsIndexRoute
   '/workflow/instances': typeof AppWorkflowInstancesIndexRoute
+  '/accounting/journal/edit/$id': typeof AppAccountingJournalEditIdRoute
   '/purchasing/orders/edit/$id': typeof AppPurchasingOrdersEditIdRoute
   '/sales/orders/edit/$id': typeof AppSalesOrdersEditIdRoute
 }
@@ -1227,6 +1313,9 @@ export interface FileRoutesById {
   '/_app/settings': typeof AppSettingsRoute
   '/_app/users': typeof AppUsersRoute
   '/_app/': typeof AppIndexRoute
+  '/_app/accounting/balance-sheet': typeof AppAccountingBalanceSheetRoute
+  '/_app/accounting/income-statement': typeof AppAccountingIncomeStatementRoute
+  '/_app/accounting/trial-balance': typeof AppAccountingTrialBalanceRoute
   '/_app/assets/$id': typeof AppAssetsIdRoute
   '/_app/assets/my': typeof AppAssetsMyRoute
   '/_app/assets/settings': typeof AppAssetsSettingsRoute
@@ -1276,6 +1365,7 @@ export interface FileRoutesById {
   '/_app/training/my': typeof AppTrainingMyRoute
   '/_app/workflow/definitions': typeof AppWorkflowDefinitionsRoute
   '/_app/workflow/inbox': typeof AppWorkflowInboxRoute
+  '/_app/accounting/': typeof AppAccountingIndexRoute
   '/_app/assets/': typeof AppAssetsIndexRoute
   '/_app/budgets/': typeof AppBudgetsIndexRoute
   '/_app/contracts/': typeof AppContractsIndexRoute
@@ -1289,6 +1379,9 @@ export interface FileRoutesById {
   '/_app/recruitment/': typeof AppRecruitmentIndexRoute
   '/_app/support/': typeof AppSupportIndexRoute
   '/_app/training/': typeof AppTrainingIndexRoute
+  '/_app/accounting/accounts/$id': typeof AppAccountingAccountsIdRoute
+  '/_app/accounting/journal/$id': typeof AppAccountingJournalIdRoute
+  '/_app/accounting/journal/new': typeof AppAccountingJournalNewRoute
   '/_app/assets/assignments/$id': typeof AppAssetsAssignmentsIdRoute
   '/_app/assets/counts/$id': typeof AppAssetsCountsIdRoute
   '/_app/crm/leads/$id': typeof AppCrmLeadsIdRoute
@@ -1333,6 +1426,8 @@ export interface FileRoutesById {
   '/_app/support/tickets/$id': typeof AppSupportTicketsIdRoute
   '/_app/training/sessions/$id': typeof AppTrainingSessionsIdRoute
   '/_app/workflow/instances/$id': typeof AppWorkflowInstancesIdRoute
+  '/_app/accounting/accounts/': typeof AppAccountingAccountsIndexRoute
+  '/_app/accounting/journal/': typeof AppAccountingJournalIndexRoute
   '/_app/assets/assignments/': typeof AppAssetsAssignmentsIndexRoute
   '/_app/assets/counts/': typeof AppAssetsCountsIndexRoute
   '/_app/crm/leads/': typeof AppCrmLeadsIndexRoute
@@ -1358,6 +1453,7 @@ export interface FileRoutesById {
   '/_app/sales/quotes/': typeof AppSalesQuotesIndexRoute
   '/_app/sales/returns/': typeof AppSalesReturnsIndexRoute
   '/_app/workflow/instances/': typeof AppWorkflowInstancesIndexRoute
+  '/_app/accounting/journal/edit/$id': typeof AppAccountingJournalEditIdRoute
   '/_app/purchasing/orders/edit/$id': typeof AppPurchasingOrdersEditIdRoute
   '/_app/sales/orders/edit/$id': typeof AppSalesOrdersEditIdRoute
 }
@@ -1377,6 +1473,9 @@ export interface FileRouteTypes {
     | '/roles'
     | '/settings'
     | '/users'
+    | '/accounting/balance-sheet'
+    | '/accounting/income-statement'
+    | '/accounting/trial-balance'
     | '/assets/$id'
     | '/assets/my'
     | '/assets/settings'
@@ -1426,6 +1525,7 @@ export interface FileRouteTypes {
     | '/training/my'
     | '/workflow/definitions'
     | '/workflow/inbox'
+    | '/accounting/'
     | '/assets/'
     | '/budgets/'
     | '/contracts/'
@@ -1439,6 +1539,9 @@ export interface FileRouteTypes {
     | '/recruitment/'
     | '/support/'
     | '/training/'
+    | '/accounting/accounts/$id'
+    | '/accounting/journal/$id'
+    | '/accounting/journal/new'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
     | '/crm/leads/$id'
@@ -1483,6 +1586,8 @@ export interface FileRouteTypes {
     | '/support/tickets/$id'
     | '/training/sessions/$id'
     | '/workflow/instances/$id'
+    | '/accounting/accounts/'
+    | '/accounting/journal/'
     | '/assets/assignments/'
     | '/assets/counts/'
     | '/crm/leads/'
@@ -1508,6 +1613,7 @@ export interface FileRouteTypes {
     | '/sales/quotes/'
     | '/sales/returns/'
     | '/workflow/instances/'
+    | '/accounting/journal/edit/$id'
     | '/purchasing/orders/edit/$id'
     | '/sales/orders/edit/$id'
   fileRoutesByTo: FileRoutesByTo
@@ -1525,6 +1631,9 @@ export interface FileRouteTypes {
     | '/settings'
     | '/users'
     | '/'
+    | '/accounting/balance-sheet'
+    | '/accounting/income-statement'
+    | '/accounting/trial-balance'
     | '/assets/$id'
     | '/assets/my'
     | '/assets/settings'
@@ -1574,6 +1683,7 @@ export interface FileRouteTypes {
     | '/training/my'
     | '/workflow/definitions'
     | '/workflow/inbox'
+    | '/accounting'
     | '/assets'
     | '/budgets'
     | '/contracts'
@@ -1587,6 +1697,9 @@ export interface FileRouteTypes {
     | '/recruitment'
     | '/support'
     | '/training'
+    | '/accounting/accounts/$id'
+    | '/accounting/journal/$id'
+    | '/accounting/journal/new'
     | '/assets/assignments/$id'
     | '/assets/counts/$id'
     | '/crm/leads/$id'
@@ -1631,6 +1744,8 @@ export interface FileRouteTypes {
     | '/support/tickets/$id'
     | '/training/sessions/$id'
     | '/workflow/instances/$id'
+    | '/accounting/accounts'
+    | '/accounting/journal'
     | '/assets/assignments'
     | '/assets/counts'
     | '/crm/leads'
@@ -1656,6 +1771,7 @@ export interface FileRouteTypes {
     | '/sales/quotes'
     | '/sales/returns'
     | '/workflow/instances'
+    | '/accounting/journal/edit/$id'
     | '/purchasing/orders/edit/$id'
     | '/sales/orders/edit/$id'
   id:
@@ -1674,6 +1790,9 @@ export interface FileRouteTypes {
     | '/_app/settings'
     | '/_app/users'
     | '/_app/'
+    | '/_app/accounting/balance-sheet'
+    | '/_app/accounting/income-statement'
+    | '/_app/accounting/trial-balance'
     | '/_app/assets/$id'
     | '/_app/assets/my'
     | '/_app/assets/settings'
@@ -1723,6 +1842,7 @@ export interface FileRouteTypes {
     | '/_app/training/my'
     | '/_app/workflow/definitions'
     | '/_app/workflow/inbox'
+    | '/_app/accounting/'
     | '/_app/assets/'
     | '/_app/budgets/'
     | '/_app/contracts/'
@@ -1736,6 +1856,9 @@ export interface FileRouteTypes {
     | '/_app/recruitment/'
     | '/_app/support/'
     | '/_app/training/'
+    | '/_app/accounting/accounts/$id'
+    | '/_app/accounting/journal/$id'
+    | '/_app/accounting/journal/new'
     | '/_app/assets/assignments/$id'
     | '/_app/assets/counts/$id'
     | '/_app/crm/leads/$id'
@@ -1780,6 +1903,8 @@ export interface FileRouteTypes {
     | '/_app/support/tickets/$id'
     | '/_app/training/sessions/$id'
     | '/_app/workflow/instances/$id'
+    | '/_app/accounting/accounts/'
+    | '/_app/accounting/journal/'
     | '/_app/assets/assignments/'
     | '/_app/assets/counts/'
     | '/_app/crm/leads/'
@@ -1805,6 +1930,7 @@ export interface FileRouteTypes {
     | '/_app/sales/quotes/'
     | '/_app/sales/returns/'
     | '/_app/workflow/instances/'
+    | '/_app/accounting/journal/edit/$id'
     | '/_app/purchasing/orders/edit/$id'
     | '/_app/sales/orders/edit/$id'
   fileRoutesById: FileRoutesById
@@ -1914,6 +2040,34 @@ declare module '@tanstack/react-router' {
       path: '/users'
       fullPath: '/users'
       preLoaderRoute: typeof AppUsersRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/accounting/': {
+      id: '/_app/accounting/'
+      path: '/accounting'
+      fullPath: '/accounting/'
+      preLoaderRoute: typeof AppAccountingIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/accounting/balance-sheet': {
+      id: '/_app/accounting/balance-sheet'
+      path: '/accounting/balance-sheet'
+      fullPath: '/accounting/balance-sheet'
+      preLoaderRoute: typeof AppAccountingBalanceSheetRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/accounting/income-statement': {
+      id: '/_app/accounting/income-statement'
+      path: '/accounting/income-statement'
+      fullPath: '/accounting/income-statement'
+      preLoaderRoute: typeof AppAccountingIncomeStatementRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/accounting/trial-balance': {
+      id: '/_app/accounting/trial-balance'
+      path: '/accounting/trial-balance'
+      fullPath: '/accounting/trial-balance'
+      preLoaderRoute: typeof AppAccountingTrialBalanceRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/assets/': {
@@ -2348,6 +2502,41 @@ declare module '@tanstack/react-router' {
       path: '/workflow/inbox'
       fullPath: '/workflow/inbox'
       preLoaderRoute: typeof AppWorkflowInboxRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/accounting/accounts/': {
+      id: '/_app/accounting/accounts/'
+      path: '/accounting/accounts'
+      fullPath: '/accounting/accounts/'
+      preLoaderRoute: typeof AppAccountingAccountsIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/accounting/accounts/$id': {
+      id: '/_app/accounting/accounts/$id'
+      path: '/accounting/accounts/$id'
+      fullPath: '/accounting/accounts/$id'
+      preLoaderRoute: typeof AppAccountingAccountsIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/accounting/journal/': {
+      id: '/_app/accounting/journal/'
+      path: '/accounting/journal'
+      fullPath: '/accounting/journal/'
+      preLoaderRoute: typeof AppAccountingJournalIndexRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/accounting/journal/$id': {
+      id: '/_app/accounting/journal/$id'
+      path: '/accounting/journal/$id'
+      fullPath: '/accounting/journal/$id'
+      preLoaderRoute: typeof AppAccountingJournalIdRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/accounting/journal/new': {
+      id: '/_app/accounting/journal/new'
+      path: '/accounting/journal/new'
+      fullPath: '/accounting/journal/new'
+      preLoaderRoute: typeof AppAccountingJournalNewRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/assets/assignments/': {
@@ -2833,6 +3022,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppWorkflowInstancesIdRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/accounting/journal/edit/$id': {
+      id: '/_app/accounting/journal/edit/$id'
+      path: '/accounting/journal/edit/$id'
+      fullPath: '/accounting/journal/edit/$id'
+      preLoaderRoute: typeof AppAccountingJournalEditIdRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/purchasing/orders/edit/$id': {
       id: '/_app/purchasing/orders/edit/$id'
       path: '/purchasing/orders/edit/$id'
@@ -2861,6 +3057,9 @@ interface AppRouteChildren {
   AppSettingsRoute: typeof AppSettingsRoute
   AppUsersRoute: typeof AppUsersRoute
   AppIndexRoute: typeof AppIndexRoute
+  AppAccountingBalanceSheetRoute: typeof AppAccountingBalanceSheetRoute
+  AppAccountingIncomeStatementRoute: typeof AppAccountingIncomeStatementRoute
+  AppAccountingTrialBalanceRoute: typeof AppAccountingTrialBalanceRoute
   AppAssetsIdRoute: typeof AppAssetsIdRoute
   AppAssetsMyRoute: typeof AppAssetsMyRoute
   AppAssetsSettingsRoute: typeof AppAssetsSettingsRoute
@@ -2910,6 +3109,7 @@ interface AppRouteChildren {
   AppTrainingMyRoute: typeof AppTrainingMyRoute
   AppWorkflowDefinitionsRoute: typeof AppWorkflowDefinitionsRoute
   AppWorkflowInboxRoute: typeof AppWorkflowInboxRoute
+  AppAccountingIndexRoute: typeof AppAccountingIndexRoute
   AppAssetsIndexRoute: typeof AppAssetsIndexRoute
   AppBudgetsIndexRoute: typeof AppBudgetsIndexRoute
   AppContractsIndexRoute: typeof AppContractsIndexRoute
@@ -2923,6 +3123,9 @@ interface AppRouteChildren {
   AppRecruitmentIndexRoute: typeof AppRecruitmentIndexRoute
   AppSupportIndexRoute: typeof AppSupportIndexRoute
   AppTrainingIndexRoute: typeof AppTrainingIndexRoute
+  AppAccountingAccountsIdRoute: typeof AppAccountingAccountsIdRoute
+  AppAccountingJournalIdRoute: typeof AppAccountingJournalIdRoute
+  AppAccountingJournalNewRoute: typeof AppAccountingJournalNewRoute
   AppAssetsAssignmentsIdRoute: typeof AppAssetsAssignmentsIdRoute
   AppAssetsCountsIdRoute: typeof AppAssetsCountsIdRoute
   AppCrmLeadsIdRoute: typeof AppCrmLeadsIdRoute
@@ -2967,6 +3170,8 @@ interface AppRouteChildren {
   AppSupportTicketsIdRoute: typeof AppSupportTicketsIdRoute
   AppTrainingSessionsIdRoute: typeof AppTrainingSessionsIdRoute
   AppWorkflowInstancesIdRoute: typeof AppWorkflowInstancesIdRoute
+  AppAccountingAccountsIndexRoute: typeof AppAccountingAccountsIndexRoute
+  AppAccountingJournalIndexRoute: typeof AppAccountingJournalIndexRoute
   AppAssetsAssignmentsIndexRoute: typeof AppAssetsAssignmentsIndexRoute
   AppAssetsCountsIndexRoute: typeof AppAssetsCountsIndexRoute
   AppCrmLeadsIndexRoute: typeof AppCrmLeadsIndexRoute
@@ -2992,6 +3197,7 @@ interface AppRouteChildren {
   AppSalesQuotesIndexRoute: typeof AppSalesQuotesIndexRoute
   AppSalesReturnsIndexRoute: typeof AppSalesReturnsIndexRoute
   AppWorkflowInstancesIndexRoute: typeof AppWorkflowInstancesIndexRoute
+  AppAccountingJournalEditIdRoute: typeof AppAccountingJournalEditIdRoute
   AppPurchasingOrdersEditIdRoute: typeof AppPurchasingOrdersEditIdRoute
   AppSalesOrdersEditIdRoute: typeof AppSalesOrdersEditIdRoute
 }
@@ -3007,6 +3213,9 @@ const AppRouteChildren: AppRouteChildren = {
   AppSettingsRoute: AppSettingsRoute,
   AppUsersRoute: AppUsersRoute,
   AppIndexRoute: AppIndexRoute,
+  AppAccountingBalanceSheetRoute: AppAccountingBalanceSheetRoute,
+  AppAccountingIncomeStatementRoute: AppAccountingIncomeStatementRoute,
+  AppAccountingTrialBalanceRoute: AppAccountingTrialBalanceRoute,
   AppAssetsIdRoute: AppAssetsIdRoute,
   AppAssetsMyRoute: AppAssetsMyRoute,
   AppAssetsSettingsRoute: AppAssetsSettingsRoute,
@@ -3056,6 +3265,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppTrainingMyRoute: AppTrainingMyRoute,
   AppWorkflowDefinitionsRoute: AppWorkflowDefinitionsRoute,
   AppWorkflowInboxRoute: AppWorkflowInboxRoute,
+  AppAccountingIndexRoute: AppAccountingIndexRoute,
   AppAssetsIndexRoute: AppAssetsIndexRoute,
   AppBudgetsIndexRoute: AppBudgetsIndexRoute,
   AppContractsIndexRoute: AppContractsIndexRoute,
@@ -3069,6 +3279,9 @@ const AppRouteChildren: AppRouteChildren = {
   AppRecruitmentIndexRoute: AppRecruitmentIndexRoute,
   AppSupportIndexRoute: AppSupportIndexRoute,
   AppTrainingIndexRoute: AppTrainingIndexRoute,
+  AppAccountingAccountsIdRoute: AppAccountingAccountsIdRoute,
+  AppAccountingJournalIdRoute: AppAccountingJournalIdRoute,
+  AppAccountingJournalNewRoute: AppAccountingJournalNewRoute,
   AppAssetsAssignmentsIdRoute: AppAssetsAssignmentsIdRoute,
   AppAssetsCountsIdRoute: AppAssetsCountsIdRoute,
   AppCrmLeadsIdRoute: AppCrmLeadsIdRoute,
@@ -3113,6 +3326,8 @@ const AppRouteChildren: AppRouteChildren = {
   AppSupportTicketsIdRoute: AppSupportTicketsIdRoute,
   AppTrainingSessionsIdRoute: AppTrainingSessionsIdRoute,
   AppWorkflowInstancesIdRoute: AppWorkflowInstancesIdRoute,
+  AppAccountingAccountsIndexRoute: AppAccountingAccountsIndexRoute,
+  AppAccountingJournalIndexRoute: AppAccountingJournalIndexRoute,
   AppAssetsAssignmentsIndexRoute: AppAssetsAssignmentsIndexRoute,
   AppAssetsCountsIndexRoute: AppAssetsCountsIndexRoute,
   AppCrmLeadsIndexRoute: AppCrmLeadsIndexRoute,
@@ -3138,6 +3353,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppSalesQuotesIndexRoute: AppSalesQuotesIndexRoute,
   AppSalesReturnsIndexRoute: AppSalesReturnsIndexRoute,
   AppWorkflowInstancesIndexRoute: AppWorkflowInstancesIndexRoute,
+  AppAccountingJournalEditIdRoute: AppAccountingJournalEditIdRoute,
   AppPurchasingOrdersEditIdRoute: AppPurchasingOrdersEditIdRoute,
   AppSalesOrdersEditIdRoute: AppSalesOrdersEditIdRoute,
 }

@@ -63,6 +63,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **Bütçeler:** YBK gider ve gelir, departman karşılaştırması, dikkat gerektiren kalemler | **Bütçe:** aylık plan ve gerçekleşen, kalem bazında sapma, belge kırılımı           |
 | ![Filo](docs/screenshots/fleet.png)                                                     | ![Araç](docs/screenshots/vehicle.png)                                               |
 | **Filo:** maliyet, km ve tüketim göstergeleri, son 12 ay maliyeti, takip gerektirenler  | **Araç:** yıllık özet, sürücü, sonraki bakım, muayene ve sigorta durumu             |
+| ![Muhasebe](docs/screenshots/accounting.png)                                            | ![Mizan](docs/screenshots/trial-balance.png)                                        |
+| **Muhasebe:** hazır değerler, alacak / borç, aylık gelir ve gider, bekleyen belgeler    | **Mizan:** dönem hareketleri, toplamlar ve bakiyeler, denge kontrolü                |
 
 ## Özellikler
 
@@ -122,6 +124,12 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
   maliyet grafiği, süresi dolan / yaklaşan belge ve bakımlar), araç listesi; araç ekranında yıllık özet ve aylık
   km / maliyet grafiği, sürücü zimmeti, devir ve teslim alma, yakıt, bakım ve onarım, muayene ve sigorta, zimmet
   ve km geçmişi sekmeleri; filo geneli yakıt defteri; sürücünün "Araçlarım" ekranından yakıt ve km girişi.
+- **Muhasebe:** muhasebe paneli (hazır değerler, ticari alacak ve borç, yıllık net kâr, aylık gelir / gider
+  grafiği, muhasebeleşmeyi bekleyen belgeler ve tek tıkla muhasebeleştirme, dönem kilidi); yevmiye defteri
+  (kaynak, durum ve tarih filtresi, kaynak belgeye bağlantı); aranabilir hesap ve cari seçimli fiş formu
+  (borç / alacak farkı, dengeleyen satır önerisi, taslak ve kesinleştirme); fiş detayında kesinleştirme ve
+  ters kayıt; Tekdüzen hesap planı (alt hesap ekleme, bakiyeler); muavin defter (yürüyen bakiye, cari
+  filtresi); mizan, bilanço ve gelir tablosu (Excel / PDF dışa aktarma).
 - **Satın Alma:** personelin ihtiyaç talebi (onay akışıyla), tedarikçi teklifleri ve karşılaştırma tablosu, teklifi siparişe
   dönüştürme, sipariş onayı, kısmi mal kabul (lot / seri numarasıyla stoğa giriş), üç yönlü eşleştirmeli alış faturası
   (sipariş, teslim alınan ve faturalanan miktar), vadesi geçen faturalar, yazdırılabilir belgeler.

@@ -74,7 +74,8 @@
       "support": "Support",
       "contracts": "Contracts",
       "budgets": "Budgets",
-      "fleet": "Fleet"
+      "fleet": "Fleet",
+      "accounting": "Accounting"
     },
     "users": "Users",
     "roles": "Roles & Permissions",
@@ -165,7 +166,13 @@
     "budgetItems": "Budget Items",
     "fleet": "Vehicles",
     "fuelLog": "Fuel Log",
-    "myVehicles": "My Vehicles"
+    "myVehicles": "My Vehicles",
+    "accounting": "Accounting overview",
+    "journal": "Journal",
+    "chartOfAccounts": "Chart of accounts",
+    "trialBalance": "Trial balance",
+    "balanceSheet": "Balance sheet",
+    "incomeStatement": "Income statement"
   },
   "auth": {
     "login": "Sign in",
@@ -324,7 +331,8 @@
       "support": "Support",
       "contracts": "Contracts",
       "budgets": "Budgets",
-      "fleet": "Fleet"
+      "fleet": "Fleet",
+      "accounting": "Accounting"
     },
     "actions": {
       "read": "Read",
@@ -341,7 +349,8 @@
       "deliver": "Deliver",
       "invoice": "Invoice",
       "pay": "Pay",
-      "hire": "Hire"
+      "hire": "Hire",
+      "close": "Lock periods"
     }
   },
   "organization": {
@@ -3698,6 +3707,233 @@
     },
     "validation": {
       "plate": "Enter a valid plate (e.g. 34 ABC 123)"
+    }
+  },
+  "accounting": {
+    "title": "Accounting",
+    "subtitle": "Turkish uniform chart of accounts, journal entries and financial statements",
+    "year": "Year",
+    "date": "Date",
+    "from": "From",
+    "to": "To",
+    "description": "Description",
+    "amount": "Amount",
+    "account": "Account",
+    "debit": "Debit",
+    "credit": "Credit",
+    "balance": "Balance",
+    "debitShort": "Dr",
+    "creditShort": "Cr",
+    "total": "Total",
+    "document": "Document",
+    "sourceLabel": "Source",
+    "allSources": "All sources",
+    "allStatuses": "All statuses",
+    "revenue": "Revenue",
+    "expense": "Expense",
+    "profit": "Profit / loss",
+    "shortcuts": "Books and statements",
+    "entryCount": "Journal entries",
+    "lockedPeriod": "Locked period",
+    "monthlyTitle": "{{year}} monthly revenue and expense",
+    "noChart": "The chart of accounts is not set up yet",
+    "noChartHint": "Add the main accounts of the uniform chart in one click; documents are posted automatically from then on.",
+    "runDone": "{{posted}} entries posted, {{reversed}} reversed, {{skipped}} documents skipped",
+    "source": {
+      "MANUAL": "Manual entry",
+      "TREASURY_OPENING": "Cash/bank opening",
+      "PARTNER_OPENING": "Partner opening",
+      "SALES_INVOICE": "Sales invoice",
+      "SALES_RETURN": "Sales return",
+      "PURCHASE_INVOICE": "Purchase invoice",
+      "DELIVERY_NOTE": "Delivery note (COGS)",
+      "STOCK_MOVEMENT": "Stock movement",
+      "COLLECTION": "Collection",
+      "PAYMENT": "Payment",
+      "CHEQUE": "Cheque/note",
+      "EXPENSE_REPORT": "Expense report",
+      "EXPENSE_PAYMENT": "Expense payment",
+      "PAYROLL": "Payroll",
+      "PAYROLL_PAYMENT": "Salary payment"
+    },
+    "status": {
+      "DRAFT": "Draft",
+      "POSTED": "Posted",
+      "REVERSED": "Reversed",
+      "REVERSAL": "Reversal"
+    },
+    "action": {
+      "POST": "To post",
+      "REVERSE": "To reverse",
+      "REPOST": "To repost"
+    },
+    "type": {
+      "ASSET": "Asset",
+      "LIABILITY": "Liability",
+      "EQUITY": "Equity",
+      "INCOME": "Income",
+      "EXPENSE": "Expense"
+    },
+    "kpi": {
+      "cash": "Cash and equivalents",
+      "cashHint": "Cash, cheques, banks (10)",
+      "receivables": "Trade receivables",
+      "receivablesHint": "Customers and notes receivable (12)",
+      "payables": "Trade payables",
+      "payablesHint": "Suppliers and notes payable (32)",
+      "netProfit": "{{year}} net profit",
+      "netSales": "Net sales {{value}}"
+    },
+    "pending": {
+      "title": "Documents waiting to be posted",
+      "hint": "Invoices, collections/payments, stock movements, expenses and payrolls are posted every night; you can run it now.",
+      "run": "Post now",
+      "empty": "Nothing is waiting; every document is posted.",
+      "action": "Action",
+      "locked": "Locked",
+      "more_one": "and {{count}} more document",
+      "more_other": "and {{count}} more documents",
+      "lockedHint_one": "{{count}} document falls in the locked period and will be skipped.",
+      "lockedHint_other": "{{count}} documents fall in the locked period and will be skipped."
+    },
+    "lock": {
+      "action": "Period lock",
+      "title": "Period lock",
+      "label": "Locked until",
+      "none": "Not locked",
+      "hint": "No entries can be posted or reversed on or before this date, and automatic posting skips those documents. Leave it empty to unlock.",
+      "saved": "Periods locked until {{date}}",
+      "cleared": "Period lock removed"
+    },
+    "journal": {
+      "title": "Journal",
+      "subtitle": "Every journal entry, manual or generated from documents",
+      "new": "New entry",
+      "edit": "Edit entry",
+      "entryTitle": "Entry {{number}}",
+      "number": "Entry no",
+      "lines": "Entry lines",
+      "party": "Partner / employee",
+      "post": "Post",
+      "posted": "{{number}} posted",
+      "saved": "{{number}} saved as draft",
+      "deleted": "{{number}} deleted",
+      "deleteHint": "The draft entry is deleted permanently.",
+      "postedAt": "Posted at",
+      "reverses": "Reverses entry",
+      "reversedBy": "Reversal entry",
+      "reverse": "Reverse",
+      "reverseTitle": "Reverse {{number}}",
+      "reverseHint": "A new entry with debits and credits swapped is posted; the original stays unchanged.",
+      "reverseNote": "Note",
+      "reversed": "Reversal {{number}} posted",
+      "unbalanced": "The entry is not balanced: {{value}} difference"
+    },
+    "form": {
+      "hint": "Each line carries either a debit or a credit; the entry can be posted once debits equal credits.",
+      "descriptionPlaceholder": "e.g. October rent accrual",
+      "addLine": "Add line",
+      "removeLine": "Remove line",
+      "pickAccount": "Pick an account",
+      "noParty": "Partner / employee (optional)",
+      "partners": "Partners",
+      "employees": "Employees",
+      "oneSide": "A line takes either a debit or a credit",
+      "amountRequired": "Enter a debit or a credit",
+      "difference": "Debits and credits differ by {{value}}",
+      "balanced": "The entry is balanced",
+      "saveDraft": "Save draft",
+      "saveAndPost": "Save and post"
+    },
+    "accounts": {
+      "title": "Chart of accounts",
+      "subtitle": "Uniform main accounts, sub-accounts and their balances",
+      "code": "Account code",
+      "name": "Account name",
+      "type": "Type",
+      "allTypes": "All types",
+      "view": "View",
+      "views": {
+        "active": "Active accounts",
+        "used": "Accounts with movements",
+        "inactive": "Inactive accounts"
+      },
+      "searchPlaceholder": "Code or account name…",
+      "system": "System",
+      "systemHint": "System accounts are used by automatic entries; they can be renamed but not deactivated.",
+      "install": "Install uniform chart",
+      "installed_one": "{{count}} account added",
+      "installed_other": "{{count}} accounts added",
+      "new": "New main account",
+      "newHint": "For three-digit main accounts of the uniform chart that are missing from the list.",
+      "addSub": "Add sub-account",
+      "addSubTitle": "Sub-account under {{code}} {{name}}",
+      "addSubHint": "A sub-account takes the type of its main account and rolls up into its balance.",
+      "codeInvalid": "Use three digits between 100 and 799, or \"120.01\" for sub-accounts",
+      "created": "Account {{code}} added",
+      "deleted": "Account deleted",
+      "editTitle": "Edit account {{code}}"
+    },
+    "ledger": {
+      "subtitle": "Subsidiary ledger: movements including sub-accounts with running balance",
+      "partner": "Partner",
+      "allPartners": "All partners",
+      "opening": "Opening balance",
+      "closing": "Closing balance",
+      "totalDebit": "Period debit",
+      "totalCredit": "Period credit",
+      "openingRow": "Brought forward",
+      "empty": "No movements in this range"
+    },
+    "trialBalance": {
+      "title": "Trial balance",
+      "subtitle": "Period movements, cumulative totals and balances",
+      "detailed": "Show sub-accounts",
+      "periodDebit": "Period debit",
+      "periodCredit": "Period credit",
+      "totalDebit": "Total debit",
+      "totalCredit": "Total credit",
+      "balanceDebit": "Debit balance",
+      "balanceCredit": "Credit balance",
+      "balanced": "Trial balance is balanced",
+      "unbalanced": "Trial balance is not balanced",
+      "empty": "No entries up to this range"
+    },
+    "balanceSheet": {
+      "title": "Balance sheet",
+      "subtitle": "Assets against liabilities and equity on a date; the period result sits in equity",
+      "date": "Balance sheet date",
+      "assets": "Assets",
+      "liabilities": "Liabilities and equity",
+      "side": "Side",
+      "total": "Total {{side}}",
+      "balanced": "Assets equal liabilities and equity",
+      "unbalanced": "Assets do not equal liabilities and equity",
+      "empty": "No balances"
+    },
+    "incomeStatement": {
+      "title": "Income statement",
+      "subtitle": "Period income, expenses and results in the uniform layout",
+      "sections": {
+        "grossSales": "A. Gross sales",
+        "salesDeductions": "B. Sales deductions (-)",
+        "costOfSales": "D. Cost of sales (-)",
+        "operatingExpenses": "E. Operating expenses (-)",
+        "otherIncome": "F. Other ordinary income and gains",
+        "otherExpenses": "G. Other ordinary expenses and losses (-)",
+        "financeExpenses": "H. Finance expenses (-)",
+        "extraordinaryIncome": "I. Extraordinary income and gains",
+        "extraordinaryExpenses": "J. Extraordinary expenses and losses (-)",
+        "taxProvision": "K. Tax and legal provisions on profit (-)"
+      },
+      "subtotals": {
+        "netSales": "C. Net sales",
+        "grossProfit": "Gross profit / loss",
+        "operatingProfit": "Operating profit / loss",
+        "ordinaryProfit": "Ordinary profit / loss",
+        "profitBeforeTax": "Profit / loss for the period",
+        "netProfit": "Net profit / loss for the period"
+      }
     }
   }
 }

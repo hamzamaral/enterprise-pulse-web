@@ -1,3 +1,4 @@
+export * from './accounting/accounting';
 export * from './assets/assets';
 export * from './attendance/attendance';
 export * from './audit/audit';

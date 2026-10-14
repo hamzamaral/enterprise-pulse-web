@@ -105,7 +105,11 @@ export function SimpleFormDialog<T extends FieldValues>({
                         className={cn('flex items-center gap-3', config.wide && 'sm:col-span-2')}
                       >
                         <FormControl>
-                          <Switch checked={!!field.value} onCheckedChange={field.onChange} />
+                          <Switch
+                            checked={!!field.value}
+                            onCheckedChange={field.onChange}
+                            disabled={config.disabled}
+                          />
                         </FormControl>
                         <FormLabel className="!mt-0">{config.label}</FormLabel>
                       </FormItem>

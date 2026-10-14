@@ -74,7 +74,8 @@
       "support": "Destek",
       "contracts": "Sözleşmeler",
       "budgets": "Bütçe",
-      "fleet": "Araç ve Filo"
+      "fleet": "Araç ve Filo",
+      "accounting": "Muhasebe"
     },
     "users": "Kullanıcılar",
     "roles": "Roller ve İzinler",
@@ -165,7 +166,13 @@
     "budgetItems": "Bütçe Kalemleri",
     "fleet": "Araçlar",
     "fuelLog": "Yakıt Defteri",
-    "myVehicles": "Araçlarım"
+    "myVehicles": "Araçlarım",
+    "accounting": "Muhasebe paneli",
+    "journal": "Yevmiye defteri",
+    "chartOfAccounts": "Hesap planı",
+    "trialBalance": "Mizan",
+    "balanceSheet": "Bilanço",
+    "incomeStatement": "Gelir tablosu"
   },
   "auth": {
     "login": "Giriş yap",
@@ -324,7 +331,8 @@
       "support": "Destek",
       "contracts": "Sözleşmeler",
       "budgets": "Bütçe",
-      "fleet": "Araç ve filo"
+      "fleet": "Araç ve filo",
+      "accounting": "Muhasebe"
     },
     "actions": {
       "read": "Görüntüle",
@@ -341,7 +349,8 @@
       "deliver": "Sevkiyat",
       "invoice": "Faturalama",
       "pay": "Ödeme",
-      "hire": "İşe alma"
+      "hire": "İşe alma",
+      "close": "Dönem kilidi"
     }
   },
   "organization": {
@@ -3698,6 +3707,233 @@
     },
     "validation": {
       "plate": "Geçerli bir plaka girin (ör. 34 ABC 123)"
+    }
+  },
+  "accounting": {
+    "title": "Muhasebe",
+    "subtitle": "Tekdüzen hesap planı, yevmiye fişleri ve mali tablolar",
+    "year": "Yıl",
+    "date": "Tarih",
+    "from": "Başlangıç",
+    "to": "Bitiş",
+    "description": "Açıklama",
+    "amount": "Tutar",
+    "account": "Hesap",
+    "debit": "Borç",
+    "credit": "Alacak",
+    "balance": "Bakiye",
+    "debitShort": "B",
+    "creditShort": "A",
+    "total": "Toplam",
+    "document": "Belge",
+    "sourceLabel": "Kaynak",
+    "allSources": "Tüm kaynaklar",
+    "allStatuses": "Tüm durumlar",
+    "revenue": "Gelir",
+    "expense": "Gider",
+    "profit": "Kâr / zarar",
+    "shortcuts": "Defterler ve tablolar",
+    "entryCount": "Kayıtlı fiş",
+    "lockedPeriod": "Kilitli dönem",
+    "monthlyTitle": "{{year}} aylık gelir ve gider",
+    "noChart": "Hesap planı henüz kurulmadı",
+    "noChartHint": "Tekdüzen hesap planının ana hesapları tek tıkla eklenir; belgeler bundan sonra otomatik muhasebeleşir.",
+    "runDone": "{{posted}} fiş kesildi, {{reversed}} ters kayıt yapıldı, {{skipped}} belge atlandı",
+    "source": {
+      "MANUAL": "Manuel fiş",
+      "TREASURY_OPENING": "Kasa/banka açılışı",
+      "PARTNER_OPENING": "Cari açılış",
+      "SALES_INVOICE": "Satış faturası",
+      "SALES_RETURN": "Satış iadesi",
+      "PURCHASE_INVOICE": "Alış faturası",
+      "DELIVERY_NOTE": "İrsaliye (SMM)",
+      "STOCK_MOVEMENT": "Stok hareketi",
+      "COLLECTION": "Tahsilat",
+      "PAYMENT": "Ödeme",
+      "CHEQUE": "Çek/senet",
+      "EXPENSE_REPORT": "Masraf formu",
+      "EXPENSE_PAYMENT": "Masraf ödemesi",
+      "PAYROLL": "Bordro",
+      "PAYROLL_PAYMENT": "Maaş ödemesi"
+    },
+    "status": {
+      "DRAFT": "Taslak",
+      "POSTED": "Kesinleşti",
+      "REVERSED": "Ters kaydı var",
+      "REVERSAL": "Ters kayıt"
+    },
+    "action": {
+      "POST": "Fiş kesilecek",
+      "REVERSE": "Ters kayıt",
+      "REPOST": "Yeniden kesilecek"
+    },
+    "type": {
+      "ASSET": "Varlık",
+      "LIABILITY": "Yabancı kaynak",
+      "EQUITY": "Özkaynak",
+      "INCOME": "Gelir",
+      "EXPENSE": "Gider"
+    },
+    "kpi": {
+      "cash": "Hazır değerler",
+      "cashHint": "Kasa, çek, banka (10)",
+      "receivables": "Ticari alacaklar",
+      "receivablesHint": "Alıcılar ve alacak senetleri (12)",
+      "payables": "Ticari borçlar",
+      "payablesHint": "Satıcılar ve borç senetleri (32)",
+      "netProfit": "{{year}} net kâr",
+      "netSales": "Net satışlar {{value}}"
+    },
+    "pending": {
+      "title": "Muhasebeleşmeyi bekleyen belgeler",
+      "hint": "Faturalar, tahsilat/ödemeler, stok hareketleri, masraf ve bordrolar her gece otomatik fişe dönüşür; beklemeden çalıştırabilirsiniz.",
+      "run": "Muhasebeleştir",
+      "empty": "Bekleyen belge yok; tüm belgeler muhasebeleşti.",
+      "action": "İşlem",
+      "locked": "Kilitli",
+      "more_one": "ve {{count}} belge daha",
+      "more_other": "ve {{count}} belge daha",
+      "lockedHint_one": "{{count}} belge kilitli döneme düştüğü için atlanacak.",
+      "lockedHint_other": "{{count}} belge kilitli döneme düştüğü için atlanacak."
+    },
+    "lock": {
+      "action": "Dönem kilidi",
+      "title": "Dönem kilidi",
+      "label": "Kilit tarihi",
+      "none": "Kilit yok",
+      "hint": "Bu tarih ve öncesine fiş kesilemez, ters kayıt yapılamaz; otomatik muhasebeleştirme de bu belgeleri atlar. Boş bırakırsanız kilit kalkar.",
+      "saved": "Dönem {{date}} tarihine kadar kilitlendi",
+      "cleared": "Dönem kilidi kaldırıldı"
+    },
+    "journal": {
+      "title": "Yevmiye defteri",
+      "subtitle": "Elle ve belgelerden otomatik kesilen tüm muhasebe fişleri",
+      "new": "Yeni fiş",
+      "edit": "Fişi düzenle",
+      "entryTitle": "Fiş {{number}}",
+      "number": "Fiş no",
+      "lines": "Fiş satırları",
+      "party": "Cari / personel",
+      "post": "Kesinleştir",
+      "posted": "{{number}} kesinleşti",
+      "saved": "{{number}} taslak olarak kaydedildi",
+      "deleted": "{{number}} silindi",
+      "deleteHint": "Taslak fiş kalıcı olarak silinir.",
+      "postedAt": "Kesinleşme",
+      "reverses": "Ters kaydı yapılan fiş",
+      "reversedBy": "Ters kayıt fişi",
+      "reverse": "Ters kayıt",
+      "reverseTitle": "{{number}} için ters kayıt",
+      "reverseHint": "Borç ve alacakları yer değiştiren yeni bir fiş kesilir; asıl fiş değişmez.",
+      "reverseNote": "Not",
+      "reversed": "{{number}} ters kaydı kesildi",
+      "unbalanced": "Fiş dengede değil: {{value}} fark var"
+    },
+    "form": {
+      "hint": "Her satır yalnızca borç ya da alacak taşır; fiş, borç ve alacak toplamları eşitlenince kesinleşebilir.",
+      "descriptionPlaceholder": "Ör. Ekim ayı kira tahakkuku",
+      "addLine": "Satır ekle",
+      "removeLine": "Satırı sil",
+      "pickAccount": "Hesap seçin",
+      "noParty": "Cari / personel (isteğe bağlı)",
+      "partners": "Cari hesaplar",
+      "employees": "Personel",
+      "oneSide": "Satır ya borç ya alacak taşımalı",
+      "amountRequired": "Borç veya alacak girin",
+      "difference": "Borç ve alacak arasında {{value}} fark var",
+      "balanced": "Fiş dengede",
+      "saveDraft": "Taslak kaydet",
+      "saveAndPost": "Kaydet ve kesinleştir"
+    },
+    "accounts": {
+      "title": "Hesap planı",
+      "subtitle": "Tekdüzen ana hesaplar, alt hesaplar ve bakiyeleri",
+      "code": "Hesap kodu",
+      "name": "Hesap adı",
+      "type": "Tür",
+      "allTypes": "Tüm türler",
+      "view": "Görünüm",
+      "views": {
+        "active": "Aktif hesaplar",
+        "used": "Hareketli hesaplar",
+        "inactive": "Pasif hesaplar"
+      },
+      "searchPlaceholder": "Kod veya hesap adı…",
+      "system": "Sistem",
+      "systemHint": "Sistem hesapları otomatik fişlerde kullanılır; adı değiştirilebilir ama pasife alınamaz.",
+      "install": "Tekdüzen planı kur",
+      "installed_one": "{{count}} hesap eklendi",
+      "installed_other": "{{count}} hesap eklendi",
+      "new": "Yeni ana hesap",
+      "newHint": "Tekdüzen planında olup listede bulunmayan üç haneli ana hesaplar için.",
+      "addSub": "Alt hesap ekle",
+      "addSubTitle": "{{code}} {{name}} altına hesap",
+      "addSubHint": "Alt hesap, ana hesabın türünü alır ve bakiyesi ana hesaba eklenir.",
+      "codeInvalid": "Kod 100–799 arası üç hane, alt hesaplar için \"120.01\" biçiminde olmalı",
+      "created": "{{code}} hesabı eklendi",
+      "deleted": "Hesap silindi",
+      "editTitle": "{{code}} hesabını düzenle"
+    },
+    "ledger": {
+      "subtitle": "Muavin defter: alt hesaplar dahil hareketler ve yürüyen bakiye",
+      "partner": "Cari",
+      "allPartners": "Tüm cariler",
+      "opening": "Devreden bakiye",
+      "closing": "Kapanış bakiyesi",
+      "totalDebit": "Dönem borcu",
+      "totalCredit": "Dönem alacağı",
+      "openingRow": "Devir",
+      "empty": "Bu aralıkta hareket yok"
+    },
+    "trialBalance": {
+      "title": "Mizan",
+      "subtitle": "Dönem hareketleri, kümülatif toplamlar ve bakiyeler",
+      "detailed": "Alt hesapları göster",
+      "periodDebit": "Dönem borç",
+      "periodCredit": "Dönem alacak",
+      "totalDebit": "Toplam borç",
+      "totalCredit": "Toplam alacak",
+      "balanceDebit": "Borç bakiye",
+      "balanceCredit": "Alacak bakiye",
+      "balanced": "Mizan dengede",
+      "unbalanced": "Mizan dengede değil",
+      "empty": "Bu aralığa kadar kayıt yok"
+    },
+    "balanceSheet": {
+      "title": "Bilanço",
+      "subtitle": "Seçilen tarihteki varlıklar ile kaynaklar; dönem sonucu özkaynaklarda",
+      "date": "Bilanço tarihi",
+      "assets": "Aktif (varlıklar)",
+      "liabilities": "Pasif (kaynaklar)",
+      "side": "Taraf",
+      "total": "{{side}} toplamı",
+      "balanced": "Aktif ve pasif eşit",
+      "unbalanced": "Aktif ve pasif eşit değil",
+      "empty": "Bakiye yok"
+    },
+    "incomeStatement": {
+      "title": "Gelir tablosu",
+      "subtitle": "Tekdüzen biçiminde dönem gelir, gider ve sonuçları",
+      "sections": {
+        "grossSales": "A. Brüt satışlar",
+        "salesDeductions": "B. Satış indirimleri (-)",
+        "costOfSales": "D. Satışların maliyeti (-)",
+        "operatingExpenses": "E. Faaliyet giderleri (-)",
+        "otherIncome": "F. Diğer faaliyetlerden olağan gelir ve kârlar",
+        "otherExpenses": "G. Diğer faaliyetlerden olağan gider ve zararlar (-)",
+        "financeExpenses": "H. Finansman giderleri (-)",
+        "extraordinaryIncome": "I. Olağandışı gelir ve kârlar",
+        "extraordinaryExpenses": "J. Olağandışı gider ve zararlar (-)",
+        "taxProvision": "K. Dönem kârı vergi ve yasal yükümlülük karşılıkları (-)"
+      },
+      "subtotals": {
+        "netSales": "C. Net satışlar",
+        "grossProfit": "Brüt satış kârı / zararı",
+        "operatingProfit": "Faaliyet kârı / zararı",
+        "ordinaryProfit": "Olağan kâr / zarar",
+        "profitBeforeTax": "Dönem kârı / zararı",
+        "netProfit": "Dönem net kârı / zararı"
+      }
     }
   }
 }
