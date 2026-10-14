@@ -15,7 +15,6 @@ import { formatRelative } from '@/shared/lib/format';
 import { cn } from '@/shared/lib/utils';
 import { Button } from '@/shared/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '@/shared/ui/popover';
-import { ScrollArea } from '@/shared/ui/scroll-area';
 
 export function useInvalidateNotifications() {
   const queryClient = useQueryClient();
@@ -100,8 +99,12 @@ export function NotificationBell() {
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent align="end" className="w-96 p-0">
-        <div className="flex items-center justify-between border-b px-4 py-3">
+      <PopoverContent
+        align="end"
+        collisionPadding={8}
+        className="flex max-h-[min(36rem,var(--radix-popover-content-available-height))] w-96 flex-col p-0"
+      >
+        <div className="flex shrink-0 items-center justify-between border-b px-4 py-3">
           <span className="font-medium">{t('notifications.title')}</span>
           <Button
             variant="ghost"
@@ -112,18 +115,16 @@ export function NotificationBell() {
             <CheckCheck /> {t('notifications.markAllRead')}
           </Button>
         </div>
-        <ScrollArea className="max-h-96">
-          <div className="p-1">
-            {list?.data.length ? (
-              list.data.map((n) => <NotificationItem key={n.id} notification={n} onOpen={open} />)
-            ) : (
-              <p className="text-muted-foreground py-10 text-center text-sm">
-                {t('notifications.empty')}
-              </p>
-            )}
-          </div>
-        </ScrollArea>
-        <div className="border-t p-2">
+        <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-1">
+          {list?.data.length ? (
+            list.data.map((n) => <NotificationItem key={n.id} notification={n} onOpen={open} />)
+          ) : (
+            <p className="text-muted-foreground py-10 text-center text-sm">
+              {t('notifications.empty')}
+            </p>
+          )}
+        </div>
+        <div className="shrink-0 border-t p-2">
           <Button asChild variant="ghost" size="sm" className="w-full">
             <Link to="/notifications">{t('notifications.viewAll')}</Link>
           </Button>

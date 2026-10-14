@@ -177,7 +177,10 @@
     "eInvoices": "e-Invoices",
     "workOrders": "Work orders",
     "boms": "Bills of materials",
-    "requirements": "Material requirements"
+    "requirements": "Material requirements",
+    "search": "Search the menu… (Ctrl+K)",
+    "clearSearch": "Clear search",
+    "noResults": "No matching pages."
   },
   "auth": {
     "login": "Sign in",

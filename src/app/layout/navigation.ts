@@ -646,6 +646,39 @@ export const NAVIGATION: NavGroup[] = [
 
 export const APP_ICON = GitBranch;
 
+/** Turkish-aware lower case without diacritics, so "izin" finds "İzin" and "satis" finds "Satış". */
+export function normalizeSearch(text: string): string {
+  return text
+    .toLocaleLowerCase('tr')
+    .replace(/ı/g, 'i')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .trim();
+}
+
+/**
+ * Menu search: every word must appear in the group or item label. A matching group name keeps the
+ * whole group; otherwise only the matching items stay.
+ */
+export function filterNavigation(
+  groups: NavGroup[],
+  query: string,
+  label: (key: string) => string,
+): NavGroup[] {
+  const words = normalizeSearch(query).split(/\s+/).filter(Boolean);
+  if (!words.length) return groups;
+  const matches = (text: string) => {
+    const haystack = normalizeSearch(text);
+    return words.every((word) => haystack.includes(word));
+  };
+  return groups.flatMap((group) => {
+    const groupLabel = label(group.labelKey);
+    if (matches(groupLabel)) return [group];
+    const items = group.items.filter((item) => matches(`${groupLabel} ${label(item.labelKey)}`));
+    return items.length ? [{ ...group, items }] : [];
+  });
+}
+
 /** The most specific nav target containing `pathname`, so `/assets/my` doesn't also light `/assets`. */
 export function findActiveNavTarget(pathname: string): string | undefined {
   let best: string | undefined;

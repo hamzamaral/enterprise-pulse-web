@@ -177,7 +177,10 @@
     "eInvoices": "e-Fatura",
     "workOrders": "İş emirleri",
     "boms": "Ürün ağaçları",
-    "requirements": "Malzeme ihtiyacı"
+    "requirements": "Malzeme ihtiyacı",
+    "search": "Menüde ara… (Ctrl+K)",
+    "clearSearch": "Aramayı temizle",
+    "noResults": "Eşleşen sayfa yok."
   },
   "auth": {
     "login": "Giriş yap",
