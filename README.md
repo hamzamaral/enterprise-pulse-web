@@ -14,6 +14,8 @@ React 19 + Vite ile yazılmış, Türkçe / İngilizce, açık / koyu temalı te
 | **enterprise-pulse-web** (bu repo)                                         | React arayüzü                                           |
 | [enterprise-pulse-api](https://github.com/hamzamaral/enterprise-pulse-api) | NestJS API, veritabanı, iş kuralları                    |
 | [EnterprisePulse](https://github.com/hamzamaral/EnterprisePulse)           | Yol haritası, mimari dokümanlar, ADR'ler, yerel altyapı |
+| [EnterprisePulse.NET](https://github.com/hamzamaral/EnterprisePulse.NET)   | ASP.NET Core 10 + Blazor yeniden yazımı                 |
+| [EnterprisePulse.Java](https://github.com/hamzamaral/EnterprisePulse.Java) | Spring Boot 3.5 + Vaadin yeniden yazımı                 |
 
 ![Stok durumu](docs/screenshots/stock-levels.png)
 
